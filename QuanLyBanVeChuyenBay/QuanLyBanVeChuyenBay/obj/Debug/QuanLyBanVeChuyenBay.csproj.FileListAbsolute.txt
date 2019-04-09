@@ -1,0 +1,11 @@
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.exe.config
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.exe
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.pdb
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmLogin.resources
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.Properties.Resources.resources
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csproj.GenerateResource.Cache
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csproj.CoreCompileInputs.cache
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.exe
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.pdb
+C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmMain.resources
