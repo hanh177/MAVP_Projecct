@@ -33,13 +33,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.SanBayDi = new System.Windows.Forms.Label();
             this.btnSanBayDen = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.textBox7 = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.comboBox4 = new System.Windows.Forms.ComboBox();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -51,12 +47,19 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Help = new System.Windows.Forms.ToolStripButton();
             this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
+            this.Help = new System.Windows.Forms.ToolStripButton();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox4 = new System.Windows.Forms.TextBox();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.label3 = new System.Windows.Forms.Label();
+            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // MaCB
@@ -93,27 +96,9 @@
             this.btnSanBayDen.TabIndex = 9;
             this.btnSanBayDen.Text = "Sân Bay Đến:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 228);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(115, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Sân Bay Trung Gian 1:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(31, 272);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 13);
-            this.label5.TabIndex = 11;
-            this.label5.Text = "Sân Bay Trung Gian 2:";
-            // 
             // textBox7
             // 
-            this.textBox7.Location = new System.Drawing.Point(152, 365);
+            this.textBox7.Location = new System.Drawing.Point(152, 220);
             this.textBox7.Name = "textBox7";
             this.textBox7.Size = new System.Drawing.Size(191, 20);
             this.textBox7.TabIndex = 12;
@@ -134,26 +119,9 @@
             this.comboBox2.Size = new System.Drawing.Size(191, 21);
             this.comboBox2.TabIndex = 14;
             // 
-            // comboBox3
-            // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(152, 220);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(191, 21);
-            this.comboBox3.TabIndex = 15;
-            // 
-            // comboBox4
-            // 
-            this.comboBox4.FormattingEnabled = true;
-            this.comboBox4.Location = new System.Drawing.Point(152, 269);
-            this.comboBox4.Name = "comboBox4";
-            this.comboBox4.Size = new System.Drawing.Size(191, 21);
-            this.comboBox4.TabIndex = 16;
-            this.comboBox4.SelectedIndexChanged += new System.EventHandler(this.comboBox4_SelectedIndexChanged);
-            // 
             // dateTimePicker1
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(152, 318);
+            this.dateTimePicker1.Location = new System.Drawing.Point(488, 217);
             this.dateTimePicker1.Name = "dateTimePicker1";
             this.dateTimePicker1.Size = new System.Drawing.Size(191, 20);
             this.dateTimePicker1.TabIndex = 17;
@@ -162,16 +130,17 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(31, 324);
+            this.label6.Location = new System.Drawing.Point(398, 227);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(56, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Ngày Bay:";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(31, 372);
+            this.label7.Location = new System.Drawing.Point(31, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(105, 13);
             this.label7.TabIndex = 19;
@@ -220,7 +189,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(448, 272);
+            this.btnThem.Location = new System.Drawing.Point(238, 428);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(75, 41);
             this.btnThem.TabIndex = 25;
@@ -229,7 +198,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(604, 269);
+            this.btnThoat.Location = new System.Drawing.Point(388, 428);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 41);
             this.btnThoat.TabIndex = 26;
@@ -248,6 +217,14 @@
             this.toolStrip1.TabIndex = 28;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // btnDanhSach
+            // 
+            this.btnDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSach.Image")));
+            this.btnDanhSach.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDanhSach.Name = "btnDanhSach";
+            this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
+            this.btnDanhSach.Text = "&DS C.Bay";
+            // 
             // Help
             // 
             this.Help.Image = ((System.Drawing.Image)(resources.GetObject("Help.Image")));
@@ -256,14 +233,6 @@
             this.Help.Size = new System.Drawing.Size(52, 22);
             this.Help.Text = "&Help";
             this.Help.Click += new System.EventHandler(this.toolStripButton1_Click);
-            // 
-            // btnDanhSach
-            // 
-            this.btnDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSach.Image")));
-            this.btnDanhSach.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDanhSach.Name = "btnDanhSach";
-            this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
-            this.btnDanhSach.Text = "&DS C.Bay";
             // 
             // btnSetting
             // 
@@ -289,11 +258,50 @@
             this.textBox4.Size = new System.Drawing.Size(191, 20);
             this.textBox4.TabIndex = 30;
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColName,
+            this.ColTime,
+            this.ColNote});
+            this.dataGridView1.Location = new System.Drawing.Point(34, 290);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(645, 124);
+            this.dataGridView1.TabIndex = 46;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 262);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Thông tin sân bay trung gian:\r\n";
+            // 
+            // ColName
+            // 
+            this.ColName.HeaderText = "Tên sân bay trung gian";
+            this.ColName.Name = "ColName";
+            // 
+            // ColTime
+            // 
+            this.ColTime.HeaderText = "Thời gian dừng";
+            this.ColTime.Name = "ColTime";
+            // 
+            // ColNote
+            // 
+            this.ColNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNote.HeaderText = "Ghi chú";
+            this.ColNote.Name = "ColNote";
+            // 
             // frmNhanLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(723, 467);
+            this.ClientSize = new System.Drawing.Size(723, 481);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolStrip1);
@@ -307,13 +315,9 @@
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox4);
-            this.Controls.Add(this.comboBox3);
             this.Controls.Add(this.comboBox2);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.textBox7);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSanBayDen);
             this.Controls.Add(this.SanBayDi);
             this.Controls.Add(this.textBox1);
@@ -322,6 +326,7 @@
             this.Text = "Nhận Lịch Chuyến Bay";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -333,13 +338,9 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label SanBayDi;
         private System.Windows.Forms.Label btnSanBayDen;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBox7;
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.ComboBox comboBox4;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
@@ -356,5 +357,11 @@
         private System.Windows.Forms.ToolStripButton btnSetting;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBox4;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNote;
     }
 }

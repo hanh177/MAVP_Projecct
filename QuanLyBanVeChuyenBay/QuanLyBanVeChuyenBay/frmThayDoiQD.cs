@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace QuanLyBanVeChuyenBay
 {
-    public partial class frmTraCuu : Form
+    public partial class frmThayDoiQD : Form
     {
-        public frmTraCuu()
+        public frmThayDoiQD()
         {
             InitializeComponent();
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
