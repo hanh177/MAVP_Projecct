@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace QuanLyBanVeChuyenBay
 {
-    public partial class frmThayDoiQD : Form
+    public partial class frmQD3 : Form
     {
-        public frmThayDoiQD()
+        public frmQD3()
         {
             InitializeComponent();
         }

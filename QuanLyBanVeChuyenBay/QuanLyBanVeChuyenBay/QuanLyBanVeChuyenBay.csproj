@@ -45,11 +45,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmThayDoiQD.cs">
+    <Compile Include="frmBaoCaoThang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmThayDoiQD.Designer.cs">
-      <DependentUpon>frmThayDoiQD.cs</DependentUpon>
+    <Compile Include="frmBaoCaoThang.Designer.cs">
+      <DependentUpon>frmBaoCaoThang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDanhSachSB.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDanhSachSB.Designer.cs">
+      <DependentUpon>frmDanhSachSB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmBaoCaoNam.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmBaoCaoNam.Designer.cs">
+      <DependentUpon>frmBaoCaoNam.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQD1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQD1.Designer.cs">
+      <DependentUpon>frmQD1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQD2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQD2.Designer.cs">
+      <DependentUpon>frmQD2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmQD3.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmQD3.Designer.cs">
+      <DependentUpon>frmQD3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmSuaDoiQD.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSuaDoiQD.Designer.cs">
+      <DependentUpon>frmSuaDoiQD.cs</DependentUpon>
     </Compile>
     <Compile Include="frmDanSachCB.cs">
       <SubType>Form</SubType>
@@ -95,8 +131,26 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="frmThayDoiQD.resx">
-      <DependentUpon>frmThayDoiQD.cs</DependentUpon>
+    <EmbeddedResource Include="frmBaoCaoNam.resx">
+      <DependentUpon>frmBaoCaoNam.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmBaoCaoThang.resx">
+      <DependentUpon>frmBaoCaoThang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDanhSachSB.resx">
+      <DependentUpon>frmDanhSachSB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQD1.resx">
+      <DependentUpon>frmQD1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQD2.resx">
+      <DependentUpon>frmQD2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmQD3.resx">
+      <DependentUpon>frmQD3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSuaDoiQD.resx">
+      <DependentUpon>frmSuaDoiQD.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDanSachCB.resx">
       <DependentUpon>frmDanSachCB.cs</DependentUpon>

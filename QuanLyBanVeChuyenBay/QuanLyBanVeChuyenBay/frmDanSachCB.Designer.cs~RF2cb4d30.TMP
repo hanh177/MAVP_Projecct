@@ -33,27 +33,26 @@
             this.Help = new System.Windows.Forms.ToolStripButton();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTraCuu = new System.Windows.Forms.Button();
-            this.dataDanhSachCB = new System.Windows.Forms.DataGridView();
-            this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSanBayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSanBayDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColThGianBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSanBayTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colThGianDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColTongGhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSoGheTrong = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColGheTrongh1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXoaCB = new System.Windows.Forms.Button();
+            this.btnSuaCB = new System.Windows.Forms.Button();
             this.btnDatVe = new System.Windows.Forms.Button();
-            this.btnThemCB = new System.Windows.Forms.Button();
+            this.dataListCB = new System.Windows.Forms.DataGridView();
+            this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColGheTrongh1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSoGheTrong = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTongGhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colThGianDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSanBayTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColThGianBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSanBayDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColSanBayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListCB)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -61,9 +60,7 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Help,
             this.btnSetting,
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(740, 25);
@@ -94,22 +91,6 @@
             this.toolStripButton1.Size = new System.Drawing.Size(93, 22);
             this.toolStripButton1.Text = "Đặt Vé C.Bay";
             // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(91, 22);
-            this.toolStripButton2.Text = "Thêm C.Bay";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(101, 22);
-            this.toolStripButton3.Text = "Tra Cứu C.Bay";
-            // 
             // btnThoat
             // 
             this.btnThoat.Location = new System.Drawing.Point(540, 417);
@@ -137,10 +118,37 @@
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
             // 
-            // dataDanhSachCB
+            // btnXoaCB
             // 
-            this.dataDanhSachCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataDanhSachCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.btnXoaCB.Location = new System.Drawing.Point(233, 417);
+            this.btnXoaCB.Name = "btnXoaCB";
+            this.btnXoaCB.Size = new System.Drawing.Size(75, 51);
+            this.btnXoaCB.TabIndex = 62;
+            this.btnXoaCB.Text = "Xóa chuyến bay";
+            this.btnXoaCB.UseVisualStyleBackColor = true;
+            // 
+            // btnSuaCB
+            // 
+            this.btnSuaCB.Location = new System.Drawing.Point(336, 417);
+            this.btnSuaCB.Name = "btnSuaCB";
+            this.btnSuaCB.Size = new System.Drawing.Size(75, 51);
+            this.btnSuaCB.TabIndex = 63;
+            this.btnSuaCB.Text = "Sửa thông tin chuyến bay";
+            this.btnSuaCB.UseVisualStyleBackColor = true;
+            // 
+            // btnDatVe
+            // 
+            this.btnDatVe.Location = new System.Drawing.Point(439, 417);
+            this.btnDatVe.Name = "btnDatVe";
+            this.btnDatVe.Size = new System.Drawing.Size(75, 51);
+            this.btnDatVe.TabIndex = 64;
+            this.btnDatVe.Text = "Đặt vé chuyến bay";
+            this.btnDatVe.UseVisualStyleBackColor = true;
+            // 
+            // dataListCB
+            // 
+            this.dataListCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataListCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMaCB,
             this.ColSanBayDi,
             this.ColSanBayDen,
@@ -152,70 +160,10 @@
             this.ColDonGia,
             this.ColGheTrongh1,
             this.ColGheTrongH2});
-            this.dataDanhSachCB.Location = new System.Drawing.Point(24, 66);
-            this.dataDanhSachCB.Name = "dataDanhSachCB";
-            this.dataDanhSachCB.Size = new System.Drawing.Size(691, 323);
-            this.dataDanhSachCB.TabIndex = 54;
-            // 
-            // ColMaCB
-            // 
-            this.ColMaCB.HeaderText = "Mã chuyến bay";
-            this.ColMaCB.Name = "ColMaCB";
-            this.ColMaCB.Width = 50;
-            // 
-            // ColSanBayDi
-            // 
-            this.ColSanBayDi.HeaderText = "Sân bay đi";
-            this.ColSanBayDi.Name = "ColSanBayDi";
-            this.ColSanBayDi.Width = 80;
-            // 
-            // ColSanBayDen
-            // 
-            this.ColSanBayDen.HeaderText = "Sân bay đến";
-            this.ColSanBayDen.Name = "ColSanBayDen";
-            this.ColSanBayDen.Width = 80;
-            // 
-            // ColThGianBay
-            // 
-            this.ColThGianBay.HeaderText = "Thời gian bay";
-            this.ColThGianBay.Name = "ColThGianBay";
-            this.ColThGianBay.Width = 50;
-            // 
-            // ColSanBayTG
-            // 
-            this.ColSanBayTG.HeaderText = "Sân bay trung gian";
-            this.ColSanBayTG.Name = "ColSanBayTG";
-            this.ColSanBayTG.Width = 80;
-            // 
-            // colThGianDung
-            // 
-            this.colThGianDung.HeaderText = "Thời gian dừng";
-            this.colThGianDung.Name = "colThGianDung";
-            this.colThGianDung.Width = 40;
-            // 
-            // ColTongGhe
-            // 
-            this.ColTongGhe.HeaderText = "Tổng số ghế";
-            this.ColTongGhe.Name = "ColTongGhe";
-            this.ColTongGhe.Width = 40;
-            // 
-            // ColSoGheTrong
-            // 
-            this.ColSoGheTrong.HeaderText = "Số ghế trống";
-            this.ColSoGheTrong.Name = "ColSoGheTrong";
-            this.ColSoGheTrong.Width = 40;
-            // 
-            // ColDonGia
-            // 
-            this.ColDonGia.HeaderText = "Đơn giá";
-            this.ColDonGia.Name = "ColDonGia";
-            this.ColDonGia.Width = 80;
-            // 
-            // ColGheTrongh1
-            // 
-            this.ColGheTrongh1.HeaderText = "Số ghế trống hạng 1";
-            this.ColGheTrongh1.Name = "ColGheTrongh1";
-            this.ColGheTrongh1.Width = 40;
+            this.dataListCB.Location = new System.Drawing.Point(24, 66);
+            this.dataListCB.Name = "dataListCB";
+            this.dataListCB.Size = new System.Drawing.Size(691, 323);
+            this.dataListCB.TabIndex = 54;
             // 
             // ColGheTrongH2
             // 
@@ -223,23 +171,65 @@
             this.ColGheTrongH2.Name = "ColGheTrongH2";
             this.ColGheTrongH2.Width = 40;
             // 
-            // btnDatVe
+            // ColGheTrongh1
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(439, 417);
-            this.btnDatVe.Name = "btnDatVe";
-            this.btnDatVe.Size = new System.Drawing.Size(75, 51);
-            this.btnDatVe.TabIndex = 64;
-            this.btnDatVe.Text = "Đặt vé chuyến bay";
-            this.btnDatVe.UseVisualStyleBackColor = true;
+            this.ColGheTrongh1.HeaderText = "Số ghế trống hạng 1";
+            this.ColGheTrongh1.Name = "ColGheTrongh1";
+            this.ColGheTrongh1.Width = 40;
             // 
-            // btnThemCB
+            // ColDonGia
             // 
-            this.btnThemCB.Location = new System.Drawing.Point(233, 417);
-            this.btnThemCB.Name = "btnThemCB";
-            this.btnThemCB.Size = new System.Drawing.Size(75, 51);
-            this.btnThemCB.TabIndex = 62;
-            this.btnThemCB.Text = "Thêm chuyến bay";
-            this.btnThemCB.UseVisualStyleBackColor = true;
+            this.ColDonGia.HeaderText = "Đơn giá";
+            this.ColDonGia.Name = "ColDonGia";
+            this.ColDonGia.Width = 80;
+            // 
+            // ColSoGheTrong
+            // 
+            this.ColSoGheTrong.HeaderText = "Số ghế trống";
+            this.ColSoGheTrong.Name = "ColSoGheTrong";
+            this.ColSoGheTrong.Width = 40;
+            // 
+            // ColTongGhe
+            // 
+            this.ColTongGhe.HeaderText = "Tổng số ghế";
+            this.ColTongGhe.Name = "ColTongGhe";
+            this.ColTongGhe.Width = 40;
+            // 
+            // colThGianDung
+            // 
+            this.colThGianDung.HeaderText = "Thời gian dừng";
+            this.colThGianDung.Name = "colThGianDung";
+            this.colThGianDung.Width = 40;
+            // 
+            // ColSanBayTG
+            // 
+            this.ColSanBayTG.HeaderText = "Sân bay trung gian";
+            this.ColSanBayTG.Name = "ColSanBayTG";
+            this.ColSanBayTG.Width = 80;
+            // 
+            // ColThGianBay
+            // 
+            this.ColThGianBay.HeaderText = "Thời gian bay";
+            this.ColThGianBay.Name = "ColThGianBay";
+            this.ColThGianBay.Width = 50;
+            // 
+            // ColSanBayDen
+            // 
+            this.ColSanBayDen.HeaderText = "Sân bay đến";
+            this.ColSanBayDen.Name = "ColSanBayDen";
+            this.ColSanBayDen.Width = 80;
+            // 
+            // ColSanBayDi
+            // 
+            this.ColSanBayDi.HeaderText = "Sân bay đi";
+            this.ColSanBayDi.Name = "ColSanBayDi";
+            this.ColSanBayDi.Width = 80;
+            // 
+            // ColMaCB
+            // 
+            this.ColMaCB.HeaderText = "Mã chuyến bay";
+            this.ColMaCB.Name = "ColMaCB";
+            this.ColMaCB.Width = 50;
             // 
             // frmDanSachCB
             // 
@@ -248,16 +238,17 @@
             this.ClientSize = new System.Drawing.Size(740, 489);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDatVe);
-            this.Controls.Add(this.btnThemCB);
+            this.Controls.Add(this.btnSuaCB);
+            this.Controls.Add(this.btnXoaCB);
             this.Controls.Add(this.btnTraCuu);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataDanhSachCB);
+            this.Controls.Add(this.dataListCB);
             this.Name = "frmDanSachCB";
             this.Text = "Danh Sách Chuyến Bay";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataListCB)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -271,7 +262,10 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTraCuu;
-        private System.Windows.Forms.DataGridView dataDanhSachCB;
+        private System.Windows.Forms.Button btnXoaCB;
+        private System.Windows.Forms.Button btnSuaCB;
+        private System.Windows.Forms.Button btnDatVe;
+        private System.Windows.Forms.DataGridView dataListCB;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColMaCB;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDen;
@@ -283,9 +277,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDonGia;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGheTrongh1;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGheTrongH2;
-        private System.Windows.Forms.Button btnDatVe;
-        private System.Windows.Forms.Button btnThemCB;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
     }
 }

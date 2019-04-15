@@ -36,36 +36,32 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
+            this.txtHoTenKH = new System.Windows.Forms.TextBox();
+            this.txtCMND = new System.Windows.Forms.TextBox();
+            this.txtSDT = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtNgayBay = new System.Windows.Forms.TextBox();
+            this.txtMaCB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.textBox9 = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.textBox13 = new System.Windows.Forms.TextBox();
+            this.txtMaVe = new System.Windows.Forms.TextBox();
+            this.txtGiaVe = new System.Windows.Forms.TextBox();
+            this.txtHangVe = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
+            this.txtNhapMaVe = new System.Windows.Forms.TextBox();
+            this.txtSanBayDen = new System.Windows.Forms.TextBox();
+            this.txtSanBayDi = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -110,7 +106,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(482, 410);
+            this.btnThoat.Location = new System.Drawing.Point(470, 355);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(79, 41);
             this.btnThoat.TabIndex = 33;
@@ -119,7 +115,7 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(303, 410);
+            this.btnInPhieu.Location = new System.Drawing.Point(291, 355);
             this.btnInPhieu.Name = "btnInPhieu";
             this.btnInPhieu.Size = new System.Drawing.Size(83, 41);
             this.btnInPhieu.TabIndex = 32;
@@ -128,48 +124,48 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.textBox8);
-            this.groupBox2.Controls.Add(this.textBox7);
-            this.groupBox2.Controls.Add(this.textBox6);
-            this.groupBox2.Controls.Add(this.textBox5);
+            this.groupBox2.Controls.Add(this.txtMaKH);
+            this.groupBox2.Controls.Add(this.txtHoTenKH);
+            this.groupBox2.Controls.Add(this.txtCMND);
+            this.groupBox2.Controls.Add(this.txtSDT);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(303, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 304);
+            this.groupBox2.Size = new System.Drawing.Size(258, 255);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hành Khách";
             // 
-            // textBox8
+            // txtMaKH
             // 
-            this.textBox8.Location = new System.Drawing.Point(122, 37);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 20);
-            this.textBox8.TabIndex = 8;
+            this.txtMaKH.Location = new System.Drawing.Point(122, 37);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.Size = new System.Drawing.Size(100, 20);
+            this.txtMaKH.TabIndex = 8;
             // 
-            // textBox7
+            // txtHoTenKH
             // 
-            this.textBox7.Location = new System.Drawing.Point(122, 85);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(100, 20);
-            this.textBox7.TabIndex = 7;
+            this.txtHoTenKH.Location = new System.Drawing.Point(122, 85);
+            this.txtHoTenKH.Name = "txtHoTenKH";
+            this.txtHoTenKH.Size = new System.Drawing.Size(100, 20);
+            this.txtHoTenKH.TabIndex = 7;
             // 
-            // textBox6
+            // txtCMND
             // 
-            this.textBox6.Location = new System.Drawing.Point(122, 130);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(100, 20);
-            this.textBox6.TabIndex = 6;
+            this.txtCMND.Location = new System.Drawing.Point(122, 130);
+            this.txtCMND.Name = "txtCMND";
+            this.txtCMND.Size = new System.Drawing.Size(100, 20);
+            this.txtCMND.TabIndex = 6;
             // 
-            // textBox5
+            // txtSDT
             // 
-            this.textBox5.Location = new System.Drawing.Point(122, 176);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(100, 20);
-            this.textBox5.TabIndex = 5;
+            this.txtSDT.Location = new System.Drawing.Point(122, 176);
+            this.txtSDT.Name = "txtSDT";
+            this.txtSDT.Size = new System.Drawing.Size(100, 20);
+            this.txtSDT.TabIndex = 5;
             // 
             // label8
             // 
@@ -209,52 +205,61 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox10);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.textBox9);
-            this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtSanBayDi);
+            this.groupBox1.Controls.Add(this.txtSanBayDen);
+            this.groupBox1.Controls.Add(this.txtNgayBay);
+            this.groupBox1.Controls.Add(this.txtMaCB);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 304);
+            this.groupBox1.Size = new System.Drawing.Size(285, 255);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chuyến Bay";
             // 
-            // textBox4
+            // label11
             // 
-            this.textBox4.Location = new System.Drawing.Point(149, 85);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(100, 20);
-            this.textBox4.TabIndex = 7;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(52, 183);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 13);
+            this.label11.TabIndex = 10;
+            this.label11.Text = "Ngày Bay:";
             // 
-            // textBox3
+            // label10
             // 
-            this.textBox3.Location = new System.Drawing.Point(149, 130);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 6;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(42, 133);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(73, 13);
+            this.label10.TabIndex = 9;
+            this.label10.Text = "Sân Bay Đến:";
             // 
-            // textBox2
+            // label9
             // 
-            this.textBox2.Location = new System.Drawing.Point(149, 176);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 5;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(52, 85);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(63, 13);
+            this.label9.TabIndex = 8;
+            this.label9.Text = "Sân Bay Đi:";
             // 
-            // textBox1
+            // txtNgayBay
             // 
-            this.textBox1.Location = new System.Drawing.Point(149, 37);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
+            this.txtNgayBay.Location = new System.Drawing.Point(149, 176);
+            this.txtNgayBay.Name = "txtNgayBay";
+            this.txtNgayBay.Size = new System.Drawing.Size(100, 20);
+            this.txtNgayBay.TabIndex = 5;
+            // 
+            // txtMaCB
+            // 
+            this.txtMaCB.Location = new System.Drawing.Point(149, 37);
+            this.txtMaCB.Name = "txtMaCB";
+            this.txtMaCB.Size = new System.Drawing.Size(100, 20);
+            this.txtMaCB.TabIndex = 4;
             // 
             // label4
             // 
@@ -295,98 +300,39 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.textBox13);
-            this.groupBox3.Controls.Add(this.textBox12);
-            this.groupBox3.Controls.Add(this.textBox11);
+            this.groupBox3.Controls.Add(this.txtMaVe);
+            this.groupBox3.Controls.Add(this.txtGiaVe);
+            this.groupBox3.Controls.Add(this.txtHangVe);
             this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.label1);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(567, 78);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(223, 304);
+            this.groupBox3.Size = new System.Drawing.Size(223, 255);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vé";
             // 
-            // label9
+            // txtMaVe
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(52, 85);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(63, 13);
-            this.label9.TabIndex = 8;
-            this.label9.Text = "Sân Bay Đi:";
+            this.txtMaVe.Location = new System.Drawing.Point(93, 34);
+            this.txtMaVe.Name = "txtMaVe";
+            this.txtMaVe.Size = new System.Drawing.Size(100, 20);
+            this.txtMaVe.TabIndex = 11;
             // 
-            // label10
+            // txtGiaVe
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(42, 133);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(73, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Sân Bay Đến:";
+            this.txtGiaVe.Location = new System.Drawing.Point(93, 78);
+            this.txtGiaVe.Name = "txtGiaVe";
+            this.txtGiaVe.Size = new System.Drawing.Size(100, 20);
+            this.txtGiaVe.TabIndex = 10;
             // 
-            // label11
+            // txtHangVe
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(52, 183);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 13);
-            this.label11.TabIndex = 10;
-            this.label11.Text = "Ngày Bay:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(39, 223);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(89, 13);
-            this.label12.TabIndex = 11;
-            this.label12.Text = "SB Trung Gian 1:";
-            // 
-            // textBox9
-            // 
-            this.textBox9.Location = new System.Drawing.Point(149, 216);
-            this.textBox9.Name = "textBox9";
-            this.textBox9.Size = new System.Drawing.Size(100, 20);
-            this.textBox9.TabIndex = 12;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(39, 264);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(89, 13);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "SB Trung Gian 2:";
-            // 
-            // textBox10
-            // 
-            this.textBox10.Location = new System.Drawing.Point(149, 257);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(100, 20);
-            this.textBox10.TabIndex = 14;
-            // 
-            // textBox11
-            // 
-            this.textBox11.Location = new System.Drawing.Point(93, 126);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(100, 20);
-            this.textBox11.TabIndex = 9;
-            // 
-            // textBox12
-            // 
-            this.textBox12.Location = new System.Drawing.Point(93, 78);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(100, 20);
-            this.textBox12.TabIndex = 10;
-            // 
-            // textBox13
-            // 
-            this.textBox13.Location = new System.Drawing.Point(93, 34);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(100, 20);
-            this.textBox13.TabIndex = 11;
+            this.txtHangVe.Location = new System.Drawing.Point(93, 126);
+            this.txtHangVe.Name = "txtHangVe";
+            this.txtHangVe.Size = new System.Drawing.Size(100, 20);
+            this.txtHangVe.TabIndex = 9;
             // 
             // label14
             // 
@@ -397,19 +343,33 @@
             this.label14.TabIndex = 36;
             this.label14.Text = "Nhập Mã Vé:";
             // 
-            // textBox14
+            // txtNhapMaVe
             // 
-            this.textBox14.Location = new System.Drawing.Point(366, 37);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(100, 20);
-            this.textBox14.TabIndex = 37;
+            this.txtNhapMaVe.Location = new System.Drawing.Point(366, 37);
+            this.txtNhapMaVe.Name = "txtNhapMaVe";
+            this.txtNhapMaVe.Size = new System.Drawing.Size(100, 20);
+            this.txtNhapMaVe.TabIndex = 37;
+            // 
+            // txtSanBayDen
+            // 
+            this.txtSanBayDen.Location = new System.Drawing.Point(149, 130);
+            this.txtSanBayDen.Name = "txtSanBayDen";
+            this.txtSanBayDen.Size = new System.Drawing.Size(100, 20);
+            this.txtSanBayDen.TabIndex = 6;
+            // 
+            // txtSanBayDi
+            // 
+            this.txtSanBayDi.Location = new System.Drawing.Point(149, 85);
+            this.txtSanBayDi.Name = "txtSanBayDi";
+            this.txtSanBayDi.Size = new System.Drawing.Size(100, 20);
+            this.txtSanBayDi.TabIndex = 7;
             // 
             // frmPhieuDatCho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 485);
-            this.Controls.Add(this.textBox14);
+            this.ClientSize = new System.Drawing.Size(802, 426);
+            this.Controls.Add(this.txtNhapMaVe);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.toolStrip1);
@@ -441,35 +401,31 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.TextBox textBox8;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.TextBox txtMaKH;
+        private System.Windows.Forms.TextBox txtHoTenKH;
+        private System.Windows.Forms.TextBox txtCMND;
+        private System.Windows.Forms.TextBox txtSDT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNgayBay;
+        private System.Windows.Forms.TextBox txtMaCB;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox textBox9;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.TextBox textBox11;
+        private System.Windows.Forms.TextBox txtMaVe;
+        private System.Windows.Forms.TextBox txtGiaVe;
+        private System.Windows.Forms.TextBox txtHangVe;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox14;
+        private System.Windows.Forms.TextBox txtNhapMaVe;
+        private System.Windows.Forms.TextBox txtSanBayDi;
+        private System.Windows.Forms.TextBox txtSanBayDen;
     }
 }

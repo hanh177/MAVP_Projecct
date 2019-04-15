@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTraCuu));
             this.btnTraCuu = new System.Windows.Forms.Button();
-            this.dataListCB = new System.Windows.Forms.DataGridView();
+            this.dataDanhSachCB = new System.Windows.Forms.DataGridView();
             this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -44,12 +44,12 @@
             this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerNgayBay = new System.Windows.Forms.DateTimePicker();
+            this.cmbSanBayDen = new System.Windows.Forms.ComboBox();
+            this.cmbSanBayDi = new System.Windows.Forms.ComboBox();
             this.btnSanBayDen = new System.Windows.Forms.Label();
             this.SanBayDi = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMaCB = new System.Windows.Forms.TextBox();
             this.MaCB = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -57,7 +57,7 @@
             this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
             this.Help = new System.Windows.Forms.ToolStripButton();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataListCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -71,10 +71,10 @@
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
             // 
-            // dataListCB
+            // dataDanhSachCB
             // 
-            this.dataListCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataListCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataDanhSachCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataDanhSachCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMaCB,
             this.ColSanBayDi,
             this.ColSanBayDen,
@@ -86,10 +86,10 @@
             this.ColDonGia,
             this.ColGheTrongh1,
             this.ColGheTrongH2});
-            this.dataListCB.Location = new System.Drawing.Point(12, 190);
-            this.dataListCB.Name = "dataListCB";
-            this.dataListCB.Size = new System.Drawing.Size(666, 244);
-            this.dataListCB.TabIndex = 51;
+            this.dataDanhSachCB.Location = new System.Drawing.Point(12, 190);
+            this.dataDanhSachCB.Name = "dataDanhSachCB";
+            this.dataDanhSachCB.Size = new System.Drawing.Size(666, 244);
+            this.dataDanhSachCB.TabIndex = 51;
             // 
             // ColMaCB
             // 
@@ -160,13 +160,13 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.label6);
-            this.groupBox1.Controls.Add(this.dateTimePicker1);
-            this.groupBox1.Controls.Add(this.comboBox2);
+            this.groupBox1.Controls.Add(this.dateTimePickerNgayBay);
+            this.groupBox1.Controls.Add(this.cmbSanBayDen);
             this.groupBox1.Controls.Add(this.btnTraCuu);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.cmbSanBayDi);
             this.groupBox1.Controls.Add(this.btnSanBayDen);
             this.groupBox1.Controls.Add(this.SanBayDi);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtMaCB);
             this.groupBox1.Controls.Add(this.MaCB);
             this.groupBox1.Location = new System.Drawing.Point(12, 24);
             this.groupBox1.Name = "groupBox1";
@@ -184,28 +184,28 @@
             this.label6.TabIndex = 51;
             this.label6.Text = "Ngày Bay:";
             // 
-            // dateTimePicker1
+            // dateTimePickerNgayBay
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(129, 56);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(191, 20);
-            this.dateTimePicker1.TabIndex = 50;
+            this.dateTimePickerNgayBay.Location = new System.Drawing.Point(129, 56);
+            this.dateTimePickerNgayBay.Name = "dateTimePickerNgayBay";
+            this.dateTimePickerNgayBay.Size = new System.Drawing.Size(191, 20);
+            this.dateTimePickerNgayBay.TabIndex = 50;
             // 
-            // comboBox2
+            // cmbSanBayDen
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(458, 57);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(191, 21);
-            this.comboBox2.TabIndex = 49;
+            this.cmbSanBayDen.FormattingEnabled = true;
+            this.cmbSanBayDen.Location = new System.Drawing.Point(458, 57);
+            this.cmbSanBayDen.Name = "cmbSanBayDen";
+            this.cmbSanBayDen.Size = new System.Drawing.Size(191, 21);
+            this.cmbSanBayDen.TabIndex = 49;
             // 
-            // comboBox1
+            // cmbSanBayDi
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(458, 30);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(191, 21);
-            this.comboBox1.TabIndex = 48;
+            this.cmbSanBayDi.FormattingEnabled = true;
+            this.cmbSanBayDi.Location = new System.Drawing.Point(458, 30);
+            this.cmbSanBayDi.Name = "cmbSanBayDi";
+            this.cmbSanBayDi.Size = new System.Drawing.Size(191, 21);
+            this.cmbSanBayDi.TabIndex = 48;
             // 
             // btnSanBayDen
             // 
@@ -225,12 +225,12 @@
             this.SanBayDi.TabIndex = 46;
             this.SanBayDi.Text = "&Sân Bay Đi:";
             // 
-            // textBox1
+            // txtMaCB
             // 
-            this.textBox1.Location = new System.Drawing.Point(129, 30);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 20);
-            this.textBox1.TabIndex = 45;
+            this.txtMaCB.Location = new System.Drawing.Point(129, 30);
+            this.txtMaCB.Name = "txtMaCB";
+            this.txtMaCB.Size = new System.Drawing.Size(191, 20);
+            this.txtMaCB.TabIndex = 45;
             // 
             // MaCB
             // 
@@ -304,10 +304,10 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.dataListCB);
+            this.Controls.Add(this.dataDanhSachCB);
             this.Name = "frmTraCuu";
             this.Text = "Tra cứu thông tin chuyến bay";
-            ((System.ComponentModel.ISupportInitialize)(this.dataListCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -319,7 +319,7 @@
 
         #endregion
         private System.Windows.Forms.Button btnTraCuu;
-        private System.Windows.Forms.DataGridView dataListCB;
+        private System.Windows.Forms.DataGridView dataDanhSachCB;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColMaCB;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDen;
@@ -333,12 +333,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGheTrongH2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgayBay;
+        private System.Windows.Forms.ComboBox cmbSanBayDen;
+        private System.Windows.Forms.ComboBox cmbSanBayDi;
         private System.Windows.Forms.Label btnSanBayDen;
         private System.Windows.Forms.Label SanBayDi;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMaCB;
         private System.Windows.Forms.Label MaCB;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnThoat;

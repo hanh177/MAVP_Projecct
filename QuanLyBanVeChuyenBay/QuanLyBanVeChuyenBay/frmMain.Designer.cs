@@ -32,8 +32,9 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnSuaDoiQD = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnXemPhieuDatCho = new System.Windows.Forms.Button();
             this.btnBanVe = new System.Windows.Forms.Button();
@@ -58,7 +59,7 @@
             // 
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtUserName);
             this.groupBox1.Location = new System.Drawing.Point(12, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(523, 176);
@@ -86,15 +87,16 @@
             this.label1.Text = "Bán Vé Máy Bay";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // textBox1
+            // txtUserName
             // 
-            this.textBox1.Location = new System.Drawing.Point(92, 136);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(122, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtUserName.Location = new System.Drawing.Point(92, 136);
+            this.txtUserName.Name = "txtUserName";
+            this.txtUserName.Size = new System.Drawing.Size(122, 20);
+            this.txtUserName.TabIndex = 0;
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnSuaDoiQD);
             this.groupBox2.Controls.Add(this.btnDoanhThu);
             this.groupBox2.Controls.Add(this.btnXemPhieuDatCho);
             this.groupBox2.Controls.Add(this.btnBanVe);
@@ -106,6 +108,15 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bán vé";
+            // 
+            // btnSuaDoiQD
+            // 
+            this.btnSuaDoiQD.Location = new System.Drawing.Point(224, 102);
+            this.btnSuaDoiQD.Name = "btnSuaDoiQD";
+            this.btnSuaDoiQD.Size = new System.Drawing.Size(91, 47);
+            this.btnSuaDoiQD.TabIndex = 2;
+            this.btnSuaDoiQD.Text = "Sửa Đổi QĐ";
+            this.btnSuaDoiQD.UseVisualStyleBackColor = true;
             // 
             // btnDoanhThu
             // 
@@ -145,7 +156,7 @@
             // 
             // btnDanhSach
             // 
-            this.btnDanhSach.Location = new System.Drawing.Point(215, 72);
+            this.btnDanhSach.Location = new System.Drawing.Point(224, 33);
             this.btnDanhSach.Name = "btnDanhSach";
             this.btnDanhSach.Size = new System.Drawing.Size(91, 47);
             this.btnDanhSach.TabIndex = 1;
@@ -258,7 +269,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDanhSach;
         private System.Windows.Forms.Button btnDoanhThu;
@@ -275,5 +286,6 @@
         private System.Windows.Forms.ToolStripMenuItem nhậnLịchToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bánVéToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ectToolStripMenuItem;
+        private System.Windows.Forms.Button btnSuaDoiQD;
     }
 }

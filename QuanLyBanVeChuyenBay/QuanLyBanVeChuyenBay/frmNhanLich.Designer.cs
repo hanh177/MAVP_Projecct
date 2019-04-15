@@ -30,19 +30,19 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanLich));
             this.MaCB = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtMaCB = new System.Windows.Forms.TextBox();
             this.SanBayDi = new System.Windows.Forms.Label();
             this.btnSanBayDen = new System.Windows.Forms.Label();
-            this.textBox7 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.txtThGianBay = new System.Windows.Forms.TextBox();
+            this.cmbSanBayDi = new System.Windows.Forms.ComboBox();
+            this.cmbSanBayDen = new System.Windows.Forms.ComboBox();
+            this.dateTimePickerNgayBay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtSoGheH1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtSoGheH2 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
@@ -51,15 +51,15 @@
             this.Help = new System.Windows.Forms.ToolStripButton();
             this.btnSetting = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
+            this.dataSanBayTG = new System.Windows.Forms.DataGridView();
             this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSanBayTG)).BeginInit();
             this.SuspendLayout();
             // 
             // MaCB
@@ -71,12 +71,12 @@
             this.MaCB.TabIndex = 1;
             this.MaCB.Text = "&Mã Chuyến Bay:";
             // 
-            // textBox1
+            // txtMaCB
             // 
-            this.textBox1.Location = new System.Drawing.Point(152, 74);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(191, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtMaCB.Location = new System.Drawing.Point(152, 74);
+            this.txtMaCB.Name = "txtMaCB";
+            this.txtMaCB.Size = new System.Drawing.Size(191, 20);
+            this.txtMaCB.TabIndex = 2;
             // 
             // SanBayDi
             // 
@@ -96,36 +96,36 @@
             this.btnSanBayDen.TabIndex = 9;
             this.btnSanBayDen.Text = "Sân Bay Đến:";
             // 
-            // textBox7
+            // txtThGianBay
             // 
-            this.textBox7.Location = new System.Drawing.Point(152, 220);
-            this.textBox7.Name = "textBox7";
-            this.textBox7.Size = new System.Drawing.Size(191, 20);
-            this.textBox7.TabIndex = 12;
+            this.txtThGianBay.Location = new System.Drawing.Point(152, 220);
+            this.txtThGianBay.Name = "txtThGianBay";
+            this.txtThGianBay.Size = new System.Drawing.Size(191, 20);
+            this.txtThGianBay.TabIndex = 12;
             // 
-            // comboBox1
+            // cmbSanBayDi
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(152, 120);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(191, 21);
-            this.comboBox1.TabIndex = 13;
+            this.cmbSanBayDi.FormattingEnabled = true;
+            this.cmbSanBayDi.Location = new System.Drawing.Point(152, 120);
+            this.cmbSanBayDi.Name = "cmbSanBayDi";
+            this.cmbSanBayDi.Size = new System.Drawing.Size(191, 21);
+            this.cmbSanBayDi.TabIndex = 13;
             // 
-            // comboBox2
+            // cmbSanBayDen
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(152, 172);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(191, 21);
-            this.comboBox2.TabIndex = 14;
+            this.cmbSanBayDen.FormattingEnabled = true;
+            this.cmbSanBayDen.Location = new System.Drawing.Point(152, 172);
+            this.cmbSanBayDen.Name = "cmbSanBayDen";
+            this.cmbSanBayDen.Size = new System.Drawing.Size(191, 21);
+            this.cmbSanBayDen.TabIndex = 14;
             // 
-            // dateTimePicker1
+            // dateTimePickerNgayBay
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(488, 217);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(191, 20);
-            this.dateTimePicker1.TabIndex = 17;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dateTimePickerNgayBay.Location = new System.Drawing.Point(488, 220);
+            this.dateTimePickerNgayBay.Name = "dateTimePickerNgayBay";
+            this.dateTimePickerNgayBay.Size = new System.Drawing.Size(191, 20);
+            this.dateTimePickerNgayBay.TabIndex = 17;
+            this.dateTimePickerNgayBay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
             // 
             // label6
             // 
@@ -146,12 +146,12 @@
             this.label7.TabIndex = 19;
             this.label7.Text = "Tổng Thời Gian Bay:";
             // 
-            // textBox2
+            // txtSoGheH1
             // 
-            this.textBox2.Location = new System.Drawing.Point(488, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(191, 20);
-            this.textBox2.TabIndex = 20;
+            this.txtSoGheH1.Location = new System.Drawing.Point(488, 71);
+            this.txtSoGheH1.Name = "txtSoGheH1";
+            this.txtSoGheH1.Size = new System.Drawing.Size(191, 20);
+            this.txtSoGheH1.TabIndex = 20;
             // 
             // label8
             // 
@@ -171,12 +171,12 @@
             this.label9.TabIndex = 22;
             this.label9.Text = "SL Ghế Hạng 2:";
             // 
-            // textBox3
+            // txtSoGheH2
             // 
-            this.textBox3.Location = new System.Drawing.Point(488, 120);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(191, 20);
-            this.textBox3.TabIndex = 23;
+            this.txtSoGheH2.Location = new System.Drawing.Point(488, 120);
+            this.txtSoGheH2.Name = "txtSoGheH2";
+            this.txtSoGheH2.Size = new System.Drawing.Size(191, 20);
+            this.txtSoGheH2.TabIndex = 23;
             // 
             // label1
             // 
@@ -251,33 +251,24 @@
             this.label2.TabIndex = 29;
             this.label2.Text = "Giá Vé:";
             // 
-            // textBox4
+            // txtGiaVe
             // 
-            this.textBox4.Location = new System.Drawing.Point(488, 163);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(191, 20);
-            this.textBox4.TabIndex = 30;
+            this.txtGiaVe.Location = new System.Drawing.Point(488, 163);
+            this.txtGiaVe.Name = "txtGiaVe";
+            this.txtGiaVe.Size = new System.Drawing.Size(191, 20);
+            this.txtGiaVe.TabIndex = 30;
             // 
-            // dataGridView1
+            // dataSanBayTG
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataSanBayTG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSanBayTG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColName,
             this.ColTime,
             this.ColNote});
-            this.dataGridView1.Location = new System.Drawing.Point(34, 290);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(645, 124);
-            this.dataGridView1.TabIndex = 46;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(31, 262);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(145, 13);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "Thông tin sân bay trung gian:\r\n";
+            this.dataSanBayTG.Location = new System.Drawing.Point(34, 290);
+            this.dataSanBayTG.Name = "dataSanBayTG";
+            this.dataSanBayTG.Size = new System.Drawing.Size(645, 124);
+            this.dataSanBayTG.TabIndex = 46;
             // 
             // ColName
             // 
@@ -295,38 +286,47 @@
             this.ColNote.HeaderText = "Ghi chú";
             this.ColNote.Name = "ColNote";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(31, 262);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(145, 13);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Thông tin sân bay trung gian:\r\n";
+            // 
             // frmNhanLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 481);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.textBox4);
+            this.Controls.Add(this.dataSanBayTG);
+            this.Controls.Add(this.txtGiaVe);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox3);
+            this.Controls.Add(this.txtSoGheH2);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtSoGheH1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dateTimePicker1);
-            this.Controls.Add(this.comboBox2);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.textBox7);
+            this.Controls.Add(this.dateTimePickerNgayBay);
+            this.Controls.Add(this.cmbSanBayDen);
+            this.Controls.Add(this.cmbSanBayDi);
+            this.Controls.Add(this.txtThGianBay);
             this.Controls.Add(this.btnSanBayDen);
             this.Controls.Add(this.SanBayDi);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtMaCB);
             this.Controls.Add(this.MaCB);
             this.Name = "frmNhanLich";
             this.Text = "Nhận Lịch Chuyến Bay";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataSanBayTG)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -335,19 +335,19 @@
         #endregion
 
         private System.Windows.Forms.Label MaCB;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtMaCB;
         private System.Windows.Forms.Label SanBayDi;
         private System.Windows.Forms.Label btnSanBayDen;
-        private System.Windows.Forms.TextBox textBox7;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.TextBox txtThGianBay;
+        private System.Windows.Forms.ComboBox cmbSanBayDi;
+        private System.Windows.Forms.ComboBox cmbSanBayDen;
+        private System.Windows.Forms.DateTimePicker dateTimePickerNgayBay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtSoGheH1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtSoGheH2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnThoat;
@@ -356,9 +356,9 @@
         private System.Windows.Forms.ToolStripDropDownButton btnDanhSach;
         private System.Windows.Forms.ToolStripButton btnSetting;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox txtGiaVe;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dataSanBayTG;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTime;
