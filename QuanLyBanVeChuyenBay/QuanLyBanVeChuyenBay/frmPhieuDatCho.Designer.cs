@@ -32,7 +32,6 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
             this.Help = new System.Windows.Forms.ToolStripButton();
-            this.btnSetting = new System.Windows.Forms.ToolStripButton();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -48,6 +47,8 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.txtSanBayDi = new System.Windows.Forms.TextBox();
+            this.txtSanBayDen = new System.Windows.Forms.TextBox();
             this.txtNgayBay = new System.Windows.Forms.TextBox();
             this.txtMaCB = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -60,8 +61,7 @@
             this.txtHangVe = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.txtNhapMaVe = new System.Windows.Forms.TextBox();
-            this.txtSanBayDen = new System.Windows.Forms.TextBox();
-            this.txtSanBayDi = new System.Windows.Forms.TextBox();
+            this.btnXem = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -72,8 +72,7 @@
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.btnDanhSach,
-            this.Help,
-            this.btnSetting});
+            this.Help});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(802, 25);
@@ -95,14 +94,6 @@
             this.Help.Name = "Help";
             this.Help.Size = new System.Drawing.Size(52, 22);
             this.Help.Text = "&Help";
-            // 
-            // btnSetting
-            // 
-            this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-            this.btnSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(65, 22);
-            this.btnSetting.Text = "&Cài Đặt";
             // 
             // btnThoat
             // 
@@ -247,6 +238,20 @@
             this.label9.TabIndex = 8;
             this.label9.Text = "Sân Bay Đi:";
             // 
+            // txtSanBayDi
+            // 
+            this.txtSanBayDi.Location = new System.Drawing.Point(149, 85);
+            this.txtSanBayDi.Name = "txtSanBayDi";
+            this.txtSanBayDi.Size = new System.Drawing.Size(100, 20);
+            this.txtSanBayDi.TabIndex = 7;
+            // 
+            // txtSanBayDen
+            // 
+            this.txtSanBayDen.Location = new System.Drawing.Point(149, 130);
+            this.txtSanBayDen.Name = "txtSanBayDen";
+            this.txtSanBayDen.Size = new System.Drawing.Size(100, 20);
+            this.txtSanBayDen.TabIndex = 6;
+            // 
             // txtNgayBay
             // 
             this.txtNgayBay.Location = new System.Drawing.Point(149, 176);
@@ -337,7 +342,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(272, 44);
+            this.label14.Location = new System.Drawing.Point(232, 48);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(70, 13);
             this.label14.TabIndex = 36;
@@ -345,30 +350,26 @@
             // 
             // txtNhapMaVe
             // 
-            this.txtNhapMaVe.Location = new System.Drawing.Point(366, 37);
+            this.txtNhapMaVe.Location = new System.Drawing.Point(326, 41);
             this.txtNhapMaVe.Name = "txtNhapMaVe";
             this.txtNhapMaVe.Size = new System.Drawing.Size(100, 20);
             this.txtNhapMaVe.TabIndex = 37;
             // 
-            // txtSanBayDen
+            // btnXem
             // 
-            this.txtSanBayDen.Location = new System.Drawing.Point(149, 130);
-            this.txtSanBayDen.Name = "txtSanBayDen";
-            this.txtSanBayDen.Size = new System.Drawing.Size(100, 20);
-            this.txtSanBayDen.TabIndex = 6;
-            // 
-            // txtSanBayDi
-            // 
-            this.txtSanBayDi.Location = new System.Drawing.Point(149, 85);
-            this.txtSanBayDi.Name = "txtSanBayDi";
-            this.txtSanBayDi.Size = new System.Drawing.Size(100, 20);
-            this.txtSanBayDi.TabIndex = 7;
+            this.btnXem.Location = new System.Drawing.Point(460, 41);
+            this.btnXem.Name = "btnXem";
+            this.btnXem.Size = new System.Drawing.Size(75, 21);
+            this.btnXem.TabIndex = 38;
+            this.btnXem.Text = "Xem";
+            this.btnXem.UseVisualStyleBackColor = true;
             // 
             // frmPhieuDatCho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(802, 426);
+            this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtNhapMaVe);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox3);
@@ -397,7 +398,6 @@
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton btnDanhSach;
         private System.Windows.Forms.ToolStripButton Help;
-        private System.Windows.Forms.ToolStripButton btnSetting;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -427,5 +427,6 @@
         private System.Windows.Forms.TextBox txtNhapMaVe;
         private System.Windows.Forms.TextBox txtSanBayDi;
         private System.Windows.Forms.TextBox txtSanBayDen;
+        private System.Windows.Forms.Button btnXem;
     }
 }
