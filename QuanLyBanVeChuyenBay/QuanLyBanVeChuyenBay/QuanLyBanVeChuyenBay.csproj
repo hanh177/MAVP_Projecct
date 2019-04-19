@@ -87,11 +87,11 @@
     <Compile Include="frmSuaDoiQD.Designer.cs">
       <DependentUpon>frmSuaDoiQD.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmDanSachCB.cs">
+    <Compile Include="frmDanhSachCB.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmDanSachCB.Designer.cs">
-      <DependentUpon>frmDanSachCB.cs</DependentUpon>
+    <Compile Include="frmDanhSachCB.Designer.cs">
+      <DependentUpon>frmDanhSachCB.cs</DependentUpon>
     </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
@@ -152,8 +152,8 @@
     <EmbeddedResource Include="frmSuaDoiQD.resx">
       <DependentUpon>frmSuaDoiQD.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmDanSachCB.resx">
-      <DependentUpon>frmDanSachCB.cs</DependentUpon>
+    <EmbeddedResource Include="frmDanhSachCB.resx">
+      <DependentUpon>frmDanhSachCB.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
