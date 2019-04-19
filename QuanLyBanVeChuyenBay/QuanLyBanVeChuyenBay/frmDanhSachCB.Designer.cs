@@ -31,7 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanSachCB));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Help = new System.Windows.Forms.ToolStripButton();
-            this.btnSetting = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
@@ -59,11 +58,10 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Help,
-            this.btnSetting,
             this.toolStripButton1,
             this.toolStripButton2,
-            this.toolStripButton3});
+            this.toolStripButton3,
+            this.Help});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(740, 25);
@@ -77,14 +75,6 @@
             this.Help.Name = "Help";
             this.Help.Size = new System.Drawing.Size(52, 22);
             this.Help.Text = "&Help";
-            // 
-            // btnSetting
-            // 
-            this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-            this.btnSetting.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Size = new System.Drawing.Size(65, 22);
-            this.btnSetting.Text = "&Cài Đặt";
             // 
             // toolStripButton1
             // 
@@ -266,7 +256,6 @@
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton Help;
-        private System.Windows.Forms.ToolStripButton btnSetting;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label1;

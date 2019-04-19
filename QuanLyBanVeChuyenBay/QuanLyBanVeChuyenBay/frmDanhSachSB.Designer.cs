@@ -39,6 +39,7 @@
             this.txtMaSB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachSB)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -135,11 +136,21 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã Sân bay";
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(387, 383);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(82, 32);
+            this.btnThoat.TabIndex = 5;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            // 
             // frmDanhSachSB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(492, 381);
+            this.ClientSize = new System.Drawing.Size(492, 418);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSBmax);
@@ -167,5 +178,6 @@
         private System.Windows.Forms.TextBox txtMaSB;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnThoat;
     }
 }

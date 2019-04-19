@@ -41,7 +41,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(28, 39);
+            this.label1.Location = new System.Drawing.Point(47, 46);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(111, 13);
             this.label1.TabIndex = 0;
@@ -49,7 +49,7 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(198, 32);
+            this.textBox1.Location = new System.Drawing.Point(198, 39);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(100, 20);
             this.textBox1.TabIndex = 1;
@@ -66,13 +66,13 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(28, 87);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 13);
+            this.label2.Size = new System.Drawing.Size(130, 13);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Nhập số lượng ghế hạng 1:";
+            this.label2.Text = "Nhập số lượng vé hạng 1:";
             // 
             // textBox3
             // 
-            this.textBox3.Location = new System.Drawing.Point(198, 113);
+            this.textBox3.Location = new System.Drawing.Point(198, 120);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(100, 20);
             this.textBox3.TabIndex = 5;
@@ -80,15 +80,15 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 120);
+            this.label3.Location = new System.Drawing.Point(28, 127);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 13);
+            this.label3.Size = new System.Drawing.Size(130, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Nhập số lượng ghế hạng 2:";
+            this.label3.Text = "Nhập số lượng vé hạng 2:";
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(88, 159);
+            this.btnLuu.Location = new System.Drawing.Point(93, 177);
             this.btnLuu.Name = "btnLuu";
             this.btnLuu.Size = new System.Drawing.Size(75, 23);
             this.btnLuu.TabIndex = 6;
@@ -97,7 +97,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(221, 159);
+            this.btnThoat.Location = new System.Drawing.Point(223, 177);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 7;
