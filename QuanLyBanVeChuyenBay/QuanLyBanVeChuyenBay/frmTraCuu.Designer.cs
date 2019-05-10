@@ -257,6 +257,7 @@
             this.btnThoat.TabIndex = 57;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // toolStrip1
             // 
@@ -276,6 +277,7 @@
             this.btnDanhSach.Name = "btnDanhSach";
             this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
             this.btnDanhSach.Text = "&DS C.Bay";
+            this.btnDanhSach.Click += new System.EventHandler(this.btnDanhSach_Click);
             // 
             // Help
             // 
@@ -296,7 +298,9 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dataDanhSachCB);
             this.Name = "frmTraCuu";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tra cứu thông tin chuyến bay";
+            this.Load += new System.EventHandler(this.frmTraCuu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

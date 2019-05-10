@@ -1,7 +1,8 @@
-create database QLBanVeChuyenBay
+﻿create database QLBanVeChuyenBay
 go
 Use QLBanVeChuyenBay
 go
+SET DATEFORMAT DMY
 create table SANBAY
 (
 MaSanBay varchar(10) primary key,
@@ -19,7 +20,8 @@ SLGheHang1 int not null,
 SLGheHang2 int not null
 
 )
-
+Alter table CHUYENBAY add GiaVe money
+Alter table CHUYENBAY alter column GiaVe int
 Alter table CHUYENBAY add constraint fk_CB_SBdi foreign key (SanBayDi) references SANBAY(MaSanBay)
 Alter table CHUYENBAY add constraint fk_CB_SBden foreign key (SanBayDen)  references SANBAY(MaSanBay)
 
@@ -94,7 +96,7 @@ MaDoanhThuThang varchar(10) primary key,
 MaDoanhThuNam varchar(10),
 SoChuyenBay int,
 TongDoanhThu money,
-TiLe float,
+TiLe float,	
 Thang int
 )
 
@@ -112,3 +114,14 @@ TiLe float
 
 alter table DOANHTHUTHANGCB add constraint pk_DTCB_DTThang foreign key(MaDoanhThuThang) references TONGDOANHTHUTHANG(MaDoanhThuThang)
 alter table DOANHTHUTHANGCB add constraint pk_DTCB_CB foreign key(MaCB) references CHUYENBAY(MaCB)
+insert into CHUYENBAY (MaCB,SanBayDi,SanBayDen,NgayGio,ThoiGianBay,SLGheHang1,SLGheHang2,GiaVe) values('CB01','Nội Bài','tp HCM',12/12/2019,120,12,12,120000)
+insert into TRUNGGIAN (MaTrungGian,MaCB,MaSanBay,ThoiGianDung,Ghichu) values('TG01','Cb01','1',12,'không')
+select   distinct *
+from CHUYENBAY CB join SANBAY SB on CB.SanBayDen=SB.MaSanBay
+
+delete from CHUYENBAY where MaCB='CB03'
+select * 
+from TRUNGGIAN
+select MaSanBay
+from SANBAY
+where TenSanBay='Sao vàng'

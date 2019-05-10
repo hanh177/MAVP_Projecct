@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanLich));
             this.MaCB = new System.Windows.Forms.Label();
             this.txtMaCB = new System.Windows.Forms.TextBox();
@@ -36,7 +37,6 @@
             this.txtThGianBay = new System.Windows.Forms.TextBox();
             this.cmbSanBayDi = new System.Windows.Forms.ComboBox();
             this.cmbSanBayDen = new System.Windows.Forms.ComboBox();
-            this.dateTimePickerNgayBay = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.txtSoGheH1 = new System.Windows.Forms.TextBox();
@@ -47,17 +47,26 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
-            this.Help = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tSbtnDanhSachSB = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.label2 = new System.Windows.Forms.Label();
             this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            this.qLBanVeChuyenBayDataSetBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBanVeChuyenBayDataSet = new QuanLyBanVeChuyenBay.QLBanVeChuyenBayDataSet();
+            this.label3 = new System.Windows.Forms.Label();
+            this.qLBanVeChuyenBayDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSanBayTG = new System.Windows.Forms.DataGridView();
-            this.ColName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtNgayBay = new System.Windows.Forms.TextBox();
+            this.MaTrungGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbTenSBTrungGian = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label3 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSanBayTG)).BeginInit();
             this.SuspendLayout();
             // 
@@ -109,6 +118,7 @@
             this.cmbSanBayDi.Name = "cmbSanBayDi";
             this.cmbSanBayDi.Size = new System.Drawing.Size(191, 21);
             this.cmbSanBayDi.TabIndex = 13;
+            this.cmbSanBayDi.ValueMemberChanged += new System.EventHandler(this.cmbSanBayDi_ValueMemberChanged);
             // 
             // cmbSanBayDen
             // 
@@ -118,22 +128,14 @@
             this.cmbSanBayDen.Size = new System.Drawing.Size(191, 21);
             this.cmbSanBayDen.TabIndex = 14;
             // 
-            // dateTimePickerNgayBay
-            // 
-            this.dateTimePickerNgayBay.Location = new System.Drawing.Point(488, 220);
-            this.dateTimePickerNgayBay.Name = "dateTimePickerNgayBay";
-            this.dateTimePickerNgayBay.Size = new System.Drawing.Size(191, 20);
-            this.dateTimePickerNgayBay.TabIndex = 17;
-            this.dateTimePickerNgayBay.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(398, 227);
+            this.label6.Location = new System.Drawing.Point(385, 227);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.Size = new System.Drawing.Size(96, 13);
             this.label6.TabIndex = 18;
-            this.label6.Text = "Ngày Bay:";
+            this.label6.Text = "Ngày Bay(D/M/Y):";
             this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
@@ -194,6 +196,7 @@
             this.btnThem.TabIndex = 25;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // btnThoat
             // 
@@ -203,34 +206,46 @@
             this.btnThoat.TabIndex = 26;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDanhSach,
-            this.Help});
+            this.tSbtnDanhSachCB,
+            this.tSbtnDanhSachSB,
+            this.tSbtnHelp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(723, 25);
             this.toolStrip1.TabIndex = 28;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnDanhSach
+            // tSbtnDanhSachCB
             // 
-            this.btnDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSach.Image")));
-            this.btnDanhSach.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDanhSach.Name = "btnDanhSach";
-            this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
-            this.btnDanhSach.Text = "&DS C.Bay";
+            this.tSbtnDanhSachCB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDanhSachCB.Image")));
+            this.tSbtnDanhSachCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnDanhSachCB.Name = "tSbtnDanhSachCB";
+            this.tSbtnDanhSachCB.Size = new System.Drawing.Size(83, 22);
+            this.tSbtnDanhSachCB.Text = "&DS C.Bay";
+            this.tSbtnDanhSachCB.Click += new System.EventHandler(this.tSbtnDanhSachCB_Click);
             // 
-            // Help
+            // tSbtnDanhSachSB
             // 
-            this.Help.Image = ((System.Drawing.Image)(resources.GetObject("Help.Image")));
-            this.Help.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(52, 22);
-            this.Help.Text = "&Help";
-            this.Help.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.tSbtnDanhSachSB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDanhSachSB.Image")));
+            this.tSbtnDanhSachSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnDanhSachSB.Name = "tSbtnDanhSachSB";
+            this.tSbtnDanhSachSB.Size = new System.Drawing.Size(114, 22);
+            this.tSbtnDanhSachSB.Text = "&Danh Sách S.Bay";
+            this.tSbtnDanhSachSB.Click += new System.EventHandler(this.tSbtnDanhSachSB_Click);
+            // 
+            // tSbtnHelp
+            // 
+            this.tSbtnHelp.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnHelp.Image")));
+            this.tSbtnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnHelp.Name = "tSbtnHelp";
+            this.tSbtnHelp.Size = new System.Drawing.Size(52, 22);
+            this.tSbtnHelp.Text = "&Help";
+            this.tSbtnHelp.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // label2
             // 
@@ -243,38 +258,20 @@
             // 
             // txtGiaVe
             // 
-            this.txtGiaVe.Location = new System.Drawing.Point(488, 163);
+            this.txtGiaVe.Location = new System.Drawing.Point(488, 168);
             this.txtGiaVe.Name = "txtGiaVe";
             this.txtGiaVe.Size = new System.Drawing.Size(191, 20);
             this.txtGiaVe.TabIndex = 30;
             // 
-            // dataSanBayTG
+            // qLBanVeChuyenBayDataSetBindingSource1
             // 
-            this.dataSanBayTG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataSanBayTG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ColName,
-            this.ColTime,
-            this.ColNote});
-            this.dataSanBayTG.Location = new System.Drawing.Point(34, 290);
-            this.dataSanBayTG.Name = "dataSanBayTG";
-            this.dataSanBayTG.Size = new System.Drawing.Size(645, 124);
-            this.dataSanBayTG.TabIndex = 46;
+            this.qLBanVeChuyenBayDataSetBindingSource1.DataSource = this.qLBanVeChuyenBayDataSet;
+            this.qLBanVeChuyenBayDataSetBindingSource1.Position = 0;
             // 
-            // ColName
+            // qLBanVeChuyenBayDataSet
             // 
-            this.ColName.HeaderText = "Tên sân bay trung gian";
-            this.ColName.Name = "ColName";
-            // 
-            // ColTime
-            // 
-            this.ColTime.HeaderText = "Thời gian dừng";
-            this.ColTime.Name = "ColTime";
-            // 
-            // ColNote
-            // 
-            this.ColNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.ColNote.HeaderText = "Ghi chú";
-            this.ColNote.Name = "ColNote";
+            this.qLBanVeChuyenBayDataSet.DataSetName = "QLBanVeChuyenBayDataSet";
+            this.qLBanVeChuyenBayDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // label3
             // 
@@ -285,11 +282,65 @@
             this.label3.TabIndex = 47;
             this.label3.Text = "Thông tin sân bay trung gian:\r\n";
             // 
+            // qLBanVeChuyenBayDataSetBindingSource
+            // 
+            this.qLBanVeChuyenBayDataSetBindingSource.DataSource = this.qLBanVeChuyenBayDataSet;
+            this.qLBanVeChuyenBayDataSetBindingSource.Position = 0;
+            // 
+            // dataSanBayTG
+            // 
+            this.dataSanBayTG.AutoGenerateColumns = false;
+            this.dataSanBayTG.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataSanBayTG.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MaTrungGian,
+            this.cmbTenSBTrungGian,
+            this.ColTime,
+            this.ColNote});
+            this.dataSanBayTG.DataSource = this.qLBanVeChuyenBayDataSet;
+            this.dataSanBayTG.Location = new System.Drawing.Point(34, 290);
+            this.dataSanBayTG.Name = "dataSanBayTG";
+            this.dataSanBayTG.Size = new System.Drawing.Size(645, 124);
+            this.dataSanBayTG.TabIndex = 46;
+            this.dataSanBayTG.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSanBayTG_CellContentClick);
+            // 
+            // txtNgayBay
+            // 
+            this.txtNgayBay.Location = new System.Drawing.Point(488, 220);
+            this.txtNgayBay.Name = "txtNgayBay";
+            this.txtNgayBay.Size = new System.Drawing.Size(191, 20);
+            this.txtNgayBay.TabIndex = 48;
+            // 
+            // MaTrungGian
+            // 
+            this.MaTrungGian.HeaderText = "Mã Sân Bay Trung Gian";
+            this.MaTrungGian.Name = "MaTrungGian";
+            // 
+            // cmbTenSBTrungGian
+            // 
+            this.cmbTenSBTrungGian.HeaderText = "Tên sân bay trung gian";
+            this.cmbTenSBTrungGian.Name = "cmbTenSBTrungGian";
+            this.cmbTenSBTrungGian.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmbTenSBTrungGian.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cmbTenSBTrungGian.Width = 150;
+            // 
+            // ColTime
+            // 
+            this.ColTime.HeaderText = "Thời gian dừng";
+            this.ColTime.Name = "ColTime";
+            this.ColTime.Width = 150;
+            // 
+            // ColNote
+            // 
+            this.ColNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColNote.HeaderText = "Ghi chú";
+            this.ColNote.Name = "ColNote";
+            // 
             // frmNhanLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 481);
+            this.Controls.Add(this.txtNgayBay);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataSanBayTG);
             this.Controls.Add(this.txtGiaVe);
@@ -304,7 +355,6 @@
             this.Controls.Add(this.txtSoGheH1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.dateTimePickerNgayBay);
             this.Controls.Add(this.cmbSanBayDen);
             this.Controls.Add(this.cmbSanBayDi);
             this.Controls.Add(this.txtThGianBay);
@@ -313,9 +363,14 @@
             this.Controls.Add(this.txtMaCB);
             this.Controls.Add(this.MaCB);
             this.Name = "frmNhanLich";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhận Lịch Chuyến Bay";
+            this.Load += new System.EventHandler(this.frmNhanLich_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataSanBayTG)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -331,7 +386,6 @@
         private System.Windows.Forms.TextBox txtThGianBay;
         private System.Windows.Forms.ComboBox cmbSanBayDi;
         private System.Windows.Forms.ComboBox cmbSanBayDen;
-        private System.Windows.Forms.DateTimePicker dateTimePickerNgayBay;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox txtSoGheH1;
@@ -342,14 +396,20 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton Help;
-        private System.Windows.Forms.ToolStripDropDownButton btnDanhSach;
+        private System.Windows.Forms.ToolStripButton tSbtnHelp;
+        private System.Windows.Forms.ToolStripDropDownButton tSbtnDanhSachCB;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtGiaVe;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.DataGridView dataSanBayTG;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColName;
+        private System.Windows.Forms.ToolStripButton tSbtnDanhSachSB;
+        private QLBanVeChuyenBayDataSet qLBanVeChuyenBayDataSet;
+        private System.Windows.Forms.BindingSource qLBanVeChuyenBayDataSetBindingSource;
+        private System.Windows.Forms.BindingSource qLBanVeChuyenBayDataSetBindingSource1;
+        private System.Windows.Forms.DataGridView dataSanBayTG;
+        private System.Windows.Forms.TextBox txtNgayBay;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MaTrungGian;
+        private System.Windows.Forms.DataGridViewComboBoxColumn cmbTenSBTrungGian;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNote;
     }

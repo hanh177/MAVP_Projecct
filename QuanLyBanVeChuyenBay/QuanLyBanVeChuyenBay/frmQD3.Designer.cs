@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQD3));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtThgianDatVe = new System.Windows.Forms.TextBox();
@@ -36,6 +37,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tSbtnDanhSachSB = new System.Windows.Forms.ToolStripButton();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -105,12 +109,33 @@
             this.btnThoat.TabIndex = 7;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tSbtnDanhSachSB});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(424, 25);
+            this.toolStrip1.TabIndex = 8;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // tSbtnDanhSachSB
+            // 
+            this.tSbtnDanhSachSB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDanhSachSB.Image")));
+            this.tSbtnDanhSachSB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnDanhSachSB.Name = "tSbtnDanhSachSB";
+            this.tSbtnDanhSachSB.Size = new System.Drawing.Size(114, 22);
+            this.tSbtnDanhSachSB.Text = "&Danh Sách S.Bay";
+            this.tSbtnDanhSachSB.Click += new System.EventHandler(this.tSbtnDanhSachSB_Clicked);
             // 
             // frmQD3
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(424, 157);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.label4);
@@ -120,7 +145,11 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "frmQD3";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Thay Đổi Qui Định 3";
+            this.Load += new System.EventHandler(this.frmQD3_Load);
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -136,5 +165,7 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton tSbtnDanhSachSB;
     }
 }

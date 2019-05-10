@@ -131,6 +131,11 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QLBanVeChuyenBayDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>QLBanVeChuyenBayDataSet.xsd</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmBaoCaoNam.resx">
       <DependentUpon>frmBaoCaoNam.cs</DependentUpon>
     </EmbeddedResource>
@@ -191,6 +196,17 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="QLBanVeChuyenBayDataSet.xsc">
+      <DependentUpon>QLBanVeChuyenBayDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="QLBanVeChuyenBayDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>QLBanVeChuyenBayDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="QLBanVeChuyenBayDataSet.xss">
+      <DependentUpon>QLBanVeChuyenBayDataSet.xsd</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

@@ -37,6 +37,7 @@
             this.ColDoanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuNam)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,6 +49,7 @@
             this.btnThoat.TabIndex = 13;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnXem
             // 
@@ -109,18 +111,30 @@
             this.cmbNam.Size = new System.Drawing.Size(121, 21);
             this.cmbNam.TabIndex = 14;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(663, 25);
+            this.toolStrip1.TabIndex = 15;
+            this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
+            // 
             // frmBaoCaoNam
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(663, 414);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.cmbNam);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataDoanhThuNam);
             this.Name = "frmBaoCaoNam";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo Cáo Doanh Thu Năm";
+            this.Load += new System.EventHandler(this.frmBaoCaoNam_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuNam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,5 +152,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColDoanhThu;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTiLe;
         private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.ToolStrip toolStrip1;
     }
 }

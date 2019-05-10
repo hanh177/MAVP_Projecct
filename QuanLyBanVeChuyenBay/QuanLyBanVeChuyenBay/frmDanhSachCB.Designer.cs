@@ -30,10 +30,10 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanSachCB));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.Help = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnDatVeCB = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnThemCB = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnTraCuuCB = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTraCuu = new System.Windows.Forms.Button();
@@ -58,47 +58,50 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1,
-            this.toolStripButton2,
-            this.toolStripButton3,
-            this.Help});
+            this.tSbtnDatVeCB,
+            this.tSbtnThemCB,
+            this.tSbtnTraCuuCB,
+            this.tSbtnHelp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(740, 25);
             this.toolStrip1.TabIndex = 60;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // Help
+            // tSbtnDatVeCB
             // 
-            this.Help.Image = ((System.Drawing.Image)(resources.GetObject("Help.Image")));
-            this.Help.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(52, 22);
-            this.Help.Text = "&Help";
+            this.tSbtnDatVeCB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDatVeCB.Image")));
+            this.tSbtnDatVeCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnDatVeCB.Name = "tSbtnDatVeCB";
+            this.tSbtnDatVeCB.Size = new System.Drawing.Size(93, 22);
+            this.tSbtnDatVeCB.Text = "&Đặt Vé C.Bay";
+            this.tSbtnDatVeCB.Click += new System.EventHandler(this.tSbtnDatVeCB_Clicked);
             // 
-            // toolStripButton1
+            // tSbtnThemCB
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(93, 22);
-            this.toolStripButton1.Text = "Đặt Vé C.Bay";
+            this.tSbtnThemCB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnThemCB.Image")));
+            this.tSbtnThemCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnThemCB.Name = "tSbtnThemCB";
+            this.tSbtnThemCB.Size = new System.Drawing.Size(91, 22);
+            this.tSbtnThemCB.Text = "&Thêm C.Bay";
+            this.tSbtnThemCB.Click += new System.EventHandler(this.tSbtnThemCB_Clicked);
             // 
-            // toolStripButton2
+            // tSbtnTraCuuCB
             // 
-            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(91, 22);
-            this.toolStripButton2.Text = "Thêm C.Bay";
+            this.tSbtnTraCuuCB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnTraCuuCB.Image")));
+            this.tSbtnTraCuuCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnTraCuuCB.Name = "tSbtnTraCuuCB";
+            this.tSbtnTraCuuCB.Size = new System.Drawing.Size(101, 22);
+            this.tSbtnTraCuuCB.Text = "&Tra Cứu C.Bay";
+            this.tSbtnTraCuuCB.Click += new System.EventHandler(this.tSbtnTraCuuCB_Click);
             // 
-            // toolStripButton3
+            // tSbtnHelp
             // 
-            this.toolStripButton3.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton3.Image")));
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(101, 22);
-            this.toolStripButton3.Text = "Tra Cứu C.Bay";
+            this.tSbtnHelp.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnHelp.Image")));
+            this.tSbtnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnHelp.Name = "tSbtnHelp";
+            this.tSbtnHelp.Size = new System.Drawing.Size(52, 22);
+            this.tSbtnHelp.Text = "&Help";
             // 
             // btnThoat
             // 
@@ -108,6 +111,7 @@
             this.btnThoat.TabIndex = 65;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // label1
             // 
@@ -126,6 +130,7 @@
             this.btnTraCuu.TabIndex = 61;
             this.btnTraCuu.Text = "Tra cứu";
             this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // dataDanhSachCB
             // 
@@ -221,6 +226,7 @@
             this.btnDatVe.TabIndex = 64;
             this.btnDatVe.Text = "Đặt vé chuyến bay";
             this.btnDatVe.UseVisualStyleBackColor = true;
+            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
             // 
             // btnThemCB
             // 
@@ -230,6 +236,7 @@
             this.btnThemCB.TabIndex = 62;
             this.btnThemCB.Text = "Thêm chuyến bay";
             this.btnThemCB.UseVisualStyleBackColor = true;
+            this.btnThemCB.Click += new System.EventHandler(this.btnThemCB_Click);
             // 
             // frmDanSachCB
             // 
@@ -244,7 +251,9 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataDanhSachCB);
             this.Name = "frmDanSachCB";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Chuyến Bay";
+            this.Load += new System.EventHandler(this.frmDanSachCB_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).EndInit();
@@ -255,8 +264,8 @@
 
         #endregion
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton Help;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton tSbtnHelp;
+        private System.Windows.Forms.ToolStripButton tSbtnDatVeCB;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTraCuu;
@@ -274,7 +283,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGheTrongH2;
         private System.Windows.Forms.Button btnDatVe;
         private System.Windows.Forms.Button btnThemCB;
-        private System.Windows.Forms.ToolStripButton toolStripButton2;
-        private System.Windows.Forms.ToolStripButton toolStripButton3;
+        private System.Windows.Forms.ToolStripButton tSbtnThemCB;
+        private System.Windows.Forms.ToolStripButton tSbtnTraCuuCB;
     }
 }

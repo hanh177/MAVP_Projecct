@@ -40,6 +40,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.btnXoaSanBay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachSB)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -52,27 +53,34 @@
             this.ColTenSb});
             this.dataDanhSachSB.Location = new System.Drawing.Point(12, 156);
             this.dataDanhSachSB.Name = "dataDanhSachSB";
+            this.dataDanhSachSB.ReadOnly = true;
             this.dataDanhSachSB.Size = new System.Drawing.Size(468, 213);
             this.dataDanhSachSB.TabIndex = 0;
+            this.dataDanhSachSB.Click += new System.EventHandler(this.dataDanhSachSB_Click);
             // 
             // ColMaSB
             // 
+            this.ColMaSB.DataPropertyName = "MaSanBay";
             this.ColMaSB.HeaderText = "Mã SB";
             this.ColMaSB.Name = "ColMaSB";
+            this.ColMaSB.Width = 120;
             // 
             // ColTenSb
             // 
+            this.ColTenSb.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColTenSb.DataPropertyName = "TenSanBay";
             this.ColTenSb.HeaderText = "Tên SB";
             this.ColTenSb.Name = "ColTenSb";
             // 
             // btnThemSB
             // 
-            this.btnThemSB.Location = new System.Drawing.Point(358, 52);
+            this.btnThemSB.Location = new System.Drawing.Point(365, 14);
             this.btnThemSB.Name = "btnThemSB";
             this.btnThemSB.Size = new System.Drawing.Size(92, 23);
             this.btnThemSB.TabIndex = 1;
-            this.btnThemSB.Text = "Thêm sân bay";
+            this.btnThemSB.Text = "Thêm Sân Bay";
             this.btnThemSB.UseVisualStyleBackColor = true;
+            this.btnThemSB.Click += new System.EventHandler(this.btnThemSB_Click);
             // 
             // txtSBmax
             // 
@@ -92,6 +100,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnXoaSanBay);
             this.groupBox1.Controls.Add(this.txtTenSB);
             this.groupBox1.Controls.Add(this.txtMaSB);
             this.groupBox1.Controls.Add(this.label3);
@@ -144,6 +153,17 @@
             this.btnThoat.TabIndex = 5;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // btnXoaSanBay
+            // 
+            this.btnXoaSanBay.Location = new System.Drawing.Point(365, 52);
+            this.btnXoaSanBay.Name = "btnXoaSanBay";
+            this.btnXoaSanBay.Size = new System.Drawing.Size(92, 23);
+            this.btnXoaSanBay.TabIndex = 4;
+            this.btnXoaSanBay.Text = "Xoá Sân Bay";
+            this.btnXoaSanBay.UseVisualStyleBackColor = true;
+            this.btnXoaSanBay.Click += new System.EventHandler(this.btnXoaSanBay_Click);
             // 
             // frmDanhSachSB
             // 
@@ -156,7 +176,9 @@
             this.Controls.Add(this.txtSBmax);
             this.Controls.Add(this.dataDanhSachSB);
             this.Name = "frmDanhSachSB";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Sân Bay";
+            this.Load += new System.EventHandler(this.frmDanhSachSB_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachSB)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -168,8 +190,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataDanhSachSB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColMaSB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColTenSb;
         private System.Windows.Forms.Button btnThemSB;
         private System.Windows.Forms.TextBox txtSBmax;
         private System.Windows.Forms.Label label1;
@@ -179,5 +199,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColMaSB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTenSb;
+        private System.Windows.Forms.Button btnXoaSanBay;
     }
 }

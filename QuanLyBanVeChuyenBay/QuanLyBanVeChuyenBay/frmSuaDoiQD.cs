@@ -12,9 +12,43 @@ namespace QuanLyBanVeChuyenBay
 {
     public partial class frmSuaDoiQD : Form
     {
-        public frmSuaDoiQD()
+        Form main;
+        public frmSuaDoiQD(Form frmMain)
         {
             InitializeComponent();
+            this.main = frmMain;
+        }
+
+        private void frmSuaDoiQD_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            main.Show();
+        }
+
+        private void btnQD1_Click(object sender, EventArgs e)
+        {
+            Form qd1 = new frmQD1(this);
+            this.Hide();
+            qd1.Show();
+        }
+
+        private void btnQD2_Click(object sender, EventArgs e)
+        {
+            Form qd2 = new frmQD2(this);
+            this.Hide();
+            qd2.Show();
+        }
+
+        private void btnQD3_Click(object sender, EventArgs e)
+        {
+            Form qd3=new frmQD3(this);
+            this.Hide();
+            qd3.Show();
         }
     }
 }

@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanVe));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbHangVe = new System.Windows.Forms.ComboBox();
+            this.cmbMaCB = new System.Windows.Forms.ComboBox();
             this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.txtMaVe = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,11 +50,9 @@
             this.btnDatVe = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
-            this.Help = new System.Windows.Forms.ToolStripButton();
+            this.btnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.tSbtnPhieuDatCho = new System.Windows.Forms.ToolStripButton();
-            this.cmbMaCB = new System.Windows.Forms.ComboBox();
-            this.cmbHangVe = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -74,6 +74,22 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vé";
+            // 
+            // cmbHangVe
+            // 
+            this.cmbHangVe.FormattingEnabled = true;
+            this.cmbHangVe.Location = new System.Drawing.Point(149, 129);
+            this.cmbHangVe.Name = "cmbHangVe";
+            this.cmbHangVe.Size = new System.Drawing.Size(100, 21);
+            this.cmbHangVe.TabIndex = 8;
+            // 
+            // cmbMaCB
+            // 
+            this.cmbMaCB.FormattingEnabled = true;
+            this.cmbMaCB.Location = new System.Drawing.Point(149, 85);
+            this.cmbMaCB.Name = "cmbMaCB";
+            this.cmbMaCB.Size = new System.Drawing.Size(100, 21);
+            this.cmbMaCB.TabIndex = 7;
             // 
             // txtGiaVe
             // 
@@ -224,12 +240,13 @@
             this.btnThoat.TabIndex = 3;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDanhSach,
-            this.Help,
+            this.btnDanhSachCB,
+            this.tSbtnHelp,
             this.tSbtnPhieuDatCho});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
@@ -237,21 +254,22 @@
             this.toolStrip1.TabIndex = 29;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnDanhSach
+            // btnDanhSachCB
             // 
-            this.btnDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSach.Image")));
-            this.btnDanhSach.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDanhSach.Name = "btnDanhSach";
-            this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
-            this.btnDanhSach.Text = "&DS C.Bay";
+            this.btnDanhSachCB.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSachCB.Image")));
+            this.btnDanhSachCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnDanhSachCB.Name = "btnDanhSachCB";
+            this.btnDanhSachCB.Size = new System.Drawing.Size(83, 22);
+            this.btnDanhSachCB.Text = "&DS C.Bay";
+            this.btnDanhSachCB.Click += new System.EventHandler(this.tSbtnDanhSachCB_Click);
             // 
-            // Help
+            // tSbtnHelp
             // 
-            this.Help.Image = ((System.Drawing.Image)(resources.GetObject("Help.Image")));
-            this.Help.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(52, 22);
-            this.Help.Text = "&Help";
+            this.tSbtnHelp.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnHelp.Image")));
+            this.tSbtnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnHelp.Name = "tSbtnHelp";
+            this.tSbtnHelp.Size = new System.Drawing.Size(52, 22);
+            this.tSbtnHelp.Text = "&Help";
             // 
             // tSbtnPhieuDatCho
             // 
@@ -260,22 +278,7 @@
             this.tSbtnPhieuDatCho.Name = "tSbtnPhieuDatCho";
             this.tSbtnPhieuDatCho.Size = new System.Drawing.Size(103, 22);
             this.tSbtnPhieuDatCho.Text = "&Phiếu Đặt Chỗ";
-            // 
-            // cmbMaCB
-            // 
-            this.cmbMaCB.FormattingEnabled = true;
-            this.cmbMaCB.Location = new System.Drawing.Point(149, 85);
-            this.cmbMaCB.Name = "cmbMaCB";
-            this.cmbMaCB.Size = new System.Drawing.Size(100, 21);
-            this.cmbMaCB.TabIndex = 7;
-            // 
-            // cmbHangVe
-            // 
-            this.cmbHangVe.FormattingEnabled = true;
-            this.cmbHangVe.Location = new System.Drawing.Point(149, 129);
-            this.cmbHangVe.Name = "cmbHangVe";
-            this.cmbHangVe.Size = new System.Drawing.Size(100, 21);
-            this.cmbHangVe.TabIndex = 8;
+            this.tSbtnPhieuDatCho.Click += new System.EventHandler(this.tSbtnPhieuDatCho_Click);
             // 
             // frmBanVe
             // 
@@ -288,7 +291,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmBanVe";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Bán Vé";
+            this.Load += new System.EventHandler(this.frmBanVe_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -321,8 +326,8 @@
         private System.Windows.Forms.Button btnDatVe;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton btnDanhSach;
-        private System.Windows.Forms.ToolStripButton Help;
+        private System.Windows.Forms.ToolStripDropDownButton btnDanhSachCB;
+        private System.Windows.Forms.ToolStripButton tSbtnHelp;
         private System.Windows.Forms.ToolStripButton tSbtnPhieuDatCho;
         private System.Windows.Forms.ComboBox cmbMaCB;
         private System.Windows.Forms.ComboBox cmbHangVe;

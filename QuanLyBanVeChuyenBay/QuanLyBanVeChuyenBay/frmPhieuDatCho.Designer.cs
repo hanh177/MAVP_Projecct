@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPhieuDatCho));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
-            this.Help = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnInPhieu = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -71,29 +71,30 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnDanhSach,
-            this.Help});
+            this.tSbtnDanhSachCB,
+            this.tSbtnHelp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(802, 25);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnDanhSach
+            // tSbtnDanhSachCB
             // 
-            this.btnDanhSach.Image = ((System.Drawing.Image)(resources.GetObject("btnDanhSach.Image")));
-            this.btnDanhSach.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.btnDanhSach.Name = "btnDanhSach";
-            this.btnDanhSach.Size = new System.Drawing.Size(83, 22);
-            this.btnDanhSach.Text = "&DS C.Bay";
+            this.tSbtnDanhSachCB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDanhSachCB.Image")));
+            this.tSbtnDanhSachCB.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnDanhSachCB.Name = "tSbtnDanhSachCB";
+            this.tSbtnDanhSachCB.Size = new System.Drawing.Size(83, 22);
+            this.tSbtnDanhSachCB.Text = "&DS C.Bay";
+            this.tSbtnDanhSachCB.Click += new System.EventHandler(this.tSbtnDanhSachCB_Click);
             // 
-            // Help
+            // tSbtnHelp
             // 
-            this.Help.Image = ((System.Drawing.Image)(resources.GetObject("Help.Image")));
-            this.Help.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.Help.Name = "Help";
-            this.Help.Size = new System.Drawing.Size(52, 22);
-            this.Help.Text = "&Help";
+            this.tSbtnHelp.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnHelp.Image")));
+            this.tSbtnHelp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnHelp.Name = "tSbtnHelp";
+            this.tSbtnHelp.Size = new System.Drawing.Size(52, 22);
+            this.tSbtnHelp.Text = "&Help";
             // 
             // btnThoat
             // 
@@ -103,6 +104,7 @@
             this.btnThoat.TabIndex = 33;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnInPhieu
             // 
@@ -379,7 +381,9 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPhieuDatCho";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phiếu Đặt Chỗ";
+            this.Load += new System.EventHandler(this.frmPhieuDatCho_Load);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -396,8 +400,8 @@
         #endregion
 
         private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripDropDownButton btnDanhSach;
-        private System.Windows.Forms.ToolStripButton Help;
+        private System.Windows.Forms.ToolStripDropDownButton tSbtnDanhSachCB;
+        private System.Windows.Forms.ToolStripButton tSbtnHelp;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Button btnInPhieu;
         private System.Windows.Forms.GroupBox groupBox2;

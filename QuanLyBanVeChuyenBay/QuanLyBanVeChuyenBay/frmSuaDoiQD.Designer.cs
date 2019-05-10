@@ -30,12 +30,12 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSuaDoiQD));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnQD3 = new System.Windows.Forms.Button();
             this.btnQD1 = new System.Windows.Forms.Button();
             this.btnQD2 = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.btnQD3 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -50,6 +50,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin qui định";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 35);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(418, 78);
+            this.label1.TabIndex = 0;
+            this.label1.Text = resources.GetString("label1.Text");
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.btnQD3);
@@ -61,6 +70,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             // 
+            // btnQD3
+            // 
+            this.btnQD3.Location = new System.Drawing.Point(301, 48);
+            this.btnQD3.Name = "btnQD3";
+            this.btnQD3.Size = new System.Drawing.Size(75, 23);
+            this.btnQD3.TabIndex = 3;
+            this.btnQD3.Text = "Qui định 3";
+            this.btnQD3.UseVisualStyleBackColor = true;
+            this.btnQD3.Click += new System.EventHandler(this.btnQD3_Click);
+            // 
             // btnQD1
             // 
             this.btnQD1.Location = new System.Drawing.Point(72, 48);
@@ -69,6 +88,7 @@
             this.btnQD1.TabIndex = 0;
             this.btnQD1.Text = "Qui định 1";
             this.btnQD1.UseVisualStyleBackColor = true;
+            this.btnQD1.Click += new System.EventHandler(this.btnQD1_Click);
             // 
             // btnQD2
             // 
@@ -78,6 +98,7 @@
             this.btnQD2.TabIndex = 1;
             this.btnQD2.Text = "Qui định 2";
             this.btnQD2.UseVisualStyleBackColor = true;
+            this.btnQD2.Click += new System.EventHandler(this.btnQD2_Click);
             // 
             // btnThoat
             // 
@@ -87,24 +108,7 @@
             this.btnThoat.TabIndex = 2;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
-            // 
-            // btnQD3
-            // 
-            this.btnQD3.Location = new System.Drawing.Point(301, 48);
-            this.btnQD3.Name = "btnQD3";
-            this.btnQD3.Size = new System.Drawing.Size(75, 23);
-            this.btnQD3.TabIndex = 3;
-            this.btnQD3.Text = "Qui định 3";
-            this.btnQD3.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 35);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(418, 78);
-            this.label1.TabIndex = 0;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmSuaDoiQD
             // 
@@ -115,7 +119,9 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmSuaDoiQD";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sửa Đổi Qui Định";
+            this.Load += new System.EventHandler(this.frmSuaDoiQD_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

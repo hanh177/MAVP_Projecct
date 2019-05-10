@@ -12,9 +12,29 @@ namespace QuanLyBanVeChuyenBay
 {
     public partial class frmBaoCaoThang : Form
     {
-        public frmBaoCaoThang()
+        Form main;
+        public frmBaoCaoThang(Form frmMain)
         {
             InitializeComponent();
+            this.main = frmMain;
+        }
+
+        private void frmBaoCaoThang_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            main.Show();
+        }
+
+        private void btnBaoCaoNam_Click(object sender, EventArgs e)
+        {
+            Form baocaonam = new frmBaoCaoNam(this);
+            this.Hide();
+            baocaonam.Show();
         }
     }
 }

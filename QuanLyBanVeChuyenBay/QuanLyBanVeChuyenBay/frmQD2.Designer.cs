@@ -103,6 +103,7 @@
             this.btnThoat.TabIndex = 7;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // frmQD2
             // 
@@ -118,7 +119,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.label1);
             this.Name = "frmQD2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Sửa Đổi Qui Định 2";
+            this.Load += new System.EventHandler(this.frmQD2_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -12,13 +12,35 @@ namespace QuanLyBanVeChuyenBay
 {
     public partial class frmTraCuu : Form
     {
-        public frmTraCuu()
+        Form danhsachcb;
+        public frmTraCuu(Form frmDanSachCB)
         {
             InitializeComponent();
+            this.danhsachcb = frmDanSachCB;
         }
 
         private void label6_Click(object sender, EventArgs e)
         {
+
+        }
+
+        private void frmTraCuu_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+
+            this.Close();
+            danhsachcb.Show();
+        }
+
+        private void btnDanhSach_Click(object sender, EventArgs e)
+        {
+            Form danhsachcb = new frmDanSachCB(this);
+            this.Hide();
+            danhsachcb.Show();
 
         }
     }

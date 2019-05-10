@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBaoCaoThang));
             this.dataDoanhThuThang = new System.Windows.Forms.DataGridView();
             this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSoVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -39,7 +40,10 @@
             this.btnThoat = new System.Windows.Forms.Button();
             this.cmbThang = new System.Windows.Forms.ComboBox();
             this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.btnBaoCaoNam = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuThang)).BeginInit();
+            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataDoanhThuThang
@@ -110,6 +114,7 @@
             this.btnThoat.TabIndex = 6;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // cmbThang
             // 
@@ -127,11 +132,31 @@
             this.cmbNam.Size = new System.Drawing.Size(72, 21);
             this.cmbNam.TabIndex = 8;
             // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnBaoCaoNam});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(632, 25);
+            this.toolStrip1.TabIndex = 9;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // btnBaoCaoNam
+            // 
+            this.btnBaoCaoNam.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoNam.Image")));
+            this.btnBaoCaoNam.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.btnBaoCaoNam.Name = "btnBaoCaoNam";
+            this.btnBaoCaoNam.Size = new System.Drawing.Size(100, 22);
+            this.btnBaoCaoNam.Text = "&Báo Cáo Năm";
+            this.btnBaoCaoNam.Click += new System.EventHandler(this.btnBaoCaoNam_Click);
+            // 
             // frmBaoCaoThang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(632, 419);
+            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.cmbNam);
             this.Controls.Add(this.cmbThang);
             this.Controls.Add(this.btnThoat);
@@ -140,8 +165,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataDoanhThuThang);
             this.Name = "frmBaoCaoThang";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo Cáo Doanh Thu Tháng";
+            this.Load += new System.EventHandler(this.frmBaoCaoThang_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuThang)).EndInit();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +189,7 @@
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.ComboBox cmbThang;
         private System.Windows.Forms.ComboBox cmbNam;
+        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStripButton btnBaoCaoNam;
     }
 }
