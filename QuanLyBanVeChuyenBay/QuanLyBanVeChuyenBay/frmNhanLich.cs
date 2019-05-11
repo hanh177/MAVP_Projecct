@@ -164,7 +164,7 @@ namespace QuanLyBanVeChuyenBay
 
                 string TENSBTG = dataSanBayTG.CurrentRow.Cells[1].EditedFormattedValue.ToString();
 
-                string sql = "SELECT * FROM SANBAY WHERE @TenSanBay=TENSBTG";
+                string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay"; //con cho nay luc nay em viet sai syntax ok?ok. check lai cai kia nhe. A dang lam cai nay k suppot tiep dcok A
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@TenSanBay", TENSBTG);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
@@ -180,7 +180,7 @@ namespace QuanLyBanVeChuyenBay
                 SqlCommand commnad3 = new SqlCommand(sqlQuery2, conn);
                 commnad3.Parameters.AddWithValue("@MaTrungGian", MATG);
                 commnad3.Parameters.AddWithValue("@MaCB", MACB);
-                commnad3.Parameters.AddWithValue("@MaSanBay", MASB);
+                commnad3.Parameters.AddWithValue("@MaSanBay", MASB); //check lai ma san bay nhe, khong dung input.are u here yes
                 commnad3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
                 commnad3.Parameters.AddWithValue("@GhiChu", GHICHU);
                
@@ -196,7 +196,8 @@ namespace QuanLyBanVeChuyenBay
             catch (Exception ex)
             {
                 //xu ly khi ket noi co van de
-                MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                // MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                MessageBox.Show(ex.Message);
             }
             finally
             {
