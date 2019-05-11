@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanSachCB));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tSbtnDatVeCB = new System.Windows.Forms.ToolStripButton();
@@ -51,8 +52,12 @@
             this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDatVe = new System.Windows.Forms.Button();
             this.btnThemCB = new System.Windows.Forms.Button();
+            this.qLBanVeChuyenBayDataSet = new QuanLyBanVeChuyenBay.QLBanVeChuyenBayDataSet();
+            this.qLBanVeChuyenBayDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -134,6 +139,7 @@
             // 
             // dataDanhSachCB
             // 
+            this.dataDanhSachCB.AutoGenerateColumns = false;
             this.dataDanhSachCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataDanhSachCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMaCB,
@@ -147,6 +153,7 @@
             this.ColDonGia,
             this.ColGheTrongh1,
             this.ColGheTrongH2});
+            this.dataDanhSachCB.DataSource = this.qLBanVeChuyenBayDataSetBindingSource;
             this.dataDanhSachCB.Location = new System.Drawing.Point(24, 66);
             this.dataDanhSachCB.Name = "dataDanhSachCB";
             this.dataDanhSachCB.Size = new System.Drawing.Size(691, 323);
@@ -238,6 +245,16 @@
             this.btnThemCB.UseVisualStyleBackColor = true;
             this.btnThemCB.Click += new System.EventHandler(this.btnThemCB_Click);
             // 
+            // qLBanVeChuyenBayDataSet
+            // 
+            this.qLBanVeChuyenBayDataSet.DataSetName = "QLBanVeChuyenBayDataSet";
+            this.qLBanVeChuyenBayDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // qLBanVeChuyenBayDataSetBindingSource
+            // 
+            this.qLBanVeChuyenBayDataSetBindingSource.DataSource = this.qLBanVeChuyenBayDataSet;
+            this.qLBanVeChuyenBayDataSetBindingSource.Position = 0;
+            // 
             // frmDanSachCB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,6 +274,8 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,5 +304,7 @@
         private System.Windows.Forms.Button btnThemCB;
         private System.Windows.Forms.ToolStripButton tSbtnThemCB;
         private System.Windows.Forms.ToolStripButton tSbtnTraCuuCB;
+        private System.Windows.Forms.BindingSource qLBanVeChuyenBayDataSetBindingSource;
+        private QLBanVeChuyenBayDataSet qLBanVeChuyenBayDataSet;
     }
 }

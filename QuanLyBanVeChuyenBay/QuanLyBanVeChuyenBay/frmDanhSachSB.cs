@@ -125,10 +125,19 @@ namespace QuanLyBanVeChuyenBay
             {
                 string masb = txtMaSB.Text;
                 conn.Open();
-                string strsql = "DELETE FROM SANBAY WHERE @MaSanBay=masb";
+                string strsql = "DELETE FROM SANBAY WHERE MaSanBay=@MaSanBay";
                 SqlCommand command = new SqlCommand(strsql, conn);
                 command.Parameters.AddWithValue("@MaSanBay", masb);
                 command.ExecuteNonQuery();
+                MessageBox.Show("Đã xóa thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string sql = "SELECT * FROM SANBAY";
+                SqlCommand command1 = new SqlCommand(sql, conn);
+                SqlDataAdapter adapter = new SqlDataAdapter(command1);
+                DataTable table = new DataTable();
+                adapter.Fill(table);
+                dataDanhSachSB.DataSource = table;
+                txtMaSB.Text = "";
+                txtTenSB.Text = "";
             }
             catch (InvalidOperationException ex)
             {
@@ -138,7 +147,8 @@ namespace QuanLyBanVeChuyenBay
             catch (Exception ex)
             {
                 //xu ly khi ket noi co van de
-                MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                // MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                MessageBox.Show(ex.Message);
             }
             finally
             {

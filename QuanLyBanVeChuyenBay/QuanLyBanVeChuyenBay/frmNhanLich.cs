@@ -131,8 +131,8 @@ namespace QuanLyBanVeChuyenBay
         }
 
         public virtual string ValueMember { get; set; }
-       
 
+        string MASB;
         private void btnThem_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(strconn);
@@ -164,14 +164,25 @@ namespace QuanLyBanVeChuyenBay
 
                 string TENSBTG = dataSanBayTG.CurrentRow.Cells[1].EditedFormattedValue.ToString();
 
-                string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay"; //con cho nay luc nay em viet sai syntax ok?ok. check lai cai kia nhe. A dang lam cai nay k suppot tiep dcok A
+
+                string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 cmd.Parameters.AddWithValue("@TenSanBay", TENSBTG);
                 SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet, "MaSB");
+                DataTable table = dataSet.Tables["MaSB"];
+               
+                foreach (DataRow row in table.Rows)
+                {
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        MASB = row[col].ToString();
+
+                    }
+                }
+
                 object value = cmd.ExecuteScalar();
-                string MASB = table.Rows[0].ItemArray.ToString();
 
                 string MATG = dataSanBayTG.CurrentRow.Cells[0].EditedFormattedValue.ToString();
                 string TGDUNG= dataSanBayTG.CurrentRow.Cells[2].EditedFormattedValue.ToString();
@@ -179,11 +190,11 @@ namespace QuanLyBanVeChuyenBay
                 string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
                 SqlCommand commnad3 = new SqlCommand(sqlQuery2, conn);
                 commnad3.Parameters.AddWithValue("@MaTrungGian", MATG);
-                commnad3.Parameters.AddWithValue("@MaCB", MACB);
+                commnad3.Parameters.AddWithValue("@MaCB", MACB);    
                 commnad3.Parameters.AddWithValue("@MaSanBay", MASB); //check lai ma san bay nhe, khong dung input.are u here yes
                 commnad3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
                 commnad3.Parameters.AddWithValue("@GhiChu", GHICHU);
-               
+                
                 commnad3.ExecuteNonQuery();
 
                 MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);

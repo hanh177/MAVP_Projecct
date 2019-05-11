@@ -117,11 +117,26 @@ alter table DOANHTHUTHANGCB add constraint pk_DTCB_CB foreign key(MaCB) referenc
 insert into CHUYENBAY (MaCB,SanBayDi,SanBayDen,NgayGio,ThoiGianBay,SLGheHang1,SLGheHang2,GiaVe) values('CB01','Nội Bài','tp HCM',12/12/2019,120,12,12,120000)
 insert into TRUNGGIAN (MaTrungGian,MaCB,MaSanBay,ThoiGianDung,Ghichu) values('TG01','Cb01','1',12,'không')
 select   distinct *
-from CHUYENBAY CB join SANBAY SB on CB.SanBayDen=SB.MaSanBay
+from CHUYENBAY 
 
-delete from CHUYENBAY where MaCB='CB03'
+delete from CHUYENBAY where MaCB='CB01'
 select * 
 from TRUNGGIAN
-select MaSanBay
+delete from TRUNGGIAN where MaTrungGian='TG01'
+select *
 from SANBAY
-where TenSanBay='Sao vàng'
+
+insert into SANBAY values('SB01','Nội Bài')
+insert into SANBAY values('SB02',' Tân Sơn Nhất ')
+insert into SANBAY values('SB03',' Vinh')
+insert into SANBAY values('SB04 ','Thọ Xuân ')
+insert into SANBAY values('SB05',' Sao Vàng')
+insert into SANBAY values('SB06 ','Cần Thơ ')
+insert into SANBAY values('SB07 ','Côn Đảo ')
+insert into SANBAY values('SB08 ','Phù Cát ')
+insert into SANBAY values('SB09','Dà Nẵng ')
+insert into SANBAY values('SB10 ','Cát Bi ')
+
+insert into CHUYENBAY values('CB01 ','SB01 ','SB02 ',12/12/2019 ,120 ,12 ,12 ,120000 )
+insert into CHUYENBAY values('CB02 ','SB02 ','SB04 ', 1/1/2019, 120,12 ,12 ,200000 )
+insert into CHUYENBAY values('CB03 ','SB06 ','SB04',2/2/2019 , 50, 12,12 ,100000 )
