@@ -44,7 +44,8 @@ MaTinhTrang varchar(10) primary key,
 MaCB varchar(10),
 SLGheTrongH1 int,
 SLGheTrongH2 int,
-TongGheTrong int,
+TongSoGhe int,
+TongSoGheTrong int,
 TongSoGheDat int
 )
 alter table TINHTRANG add constraint fk_TT_CB foreign key(MaCB) references CHUYENBAY(MaCB)
@@ -114,29 +115,40 @@ TiLe float
 
 alter table DOANHTHUTHANGCB add constraint pk_DTCB_DTThang foreign key(MaDoanhThuThang) references TONGDOANHTHUTHANG(MaDoanhThuThang)
 alter table DOANHTHUTHANGCB add constraint pk_DTCB_CB foreign key(MaCB) references CHUYENBAY(MaCB)
-insert into CHUYENBAY (MaCB,SanBayDi,SanBayDen,NgayGio,ThoiGianBay,SLGheHang1,SLGheHang2,GiaVe) values('CB01','Nội Bài','tp HCM',12/12/2019,120,12,12,120000)
-insert into TRUNGGIAN (MaTrungGian,MaCB,MaSanBay,ThoiGianDung,Ghichu) values('TG01','Cb01','1',12,'không')
-select   distinct *
-from CHUYENBAY 
 
-delete from CHUYENBAY where MaCB='CB01'
-select * 
-from TRUNGGIAN
-delete from TRUNGGIAN where MaTrungGian='TG01'
-select *
-from SANBAY
 
-insert into SANBAY values('SB01','Nội Bài')
-insert into SANBAY values('SB02',' Tân Sơn Nhất ')
-insert into SANBAY values('SB03',' Vinh')
-insert into SANBAY values('SB04 ','Thọ Xuân ')
-insert into SANBAY values('SB05',' Sao Vàng')
-insert into SANBAY values('SB06 ','Cần Thơ ')
-insert into SANBAY values('SB07 ','Côn Đảo ')
-insert into SANBAY values('SB08 ','Phù Cát ')
-insert into SANBAY values('SB09','Dà Nẵng ')
-insert into SANBAY values('SB10 ','Cát Bi ')
+go
+--insert SANBAY--------------------------------------
+insert into SANBAY values('SB01',N'Nội Bài') 
+insert into SANBAY values('SB02',N'Tân Sơn Nhất ')
+insert into SANBAY values('SB03',N'Vinh')
+insert into SANBAY values('SB04 ',N'Thọ Xuân ')
+insert into SANBAY values('SB05',N'Sao Vàng')
+insert into SANBAY values('SB06 ', N'Cần Thơ ')
+insert into SANBAY values('SB07 ',N'Côn Đảo ')
+insert into SANBAY values('SB08 ',N'Phù Cát ')
+insert into SANBAY values('SB09',N'Dà Nẵng ')
+insert into SANBAY values('SB10 ',N'Cát Bà ')
+go
+--insert CHUYENBAY------------------------------------
+insert into CHUYENBAY values('CB01 ','SB01 ','SB02 ',12/12/2019 ,120 ,40 ,50 ,1200000 )
+insert into CHUYENBAY values('CB02 ','SB02 ','SB04 ', 1/5/2019, 120,60,30 ,2000000 )
+insert into CHUYENBAY values('CB03 ','SB06 ','SB04',2/7/2019 , 50, 45,45 ,1000000 )
 
-insert into CHUYENBAY values('CB01 ','SB01 ','SB02 ',12/12/2019 ,120 ,12 ,12 ,120000 )
-insert into CHUYENBAY values('CB02 ','SB02 ','SB04 ', 1/1/2019, 120,12 ,12 ,200000 )
-insert into CHUYENBAY values('CB03 ','SB06 ','SB04',2/2/2019 , 50, 12,12 ,100000 )
+go
+
+----------insert TinhTRang----------
+insert into TINHTRANG values ( 'TT01' , 'CB01' , 40, 50, 90, 90, 0)
+insert into TINHTRANG values ( 'TT02' , 'CB02' , 60, 30, 90, 90, 0)
+insert into TINHTRANG values ( 'TT03' , 'CB03' , 45, 45, 90, 90, 0)
+
+
+
+---------danh sach chuyen bay--------------
+select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2
+from (CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi=SBdi.MaSanBay join SANBAY SBden on CB.SanBayden =SBden.MaSanBay ) join ( CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB =TG.MaCB left join SANBAY SB_TG on TG.MaSanBay =SB_TG.MaSanBay) on CB.MaCB =CHUYENBAY.MaCB
+join TINHTRANG TT on CB.MaCB =TT.MaCB
+----------------------------------------------
+
+select* from Ve
+

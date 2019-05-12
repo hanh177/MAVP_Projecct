@@ -20,6 +20,8 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
+
+      
         string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         private void Connection()
         {
@@ -151,53 +153,83 @@ namespace QuanLyBanVeChuyenBay
                 
                 conn.Open();
                 String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
-                SqlCommand commnad = new SqlCommand(sqlQuery, conn);
-                commnad.Parameters.AddWithValue("@MaCB", MACB);
-                commnad.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
-                commnad.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
-                commnad.Parameters.AddWithValue("@NgayGio", NGAYBAY);
-                commnad.Parameters.AddWithValue("@ThoiGianBay", THOIGIANBAY);
-                commnad.Parameters.AddWithValue("@SLGheHang1", SOGHEH1);
-                commnad.Parameters.AddWithValue("@SLGheHang2", SOGHEH2);
-                commnad.Parameters.AddWithValue("@GiaVe", GIAVE);
-                commnad.ExecuteNonQuery();
+                SqlCommand command = new SqlCommand(sqlQuery, conn);
+                command.Parameters.AddWithValue("@MaCB", MACB);
+                command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
+                command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
+                command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
+                command.Parameters.AddWithValue("@ThoiGianBay", THOIGIANBAY);
+                command.Parameters.AddWithValue("@SLGheHang1", SOGHEH1);
+                command.Parameters.AddWithValue("@SLGheHang2", SOGHEH2);
+                command.Parameters.AddWithValue("@GiaVe", GIAVE);
+                command.ExecuteNonQuery();
 
                 string TENSBTG = dataSanBayTG.CurrentRow.Cells[1].EditedFormattedValue.ToString();
 
-
-                string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                cmd.Parameters.AddWithValue("@TenSanBay", TENSBTG);
-                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                DataSet dataSet = new DataSet();
-                adapter.Fill(dataSet, "MaSB");
-                DataTable table = dataSet.Tables["MaSB"];
-               
-                foreach (DataRow row in table.Rows)
+                if (TENSBTG != "")
                 {
-                    foreach (DataColumn col in table.Columns)
+                    string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    cmd.Parameters.AddWithValue("@TenSanBay", TENSBTG);
+                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet, "MaSB");
+                    DataTable table = dataSet.Tables["MaSB"];
+
+                    foreach (DataRow row in table.Rows)
                     {
-                        MASB = row[col].ToString();
+                        foreach (DataColumn col in table.Columns)
+                        {
+                            MASB = row[col].ToString();
 
+                        }
                     }
+
+                    object value = cmd.ExecuteScalar();
+
+                    string MATG = dataSanBayTG.CurrentRow.Cells[0].EditedFormattedValue.ToString();
+                    string TGDUNG = dataSanBayTG.CurrentRow.Cells[2].EditedFormattedValue.ToString();
+                    string GHICHU = dataSanBayTG.CurrentRow.Cells[3].EditedFormattedValue.ToString();
+                    string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
+                    SqlCommand command3 = new SqlCommand(sqlQuery2, conn);
+                    command3.Parameters.AddWithValue("@MaTrungGian", MATG);
+                    command3.Parameters.AddWithValue("@MaCB", MACB);
+                    command3.Parameters.AddWithValue("@MaSanBay", MASB); //check lai ma san bay nhe, khong dung input.are u here yes
+                    command3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
+                    command3.Parameters.AddWithValue("@GhiChu", GHICHU);
+
+                    command3.ExecuteNonQuery();
                 }
-
-                object value = cmd.ExecuteScalar();
-
-                string MATG = dataSanBayTG.CurrentRow.Cells[0].EditedFormattedValue.ToString();
-                string TGDUNG= dataSanBayTG.CurrentRow.Cells[2].EditedFormattedValue.ToString();
-                string GHICHU= dataSanBayTG.CurrentRow.Cells[3].EditedFormattedValue.ToString();
-                string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
-                SqlCommand commnad3 = new SqlCommand(sqlQuery2, conn);
-                commnad3.Parameters.AddWithValue("@MaTrungGian", MATG);
-                commnad3.Parameters.AddWithValue("@MaCB", MACB);    
-                commnad3.Parameters.AddWithValue("@MaSanBay", MASB); //check lai ma san bay nhe, khong dung input.are u here yes
-                commnad3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
-                commnad3.Parameters.AddWithValue("@GhiChu", GHICHU);
                 
-                commnad3.ExecuteNonQuery();
 
                 MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                string MATT = "TT" + txtMaCB.Text.Substring(2);
+                string sqlQuery3 = "insert into [QLBanVeChuyenBay].[dbo].[TINHTRANG] values(" + "@MaTinhTrang, @MaCB, @SLGheTrongH1, @SLGheTrongH2,@TongSoGhe,@TongSoGheTrong,@TongSoGheDat)";
+                SqlCommand command4= new SqlCommand(sqlQuery3, conn);
+                command4.Parameters.AddWithValue("@MaTinhTrang", MATT);
+                command4.Parameters.AddWithValue("@MaCB", MACB);
+                command4.Parameters.AddWithValue("@SLGheTrongH1", SOGHEH1);
+                command4.Parameters.AddWithValue("@SLGheTrongH2", SOGHEH2);
+                command4.Parameters.AddWithValue("@TongSoGhe", SOGHEH1 + SOGHEH2);
+                command4.Parameters.AddWithValue("@TongSoGheTrong", SOGHEH1 + SOGHEH2);
+                command4.Parameters.AddWithValue("@TongSoGheDat", 0);
+                command4.ExecuteNonQuery();
+
+                txtMaCB.Text = "";
+                cmbSanBayDi.Text= "";
+                cmbSanBayDen.Text = "";
+                txtNgayBay.Text = "";
+                txtSoGheH1.Text = "";
+                txtSoGheH2.Text = "";
+                txtThGianBay.Text = "";
+                txtGiaVe.Text = "";
+              
+
+
+
+
             }
             catch (InvalidOperationException ex)
             {
