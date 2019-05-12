@@ -26,7 +26,7 @@ namespace QuanLyBanVeChuyenBay
 
         private void frmTraCuu_Load(object sender, EventArgs e)
         {
-
+            dateTimePickerNgayBay.Text = "";
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -41,6 +41,11 @@ namespace QuanLyBanVeChuyenBay
             Form danhsachcb = new frmDanSachCB(this);
             this.Hide();
             danhsachcb.Show();
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
 
         }
     }

@@ -78,10 +78,14 @@
             // cmbHangVe
             // 
             this.cmbHangVe.FormattingEnabled = true;
+            this.cmbHangVe.Items.AddRange(new object[] {
+            "1",
+            "2"});
             this.cmbHangVe.Location = new System.Drawing.Point(149, 129);
             this.cmbHangVe.Name = "cmbHangVe";
             this.cmbHangVe.Size = new System.Drawing.Size(100, 21);
             this.cmbHangVe.TabIndex = 8;
+            this.cmbHangVe.SelectedIndexChanged += new System.EventHandler(this.cmbHangVe_SelectedIndexChanged);
             // 
             // cmbMaCB
             // 
@@ -90,6 +94,8 @@
             this.cmbMaCB.Name = "cmbMaCB";
             this.cmbMaCB.Size = new System.Drawing.Size(100, 21);
             this.cmbMaCB.TabIndex = 7;
+            this.cmbMaCB.SelectedIndexChanged += new System.EventHandler(this.cmbMaCB_SelectedIndexChanged);
+           
             // 
             // txtGiaVe
             // 
@@ -225,12 +231,13 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(191, 355);
+            this.btnDatVe.Location = new System.Drawing.Point(161, 355);
             this.btnDatVe.Name = "btnDatVe";
             this.btnDatVe.Size = new System.Drawing.Size(83, 41);
             this.btnDatVe.TabIndex = 2;
             this.btnDatVe.Text = "Đặt Vé";
             this.btnDatVe.UseVisualStyleBackColor = true;
+            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
             // 
             // btnThoat
             // 

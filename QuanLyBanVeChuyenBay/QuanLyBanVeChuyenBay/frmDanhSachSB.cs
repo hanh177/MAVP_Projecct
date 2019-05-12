@@ -22,7 +22,7 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.nhanlich = frmNhanLich;
         }
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         private void Connection()
         {
             SqlConnection conn = new SqlConnection(strconn);
