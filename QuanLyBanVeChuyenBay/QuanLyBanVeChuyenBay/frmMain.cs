@@ -77,11 +77,11 @@ namespace QuanLyBanVeChuyenBay
         {
             this.btnXemPhieuDatCho_Click(btnXemPhieuDatCho, EventArgs.Empty);
         }
-        private void btnBanVe_Click(object sender, EventArgs e)
+        private void btnTraCuu_Click(object sender, EventArgs e)
         {
-            Form banve = new frmBanVe(this);
+            Form tracuu = new frmTraCuu(this);
             this.Hide();
-            banve.Show();
+            tracuu.Show();
         }
 
         private void btnSuaDoiQD_Click(object sender, EventArgs e)

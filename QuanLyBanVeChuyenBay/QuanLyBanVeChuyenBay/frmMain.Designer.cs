@@ -37,7 +37,6 @@
             this.btnSuaDoiQD = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnXemPhieuDatCho = new System.Windows.Forms.Button();
-            this.btnBanVe = new System.Windows.Forms.Button();
             this.btnNhanLich = new System.Windows.Forms.Button();
             this.btnDanhSach = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -50,6 +49,7 @@
             this.bánVéToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSbtnDangXuat = new System.Windows.Forms.ToolStripButton();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -101,7 +101,7 @@
             this.groupBox2.Controls.Add(this.btnSuaDoiQD);
             this.groupBox2.Controls.Add(this.btnDoanhThu);
             this.groupBox2.Controls.Add(this.btnXemPhieuDatCho);
-            this.groupBox2.Controls.Add(this.btnBanVe);
+            this.groupBox2.Controls.Add(this.btnTraCuu);
             this.groupBox2.Controls.Add(this.btnNhanLich);
             this.groupBox2.Controls.Add(this.btnDanhSach);
             this.groupBox2.Location = new System.Drawing.Point(12, 230);
@@ -140,16 +140,6 @@
             this.btnXemPhieuDatCho.Text = "Xem Phiểu đặt chỗ";
             this.btnXemPhieuDatCho.UseVisualStyleBackColor = true;
             this.btnXemPhieuDatCho.Click += new System.EventHandler(this.btnXemPhieuDatCho_Click);
-            // 
-            // btnBanVe
-            // 
-            this.btnBanVe.Location = new System.Drawing.Point(75, 102);
-            this.btnBanVe.Name = "btnBanVe";
-            this.btnBanVe.Size = new System.Drawing.Size(91, 47);
-            this.btnBanVe.TabIndex = 1;
-            this.btnBanVe.Text = "Bán vé";
-            this.btnBanVe.UseVisualStyleBackColor = true;
-            this.btnBanVe.Click += new System.EventHandler(this.btnBanVe_Click);
             // 
             // btnNhanLich
             // 
@@ -198,20 +188,20 @@
             // frontChữToolStripMenuItem
             // 
             this.frontChữToolStripMenuItem.Name = "frontChữToolStripMenuItem";
-            this.frontChữToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.frontChữToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.frontChữToolStripMenuItem.Text = "Front chữ";
             this.frontChữToolStripMenuItem.Click += new System.EventHandler(this.frontChữToolStripMenuItem_Click);
             // 
             // màuNềnToolStripMenuItem
             // 
             this.màuNềnToolStripMenuItem.Name = "màuNềnToolStripMenuItem";
-            this.màuNềnToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.màuNềnToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.màuNềnToolStripMenuItem.Text = "Màu nền";
             // 
             // etcToolStripMenuItem
             // 
             this.etcToolStripMenuItem.Name = "etcToolStripMenuItem";
-            this.etcToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.etcToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.etcToolStripMenuItem.Text = "etc";
             // 
             // tSbtnHelp
@@ -229,19 +219,19 @@
             // nhậnLịchToolStripMenuItem
             // 
             this.nhậnLịchToolStripMenuItem.Name = "nhậnLịchToolStripMenuItem";
-            this.nhậnLịchToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nhậnLịchToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.nhậnLịchToolStripMenuItem.Text = "Nhận lịch ";
             // 
             // bánVéToolStripMenuItem
             // 
             this.bánVéToolStripMenuItem.Name = "bánVéToolStripMenuItem";
-            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.bánVéToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.bánVéToolStripMenuItem.Text = "Bán vé";
             // 
             // ectToolStripMenuItem
             // 
             this.ectToolStripMenuItem.Name = "ectToolStripMenuItem";
-            this.ectToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.ectToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.ectToolStripMenuItem.Text = "ect";
             // 
             // tSbtnDangXuat
@@ -252,6 +242,16 @@
             this.tSbtnDangXuat.Size = new System.Drawing.Size(80, 22);
             this.tSbtnDangXuat.Text = "&Đăng xuất";
             this.tSbtnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.Location = new System.Drawing.Point(75, 102);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(91, 47);
+            this.btnTraCuu.TabIndex = 1;
+            this.btnTraCuu.Text = "Tra Cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // frmMain
             // 
@@ -285,7 +285,6 @@
         private System.Windows.Forms.Button btnDanhSach;
         private System.Windows.Forms.Button btnDoanhThu;
         private System.Windows.Forms.Button btnXemPhieuDatCho;
-        private System.Windows.Forms.Button btnBanVe;
         private System.Windows.Forms.Button btnNhanLich;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton tSbtnCaiDat;
@@ -298,5 +297,6 @@
         private System.Windows.Forms.ToolStripMenuItem bánVéToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ectToolStripMenuItem;
         private System.Windows.Forms.Button btnSuaDoiQD;
+        private System.Windows.Forms.Button btnTraCuu;
     }
 }

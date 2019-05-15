@@ -13,12 +13,11 @@ namespace QuanLyBanVeChuyenBay
 {
     public partial class frmBanVe : Form
     {
-        Form main;
-        public event EventHandler Button_Clicked;
-        public frmBanVe(Form frmMain)
+        Form tracuu;
+        public frmBanVe(Form frmTraCuu)
         {
             InitializeComponent();
-            this.main = frmMain;
+            this.tracuu = frmTraCuu;
         }
 
         private void textBox7_TextChanged(object sender, EventArgs e)
@@ -26,10 +25,11 @@ namespace QuanLyBanVeChuyenBay
 
         }
 
-        string strconn = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         float DonGia;
         int GheTrongH1, GheTrongH2 ;
         bool ConGheH1 , ConGheH2,  DatVe = true;
+        string MAVE, MAKH;//MAVE luu gia tri ma ve cuoi cung.
         private void Connection()
         {
             SqlConnection conn = new SqlConnection(strconn);
@@ -37,17 +37,61 @@ namespace QuanLyBanVeChuyenBay
             try
             {
                 conn.Open();
-                string sql = "SELECT MaCB FROM CHUYENBAY";
+                //Lay ma ve cuoi cung va cap nhat them 1
+                string sql = "select Max(MaVe) as LastID from VE";
                 SqlCommand command = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable table = new DataTable();             
-                adapter.Fill(table);
+                DataSet dataSet = new DataSet();
+                adapter.Fill(dataSet, "MaVe");
+                DataTable table = dataSet.Tables["MaVe"];
                 foreach (DataRow row in table.Rows)
                 {
-                    cmbMaCB.Items.Add(row["MaCB"].ToString());
-                }              
-               command.ExecuteNonQuery();
-          
+                    foreach (DataColumn col in table.Columns)
+                    {
+                        MAVE = row[col].ToString();
+
+                    }
+                }
+                string mave = MAVE.Substring(2);
+                int sove= Int32.Parse(mave);
+                sove = sove + 1;
+                bool flag = false;
+                if (sove < 10)
+                    flag = true;
+                if (flag == true)
+                {
+                    txtMaVe.Text = "VE0" + sove.ToString();
+                }
+                else
+                    txtMaVe.Text = "VE" + sove.ToString();
+
+                //Lay ma hanh khach cuoi cung va cap nhat len 1
+                string sql2 = "select Max(MaHanhKhach) as LastID from HANHKHACH";
+                SqlCommand command2 = new SqlCommand(sql2, conn);
+                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+                DataSet dataSet2 = new DataSet();
+                adapter.Fill(dataSet, "MaHanhKhach");
+                DataTable table2 = dataSet.Tables["MaHanhKhach"];
+                foreach (DataRow row in table2.Rows)
+                {
+                    foreach (DataColumn col in table2.Columns)
+                    {
+                        MAKH = row[col].ToString();
+
+                    }
+                }
+                string makh = MAKH.Substring(2);
+                int sokh = Int32.Parse(mave);
+                sokh = sokh + 1;
+                bool flagkh = false;
+                if (sokh < 10)
+                    flagkh = true;
+                if (flagkh == true)
+                {
+                    txtMaKH.Text = "KH0" + sokh.ToString();
+                }
+                else
+                    txtMaKH.Text = "KH" + sokh.ToString();
             }
             catch (InvalidOperationException ex)
             {
@@ -71,16 +115,18 @@ namespace QuanLyBanVeChuyenBay
             Connection();
             GheTrongH1 = 0;
             GheTrongH2 = 0;
-            DonGia = 0;
+            DonGia = frmTraCuu.DONGIA;
             ConGheH1 = true;
             ConGheH2 = true;
             DatVe = true;
+            txtMaCB.Text = frmTraCuu.macb.ToString();
+            
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
-            main.Show();
+           
         }
 
         private void btnDanhSachCB_Click(object sender, EventArgs e)
@@ -112,11 +158,6 @@ namespace QuanLyBanVeChuyenBay
 
             try
             {
-
-
-
-
-                string MaCB = cmbMaCB.SelectedItem.ToString();
                 string MaVe = txtMaVe.Text;
                 int HangVe = Int32.Parse(cmbHangVe.SelectedItem.ToString());
                 float GiaVe = Int32.Parse(txtGiaVe.Text);
@@ -124,9 +165,6 @@ namespace QuanLyBanVeChuyenBay
                 string HoTen = txtHoTen.Text;
                 string CMND = txtCMND.Text;
                 string SDT = txtSDT.Text;
-
-
-
 
                 conn.Open();
 
@@ -147,7 +185,11 @@ namespace QuanLyBanVeChuyenBay
                         DatVe = true;
                     }
 
-                    else MessageBox.Show("Không còn ghế");
+                    else
+                    {
+                        MessageBox.Show("Không còn ghế trống.","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                        return;
+                    }
                 }
                 if (DatVe == true)
                 {
@@ -168,7 +210,7 @@ namespace QuanLyBanVeChuyenBay
                     SqlCommand command2 = new SqlCommand(sqlQuery2, conn);
                     command2.Parameters.AddWithValue("@MaVe", MaVe);
                     command2.Parameters.AddWithValue("@MaHanhKhach", MaHanhKhach);
-                    command2.Parameters.AddWithValue("@MaCB", MaCB);
+                    command2.Parameters.AddWithValue("@MaCB", txtMaCB.Text);
                     command2.Parameters.AddWithValue("@GiaVe", GiaVe);
                     command2.Parameters.AddWithValue("@HangVe", HangVe);
                     command2.ExecuteNonQuery();
@@ -181,20 +223,11 @@ namespace QuanLyBanVeChuyenBay
                     string sqlQuery3 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 - " + GheDatH1 +
                         ", SLGheTrongH2 = SLGheTrongH2 -" + GheDatH2 +
                         ", TongSoGhe = TongSoGhe - 1, TongSoGheTrong = TongSoGheTrong - 1, TongSoGheDat =TongSoGheDat + 1 where MaCB = '"
-                        + MaCB + "' ";
+                        + txtMaCB.Text + "' ";
                     SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
                     command3.ExecuteNonQuery();
-
-
-
-                    txtCMND.Text = "";
-                    txtGiaVe.Text = "";
-                    txtHoTen.Text = "";
-                    txtMaKH.Text = "";
-                    txtMaVe.Text = "";
-                    txtSDT.Text = "";
-                    cmbHangVe.Text = "";
-                    cmbMaCB.Text = "";
+                    this.Hide();
+                    tracuu.Show();
 
                 }
                 else MessageBox.Show("Không còn ghế trống hạng "+ HangVe +" để đặt");
@@ -220,47 +253,12 @@ namespace QuanLyBanVeChuyenBay
 
         private void cmbMaCB_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string MaCB = cmbMaCB.SelectedItem.ToString();
-            SqlConnection conn = new SqlConnection(strconn);
-            try
-            {
-                String sqlQuery = "Select GiaVe  from CHUYENBAY where MaCB = '" + MaCB + "'";
-                SqlCommand command = new SqlCommand(sqlQuery, conn);
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-                DataTable table = new DataTable();
-                adapter.Fill(table);
-                string s = "";
-                foreach (DataRow row in table.Rows)
-                {
-
-                    s = row["GiaVe"].ToString();
-                }
-                DonGia = Int32.Parse(s);
-               
-            }
-            catch (InvalidOperationException ex)
-            {
-                //xu ly khi ket noi co van de
-                MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-            }
-            catch (Exception ex)
-            {
-                //xu ly khi ket noi co van de
-                // MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                //Dong ket noi sau khi thao tac ket thuc
-                conn.Close();
-            }
-
         }
 
         private void cmbHangVe_SelectedIndexChanged(object sender, EventArgs e)
         {
             
-                SqlConnection conn = new SqlConnection(strconn);
+             SqlConnection conn = new SqlConnection(strconn);
 
             try
             {
@@ -268,8 +266,9 @@ namespace QuanLyBanVeChuyenBay
 
                 //Kiem tra con ghe trong de dat hay khong
 
-                string sqlQuery = "select SLGheTrongH1, SLGheTrongH2 from TINHTRANG where MaCB ='" + cmbMaCB.SelectedItem.ToString() + "'";
+                string sqlQuery = "select SLGheTrongH1, SLGheTrongH2 from TINHTRANG where MaCB =@MaCB";
                 SqlCommand command = new SqlCommand(sqlQuery, conn);
+                command.Parameters.AddWithValue("@MaCB", txtMaCB.Text);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable table = new DataTable();
                 adapter.Fill(table);

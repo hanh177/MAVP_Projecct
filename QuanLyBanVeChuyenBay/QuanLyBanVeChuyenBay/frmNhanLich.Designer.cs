@@ -58,11 +58,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.qLBanVeChuyenBayDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dataSanBayTG = new System.Windows.Forms.DataGridView();
-            this.txtNgayBay = new System.Windows.Forms.TextBox();
             this.MaTrungGian = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmbTenSBTrungGian = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtNgayBay = new System.Windows.Forms.TextBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
@@ -83,6 +83,7 @@
             // 
             this.txtMaCB.Location = new System.Drawing.Point(152, 74);
             this.txtMaCB.Name = "txtMaCB";
+            this.txtMaCB.ReadOnly = true;
             this.txtMaCB.Size = new System.Drawing.Size(191, 20);
             this.txtMaCB.TabIndex = 2;
             // 
@@ -303,13 +304,6 @@
             this.dataSanBayTG.TabIndex = 46;
             this.dataSanBayTG.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSanBayTG_CellContentClick);
             // 
-            // txtNgayBay
-            // 
-            this.txtNgayBay.Location = new System.Drawing.Point(488, 220);
-            this.txtNgayBay.Name = "txtNgayBay";
-            this.txtNgayBay.Size = new System.Drawing.Size(191, 20);
-            this.txtNgayBay.TabIndex = 48;
-            // 
             // MaTrungGian
             // 
             this.MaTrungGian.HeaderText = "Mã Sân Bay Trung Gian";
@@ -334,6 +328,13 @@
             this.ColNote.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.ColNote.HeaderText = "Ghi chú";
             this.ColNote.Name = "ColNote";
+            // 
+            // txtNgayBay
+            // 
+            this.txtNgayBay.Location = new System.Drawing.Point(488, 220);
+            this.txtNgayBay.Name = "txtNgayBay";
+            this.txtNgayBay.Size = new System.Drawing.Size(191, 20);
+            this.txtNgayBay.TabIndex = 48;
             // 
             // frmNhanLich
             // 

@@ -21,7 +21,7 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-      
+        string MACHUYENBAYCUOI;
         string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         private void Connection()
         {
@@ -53,6 +53,35 @@ namespace QuanLyBanVeChuyenBay
 
                 command.ExecuteNonQuery();
 
+
+
+                //Lay ma chuyen bay cuoi cung va cap nhat len 1
+                string sql2 = "select Max(MaCB) as LastID from CHUYENBAY";
+                SqlCommand command2 = new SqlCommand(sql2, conn);
+                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+                DataSet dataSet = new DataSet();
+                adapter2.Fill(dataSet, "MaCB");
+                DataTable table4 = dataSet.Tables["MaCB"];
+                foreach (DataRow row in table4.Rows)
+                {
+                    foreach (DataColumn col in table4.Columns)
+                    {
+                        MACHUYENBAYCUOI = row[col].ToString();
+
+                    }
+                }
+                string macb = MACHUYENBAYCUOI.Substring(2);
+                int socb = Int32.Parse(macb);
+                socb = socb + 1;
+                bool flag = false;
+                if (socb < 10)
+                    flag = true;
+                if (flag == true)
+                {
+                    txtMaCB.Text = "CB0" + socb.ToString();
+                }
+                else
+                    txtMaCB.Text = "CB" + socb.ToString();
             }
             catch (InvalidOperationException ex)
             {
@@ -206,14 +235,14 @@ namespace QuanLyBanVeChuyenBay
 
 
                 string MATT = "TT" + txtMaCB.Text.Substring(2);
-                string sqlQuery3 = "insert into [QLBanVeChuyenBay].[dbo].[TINHTRANG] values(" + "@MaTinhTrang, @MaCB, @SLGheTrongH1, @SLGheTrongH2,@TongSoGhe,@TongSoGheTrong,@TongSoGheDat)";
+                string sqlQuery3 = "insert into[QLBanVeChuyenBay].[dbo].[TINHTRANG] values(" + "@MaTinhTrang, @MaCB, @SLGheTrongH1, @SLGheTrongH2,@TongSoGhe, @TongSoGheTrong,@TongSoGheDat)";
                 SqlCommand command4= new SqlCommand(sqlQuery3, conn);
                 command4.Parameters.AddWithValue("@MaTinhTrang", MATT);
                 command4.Parameters.AddWithValue("@MaCB", MACB);
                 command4.Parameters.AddWithValue("@SLGheTrongH1", SOGHEH1);
                 command4.Parameters.AddWithValue("@SLGheTrongH2", SOGHEH2);
                 command4.Parameters.AddWithValue("@TongSoGhe", SOGHEH1 + SOGHEH2);
-                command4.Parameters.AddWithValue("@TongSoGheTrong", SOGHEH1 + SOGHEH2);
+                command4.Parameters.AddWithValue("@TongSoGheTrong", SOGHEH1+ SOGHEH2);
                 command4.Parameters.AddWithValue("@TongSoGheDat", 0);
                 command4.ExecuteNonQuery();
 

@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBanVe));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtMaCB = new System.Windows.Forms.TextBox();
             this.cmbHangVe = new System.Windows.Forms.ComboBox();
-            this.cmbMaCB = new System.Windows.Forms.ComboBox();
             this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.txtMaVe = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,7 +48,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.btnDatVe = new System.Windows.Forms.Button();
-            this.btnThoat = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
             this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
@@ -60,8 +59,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txtMaCB);
             this.groupBox1.Controls.Add(this.cmbHangVe);
-            this.groupBox1.Controls.Add(this.cmbMaCB);
             this.groupBox1.Controls.Add(this.txtGiaVe);
             this.groupBox1.Controls.Add(this.txtMaVe);
             this.groupBox1.Controls.Add(this.label4);
@@ -75,6 +74,14 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vé";
             // 
+            // txtMaCB
+            // 
+            this.txtMaCB.Location = new System.Drawing.Point(149, 82);
+            this.txtMaCB.Name = "txtMaCB";
+            this.txtMaCB.ReadOnly = true;
+            this.txtMaCB.Size = new System.Drawing.Size(100, 20);
+            this.txtMaCB.TabIndex = 9;
+            // 
             // cmbHangVe
             // 
             this.cmbHangVe.FormattingEnabled = true;
@@ -87,20 +94,11 @@
             this.cmbHangVe.TabIndex = 8;
             this.cmbHangVe.SelectedIndexChanged += new System.EventHandler(this.cmbHangVe_SelectedIndexChanged);
             // 
-            // cmbMaCB
-            // 
-            this.cmbMaCB.FormattingEnabled = true;
-            this.cmbMaCB.Location = new System.Drawing.Point(149, 85);
-            this.cmbMaCB.Name = "cmbMaCB";
-            this.cmbMaCB.Size = new System.Drawing.Size(100, 21);
-            this.cmbMaCB.TabIndex = 7;
-            this.cmbMaCB.SelectedIndexChanged += new System.EventHandler(this.cmbMaCB_SelectedIndexChanged);
-           
-            // 
             // txtGiaVe
             // 
             this.txtGiaVe.Location = new System.Drawing.Point(149, 183);
             this.txtGiaVe.Name = "txtGiaVe";
+            this.txtGiaVe.ReadOnly = true;
             this.txtGiaVe.Size = new System.Drawing.Size(100, 20);
             this.txtGiaVe.TabIndex = 5;
             // 
@@ -108,6 +106,7 @@
             // 
             this.txtMaVe.Location = new System.Drawing.Point(149, 37);
             this.txtMaVe.Name = "txtMaVe";
+            this.txtMaVe.ReadOnly = true;
             this.txtMaVe.Size = new System.Drawing.Size(100, 20);
             this.txtMaVe.TabIndex = 4;
             // 
@@ -168,6 +167,7 @@
             // 
             this.txtMaKH.Location = new System.Drawing.Point(122, 37);
             this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.ReadOnly = true;
             this.txtMaKH.Size = new System.Drawing.Size(100, 20);
             this.txtMaKH.TabIndex = 8;
             // 
@@ -231,23 +231,13 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(161, 355);
+            this.btnDatVe.Location = new System.Drawing.Point(241, 353);
             this.btnDatVe.Name = "btnDatVe";
             this.btnDatVe.Size = new System.Drawing.Size(83, 41);
             this.btnDatVe.TabIndex = 2;
             this.btnDatVe.Text = "Đặt Vé";
             this.btnDatVe.UseVisualStyleBackColor = true;
             this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
-            // 
-            // btnThoat
-            // 
-            this.btnThoat.Location = new System.Drawing.Point(357, 355);
-            this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(79, 41);
-            this.btnThoat.TabIndex = 3;
-            this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
-            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // toolStrip1
             // 
@@ -293,7 +283,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 423);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDatVe);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -331,12 +320,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnDatVe;
-        private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton btnDanhSachCB;
         private System.Windows.Forms.ToolStripButton tSbtnHelp;
         private System.Windows.Forms.ToolStripButton tSbtnPhieuDatCho;
-        private System.Windows.Forms.ComboBox cmbMaCB;
         private System.Windows.Forms.ComboBox cmbHangVe;
+        private System.Windows.Forms.TextBox txtMaCB;
     }
 }
