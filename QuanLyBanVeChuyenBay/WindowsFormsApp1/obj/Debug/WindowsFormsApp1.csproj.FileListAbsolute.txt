@@ -1,0 +1,10 @@
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb

@@ -22,10 +22,14 @@ namespace QuanLyBanVeChuyenBay
         }
 
         string MACHUYENBAYCUOI;
+
         string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+
         private void Connection()
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
@@ -62,26 +66,30 @@ namespace QuanLyBanVeChuyenBay
                 DataSet dataSet = new DataSet();
                 adapter2.Fill(dataSet, "MaCB");
                 DataTable table4 = dataSet.Tables["MaCB"];
-                foreach (DataRow row in table4.Rows)
-                {
-                    foreach (DataColumn col in table4.Columns)
+               
+                    foreach (DataRow row in table4.Rows)
                     {
-                        MACHUYENBAYCUOI = row[col].ToString();
-
+                        foreach (DataColumn col in table4.Columns)
+                        {
+                            MACHUYENBAYCUOI = row[col].ToString();
+                        if (MACHUYENBAYCUOI == "") // neu chua co CB nao trong danh sach
+                            MACHUYENBAYCUOI = "CB00";
+                        }
                     }
-                }
-                string macb = MACHUYENBAYCUOI.Substring(2);
-                int socb = Int32.Parse(macb);
-                socb = socb + 1;
-                bool flag = false;
-                if (socb < 10)
-                    flag = true;
-                if (flag == true)
-                {
-                    txtMaCB.Text = "CB0" + socb.ToString();
-                }
-                else
-                    txtMaCB.Text = "CB" + socb.ToString();
+                    string macb = MACHUYENBAYCUOI.Substring(2);
+                    int socb = Int32.Parse(macb);
+                    socb = socb + 1;
+                    bool flag = false;
+                    if (socb < 10)
+                        flag = true;
+                    if (flag == true)
+                    {
+                        txtMaCB.Text = "CB0" + socb.ToString();
+                    }
+                    else
+                        txtMaCB.Text = "CB" + socb.ToString();
+                
+               
             }
             catch (InvalidOperationException ex)
             {
@@ -99,42 +107,21 @@ namespace QuanLyBanVeChuyenBay
                 conn.Close();
             }
         }
-        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox4_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
        
-
+   
         private void frmNhanLich_Load(object sender, EventArgs e)
         {
             Connection();
+            DateTime dt = DateTime.Now;
+            dateTimePicker1.MinDate = dt;
+           
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-            main.Show();
+           
         }
 
         private void tSbtnDanhSachCB_Click(object sender, EventArgs e)
@@ -150,23 +137,13 @@ namespace QuanLyBanVeChuyenBay
             this.Hide();
             danhsachsb.Show();
         }
-
-        private void cmbSanBayDi_ValueMemberChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void dataSanBayTG_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
+  
         public virtual string ValueMember { get; set; }
 
         string MASB;
         private void btnThem_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            SqlConnection conn = new SqlConnection(strconn2);
            
             try
             {
@@ -177,9 +154,28 @@ namespace QuanLyBanVeChuyenBay
                 int SOGHEH1 = Int32.Parse(txtSoGheH1.Text);
                 int SOGHEH2 = Int32.Parse(txtSoGheH2.Text);
                 int GIAVE = Int32.Parse(txtGiaVe.Text);
-                DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                // DateTime NGAYBAY = DateTime.ParseExact(dateTimePicker1.Text, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                DateTime NGAYBAY = dateTimePicker1.Value;
+    
+                //string t = dateTimePicker1.Text;
+                //string tt = t.Substring(17);
+               
+                //if (tt == "PM")
+                //{
+                //    MessageBox.Show(".");
+                ////    string date = t.Substring(0, 11); //ngaythang 
+                ////    int h = Int32.Parse(t.Substring(12, 13)) + 12;
+                ////    string strhour = h.ToString();  //gio
+                ////    string m = t.Substring(14, 16); //phut
 
-                
+                ////    string datetime = date + strhour + m;
+                ////    MessageBox.Show(datetime);
+                //}
+                ////if(tt=="PM")
+                ////{
+                ////    NGAYBAY = DateTime.ParseExact(datetime, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
+                ////}
+               
                 conn.Open();
                 String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
                 SqlCommand command = new SqlCommand(sqlQuery, conn);
@@ -249,16 +245,11 @@ namespace QuanLyBanVeChuyenBay
                 txtMaCB.Text = "";
                 cmbSanBayDi.Text= "";
                 cmbSanBayDen.Text = "";
-                txtNgayBay.Text = "";
+                dateTimePicker1.Text = "";
                 txtSoGheH1.Text = "";
                 txtSoGheH2.Text = "";
                 txtThGianBay.Text = "";
                 txtGiaVe.Text = "";
-              
-
-
-
-
             }
             catch (InvalidOperationException ex)
             {
@@ -276,11 +267,6 @@ namespace QuanLyBanVeChuyenBay
                 //Dong ket noi sau khi thao tac ket thuc
                 conn.Close();
             }
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-
-        }
+        } 
     }
 }

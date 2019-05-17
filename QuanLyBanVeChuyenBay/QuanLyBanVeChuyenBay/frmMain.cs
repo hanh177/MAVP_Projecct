@@ -41,7 +41,8 @@ namespace QuanLyBanVeChuyenBay
 
         private void frmMain_Load(object sender, EventArgs e)
         {
-            txtUserName.Text = frmLogin.username.ToString();
+            
+            label3.Text= frmLogin.username.ToString(); 
         }
 
         private void btnDangXuat_Click(object sender, EventArgs e)
@@ -55,15 +56,16 @@ namespace QuanLyBanVeChuyenBay
         {
             Form nhanlich = new frmNhanLich(this);
             this.Hide();
-            nhanlich.Show();
-                
+            nhanlich.ShowDialog();
+            this.Show();
         }
 
         private void btnDanhSach_Click(object sender, EventArgs e)
         {
             Form danhsachcb = new frmDanSachCB(this);
             this.Hide();
-            danhsachcb.Show();
+            danhsachcb.ShowDialog();
+            this.Show();
         }
 
          private void btnXemPhieuDatCho_Click(object sender, EventArgs e)
@@ -71,7 +73,8 @@ namespace QuanLyBanVeChuyenBay
              Form phieudatcho = new frmPhieuDatCho(this);
 
             this.Hide();
-            phieudatcho.Show();
+            phieudatcho.ShowDialog();
+            this.Show();
         }
        public void btnXemPhieuDatCho_Clicked(object sender, EventArgs e)
         {
@@ -81,21 +84,34 @@ namespace QuanLyBanVeChuyenBay
         {
             Form tracuu = new frmTraCuu(this);
             this.Hide();
-            tracuu.Show();
+            tracuu.ShowDialog();
+            this.Show();
         }
 
         private void btnSuaDoiQD_Click(object sender, EventArgs e)
         {
             Form suadoiqd = new frmSuaDoiQD(this);
             this.Hide();
-            suadoiqd.Show();
+            suadoiqd.ShowDialog();
+            this.Show();
         }
 
         private void btnDoanhThu_Click(object sender, EventArgs e)
         {
             Form baocaothang = new frmBaoCaoThang(this);
             this.Hide();
-            baocaothang.Show();
+            baocaothang.ShowDialog();
+            this.Show();
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
         }
     }
 }

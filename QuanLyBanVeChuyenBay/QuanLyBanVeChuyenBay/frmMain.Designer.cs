@@ -32,11 +32,11 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUserName = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSuaDoiQD = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnXemPhieuDatCho = new System.Windows.Forms.Button();
+            this.btnTraCuu = new System.Windows.Forms.Button();
             this.btnNhanLich = new System.Windows.Forms.Button();
             this.btnDanhSach = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
@@ -49,7 +49,7 @@
             this.bánVéToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSbtnDangXuat = new System.Windows.Forms.ToolStripButton();
-            this.btnTraCuu = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -57,15 +57,16 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.txtUserName);
             this.groupBox1.Location = new System.Drawing.Point(12, 48);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(523, 176);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông tin ";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // label2
             // 
@@ -86,15 +87,6 @@
             this.label1.TabIndex = 1;
             this.label1.Text = "Bán Vé Máy Bay";
             this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // txtUserName
-            // 
-            this.txtUserName.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUserName.Location = new System.Drawing.Point(92, 136);
-            this.txtUserName.Name = "txtUserName";
-            this.txtUserName.ReadOnly = true;
-            this.txtUserName.Size = new System.Drawing.Size(122, 22);
-            this.txtUserName.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -141,6 +133,16 @@
             this.btnXemPhieuDatCho.UseVisualStyleBackColor = true;
             this.btnXemPhieuDatCho.Click += new System.EventHandler(this.btnXemPhieuDatCho_Click);
             // 
+            // btnTraCuu
+            // 
+            this.btnTraCuu.Location = new System.Drawing.Point(75, 102);
+            this.btnTraCuu.Name = "btnTraCuu";
+            this.btnTraCuu.Size = new System.Drawing.Size(91, 47);
+            this.btnTraCuu.TabIndex = 1;
+            this.btnTraCuu.Text = "Tra Cứu";
+            this.btnTraCuu.UseVisualStyleBackColor = true;
+            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+            // 
             // btnNhanLich
             // 
             this.btnNhanLich.Location = new System.Drawing.Point(75, 33);
@@ -172,6 +174,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(547, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // tSbtnCaiDat
             // 
@@ -243,15 +246,15 @@
             this.tSbtnDangXuat.Text = "&Đăng xuất";
             this.tSbtnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
-            // btnTraCuu
+            // label3
             // 
-            this.btnTraCuu.Location = new System.Drawing.Point(75, 102);
-            this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(91, 47);
-            this.btnTraCuu.TabIndex = 1;
-            this.btnTraCuu.Text = "Tra Cứu";
-            this.btnTraCuu.UseVisualStyleBackColor = true;
-            this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(92, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 18);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "label3";
             // 
             // frmMain
             // 
@@ -280,7 +283,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtUserName;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDanhSach;
         private System.Windows.Forms.Button btnDoanhThu;
@@ -298,5 +300,6 @@
         private System.Windows.Forms.ToolStripMenuItem ectToolStripMenuItem;
         private System.Windows.Forms.Button btnSuaDoiQD;
         private System.Windows.Forms.Button btnTraCuu;
+        private System.Windows.Forms.Label label3;
     }
 }

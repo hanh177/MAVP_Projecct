@@ -19,10 +19,19 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+
         string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
-        private void Connection()
+
+        static public string macb="";
+        static public int DonGia=0;
+
+
+
+        public void Connection()
         {
-            SqlConnection conn = new SqlConnection(strconn);
+          
+            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
@@ -53,13 +62,20 @@ namespace QuanLyBanVeChuyenBay
 
         private void frmDanSachCB_Load(object sender, EventArgs e)
         {
+            macb = "";
+            DonGia = 0;
             Connection();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-            main.Show();
+            try {
+                main.Show();
+            } catch { Form frmMain = new frmMain(this);
+                frmMain.Show();
+               
+            }
         }
 
        
@@ -68,11 +84,13 @@ namespace QuanLyBanVeChuyenBay
         {
             Form tracuucb = new frmTraCuu(this);
             this.Hide();
-            tracuucb.Show();
+            tracuucb.ShowDialog();
+            this.Connection();
+            this.Show();
         }
 
         private void btnTraCuu_Click(object sender, EventArgs e)
-        {
+        {          
             this.tSbtnTraCuuCB_Click(sender, e);
         }
 
@@ -82,15 +100,20 @@ namespace QuanLyBanVeChuyenBay
         {
             Form nhanlich = new frmNhanLich(this);
             this.Hide();
-            nhanlich.Show();
+            
+            nhanlich.ShowDialog();
+            this.Connection();
+            this.Show();
         }
 
         private void tSbtnDatVeCB_Clicked(object sender, EventArgs e)
         {
-            Form banve = new frmBanVe(this);
             this.Hide();
-            banve.Show();
-            
+            Form banve = new frmBanVe(this);
+            banve.ShowDialog();
+            this.Connection();
+            this.Show();
+                 
         }
 
         private void btnThemCB_Click(object sender, EventArgs e)
@@ -100,7 +123,10 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            tSbtnDatVeCB_Clicked(sender, e);
+                macb = dataDanhSachCB.CurrentRow.Cells[0].Value.ToString();
+                string s = dataDanhSachCB.CurrentRow.Cells[9].Value.ToString();
+                DonGia = Int32.Parse(s);
+                tSbtnDatVeCB_Clicked(sender, e);      
         }
     }
 }

@@ -21,10 +21,13 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         private void Connection()
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            ///////////////////////////////////////////////////////////////////////////////////
+            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
@@ -81,16 +84,17 @@ namespace QuanLyBanVeChuyenBay
 
         private void frmTraCuu_Load(object sender, EventArgs e)
         {
-           
+            click_data = false;
+            macb = "";
+            DONGIA = 0;
             Connection();
             dataDanhSachCB.DataSource="";
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-
-            this.Close();
-            main.Show();
+            this.Close();       
+          
         }
 
         private void btnDanhSach_Click(object sender, EventArgs e)
@@ -108,10 +112,8 @@ namespace QuanLyBanVeChuyenBay
          
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
-
-           
-
-            SqlConnection conn = new SqlConnection(strconn);
+           ////////////////////////////////////////////////////////////////////////////////////////////////////
+            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
@@ -146,7 +148,6 @@ namespace QuanLyBanVeChuyenBay
                 //Chi tim kiem bang NgayBay
                  {
                      DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                     //string NGAYBAY = txtNgayBay.Text;
                      string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio";
                      SqlCommand command = new SqlCommand(sql, conn);
                      command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
@@ -156,6 +157,30 @@ namespace QuanLyBanVeChuyenBay
                      adapter.Fill(table);
                      dataDanhSachCB.DataSource = table;
                  }
+                else if(cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+                //chi tim kiem bang san bay di
+                {
+                    string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
+                    string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.SanBayDi=@SanBayDi";
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dataDanhSachCB.DataSource = table;
+                }
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
+                //chi tim kiem bang san bay den
+                {
+                    string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
+                    string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.SanBayDen=@SanBayDen";
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    dataDanhSachCB.DataSource = table;
+                }
                  else if(cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text=="")
                 //Tim kiem bang MaCB va SanBayDen
                  {
@@ -198,6 +223,7 @@ namespace QuanLyBanVeChuyenBay
                      adapter.Fill(table);
                      dataDanhSachCB.DataSource = table;
                  }
+
                 cmbMaCB.SelectedIndex = -1;
                 txtNgayBay.Text = "";
                 cmbSanBayDi.SelectedIndex = -1;
@@ -233,35 +259,76 @@ namespace QuanLyBanVeChuyenBay
 
         }
         int index;
-        static public string macb;
+        static public string macb="";
         int SLGHETRONG;
-        static public  int DONGIA;
+        static public  int DONGIA=0;
+        bool click_data;
         private void dataDanhSachCB_Click(object sender, EventArgs e)
         {
-            index = dataDanhSachCB.CurrentRow.Index;
-            macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
-           string slghetrong= dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
-           SLGHETRONG= Int32.Parse(slghetrong);
-           string dongia= dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
-            DONGIA= Int32.Parse(dongia);
+            if (dataDanhSachCB.CurrentRow != null)
+            {
+                index = dataDanhSachCB.CurrentRow.Index;
+                macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
+                string dongia = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                if (dongia != "")
+                    DONGIA = Int32.Parse(dongia);
+                string slghetrong = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                if (slghetrong != "")
+                    SLGHETRONG = Int32.Parse(slghetrong);
+                else
+                {
+                    if (dongia == "") SLGHETRONG = -1;
+                    
+                }
+                click_data = true;
+            }
         }
 
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            Form banve = new frmBanVe(this);
-            if(macb==null)
+ 
+            if(click_data==false)
+                if (dataDanhSachCB.CurrentRow != null)
+                {
+                    index = dataDanhSachCB.CurrentRow.Index;
+                    macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
+                    string dongia = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                    if (dongia != "")
+                        DONGIA = Int32.Parse(dongia);
+                    string slghetrong = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                    if (slghetrong != "")
+                        SLGHETRONG = Int32.Parse(slghetrong);
+                    else
+                    {
+                        if (dongia == "") SLGHETRONG = -1;
+
+                    }
+                    click_data = true;
+                }
+            if (dataDanhSachCB.CurrentRow==null || SLGHETRONG ==-1)
             {
                 MessageBox.Show("Chưa chọn chuyến bay để đặt vé, vui lòng chọn 1 chuyến bay.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
             else if (SLGHETRONG > 0)
             {
-                this.Close();
-                banve.Show();
+                this.Hide();
+                Form banve = new frmBanVe(this);
+                banve.ShowDialog();
+                this.Connection();
+
+                // dataDanhSachCB.Rows[0].Cells[0].Value = "";
+                //---------------------------------------------------------------------------------------------------------------------------------------//
+                //doan nay se code de load lai du lieu o form tra cuu sau khi dat ve nha //
+                //
+                //
+                //
+                //
+                this.Show();
             }
-            else
+            else if( SLGHETRONG == 0  )
             {
-                MessageBox.Show("Không thể đặt thêm vé vì đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Không thể đặt thêm vé vì chuyến bay đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

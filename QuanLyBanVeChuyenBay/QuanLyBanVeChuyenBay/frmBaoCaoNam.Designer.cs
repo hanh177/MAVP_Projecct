@@ -68,7 +68,7 @@
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Chọn năm:";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
+            
             // 
             // dataDoanhThuNam
             // 
@@ -118,7 +118,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(663, 25);
             this.toolStrip1.TabIndex = 15;
             this.toolStrip1.Text = "toolStrip1";
-            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // frmBaoCaoNam
             // 

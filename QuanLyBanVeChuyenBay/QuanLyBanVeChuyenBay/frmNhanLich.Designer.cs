@@ -62,7 +62,7 @@
             this.cmbTenSBTrungGian = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.ColTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNote = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.txtNgayBay = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
@@ -114,15 +114,16 @@
             // 
             // cmbSanBayDi
             // 
+            this.cmbSanBayDi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSanBayDi.FormattingEnabled = true;
             this.cmbSanBayDi.Location = new System.Drawing.Point(152, 120);
             this.cmbSanBayDi.Name = "cmbSanBayDi";
             this.cmbSanBayDi.Size = new System.Drawing.Size(191, 21);
             this.cmbSanBayDi.TabIndex = 13;
-            this.cmbSanBayDi.ValueMemberChanged += new System.EventHandler(this.cmbSanBayDi_ValueMemberChanged);
             // 
             // cmbSanBayDen
             // 
+            this.cmbSanBayDen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSanBayDen.FormattingEnabled = true;
             this.cmbSanBayDen.Location = new System.Drawing.Point(152, 172);
             this.cmbSanBayDen.Name = "cmbSanBayDen";
@@ -137,7 +138,6 @@
             this.label6.Size = new System.Drawing.Size(96, 13);
             this.label6.TabIndex = 18;
             this.label6.Text = "Ngày Bay(D/M/Y):";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // label7
             // 
@@ -158,7 +158,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(398, 74);
+            this.label8.Location = new System.Drawing.Point(385, 74);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(84, 13);
             this.label8.TabIndex = 21;
@@ -167,7 +167,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(398, 123);
+            this.label9.Location = new System.Drawing.Point(385, 128);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(84, 13);
             this.label9.TabIndex = 22;
@@ -246,12 +246,11 @@
             this.tSbtnHelp.Name = "tSbtnHelp";
             this.tSbtnHelp.Size = new System.Drawing.Size(52, 22);
             this.tSbtnHelp.Text = "&Help";
-            this.tSbtnHelp.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(401, 170);
+            this.label2.Location = new System.Drawing.Point(385, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 29;
@@ -259,7 +258,7 @@
             // 
             // txtGiaVe
             // 
-            this.txtGiaVe.Location = new System.Drawing.Point(488, 168);
+            this.txtGiaVe.Location = new System.Drawing.Point(488, 173);
             this.txtGiaVe.Name = "txtGiaVe";
             this.txtGiaVe.Size = new System.Drawing.Size(191, 20);
             this.txtGiaVe.TabIndex = 30;
@@ -302,7 +301,6 @@
             this.dataSanBayTG.Name = "dataSanBayTG";
             this.dataSanBayTG.Size = new System.Drawing.Size(645, 124);
             this.dataSanBayTG.TabIndex = 46;
-            this.dataSanBayTG.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataSanBayTG_CellContentClick);
             // 
             // MaTrungGian
             // 
@@ -329,19 +327,21 @@
             this.ColNote.HeaderText = "Ghi chú";
             this.ColNote.Name = "ColNote";
             // 
-            // txtNgayBay
+            // dateTimePicker1
             // 
-            this.txtNgayBay.Location = new System.Drawing.Point(488, 220);
-            this.txtNgayBay.Name = "txtNgayBay";
-            this.txtNgayBay.Size = new System.Drawing.Size(191, 20);
-            this.txtNgayBay.TabIndex = 48;
+            this.dateTimePicker1.CustomFormat = "dd/MM/yyyy  hh:mm tt";
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dateTimePicker1.Location = new System.Drawing.Point(487, 221);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(191, 20);
+            this.dateTimePicker1.TabIndex = 48;
             // 
             // frmNhanLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(723, 481);
-            this.Controls.Add(this.txtNgayBay);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.dataSanBayTG);
             this.Controls.Add(this.txtGiaVe);
@@ -408,10 +408,10 @@
         private System.Windows.Forms.BindingSource qLBanVeChuyenBayDataSetBindingSource;
         private System.Windows.Forms.BindingSource qLBanVeChuyenBayDataSetBindingSource1;
         private System.Windows.Forms.DataGridView dataSanBayTG;
-        private System.Windows.Forms.TextBox txtNgayBay;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaTrungGian;
         private System.Windows.Forms.DataGridViewComboBoxColumn cmbTenSBTrungGian;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTime;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNote;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
     }
 }

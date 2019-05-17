@@ -43,5 +43,10 @@ namespace QuanLyBanVeChuyenBay
             this.Hide();
             danhsachcb.Show();
         }
+
+        private void txtHangVe_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -152,3 +152,13 @@ join TINHTRANG TT on CB.MaCB =TT.MaCB
 
 select* from Ve
 
+
+create table THAMSO
+(
+MaThamSo varchar(10) primary key,
+SoSanBayTGMax int not null,
+TGBayToiDa int not null ,
+TGChamNhatDatVe int not null ,
+TGChamNhatHuyVe int not null
+)
+

@@ -22,10 +22,15 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.nhanlich = frmNhanLich;
         }
+
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+
         string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+
+
         private void Connection()
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
@@ -69,7 +74,7 @@ namespace QuanLyBanVeChuyenBay
         {
             if (txtMaSB.Text.Length != 0 && txtTenSB.Text.Length!=0)
             {
-                SqlConnection conn = new SqlConnection(strconn);
+                SqlConnection conn = new SqlConnection(strconn2);
                 string MASB = txtMaSB.Text;
                 string TENSB = txtTenSB.Text;
 
@@ -118,7 +123,7 @@ namespace QuanLyBanVeChuyenBay
         private void btnXoaSanBay_Click(object sender, EventArgs e)
         {
 
-            SqlConnection conn = new SqlConnection(strconn);
+            SqlConnection conn = new SqlConnection(strconn2);
            
             
             try

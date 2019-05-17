@@ -14,30 +14,31 @@ namespace QuanLyBanVeChuyenBay
     public partial class frmBanVe : Form
     {
         Form tracuu;
+
         public frmBanVe(Form frmTraCuu)
         {
             InitializeComponent();
             this.tracuu = frmTraCuu;
         }
 
-        private void textBox7_TextChanged(object sender, EventArgs e)
-        {
+        
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        }
-
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
         float DonGia;
         int GheTrongH1, GheTrongH2 ;
         bool ConGheH1 , ConGheH2,  DatVe = true;
         string MAVE, MAKH;//MAVE luu gia tri ma ve cuoi cung.
         private void Connection()
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            ////////////////////////////////////////////////////////////////////////
+            SqlConnection conn = new SqlConnection(strconn2);
 
             try
             {
                 conn.Open();
                 //Lay ma ve cuoi cung va cap nhat them 1
+
                 string sql = "select Max(MaVe) as LastID from VE";
                 SqlCommand command = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
@@ -49,7 +50,8 @@ namespace QuanLyBanVeChuyenBay
                     foreach (DataColumn col in table.Columns)
                     {
                         MAVE = row[col].ToString();
-
+                        if (MAVE == "")
+                            MAVE = "VE00";
                     }
                 }
                 string mave = MAVE.Substring(2);
@@ -77,7 +79,8 @@ namespace QuanLyBanVeChuyenBay
                     foreach (DataColumn col in table2.Columns)
                     {
                         MAKH = row[col].ToString();
-
+                        if (MAKH == "")
+                            MAKH = "KH00";
                     }
                 }
                 string makh = MAKH.Substring(2);
@@ -115,19 +118,21 @@ namespace QuanLyBanVeChuyenBay
             Connection();
             GheTrongH1 = 0;
             GheTrongH2 = 0;
-            DonGia = frmTraCuu.DONGIA;
+           
             ConGheH1 = true;
             ConGheH2 = true;
-            DatVe = true;
-            txtMaCB.Text = frmTraCuu.macb.ToString();
-            
-
-        }
-
-        private void btnThoat_Click(object sender, EventArgs e)
-        {
            
+            DatVe = true;
+            if (frmTraCuu.macb.ToString() != "")
+            { txtMaCB.Text = frmTraCuu.macb.ToString();
+                DonGia = frmTraCuu.DONGIA; }
+            else if (frmDanSachCB.macb.ToString()!="")
+            {
+                txtMaCB.Text = frmDanSachCB.macb.ToString();
+                DonGia = frmDanSachCB.DonGia;
+            }
         }
+        
 
         private void btnDanhSachCB_Click(object sender, EventArgs e)
         {
@@ -143,6 +148,11 @@ namespace QuanLyBanVeChuyenBay
             phieudatcho.Show();
         }
 
+        private void btnThoat_Click_1(object sender, EventArgs e)
+        {     
+            this.Close();
+        }
+
         private void tSbtnDanhSachCB_Click(object sender, EventArgs e)
         {
             Form danhsachcb = new frmDanSachCB(this);
@@ -154,7 +164,8 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection(strconn);
+            ////////////////////////////////////////////////////////////////////////
+            SqlConnection conn = new SqlConnection(strconn2);
 
             try
             {
@@ -226,8 +237,8 @@ namespace QuanLyBanVeChuyenBay
                         + txtMaCB.Text + "' ";
                     SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
                     command3.ExecuteNonQuery();
-                    this.Hide();
-                    tracuu.Show();
+                    //this.Hide();
+                    //tracuu.Show();
 
                 }
                 else MessageBox.Show("Không còn ghế trống hạng "+ HangVe +" để đặt");
@@ -251,14 +262,10 @@ namespace QuanLyBanVeChuyenBay
         }
 
 
-        private void cmbMaCB_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
         private void cmbHangVe_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-             SqlConnection conn = new SqlConnection(strconn);
+            ////////////////////////////////////////////////////////////////////////
+             SqlConnection conn = new SqlConnection(strconn2);
 
             try
             {

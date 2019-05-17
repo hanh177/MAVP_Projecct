@@ -19,16 +19,7 @@ namespace QuanLyBanVeChuyenBay
             this.baocaothang = frmBaoCaoThang;
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
-        {
-
-        }
-
+       
         private void frmBaoCaoNam_Load(object sender, EventArgs e)
         {
 

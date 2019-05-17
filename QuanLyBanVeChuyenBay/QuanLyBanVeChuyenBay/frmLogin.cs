@@ -17,11 +17,7 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-       
+    
         private void frmLogin_Load(object sender, EventArgs e)
         {
 
@@ -52,11 +48,7 @@ namespace QuanLyBanVeChuyenBay
             
         }
 
-        private void txtUserName_TextChanged(object sender, EventArgs e)
-        {
-
-            
-        }
+       
 
         private void btnCancel_Click(object sender, EventArgs e)
         {

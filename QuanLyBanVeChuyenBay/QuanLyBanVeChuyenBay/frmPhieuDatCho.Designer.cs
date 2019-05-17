@@ -75,7 +75,7 @@
             this.tSbtnHelp});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(802, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(821, 25);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -125,9 +125,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(303, 78);
+            this.groupBox2.Location = new System.Drawing.Point(291, 78);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 255);
+            this.groupBox2.Size = new System.Drawing.Size(270, 255);
             this.groupBox2.TabIndex = 31;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hành Khách";
@@ -208,7 +208,7 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Location = new System.Drawing.Point(12, 78);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 255);
+            this.groupBox1.Size = new System.Drawing.Size(272, 255);
             this.groupBox1.TabIndex = 30;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chuyến Bay";
@@ -315,7 +315,7 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(567, 78);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(223, 255);
+            this.groupBox3.Size = new System.Drawing.Size(242, 255);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vé";
@@ -340,6 +340,7 @@
             this.txtHangVe.Name = "txtHangVe";
             this.txtHangVe.Size = new System.Drawing.Size(100, 20);
             this.txtHangVe.TabIndex = 9;
+            this.txtHangVe.TextChanged += new System.EventHandler(this.txtHangVe_TextChanged);
             // 
             // label14
             // 
@@ -370,7 +371,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 426);
+            this.ClientSize = new System.Drawing.Size(821, 426);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.txtNhapMaVe);
             this.Controls.Add(this.label14);

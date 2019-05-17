@@ -52,6 +52,7 @@
             this.btnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
             this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.tSbtnPhieuDatCho = new System.Windows.Forms.ToolStripButton();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -84,6 +85,7 @@
             // 
             // cmbHangVe
             // 
+            this.cmbHangVe.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbHangVe.FormattingEnabled = true;
             this.cmbHangVe.Items.AddRange(new object[] {
             "1",
@@ -158,7 +160,7 @@
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Location = new System.Drawing.Point(303, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(258, 277);
+            this.groupBox2.Size = new System.Drawing.Size(279, 277);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hành Khách";
@@ -177,7 +179,6 @@
             this.txtHoTen.Name = "txtHoTen";
             this.txtHoTen.Size = new System.Drawing.Size(100, 20);
             this.txtHoTen.TabIndex = 7;
-            this.txtHoTen.TextChanged += new System.EventHandler(this.textBox7_TextChanged);
             // 
             // txtCMND
             // 
@@ -231,7 +232,7 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(241, 353);
+            this.btnDatVe.Location = new System.Drawing.Point(141, 353);
             this.btnDatVe.Name = "btnDatVe";
             this.btnDatVe.Size = new System.Drawing.Size(83, 41);
             this.btnDatVe.TabIndex = 2;
@@ -277,11 +278,22 @@
             this.tSbtnPhieuDatCho.Text = "&Phiếu Đặt Chỗ";
             this.tSbtnPhieuDatCho.Click += new System.EventHandler(this.tSbtnPhieuDatCho_Click);
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(381, 353);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(83, 41);
+            this.btnThoat.TabIndex = 30;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click_1);
+            // 
             // frmBanVe
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 423);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnDatVe);
             this.Controls.Add(this.groupBox2);
@@ -326,5 +338,6 @@
         private System.Windows.Forms.ToolStripButton tSbtnPhieuDatCho;
         private System.Windows.Forms.ComboBox cmbHangVe;
         private System.Windows.Forms.TextBox txtMaCB;
+        private System.Windows.Forms.Button btnThoat;
     }
 }
