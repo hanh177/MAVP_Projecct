@@ -21,9 +21,10 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         private void Connection()
         {
             ///////////////////////////////////////////////////////////////////////////////////
@@ -88,7 +89,7 @@ namespace QuanLyBanVeChuyenBay
             macb = "";
             DONGIA = 0;
             Connection();
-            dataDanhSachCB.DataSource="";
+            //dataDanhSachCB.ClearSelection();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -109,27 +110,27 @@ namespace QuanLyBanVeChuyenBay
         {
 
         }
-         
+        DataTable table = new DataTable();
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
+            table.Clear();
            ////////////////////////////////////////////////////////////////////////////////////////////////////
             SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
-                if (cmbMaCB.SelectedIndex!=-1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text=="")
-               //Chi tim kiem bang MaCB
+                if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+                //Chi tim kiem bang MaCB
                 {
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.MaCB=@MaCB";
                     SqlCommand command = new SqlCommand(sql, conn);
-                    command.Parameters.AddWithValue("@MaCB",MACB);
+                    command.Parameters.AddWithValue("@MaCB", MACB);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
                     adapter.Fill(table);
-                   dataDanhSachCB.DataSource = table; 
+                    dataDanhSachCB.DataSource = table;
                 }
-                else if(cmbSanBayDi.SelectedIndex!=-1 &&cmbSanBayDen.SelectedIndex!=-1 && cmbMaCB.SelectedIndex == -1 && txtNgayBay.Text == "")
+                else if (cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex != -1 && cmbMaCB.SelectedIndex == -1 && txtNgayBay.Text == "")
                 //Chi tim kiem bang SanBayDi va SanBayDen
                 {
                     string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
@@ -139,25 +140,34 @@ namespace QuanLyBanVeChuyenBay
                     command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
                     command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
                     adapter.Fill(table);
-                  
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbSanBayDi.SelectedIndex = -1;
+                        cmbSanBayDen.SelectedIndex = -1;
+                        return;
+                    }
                     dataDanhSachCB.DataSource = table;
                 }
-                 else if(txtNgayBay.Text!="" && cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1)
+                else if (txtNgayBay.Text != "" && cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1)
                 //Chi tim kiem bang NgayBay
-                 {
-                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio";
-                     SqlCommand command = new SqlCommand(sql, conn);
-                     command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
-
-                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                     DataTable table = new DataTable();
-                     adapter.Fill(table);
-                     dataDanhSachCB.DataSource = table;
-                 }
-                else if(cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+                {
+                    DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio";
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(table);
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNgayBay.Text = "";
+                        return;
+                    }
+                    dataDanhSachCB.DataSource = table;
+                }
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
                 //chi tim kiem bang san bay di
                 {
                     string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
@@ -165,8 +175,13 @@ namespace QuanLyBanVeChuyenBay
                     SqlCommand command = new SqlCommand(sql, conn);
                     command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
                     adapter.Fill(table);
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbSanBayDi.SelectedIndex = -1;
+                        return;
+                    }
                     dataDanhSachCB.DataSource = table;
                 }
                 else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
@@ -177,53 +192,77 @@ namespace QuanLyBanVeChuyenBay
                     SqlCommand command = new SqlCommand(sql, conn);
                     command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
                     adapter.Fill(table);
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbSanBayDen.SelectedIndex = -1;
+                        return;
+                    }
                     dataDanhSachCB.DataSource = table;
                 }
-                 else if(cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text=="")
+                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
                 //Tim kiem bang MaCB va SanBayDen
-                 {
+                {
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.MaCB=@MaCB and CB.SanBayDen=@SanBayDen";
-                     SqlCommand command = new SqlCommand(sql, conn);
-                     command.Parameters.AddWithValue("@MaCB", MACB);
-                     command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
-                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                     DataTable table = new DataTable();
-                     adapter.Fill(table);
-                     dataDanhSachCB.DataSource = table;
-                 }
-                 else if(cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text != "")
-                 //Tim kiem bang MaCB va NgayBay
-                 {
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@MaCB", MACB);
+                    command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(table);
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbMaCB.SelectedIndex = -1;
+                        cmbSanBayDen.SelectedIndex = -1;
+                        return;
+                    }
+                    dataDanhSachCB.DataSource = table;
+                }
+                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text != "")
+                //Tim kiem bang MaCB va NgayBay
+                {
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio and CB.MaCB=@MaCB";
-                     SqlCommand command = new SqlCommand(sql, conn);
-                     command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
-                     command.Parameters.AddWithValue("@MaCB", MACB);
-                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                     DataTable table = new DataTable();
-                     adapter.Fill(table);
-                     dataDanhSachCB.DataSource = table;
-                 }
-                 else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text != "")
-                 //Tim kiem bang NgayBay va SanBayDen
-                 {
-                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                    string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio and CB.MaCB=@MaCB";
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
+                    command.Parameters.AddWithValue("@MaCB", MACB);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(table);
+                    if(table.Rows.Count==0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        cmbMaCB.SelectedIndex = -1;
+                        txtNgayBay.Text = "";
+                        return;
+                    }
+                    dataDanhSachCB.DataSource = table;
+                }
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text != "")
+                //Tim kiem bang NgayBay va SanBayDen
+                {
+                    DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.SanBayDen=@SanBayDen and CB.NgayGio=@NgayGio";
-                     SqlCommand command = new SqlCommand(sql, conn);
-                     command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
-                     command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
-                     SqlDataAdapter adapter = new SqlDataAdapter(command);
-                     DataTable table = new DataTable();
-                     adapter.Fill(table);
-                     dataDanhSachCB.DataSource = table;
-                 }
-
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
+                    command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    adapter.Fill(table);
+                    if (table.Rows.Count == 0)
+                    {
+                        MessageBox.Show("Không tìm thấy thông tin mà bạn đang tìm kiếm.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        txtNgayBay.Text = "";
+                        cmbSanBayDen.SelectedIndex = -1;
+                        return;
+                    }
+                    dataDanhSachCB.DataSource = table;
+                }
+                else
+                    MessageBox.Show("Cú pháp tra cứu sai, vui lòng thực hiện lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbMaCB.SelectedIndex = -1;
                 txtNgayBay.Text = "";
                 cmbSanBayDi.SelectedIndex = -1;
@@ -316,21 +355,15 @@ namespace QuanLyBanVeChuyenBay
                 Form banve = new frmBanVe(this);
                 banve.ShowDialog();
                 this.Connection();
-
-                // dataDanhSachCB.Rows[0].Cells[0].Value = "";
-                //---------------------------------------------------------------------------------------------------------------------------------------//
-                //doan nay se code de load lai du lieu o form tra cuu sau khi dat ve nha //
-                //
-                //
-                //
-                //
                 this.Show();
+                table.Clear();
             }
             else if( SLGHETRONG == 0  )
             {
                 MessageBox.Show("Không thể đặt thêm vé vì chuyến bay đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+           
         }
     }
 }

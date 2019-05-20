@@ -23,9 +23,9 @@ namespace QuanLyBanVeChuyenBay
 
         string MACHUYENBAYCUOI;
 
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -47,7 +47,7 @@ namespace QuanLyBanVeChuyenBay
                 cmbSanBayDi.DisplayMember = "TenSanBay";
                 cmbSanBayDi.ValueMember = "MaSanBay";
               
-               cmbSanBayDen.DataSource = table2;
+                cmbSanBayDen.DataSource = table2;
                 cmbSanBayDen.DisplayMember = "TenSanBay";
                 cmbSanBayDen.ValueMember = "MaSanBay";
 
@@ -56,8 +56,6 @@ namespace QuanLyBanVeChuyenBay
                 cmbTenSBTrungGian.ValueMember = "MaSanBay";
 
                 command.ExecuteNonQuery();
-
-
 
                 //Lay ma chuyen bay cuoi cung va cap nhat len 1
                 string sql2 = "select Max(MaCB) as LastID from CHUYENBAY";
@@ -224,6 +222,7 @@ namespace QuanLyBanVeChuyenBay
                     command3.Parameters.AddWithValue("@GhiChu", GHICHU);
 
                     command3.ExecuteNonQuery();
+
                 }
                 
 

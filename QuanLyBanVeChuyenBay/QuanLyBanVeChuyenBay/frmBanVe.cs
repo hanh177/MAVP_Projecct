@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace QuanLyBanVeChuyenBay
 {
@@ -22,16 +23,16 @@ namespace QuanLyBanVeChuyenBay
         }
 
         
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
         float DonGia;
         int GheTrongH1, GheTrongH2 ;
         bool ConGheH1 , ConGheH2,  DatVe = true;
-        string MAVE, MAKH;//MAVE luu gia tri ma ve cuoi cung.
+        string MAVE, MAKH, MAPHIEU;//MAVE luu gia tri ma ve cuoi cung.
         private void Connection()
         {
-            ////////////////////////////////////////////////////////////////////////
+            
             SqlConnection conn = new SqlConnection(strconn2);
 
             try
@@ -45,15 +46,15 @@ namespace QuanLyBanVeChuyenBay
                 DataSet dataSet = new DataSet();
                 adapter.Fill(dataSet, "MaVe");
                 DataTable table = dataSet.Tables["MaVe"];
-                foreach (DataRow row in table.Rows)
-                {
-                    foreach (DataColumn col in table.Columns)
+                    foreach (DataRow row in table.Rows)
                     {
-                        MAVE = row[col].ToString();
-                        if (MAVE == "")
-                            MAVE = "VE00";
+                        foreach (DataColumn col in table.Columns)
+                        {
+                            MAVE = row[col].ToString();
+                            if (MAVE == "")
+                                MAVE = "VE00";
+                        }
                     }
-                }
                 string mave = MAVE.Substring(2);
                 int sove= Int32.Parse(mave);
                 sove = sove + 1;
@@ -72,19 +73,19 @@ namespace QuanLyBanVeChuyenBay
                 SqlCommand command2 = new SqlCommand(sql2, conn);
                 SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
                 DataSet dataSet2 = new DataSet();
-                adapter.Fill(dataSet, "MaHanhKhach");
-                DataTable table2 = dataSet.Tables["MaHanhKhach"];
+                adapter2.Fill(dataSet2, "MaHanhKhach");
+                DataTable table2 = dataSet2.Tables["MaHanhKhach"];
                 foreach (DataRow row in table2.Rows)
                 {
                     foreach (DataColumn col in table2.Columns)
                     {
                         MAKH = row[col].ToString();
-                        if (MAKH == "")
+                      if (MAKH == "")
                             MAKH = "KH00";
                     }
                 }
                 string makh = MAKH.Substring(2);
-                int sokh = Int32.Parse(mave);
+                int sokh = Int32.Parse(makh);
                 sokh = sokh + 1;
                 bool flagkh = false;
                 if (sokh < 10)
@@ -176,9 +177,11 @@ namespace QuanLyBanVeChuyenBay
                 string HoTen = txtHoTen.Text;
                 string CMND = txtCMND.Text;
                 string SDT = txtSDT.Text;
-
+                string MaCB = txtMaCB.Text;
+                string NgayDat = System.DateTime.Now.ToShortDateString();
+                
                 conn.Open();
-
+                
                 //Kiem tra con ghe trong de dat hay khong
                 int GheDatH1 = 0;
                 int GheDatH2 = 0;
@@ -233,13 +236,50 @@ namespace QuanLyBanVeChuyenBay
 
                     string sqlQuery3 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 - " + GheDatH1 +
                         ", SLGheTrongH2 = SLGheTrongH2 -" + GheDatH2 +
-                        ", TongSoGhe = TongSoGhe - 1, TongSoGheTrong = TongSoGheTrong - 1, TongSoGheDat =TongSoGheDat + 1 where MaCB = '"
+                        ", TongSoGhe = TongSoGhe, TongSoGheTrong = TongSoGheTrong - 1, TongSoGheDat =TongSoGheDat + 1 where MaCB = '"
                         + txtMaCB.Text + "' ";
                     SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
                     command3.ExecuteNonQuery();
-                    //this.Hide();
-                    //tracuu.Show();
 
+                    // insert vao bang PHIEUDATCHO
+                    //Lay MaPhieu
+                    string MaPhieu;
+                    string sqlQuery4 = "select Max(MaPhieu) as LastID from PHIEUDATCHO";
+                    SqlCommand command4 = new SqlCommand(sqlQuery4, conn);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command4);
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet, "MaPhieu");
+                    DataTable table = dataSet.Tables["MaPhieu"];
+                    foreach (DataRow row in table.Rows)
+                    {
+                        foreach (DataColumn col in table.Columns)
+                        {
+                            MAPHIEU = row[col].ToString();
+                            if (MAPHIEU == "")
+                                MAPHIEU = "PH00";
+                        }
+                    }
+                    string maphieu = MAPHIEU.Substring(2);
+                    int sophieu = Int32.Parse(maphieu);
+                    sophieu = sophieu + 1;
+                    bool flag = false;
+                    if (sophieu < 10)
+                        flag = true;
+                    if (flag == true)
+                    {
+                        MaPhieu = "PH0" + sophieu.ToString();
+                    }
+                    else
+                        MaPhieu = "PH" + sophieu.ToString();
+                    
+                    string sqlQuery5 = "insert into PHIEUDATCHO values ( " + "@MaPhieu, @MaCB, @MaHanhKhach, @MaVe,@NgayDat) ";
+                    SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
+                    command5.Parameters.AddWithValue("@MaPhieu", MaPhieu);
+                    command5.Parameters.AddWithValue("@MaCB", MaCB);
+                    command5.Parameters.AddWithValue("@MaHanhKhach", MaHanhKhach);
+                    command5.Parameters.AddWithValue("@MaVe", MaVe);
+                    command5.Parameters.AddWithValue("@NgayDat", NgayDat);
+                    command5.ExecuteNonQuery();
                 }
                 else MessageBox.Show("Không còn ghế trống hạng "+ HangVe +" để đặt");
             }
