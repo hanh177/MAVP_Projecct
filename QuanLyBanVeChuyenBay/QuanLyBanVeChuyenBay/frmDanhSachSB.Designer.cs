@@ -35,12 +35,12 @@
             this.txtSBmax = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnXoaSanBay = new System.Windows.Forms.Button();
             this.txtTenSB = new System.Windows.Forms.TextBox();
             this.txtMaSB = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.btnXoaSanBay = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachSB)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -63,6 +63,7 @@
             this.ColMaSB.DataPropertyName = "MaSanBay";
             this.ColMaSB.HeaderText = "Mã SB";
             this.ColMaSB.Name = "ColMaSB";
+            this.ColMaSB.ReadOnly = true;
             this.ColMaSB.Width = 120;
             // 
             // ColTenSb
@@ -71,6 +72,7 @@
             this.ColTenSb.DataPropertyName = "TenSanBay";
             this.ColTenSb.HeaderText = "Tên SB";
             this.ColTenSb.Name = "ColTenSb";
+            this.ColTenSb.ReadOnly = true;
             // 
             // btnThemSB
             // 
@@ -112,6 +114,16 @@
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm sân bay";
+            // 
+            // btnXoaSanBay
+            // 
+            this.btnXoaSanBay.Location = new System.Drawing.Point(365, 52);
+            this.btnXoaSanBay.Name = "btnXoaSanBay";
+            this.btnXoaSanBay.Size = new System.Drawing.Size(92, 23);
+            this.btnXoaSanBay.TabIndex = 4;
+            this.btnXoaSanBay.Text = "Xoá Sân Bay";
+            this.btnXoaSanBay.UseVisualStyleBackColor = true;
+            this.btnXoaSanBay.Click += new System.EventHandler(this.btnXoaSanBay_Click);
             // 
             // txtTenSB
             // 
@@ -155,16 +167,6 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // btnXoaSanBay
-            // 
-            this.btnXoaSanBay.Location = new System.Drawing.Point(365, 52);
-            this.btnXoaSanBay.Name = "btnXoaSanBay";
-            this.btnXoaSanBay.Size = new System.Drawing.Size(92, 23);
-            this.btnXoaSanBay.TabIndex = 4;
-            this.btnXoaSanBay.Text = "Xoá Sân Bay";
-            this.btnXoaSanBay.UseVisualStyleBackColor = true;
-            this.btnXoaSanBay.Click += new System.EventHandler(this.btnXoaSanBay_Click);
-            // 
             // frmDanhSachSB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -175,6 +177,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSBmax);
             this.Controls.Add(this.dataDanhSachSB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MinimizeBox = false;
             this.Name = "frmDanhSachSB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Sân Bay";

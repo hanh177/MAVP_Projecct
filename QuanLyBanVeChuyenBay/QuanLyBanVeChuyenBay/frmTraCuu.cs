@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         private void Connection()
         {
             ///////////////////////////////////////////////////////////////////////////////////
@@ -114,14 +114,16 @@ namespace QuanLyBanVeChuyenBay
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             table.Clear();
-           ////////////////////////////////////////////////////////////////////////////////////////////////////
             SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
-                if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+
                 //Chi tim kiem bang MaCB
+                if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+               
                 {
+                    
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.MaCB=@MaCB";
                     SqlCommand command = new SqlCommand(sql, conn);
@@ -130,8 +132,10 @@ namespace QuanLyBanVeChuyenBay
                     adapter.Fill(table);
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex != -1 && cmbMaCB.SelectedIndex == -1 && txtNgayBay.Text == "")
+
                 //Chi tim kiem bang SanBayDi va SanBayDen
+                else if (cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex != -1 && cmbMaCB.SelectedIndex == -1 && txtNgayBay.Text == "")
+               
                 {
                     string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
@@ -150,8 +154,10 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (txtNgayBay.Text != "" && cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1)
+
                 //Chi tim kiem bang NgayBay
+                else if (txtNgayBay.Text != "" && cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1)
+              
                 {
                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where  CB.NgayGio=@NgayGio";
@@ -167,8 +173,9 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
                 //chi tim kiem bang san bay di
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")
+               
                 {
                     string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.SanBayDi=@SanBayDi";
@@ -184,8 +191,10 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
+                
                 //chi tim kiem bang san bay den
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
+              
                 {
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
                     string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, SB_TG.TenSanBay SanBayTG, TG.ThoiGianDung, CB.NgayGio,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB where CB.SanBayDen=@SanBayDen";
@@ -201,8 +210,10 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
+                
                 //Tim kiem bang MaCB va SanBayDen
+                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text == "")
+              
                 {
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
@@ -221,8 +232,10 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text != "")
+                
                 //Tim kiem bang MaCB va NgayBay
+                else if (cmbMaCB.SelectedIndex != -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text != "")
+             
                 {
                     string MACB = cmbMaCB.SelectedValue.ToString();
                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
@@ -241,8 +254,10 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text != "")
+                
                 //Tim kiem bang NgayBay va SanBayDen
+                else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex != -1 && txtNgayBay.Text != "")
+               
                 {
                     DateTime NGAYBAY = DateTime.ParseExact(txtNgayBay.Text, "dd/MM/yyyy", CultureInfo.InvariantCulture);
                     string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
@@ -261,7 +276,9 @@ namespace QuanLyBanVeChuyenBay
                     }
                     dataDanhSachCB.DataSource = table;
                 }
-                else
+
+
+               else
                     MessageBox.Show("Cú pháp tra cứu sai, vui lòng thực hiện lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 cmbMaCB.SelectedIndex = -1;
                 txtNgayBay.Text = "";

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmTraCuu));
             this.btnTraCuu = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cmbMaCB = new System.Windows.Forms.ComboBox();
             this.txtNgayBay = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbSanBayDen = new System.Windows.Forms.ComboBox();
@@ -56,7 +57,6 @@
             this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongh1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cmbMaCB = new System.Windows.Forms.ComboBox();
             this.btnDatVe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -91,9 +91,17 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thông Tin Tra Cứu";
             // 
+            // cmbMaCB
+            // 
+            this.cmbMaCB.FormattingEnabled = true;
+            this.cmbMaCB.Location = new System.Drawing.Point(137, 19);
+            this.cmbMaCB.Name = "cmbMaCB";
+            this.cmbMaCB.Size = new System.Drawing.Size(191, 21);
+            this.cmbMaCB.TabIndex = 53;
+            // 
             // txtNgayBay
             // 
-            this.txtNgayBay.Location = new System.Drawing.Point(129, 60);
+            this.txtNgayBay.Location = new System.Drawing.Point(137, 56);
             this.txtNgayBay.Name = "txtNgayBay";
             this.txtNgayBay.Size = new System.Drawing.Size(191, 20);
             this.txtNgayBay.TabIndex = 52;
@@ -101,16 +109,16 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(8, 60);
+            this.label6.Location = new System.Drawing.Point(6, 63);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(56, 13);
+            this.label6.Size = new System.Drawing.Size(125, 13);
             this.label6.TabIndex = 51;
-            this.label6.Text = "Ngày Bay:";
+            this.label6.Text = "Ngày Bay (dd/MM/yyyy):";
             // 
             // cmbSanBayDen
             // 
             this.cmbSanBayDen.FormattingEnabled = true;
-            this.cmbSanBayDen.Location = new System.Drawing.Point(550, 54);
+            this.cmbSanBayDen.Location = new System.Drawing.Point(550, 55);
             this.cmbSanBayDen.Name = "cmbSanBayDen";
             this.cmbSanBayDen.Size = new System.Drawing.Size(191, 21);
             this.cmbSanBayDen.TabIndex = 49;
@@ -118,7 +126,7 @@
             // cmbSanBayDi
             // 
             this.cmbSanBayDi.FormattingEnabled = true;
-            this.cmbSanBayDi.Location = new System.Drawing.Point(550, 27);
+            this.cmbSanBayDi.Location = new System.Drawing.Point(550, 19);
             this.cmbSanBayDi.Name = "cmbSanBayDi";
             this.cmbSanBayDi.Size = new System.Drawing.Size(191, 21);
             this.cmbSanBayDi.TabIndex = 48;
@@ -126,7 +134,7 @@
             // btnSanBayDen
             // 
             this.btnSanBayDen.AutoSize = true;
-            this.btnSanBayDen.Location = new System.Drawing.Point(429, 57);
+            this.btnSanBayDen.Location = new System.Drawing.Point(459, 63);
             this.btnSanBayDen.Name = "btnSanBayDen";
             this.btnSanBayDen.Size = new System.Drawing.Size(73, 13);
             this.btnSanBayDen.TabIndex = 47;
@@ -135,7 +143,7 @@
             // SanBayDi
             // 
             this.SanBayDi.AutoSize = true;
-            this.SanBayDi.Location = new System.Drawing.Point(429, 30);
+            this.SanBayDi.Location = new System.Drawing.Point(459, 27);
             this.SanBayDi.Name = "SanBayDi";
             this.SanBayDi.Size = new System.Drawing.Size(63, 13);
             this.SanBayDi.TabIndex = 46;
@@ -144,7 +152,7 @@
             // MaCB
             // 
             this.MaCB.AutoSize = true;
-            this.MaCB.Location = new System.Drawing.Point(8, 30);
+            this.MaCB.Location = new System.Drawing.Point(6, 27);
             this.MaCB.Name = "MaCB";
             this.MaCB.Size = new System.Drawing.Size(85, 13);
             this.MaCB.TabIndex = 44;
@@ -306,14 +314,6 @@
             this.ColGheTrongH2.Name = "ColGheTrongH2";
             this.ColGheTrongH2.Width = 40;
             // 
-            // cmbMaCB
-            // 
-            this.cmbMaCB.FormattingEnabled = true;
-            this.cmbMaCB.Location = new System.Drawing.Point(129, 22);
-            this.cmbMaCB.Name = "cmbMaCB";
-            this.cmbMaCB.Size = new System.Drawing.Size(191, 21);
-            this.cmbMaCB.TabIndex = 53;
-            // 
             // btnDatVe
             // 
             this.btnDatVe.Location = new System.Drawing.Point(276, 506);
@@ -335,6 +335,8 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmTraCuu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tra cứu thông tin chuyến bay";

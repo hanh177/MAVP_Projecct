@@ -68,7 +68,6 @@
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Chọn năm:";
-            
             // 
             // dataDoanhThuNam
             // 
@@ -130,6 +129,8 @@
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.dataDoanhThuNam);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmBaoCaoNam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Báo Cáo Doanh Thu Năm";

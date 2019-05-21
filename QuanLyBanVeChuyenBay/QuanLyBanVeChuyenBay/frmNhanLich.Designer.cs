@@ -114,6 +114,7 @@
             // 
             // cmbSanBayDi
             // 
+            this.cmbSanBayDi.BackColor = System.Drawing.SystemColors.Window;
             this.cmbSanBayDi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSanBayDi.FormattingEnabled = true;
             this.cmbSanBayDi.Location = new System.Drawing.Point(152, 120);
@@ -363,6 +364,8 @@
             this.Controls.Add(this.SanBayDi);
             this.Controls.Add(this.txtMaCB);
             this.Controls.Add(this.MaCB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmNhanLich";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhận Lịch Chuyến Bay";

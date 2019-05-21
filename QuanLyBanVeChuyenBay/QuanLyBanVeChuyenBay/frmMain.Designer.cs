@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSuaDoiQD = new System.Windows.Forms.Button();
             this.btnDoanhThu = new System.Windows.Forms.Button();
-            this.btnXemPhieuDatCho = new System.Windows.Forms.Button();
+            this.btnDSKH = new System.Windows.Forms.Button();
             this.btnTraCuu = new System.Windows.Forms.Button();
             this.btnNhanLich = new System.Windows.Forms.Button();
             this.btnDanhSach = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.bánVéToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ectToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tSbtnDangXuat = new System.Windows.Forms.ToolStripButton();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -68,6 +68,16 @@
             this.groupBox1.Text = "Thông tin ";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(92, 138);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 18);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "label3";
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -80,7 +90,8 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(174, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 22);
@@ -92,7 +103,7 @@
             // 
             this.groupBox2.Controls.Add(this.btnSuaDoiQD);
             this.groupBox2.Controls.Add(this.btnDoanhThu);
-            this.groupBox2.Controls.Add(this.btnXemPhieuDatCho);
+            this.groupBox2.Controls.Add(this.btnDSKH);
             this.groupBox2.Controls.Add(this.btnTraCuu);
             this.groupBox2.Controls.Add(this.btnNhanLich);
             this.groupBox2.Controls.Add(this.btnDanhSach);
@@ -123,15 +134,15 @@
             this.btnDoanhThu.UseVisualStyleBackColor = true;
             this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
-            // btnXemPhieuDatCho
+            // btnDSKH
             // 
-            this.btnXemPhieuDatCho.Location = new System.Drawing.Point(366, 33);
-            this.btnXemPhieuDatCho.Name = "btnXemPhieuDatCho";
-            this.btnXemPhieuDatCho.Size = new System.Drawing.Size(91, 47);
-            this.btnXemPhieuDatCho.TabIndex = 1;
-            this.btnXemPhieuDatCho.Text = "Xem Phiểu đặt chỗ";
-            this.btnXemPhieuDatCho.UseVisualStyleBackColor = true;
-            this.btnXemPhieuDatCho.Click += new System.EventHandler(this.btnXemPhieuDatCho_Click);
+            this.btnDSKH.Location = new System.Drawing.Point(366, 33);
+            this.btnDSKH.Name = "btnDSKH";
+            this.btnDSKH.Size = new System.Drawing.Size(91, 47);
+            this.btnDSKH.TabIndex = 1;
+            this.btnDSKH.Text = "Danh Sách Khách Hàng";
+            this.btnDSKH.UseVisualStyleBackColor = true;
+            this.btnDSKH.Click += new System.EventHandler(this.btnXemPhieuDatCho_Click);
             // 
             // btnTraCuu
             // 
@@ -145,6 +156,7 @@
             // 
             // btnNhanLich
             // 
+            this.btnNhanLich.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnNhanLich.Location = new System.Drawing.Point(75, 33);
             this.btnNhanLich.Name = "btnNhanLich";
             this.btnNhanLich.Size = new System.Drawing.Size(91, 47);
@@ -246,16 +258,6 @@
             this.tSbtnDangXuat.Text = "&Đăng xuất";
             this.tSbtnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(92, 138);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 18);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "label3";
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -264,6 +266,8 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Trang chủ";
@@ -286,7 +290,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Button btnDanhSach;
         private System.Windows.Forms.Button btnDoanhThu;
-        private System.Windows.Forms.Button btnXemPhieuDatCho;
+        private System.Windows.Forms.Button btnDSKH;
         private System.Windows.Forms.Button btnNhanLich;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton tSbtnCaiDat;

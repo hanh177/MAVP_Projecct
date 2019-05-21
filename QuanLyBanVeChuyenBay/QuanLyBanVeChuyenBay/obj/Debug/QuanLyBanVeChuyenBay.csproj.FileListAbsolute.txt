@@ -78,3 +78,4 @@ D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenB
 D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csproj.CoreCompileInputs.cache
 D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.exe
 D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.pdb
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachKH.resources

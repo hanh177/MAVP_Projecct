@@ -291,7 +291,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(56, 133);
+            this.label3.Location = new System.Drawing.Point(46, 147);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 2;
@@ -300,7 +300,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(66, 85);
+            this.label2.Location = new System.Drawing.Point(56, 97);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 13);
             this.label2.TabIndex = 1;
@@ -309,7 +309,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(67, 42);
+            this.label1.Location = new System.Drawing.Point(57, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
@@ -326,14 +326,14 @@
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(12, 349);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(272, 160);
+            this.groupBox3.Size = new System.Drawing.Size(272, 181);
             this.groupBox3.TabIndex = 35;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Vé";
             // 
             // txtMaVe
             // 
-            this.txtMaVe.Location = new System.Drawing.Point(149, 35);
+            this.txtMaVe.Location = new System.Drawing.Point(139, 35);
             this.txtMaVe.Name = "txtMaVe";
             this.txtMaVe.ReadOnly = true;
             this.txtMaVe.Size = new System.Drawing.Size(100, 20);
@@ -341,7 +341,7 @@
             // 
             // txtGiaVe
             // 
-            this.txtGiaVe.Location = new System.Drawing.Point(149, 78);
+            this.txtGiaVe.Location = new System.Drawing.Point(139, 90);
             this.txtGiaVe.Name = "txtGiaVe";
             this.txtGiaVe.ReadOnly = true;
             this.txtGiaVe.Size = new System.Drawing.Size(100, 20);
@@ -350,7 +350,7 @@
             // 
             // txtHangVe
             // 
-            this.txtHangVe.Location = new System.Drawing.Point(149, 126);
+            this.txtHangVe.Location = new System.Drawing.Point(139, 140);
             this.txtHangVe.Name = "txtHangVe";
             this.txtHangVe.ReadOnly = true;
             this.txtHangVe.Size = new System.Drawing.Size(100, 20);
@@ -398,7 +398,7 @@
             // 
             this.txtNhapTenKH.Location = new System.Drawing.Point(500, 38);
             this.txtNhapTenKH.Name = "txtNhapTenKH";
-            this.txtNhapTenKH.Size = new System.Drawing.Size(100, 20);
+            this.txtNhapTenKH.Size = new System.Drawing.Size(129, 20);
             this.txtNhapTenKH.TabIndex = 40;
             this.txtNhapTenKH.TextChanged += new System.EventHandler(this.txtNhapTenKH_TextChanged);
             // 
@@ -415,9 +415,9 @@
             // rtxtPhieuDatCho
             // 
             this.rtxtPhieuDatCho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rtxtPhieuDatCho.Location = new System.Drawing.Point(583, 87);
+            this.rtxtPhieuDatCho.Location = new System.Drawing.Point(583, 78);
             this.rtxtPhieuDatCho.Name = "rtxtPhieuDatCho";
-            this.rtxtPhieuDatCho.Size = new System.Drawing.Size(359, 456);
+            this.rtxtPhieuDatCho.Size = new System.Drawing.Size(359, 452);
             this.rtxtPhieuDatCho.TabIndex = 42;
             this.rtxtPhieuDatCho.Text = "";
             this.rtxtPhieuDatCho.TextChanged += new System.EventHandler(this.rtxtPhieuDatCho_TextChanged);
@@ -451,6 +451,9 @@
             this.Controls.Add(this.btnInPhieu);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmPhieuDatCho";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phiếu Đặt Chỗ";

@@ -164,6 +164,7 @@
             // ColMaCB
             // 
             this.ColMaCB.DataPropertyName = "MaCB";
+            this.ColMaCB.FillWeight = 83.21775F;
             this.ColMaCB.HeaderText = "Mã chuyến bay";
             this.ColMaCB.Name = "ColMaCB";
             this.ColMaCB.Width = 50;
@@ -171,68 +172,79 @@
             // ColSanBayDi
             // 
             this.ColSanBayDi.DataPropertyName = "SanBayDi";
+            this.ColSanBayDi.FillWeight = 135.7522F;
             this.ColSanBayDi.HeaderText = "Sân bay đi";
             this.ColSanBayDi.Name = "ColSanBayDi";
-            this.ColSanBayDi.Width = 80;
+            this.ColSanBayDi.Width = 82;
             // 
             // ColSanBayDen
             // 
             this.ColSanBayDen.DataPropertyName = "SanBayDen";
+            this.ColSanBayDen.FillWeight = 132.5269F;
             this.ColSanBayDen.HeaderText = "Sân bay đến";
             this.ColSanBayDen.Name = "ColSanBayDen";
-            this.ColSanBayDen.Width = 80;
+            this.ColSanBayDen.Width = 79;
             // 
             // ColThGianBay
             // 
             this.ColThGianBay.DataPropertyName = "ThoiGianBay";
+            this.ColThGianBay.FillWeight = 81.03721F;
             this.ColThGianBay.HeaderText = "Thời gian bay";
             this.ColThGianBay.Name = "ColThGianBay";
-            this.ColThGianBay.Width = 50;
+            this.ColThGianBay.Width = 49;
             // 
             // ColSanBayTG
             // 
             this.ColSanBayTG.DataPropertyName = "SanBayTG";
+            this.ColSanBayTG.FillWeight = 132.5053F;
             this.ColSanBayTG.HeaderText = "Sân bay trung gian";
             this.ColSanBayTG.Name = "ColSanBayTG";
-            this.ColSanBayTG.Width = 80;
+            this.ColSanBayTG.Width = 79;
             // 
             // colThGianDung
             // 
             this.colThGianDung.DataPropertyName = "ThoiGianDung";
+            this.colThGianDung.FillWeight = 64.82015F;
             this.colThGianDung.HeaderText = "Thời gian dừng";
             this.colThGianDung.Name = "colThGianDung";
-            this.colThGianDung.Width = 40;
+            this.colThGianDung.Width = 39;
             // 
             // ColNgayGio
             // 
             this.ColNgayGio.DataPropertyName = "NgayGio";
+            this.ColNgayGio.FillWeight = 167.8568F;
             this.ColNgayGio.HeaderText = "Ngày giờ bay";
             this.ColNgayGio.Name = "ColNgayGio";
+            this.ColNgayGio.Width = 101;
             // 
             // ColTongGhe
             // 
             this.ColTongGhe.DataPropertyName = "TongSoGhe";
+            this.ColTongGhe.FillWeight = 63.74898F;
             this.ColTongGhe.HeaderText = "Tổng số ghế";
             this.ColTongGhe.Name = "ColTongGhe";
-            this.ColTongGhe.Width = 40;
+            this.ColTongGhe.Width = 39;
             // 
             // ColSoGheTrong
             // 
             this.ColSoGheTrong.DataPropertyName = "TongSoGheTrong";
+            this.ColSoGheTrong.FillWeight = 66.13099F;
             this.ColSoGheTrong.HeaderText = "Số ghế trống";
             this.ColSoGheTrong.Name = "ColSoGheTrong";
-            this.ColSoGheTrong.Width = 40;
+            this.ColSoGheTrong.Width = 39;
             // 
             // ColDonGia
             // 
             this.ColDonGia.DataPropertyName = "GiaVe";
+            this.ColDonGia.FillWeight = 136.7617F;
             this.ColDonGia.HeaderText = "Đơn giá";
             this.ColDonGia.Name = "ColDonGia";
-            this.ColDonGia.Width = 80;
+            this.ColDonGia.Width = 83;
             // 
             // ColGheTrongh1
             // 
             this.ColGheTrongh1.DataPropertyName = "SLGheTrongH1";
+            this.ColGheTrongh1.FillWeight = 66.7122F;
             this.ColGheTrongh1.HeaderText = "Số ghế trống hạng 1";
             this.ColGheTrongh1.Name = "ColGheTrongh1";
             this.ColGheTrongh1.Width = 40;
@@ -240,9 +252,10 @@
             // ColGheTrongH2
             // 
             this.ColGheTrongH2.DataPropertyName = "SLGheTrongH2";
+            this.ColGheTrongH2.FillWeight = 68.92979F;
             this.ColGheTrongH2.HeaderText = "Số ghế trống hạng 2";
             this.ColGheTrongH2.Name = "ColGheTrongH2";
-            this.ColGheTrongH2.Width = 40;
+            this.ColGheTrongH2.Width = 41;
             // 
             // qLBanVeChuyenBayDataSetBindingSource
             // 
@@ -286,6 +299,8 @@
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataDanhSachCB);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmDanSachCB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Chuyến Bay";

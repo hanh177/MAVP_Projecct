@@ -70,15 +70,15 @@ namespace QuanLyBanVeChuyenBay
 
          private void btnXemPhieuDatCho_Click(object sender, EventArgs e)
         {
-             Form phieudatcho = new frmPhieuDatCho(this);
+             Form dskh = new frmDanhSachKH(this);
 
             this.Hide();
-            phieudatcho.ShowDialog();
+            dskh.ShowDialog();
             this.Show();
         }
        public void btnXemPhieuDatCho_Clicked(object sender, EventArgs e)
         {
-            this.btnXemPhieuDatCho_Click(btnXemPhieuDatCho, EventArgs.Empty);
+            this.btnXemPhieuDatCho_Click(btnDSKH, EventArgs.Empty);
         }
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
