@@ -70,16 +70,9 @@ namespace QuanLyBanVeChuyenBay
 
          private void btnXemPhieuDatCho_Click(object sender, EventArgs e)
         {
-             Form dskh = new frmDanhSachKH(this);
+            
+        }
 
-            this.Hide();
-            dskh.ShowDialog();
-            this.Show();
-        }
-       public void btnXemPhieuDatCho_Clicked(object sender, EventArgs e)
-        {
-            this.btnXemPhieuDatCho_Click(btnDSKH, EventArgs.Empty);
-        }
         private void btnTraCuu_Click(object sender, EventArgs e)
         {
             Form tracuu = new frmTraCuu(this);
@@ -112,6 +105,18 @@ namespace QuanLyBanVeChuyenBay
         private void toolStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
         {
 
+        }
+
+        private void btnDSKH_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnDSKH_Click_1(object sender, EventArgs e)
+        {
+            Form dskh = new frmDanhSachKH(this);
+            this.Hide();
+            dskh.Show();
         }
     }
 }

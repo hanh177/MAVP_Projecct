@@ -142,7 +142,7 @@
             this.btnDSKH.TabIndex = 1;
             this.btnDSKH.Text = "Danh Sách Khách Hàng";
             this.btnDSKH.UseVisualStyleBackColor = true;
-            this.btnDSKH.Click += new System.EventHandler(this.btnXemPhieuDatCho_Click);
+            this.btnDSKH.Click += new System.EventHandler(this.btnDSKH_Click_1);
             // 
             // btnTraCuu
             // 

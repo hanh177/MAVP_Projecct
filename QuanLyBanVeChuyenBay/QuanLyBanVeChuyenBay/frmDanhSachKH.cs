@@ -20,18 +20,19 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
-
-        public void Connection()
+         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+       
+        public  void Connection()
         {
 
             SqlConnection conn = new SqlConnection(strconn2);
             try
             {
                 conn.Open();
-                string sql = "select hk.MaHanhKhach, HoTen, CMMD, v.MaVe, cb.MaCB from ve v join CHUYENBAY cb on v.MaCB=cb.MaCB join HANHKHACH hk on hk.MaHanhKhach=v.MaHanhKhach";
+                string sql = "select HK.MaHanhKhach ,HoTen,CMMD,SDT,CB.MaCB,VE.MaVe from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join PHIEUDATCHO PH on CB.MaCB = PH.MaCB join VE on PH.MaVe = VE.MaVe join HANHKHACH HK on VE.MaHanhKhach = HK.MaHanhKhach";
+
                 SqlCommand command = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 DataTable table = new DataTable();
@@ -47,10 +48,10 @@ namespace QuanLyBanVeChuyenBay
                 DataTable table1 = new DataTable();
                 adapter1.Fill(table1);
  
-                txtMaCB.DataSource = table1;
-                txtMaCB.DisplayMember = "MaCB";
-                txtMaCB.ValueMember = "MaCB";
-                txtMaCB.SelectedIndex = -1;
+                cmbMaCB.DataSource = table1;
+                cmbMaCB.DisplayMember = "MaCB";
+                cmbMaCB.ValueMember = "MaCB";
+                cmbMaCB.SelectedIndex = -1;
 
                 string sql2 = "select * from Hanhkhach";
                 SqlCommand command2 = new SqlCommand(sql2, conn);
@@ -58,10 +59,10 @@ namespace QuanLyBanVeChuyenBay
                 DataTable table2= new DataTable();
                 adapter2.Fill(table2);
 
-                txtMaKH.DataSource = table2;
-                txtMaKH.DisplayMember = "MaHanhKhach";
-                txtMaKH.ValueMember = "MaHanhKhach";
-                txtMaKH.SelectedIndex = -1;
+                cmbMaKH.DataSource = table2;
+                cmbMaKH.DisplayMember = "MaHanhKhach";
+                cmbMaKH.ValueMember = "MaHanhKhach";
+                cmbMaKH.SelectedIndex = -1;
             }
             catch (InvalidOperationException ex)
             {
@@ -84,16 +85,15 @@ namespace QuanLyBanVeChuyenBay
         private void frmDanhSachKH_Load(object sender, EventArgs e)
         {
             Connection();
-            btnLoadLai.Enabled = false;
+            btnLoadLai.Enabled = true;
+            click_data = false;
         }
-
-        string MaKH, HoTen, CMND, MaVe, MaCB;
 
         private void btnLoadLai_Click(object sender, EventArgs e)
         {
             Connection();
-            txtMaKH.SelectedIndex=-1;
-            txtMaCB.SelectedIndex = -1;
+            cmbMaKH.SelectedIndex=-1;
+            cmbMaCB.SelectedIndex = -1;
             txtHoTen.Clear();
             txtCMND.Clear();
         }
@@ -102,87 +102,117 @@ namespace QuanLyBanVeChuyenBay
         {
 
         }
-
+        string hangve;
+        int gheh1=0, gheh2=0, sove;
         private void btnHuyVe_Click(object sender, EventArgs e)
         {
-           //DialogResult r =  MessageBox.Show("Bạn có chắc chắn muốn hủy vé này?", "Chú ý",  MessageBoxButtons.YesNo);
-           // if(r==DialogResult.Yes)
-           // {
-           //     int index = dataDSKH.CurrentRow.Index;
-           //     string mave = dataDSKH.Rows[index].Cells[3].Value.ToString();
-           //     string makh = dataDSKH.Rows[index].Cells[0].Value.ToString();
-           //     //string makh = "KH35";
-           //     //string mave = "VE07";
-           //     string macb = "";
-           //     string hangve ="";
-           //     SqlConnection conn = new SqlConnection(strconn2);
-           //     try
-           //     {
-           //         conn.Open();
-           //         //xoa phieu dat cho
-           //         string query = "delete from PHIEUDATCHO where mave ='" + mave + "'";
-           //         SqlCommand cmd = new SqlCommand(query, conn);
-           //         cmd.ExecuteNonQuery();
+            index = 0;
+            mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+            mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
+            macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
+            DialogResult result =  MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý",  MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if(result==DialogResult.Yes)
+            {
+                SqlConnection conn = new SqlConnection(strconn2);
+                try
+                {
+                    conn.Open();
+                    //Xoa phieu dat cho
+                    string sqlQuery3 = "delete from PHIEUDATCHO where MaHanhKhach=@MaHanhKhach";
+                    SqlCommand command3 = new SqlCommand(sqlQuery3,conn);
+                    command3.Parameters.AddWithValue("@MaHanhKhach",mahk);
+                    command3.ExecuteNonQuery();
 
-           //         //lay macb, hangve tu ve de cap nhat tinh trang
-           //         string query1 = "select macb from ve where mave= '" + mave + "'";
-           //         SqlCommand cmd1 = new SqlCommand(query1, conn);
-           //         SqlDataReader re = cmd1.ExecuteReader();
-           //         while (re.Read())
-           //         {
-           //             macb = re.GetValue(0).ToString();
-           //         }
+                    //Xoa ve
+                    //Trk khi xoa ve phai lay duoc hang ve
+                    string sqlQuery4 = "Select HangVe from VE where MaVe=@MaVe";
+                    SqlCommand command4 = new SqlCommand(sqlQuery4, conn);
+                    command4.Parameters.AddWithValue("@MaVe", mave);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command4);
+                    DataTable table = new DataTable();
+                    adapter.Fill(table);
+                    foreach (DataRow row in table.Rows)
+                    {
+                        foreach (DataColumn column in table.Columns)
+                        {
+                            hangve = row["HangVe"].ToString();
+                            
+                        }
+                    }
+                    sove = Int32.Parse(hangve);
+                    if (sove == 1)
+                        gheh1 = 1;
+                    else
+                        gheh2 = 1;
+                    string sqlQuery5 = "delete from VE where MaVe=@MaVe";
+                    SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
+                    command5.Parameters.AddWithValue("@MaVe", mave);
+                    command5.ExecuteNonQuery();
 
-           //         string query2 = "select hangve from ve where mave= '" + mave + "'";
-           //         SqlCommand cmd2 = new SqlCommand(query2, conn);
-                   
-           //         re = cmd2.ExecuteReader();
-           //         while (re.Read())
-           //         {
-           //             hangve = re.GetValue(0).ToString();
-           //         }
-           //         MessageBox.Show(macb, hangve);
-           //         //xoa ve
-           //         string query3 = "delete from ve where mave= '" + mave + "'";
-           //         SqlCommand cmd3 = new SqlCommand(query3, conn);
-           //         cmd3.ExecuteNonQuery();
+                    //Xoa Hanh Khach
+                    string sqlQuery6 = "delete from HANHKHACH where MaHanhKhach=@MaHanhKhach";
+                    SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
+                    command6.Parameters.AddWithValue("@MaHanhKhach", mahk);
+                    command6.ExecuteNonQuery();
 
-           //         //xoa hanh khach
-           //         string query4 = "delete from Hanhkhach where mahanhkhach= '" + makh + "'";
-           //         SqlCommand cmd4 = new SqlCommand(query4, conn);
-           //         cmd4.ExecuteNonQuery();
+                    //Cap nhat bang TINHTRANG
+                    string sqlQuery7 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 + " + gheh1 +
+                       ", SLGheTrongH2 = SLGheTrongH2 +" + gheh2 +
+                       ", TongSoGhe = TongSoGhe, TongSoGheTrong = TongSoGheTrong + 1, TongSoGheDat =TongSoGheDat - 1 where MaCB =@MaCB";
+                    SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
+                    command7.Parameters.AddWithValue("@MaCB", macb);
+                    command7.ExecuteNonQuery();
 
 
-           //         //cap nhat bang tinh trang
+                    MessageBox.Show("Xóa hành khách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Connection();
 
-           //         string query5, s;
-           //         if (hangve == "1") s = "SLGheTrongH1 = SLGheTrong1 + 1,";
-           //         else s = "SLGheTrongH2 = SLGheTrong2 + 1,";
-           //         query5 = "update TINHTRANG set " + s + "  Tongsoghetrong = tongsoghetrong + 1, tongsoghedat = tongsoghedat - 1,   where macb ='" + macb + "' ";
-           //         SqlCommand cmd5 = new SqlCommand(query5, conn);
-           //         cmd5.ExecuteNonQuery();
+                }
+                catch (InvalidOperationException ex)
+                {
+                    //xu ly khi ket noi co van de
+                    //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    //xu ly khi ket noi co van de
+                  //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    //Dong ket noi sau khi thao tac ket thuc
+                   conn.Close();
+                }
+            }
 
+        }
 
-           //         MessageBox.Show("Hủy vé thành công !");
-           //         Connection();
-           //     }
-           //     catch (InvalidOperationException ex)
-           //     {
-           //         //xu ly khi ket noi co van de
-           //         MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-           //     }
-           //     catch (Exception ex)
-           //     {
-           //         //xu ly khi ket noi co van de
-           //         MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-           //     }
-           //     finally
-           //     {
-           //         //Dong ket noi sau khi thao tac ket thuc
-           //         conn.Close();
-           //     }
-           // }
+        private void label1_Click(object sender, EventArgs e)
+        {
 
+        }
+
+        private void dataDSKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        int index;
+        bool click_data = false;
+        static public string mahk = "";
+        string mave = "";
+        string macb = "";
+        private void dataDSKH_Click(object sender, EventArgs e)
+        {
+            if (dataDSKH.CurrentRow != null)
+            {
+                index = dataDSKH.CurrentRow.Index;
+                mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+                mave= dataDSKH.Rows[index].Cells[5].Value.ToString();
+                macb= dataDSKH.Rows[index].Cells[4].Value.ToString();
+                click_data = true;
+            }
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -192,7 +222,7 @@ namespace QuanLyBanVeChuyenBay
             {
                 conn.Open();
 
-                string str1 = "select hk.MaHanhKhach, HoTen, CMMD, v.MaVe, cb.MaCB from ve v join CHUYENBAY cb on v.MaCB=cb.MaCB join HANHKHACH hk on hk.MaHanhKhach=v.MaHanhKhach where ";
+                string str1 = "select hk.MaHanhKhach, HoTen, CMMD,SDT, v.MaVe, cb.MaCB from ve v join CHUYENBAY cb on v.MaCB=cb.MaCB join HANHKHACH hk on hk.MaHanhKhach=v.MaHanhKhach where ";
                 string str2, str3, str4, str5;
 
                 if (txtHoTen.Text != "")
@@ -207,19 +237,19 @@ namespace QuanLyBanVeChuyenBay
                 }
                 else str3 = "";
 
-                if (txtMaKH.Text != "")
+                if (cmbMaKH.Text != "")
                 {
                     if(str2!=""||str3!="")
-                    str4 = "and hk.MaHanhKhach= '" + txtMaKH.Text + "'";
-                    else str4 = " hk.MaHanhKhach= '" + txtMaKH.Text + "'";
+                    str4 = "and hk.MaHanhKhach= '" + cmbMaKH.Text + "'";
+                    else str4 = " hk.MaHanhKhach= '" + cmbMaKH.Text + "'";
                 }
                 else str4 = "";
 
-                if (txtMaCB.Text != "")
+                if (cmbMaCB.Text != "")
                 {
                     if (str2 != "" || str3 != "" || str4 != "")
-                        str5 = "and cb.MaCB= '" + txtMaCB.Text + "'";
-                    else str5 = " cb.MaCB= '" + txtMaCB.Text + "'";
+                        str5 = "and cb.MaCB= '" + cmbMaCB.Text + "'";
+                    else str5 = " cb.MaCB= '" + cmbMaCB.Text + "'";
                 }
                 else str5 = "";
                 if (str2 == "" && str3 == "" && str4 == "" && str5 == "")
@@ -231,11 +261,18 @@ namespace QuanLyBanVeChuyenBay
                     SqlDataAdapter adapter = new SqlDataAdapter(command);
                     DataTable table = new DataTable();
                     adapter.Fill(table);
+                    if(table.Rows.Count==0)
+                        MessageBox.Show("Không tìm thấy bất cứ thông tin nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dataDSKH.DataSource = table;
                     btnLoadLai.Enabled = true;
                     btnHuyVe.Enabled = true;
                     btnPhieuDat.Enabled = true;
                 }
+                txtHoTen.Text = "";
+                txtCMND.Text = "";
+                cmbMaCB.SelectedIndex = -1;
+                cmbMaKH.SelectedIndex = -1;
+                
             }
             catch (InvalidOperationException ex)
             {
@@ -262,6 +299,7 @@ namespace QuanLyBanVeChuyenBay
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+            main.Show();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -271,12 +309,19 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnPhieuDat_Click(object sender, EventArgs e)
         {
-
+            if (click_data == false)
+            {
+                index = dataDSKH.CurrentRow.Index;
+                mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+            }
+            frmPhieuDatCho phieu = new frmPhieuDatCho(this);
+            phieu.Button_Clicked += new EventHandler(frm_Button_Clicked);
             this.Hide();
-            Form phieu = new frmPhieuDatCho(this);
-            phieu.ShowDialog();
-            this.Connection();
-            this.Show();
+            phieu.Show();
+        }
+        void frm_Button_Clicked(object sender, EventArgs e)
+        {
+            this.btnLoadLai_Click(btnLoadLai, EventArgs.Empty);
         }
     }
 }

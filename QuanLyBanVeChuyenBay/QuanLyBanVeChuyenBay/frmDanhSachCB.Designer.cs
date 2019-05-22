@@ -39,11 +39,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnTraCuu = new System.Windows.Forms.Button();
             this.dataDanhSachCB = new System.Windows.Forms.DataGridView();
+            this.qLBanVeChuyenBayDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.qLBanVeChuyenBayDataSet = new QuanLyBanVeChuyenBay.QLBanVeChuyenBayDataSet();
+            this.btnDatVe = new System.Windows.Forms.Button();
+            this.btnThemCB = new System.Windows.Forms.Button();
             this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColThGianBay = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ColSanBayTG = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbSanBayTG = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.colThGianDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColNgayGio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTongGhe = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,10 +55,6 @@
             this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongh1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.qLBanVeChuyenBayDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.qLBanVeChuyenBayDataSet = new QuanLyBanVeChuyenBay.QLBanVeChuyenBayDataSet();
-            this.btnDatVe = new System.Windows.Forms.Button();
-            this.btnThemCB = new System.Windows.Forms.Button();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).BeginInit();
@@ -147,7 +147,7 @@
             this.ColSanBayDi,
             this.ColSanBayDen,
             this.ColThGianBay,
-            this.ColSanBayTG,
+            this.cmbSanBayTG,
             this.colThGianDung,
             this.ColNgayGio,
             this.ColTongGhe,
@@ -160,6 +160,36 @@
             this.dataDanhSachCB.Name = "dataDanhSachCB";
             this.dataDanhSachCB.Size = new System.Drawing.Size(764, 323);
             this.dataDanhSachCB.TabIndex = 54;
+            // 
+            // qLBanVeChuyenBayDataSetBindingSource
+            // 
+            this.qLBanVeChuyenBayDataSetBindingSource.DataSource = this.qLBanVeChuyenBayDataSet;
+            this.qLBanVeChuyenBayDataSetBindingSource.Position = 0;
+            // 
+            // qLBanVeChuyenBayDataSet
+            // 
+            this.qLBanVeChuyenBayDataSet.DataSetName = "QLBanVeChuyenBayDataSet";
+            this.qLBanVeChuyenBayDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // btnDatVe
+            // 
+            this.btnDatVe.Location = new System.Drawing.Point(439, 417);
+            this.btnDatVe.Name = "btnDatVe";
+            this.btnDatVe.Size = new System.Drawing.Size(75, 51);
+            this.btnDatVe.TabIndex = 64;
+            this.btnDatVe.Text = "Đặt vé chuyến bay";
+            this.btnDatVe.UseVisualStyleBackColor = true;
+            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
+            // 
+            // btnThemCB
+            // 
+            this.btnThemCB.Location = new System.Drawing.Point(233, 417);
+            this.btnThemCB.Name = "btnThemCB";
+            this.btnThemCB.Size = new System.Drawing.Size(75, 51);
+            this.btnThemCB.TabIndex = 62;
+            this.btnThemCB.Text = "Thêm chuyến bay";
+            this.btnThemCB.UseVisualStyleBackColor = true;
+            this.btnThemCB.Click += new System.EventHandler(this.btnThemCB_Click);
             // 
             // ColMaCB
             // 
@@ -193,13 +223,14 @@
             this.ColThGianBay.Name = "ColThGianBay";
             this.ColThGianBay.Width = 49;
             // 
-            // ColSanBayTG
+            // cmbSanBayTG
             // 
-            this.ColSanBayTG.DataPropertyName = "SanBayTG";
-            this.ColSanBayTG.FillWeight = 132.5053F;
-            this.ColSanBayTG.HeaderText = "Sân bay trung gian";
-            this.ColSanBayTG.Name = "ColSanBayTG";
-            this.ColSanBayTG.Width = 79;
+            this.cmbSanBayTG.FillWeight = 132.5053F;
+            this.cmbSanBayTG.HeaderText = "Sân bay trung gian";
+            this.cmbSanBayTG.Name = "cmbSanBayTG";
+            this.cmbSanBayTG.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.cmbSanBayTG.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.cmbSanBayTG.Width = 79;
             // 
             // colThGianDung
             // 
@@ -257,36 +288,6 @@
             this.ColGheTrongH2.Name = "ColGheTrongH2";
             this.ColGheTrongH2.Width = 41;
             // 
-            // qLBanVeChuyenBayDataSetBindingSource
-            // 
-            this.qLBanVeChuyenBayDataSetBindingSource.DataSource = this.qLBanVeChuyenBayDataSet;
-            this.qLBanVeChuyenBayDataSetBindingSource.Position = 0;
-            // 
-            // qLBanVeChuyenBayDataSet
-            // 
-            this.qLBanVeChuyenBayDataSet.DataSetName = "QLBanVeChuyenBayDataSet";
-            this.qLBanVeChuyenBayDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // btnDatVe
-            // 
-            this.btnDatVe.Location = new System.Drawing.Point(439, 417);
-            this.btnDatVe.Name = "btnDatVe";
-            this.btnDatVe.Size = new System.Drawing.Size(75, 51);
-            this.btnDatVe.TabIndex = 64;
-            this.btnDatVe.Text = "Đặt vé chuyến bay";
-            this.btnDatVe.UseVisualStyleBackColor = true;
-            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
-            // 
-            // btnThemCB
-            // 
-            this.btnThemCB.Location = new System.Drawing.Point(233, 417);
-            this.btnThemCB.Name = "btnThemCB";
-            this.btnThemCB.Size = new System.Drawing.Size(75, 51);
-            this.btnThemCB.TabIndex = 62;
-            this.btnThemCB.Text = "Thêm chuyến bay";
-            this.btnThemCB.UseVisualStyleBackColor = true;
-            this.btnThemCB.Click += new System.EventHandler(this.btnThemCB_Click);
-            // 
             // frmDanSachCB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -333,7 +334,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDi;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayDen;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColThGianBay;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColSanBayTG;
+        private System.Windows.Forms.DataGridViewComboBoxColumn cmbSanBayTG;
         private System.Windows.Forms.DataGridViewTextBoxColumn colThGianDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColNgayGio;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTongGhe;

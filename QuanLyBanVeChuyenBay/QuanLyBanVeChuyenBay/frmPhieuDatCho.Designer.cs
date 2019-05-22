@@ -59,14 +59,9 @@
             this.txtMaVe = new System.Windows.Forms.TextBox();
             this.txtGiaVe = new System.Windows.Forms.TextBox();
             this.txtHangVe = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.txtNhapMaVe = new System.Windows.Forms.TextBox();
-            this.btnXem = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtNhapTenKH = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.rtxtPhieuDatCho = new System.Windows.Forms.RichTextBox();
             this.btnSua = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -83,6 +78,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(954, 25);
             this.toolStrip1.TabIndex = 34;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // tSbtnDanhSachCB
             // 
@@ -357,61 +353,6 @@
             this.txtHangVe.TabIndex = 9;
             this.txtHangVe.TextChanged += new System.EventHandler(this.txtHangVe_TextChanged);
             // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(78, 41);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(70, 13);
-            this.label14.TabIndex = 36;
-            this.label14.Text = "Nhập Mã Vé:";
-            this.label14.Click += new System.EventHandler(this.label14_Click);
-            // 
-            // txtNhapMaVe
-            // 
-            this.txtNhapMaVe.Location = new System.Drawing.Point(161, 38);
-            this.txtNhapMaVe.Name = "txtNhapMaVe";
-            this.txtNhapMaVe.Size = new System.Drawing.Size(100, 20);
-            this.txtNhapMaVe.TabIndex = 37;
-            this.txtNhapMaVe.TextChanged += new System.EventHandler(this.txtNhapMaVe_TextChanged);
-            // 
-            // btnXem
-            // 
-            this.btnXem.Location = new System.Drawing.Point(635, 29);
-            this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 37);
-            this.btnXem.TabIndex = 38;
-            this.btnXem.Text = "Xem";
-            this.btnXem.UseVisualStyleBackColor = true;
-            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(373, 41);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(121, 13);
-            this.label12.TabIndex = 39;
-            this.label12.Text = "Nhập Tên Khách Hàng:";
-            // 
-            // txtNhapTenKH
-            // 
-            this.txtNhapTenKH.Location = new System.Drawing.Point(500, 38);
-            this.txtNhapTenKH.Name = "txtNhapTenKH";
-            this.txtNhapTenKH.Size = new System.Drawing.Size(129, 20);
-            this.txtNhapTenKH.TabIndex = 40;
-            this.txtNhapTenKH.TextChanged += new System.EventHandler(this.txtNhapTenKH_TextChanged);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(295, 41);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
-            this.label13.TabIndex = 41;
-            this.label13.Text = "Hoặc:";
-            // 
             // rtxtPhieuDatCho
             // 
             this.rtxtPhieuDatCho.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -432,19 +373,24 @@
             this.btnSua.UseVisualStyleBackColor = true;
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(351, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(162, 22);
+            this.label12.TabIndex = 44;
+            this.label12.Text = "PHIẾU ĐẶT CHỖ";
+            // 
             // frmPhieuDatCho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(954, 550);
+            this.Controls.Add(this.label12);
             this.Controls.Add(this.btnSua);
             this.Controls.Add(this.rtxtPhieuDatCho);
-            this.Controls.Add(this.label13);
-            this.Controls.Add(this.txtNhapTenKH);
-            this.Controls.Add(this.label12);
-            this.Controls.Add(this.btnXem);
-            this.Controls.Add(this.txtNhapMaVe);
-            this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnThoat);
@@ -501,15 +447,10 @@
         private System.Windows.Forms.TextBox txtMaVe;
         private System.Windows.Forms.TextBox txtGiaVe;
         private System.Windows.Forms.TextBox txtHangVe;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox txtNhapMaVe;
         private System.Windows.Forms.TextBox txtSanBayDi;
         private System.Windows.Forms.TextBox txtSanBayDen;
-        private System.Windows.Forms.Button btnXem;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtNhapTenKH;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.RichTextBox rtxtPhieuDatCho;
         private System.Windows.Forms.Button btnSua;
+        private System.Windows.Forms.Label label12;
     }
 }

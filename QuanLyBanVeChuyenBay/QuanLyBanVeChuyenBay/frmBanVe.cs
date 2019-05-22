@@ -23,9 +23,9 @@ namespace QuanLyBanVeChuyenBay
         }
 
         
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+       // string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
         float DonGia;
         int GheTrongH1, GheTrongH2 ;
         bool ConGheH1 , ConGheH2,  DatVe = true;
@@ -140,6 +140,75 @@ namespace QuanLyBanVeChuyenBay
             Form danhsachcb = new frmDanSachCB(this);
             this.Hide();
             danhsachcb.Show();
+        }
+
+        private void txtCMND_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtCMND_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("CMND sai cú pháp. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCMND.Text = "";
+                return;
+            }
+        }
+        private bool nonNumberEntered = false;
+        private void txtCMND_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("SDT không thể có chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSDT.Text = "";
+                return;
+            }
+        }
+
+        private void txtSDT_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
         }
 
         private void tSbtnPhieuDatCho_Click(object sender, EventArgs e)
@@ -280,6 +349,8 @@ namespace QuanLyBanVeChuyenBay
                     command5.Parameters.AddWithValue("@MaVe", MaVe);
                     command5.Parameters.AddWithValue("@NgayDat", NgayDat);
                     command5.ExecuteNonQuery();
+                    this.Hide();
+                    tracuu.Show();
                 }
                 else MessageBox.Show("Không còn ghế trống hạng "+ HangVe +" để đặt");
             }

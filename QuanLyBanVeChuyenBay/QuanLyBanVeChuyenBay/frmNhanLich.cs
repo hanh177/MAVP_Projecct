@@ -10,6 +10,12 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Globalization;
 
+
+
+
+//cái mã khi click thì nó tự ra nha mk...ngta nghĩ v thôi ok ủa mk sao cài mấy cái combobox cho thành readonly đc nhờ..ngta tìm k thấy
+//ngta kiếm trên mạng. quên rồi hihi, để đó mai mốt ngta làm lại ok..hèn j nay tìm lòih :v
+//mk thử tự chạy nếu k hiểu ý tưởng thì ns ngta nha ok chạy luôn giờ hảừa
 namespace QuanLyBanVeChuyenBay
 {
     public partial class frmNhanLich : Form
@@ -23,9 +29,9 @@ namespace QuanLyBanVeChuyenBay
 
         string MACHUYENBAYCUOI;
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -51,9 +57,10 @@ namespace QuanLyBanVeChuyenBay
                 cmbSanBayDen.DisplayMember = "TenSanBay";
                 cmbSanBayDen.ValueMember = "MaSanBay";
 
-                cmbTenSBTrungGian.DataSource = table3;
-                cmbTenSBTrungGian.DisplayMember = "TenSanBay";
-                cmbTenSBTrungGian.ValueMember = "MaSanBay";
+                cmbTenSBTG.DataSource = table3;
+                cmbTenSBTG.DisplayMember = "TenSanBay";
+                cmbTenSBTG.ValueMember = "MaSanBay";
+                cmbTenSBTG.SelectedIndex = -1;
 
                 command.ExecuteNonQuery();
 
@@ -70,7 +77,7 @@ namespace QuanLyBanVeChuyenBay
                         foreach (DataColumn col in table4.Columns)
                         {
                             MACHUYENBAYCUOI = row[col].ToString();
-                        if (MACHUYENBAYCUOI == "") // neu chua co CB nao trong danh sach
+                        if (MACHUYENBAYCUOI == "") 
                             MACHUYENBAYCUOI = "CB00";
                         }
                     }
@@ -154,25 +161,7 @@ namespace QuanLyBanVeChuyenBay
                 int GIAVE = Int32.Parse(txtGiaVe.Text);
                 // DateTime NGAYBAY = DateTime.ParseExact(dateTimePicker1.Text, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 DateTime NGAYBAY = dateTimePicker1.Value;
-    
-                //string t = dateTimePicker1.Text;
-                //string tt = t.Substring(17);
-               
-                //if (tt == "PM")
-                //{
-                //    MessageBox.Show(".");
-                ////    string date = t.Substring(0, 11); //ngaythang 
-                ////    int h = Int32.Parse(t.Substring(12, 13)) + 12;
-                ////    string strhour = h.ToString();  //gio
-                ////    string m = t.Substring(14, 16); //phut
-
-                ////    string datetime = date + strhour + m;
-                ////    MessageBox.Show(datetime);
-                //}
-                ////if(tt=="PM")
-                ////{
-                ////    NGAYBAY = DateTime.ParseExact(datetime, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
-                ////}
+ 
                
                 conn.Open();
                 String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
@@ -187,41 +176,29 @@ namespace QuanLyBanVeChuyenBay
                 command.Parameters.AddWithValue("@GiaVe", GIAVE);
                 command.ExecuteNonQuery();
 
-                string TENSBTG = dataSanBayTG.CurrentRow.Cells[1].EditedFormattedValue.ToString();
 
-                if (TENSBTG != "")
+                //Insert vao bang TRUNGGIAN
+                
+                if (them==true)
                 {
-                    string sql = "SELECT MaSanBay FROM SANBAY WHERE TenSanBay=@TenSanBay";
-                    SqlCommand cmd = new SqlCommand(sql, conn);
-                    cmd.Parameters.AddWithValue("@TenSanBay", TENSBTG);
-                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                    DataSet dataSet = new DataSet();
-                    adapter.Fill(dataSet, "MaSB");
-                    DataTable table = dataSet.Tables["MaSB"];
-
-                    foreach (DataRow row in table.Rows)
+                    int sodong = dataSanBayTG.RowCount;
+                    string[] arrListStr = masb_tg.Split(',');
+                    for (int i = 0; i < sodong; i++)
                     {
-                        foreach (DataColumn col in table.Columns)
-                        {
-                            MASB = row[col].ToString();
+                        string MASB = arrListStr[i];
+                        string MATG = dataSanBayTG.Rows[i].Cells[0].EditedFormattedValue.ToString();
+                        string TGDUNG = dataSanBayTG.Rows[i].Cells[2].EditedFormattedValue.ToString();
+                        string GHICHU = dataSanBayTG.Rows[i].Cells[3].EditedFormattedValue.ToString();
+                        string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
+                        SqlCommand command3 = new SqlCommand(sqlQuery2, conn);
+                        command3.Parameters.AddWithValue("@MaTrungGian", MATG);
+                        command3.Parameters.AddWithValue("@MaCB", MACB);
+                        command3.Parameters.AddWithValue("@MaSanBay", MASB);
+                        command3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
+                        command3.Parameters.AddWithValue("@GhiChu", GHICHU);
 
-                        }
+                        command3.ExecuteNonQuery();
                     }
-
-                    object value = cmd.ExecuteScalar();
-
-                    string MATG = dataSanBayTG.CurrentRow.Cells[0].EditedFormattedValue.ToString();
-                    string TGDUNG = dataSanBayTG.CurrentRow.Cells[2].EditedFormattedValue.ToString();
-                    string GHICHU = dataSanBayTG.CurrentRow.Cells[3].EditedFormattedValue.ToString();
-                    string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
-                    SqlCommand command3 = new SqlCommand(sqlQuery2, conn);
-                    command3.Parameters.AddWithValue("@MaTrungGian", MATG);
-                    command3.Parameters.AddWithValue("@MaCB", MACB);
-                    command3.Parameters.AddWithValue("@MaSanBay", MASB); //check lai ma san bay nhe, khong dung input.are u here yes
-                    command3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
-                    command3.Parameters.AddWithValue("@GhiChu", GHICHU);
-
-                    command3.ExecuteNonQuery();
 
                 }
                 
@@ -249,6 +226,9 @@ namespace QuanLyBanVeChuyenBay
                 txtSoGheH2.Text = "";
                 txtThGianBay.Text = "";
                 txtGiaVe.Text = "";
+                cmbSanBayDi.SelectedIndex = -1;
+                cmbSanBayDen.SelectedIndex = -1;
+                dataSanBayTG.Rows.Clear();
             }
             catch (InvalidOperationException ex)
             {
@@ -266,6 +246,161 @@ namespace QuanLyBanVeChuyenBay
                 //Dong ket noi sau khi thao tac ket thuc
                 conn.Close();
             }
-        } 
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+        bool them = false;
+        public string masb_tg;//dung luu cac ma sb trung gian duoc them vao
+        private void btnThemTG_Click(object sender, EventArgs e)
+        {
+            if(txtMaSBTG.Text==""||txtTGDung.Text==""||cmbTenSBTG.SelectedIndex==-1 )
+            {
+                MessageBox.Show("Sai cú pháp do điền thiếu trường dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            dataSanBayTG.Rows.Add(1);
+            int indexRow = dataSanBayTG.Rows.Count - 1;
+            dataSanBayTG[0, indexRow].Value = txtMaSBTG.Text;
+            dataSanBayTG[1, indexRow].Value = cmbTenSBTG.Text;
+            dataSanBayTG[2, indexRow].Value = txtTGDung.Text;
+            dataSanBayTG[3, indexRow].Value = txtGhiChu.Text;
+            if (masb_tg == null)
+            {
+                masb_tg = cmbTenSBTG.SelectedValue.ToString();
+            }
+            else
+            {
+                masb_tg=masb_tg + "," + cmbTenSBTG.SelectedValue.ToString();
+            }
+
+            them = true;
+            txtMaSBTG.Text = "";
+            cmbTenSBTG.SelectedIndex = -1;
+            txtTGDung.Text = "";
+            txtGhiChu.Text = "";
+        }
+        private bool nonNumberEntered = false;
+        private void txtTGDung_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void txtTGDung_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("Thời gian không thể là chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTGDung.Text = "";
+                return;
+            }
+        }
+
+        string MACHUYENBAYTGCUOI;
+        private void txtMaSBTG_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+        }
+
+        private void txtMaSBTG_Click(object sender, EventArgs e)
+        {
+            SqlConnection conn = new SqlConnection(strconn2);
+            try
+            {
+                int sodong = dataSanBayTG.RowCount;
+                conn.Open();
+                if (dataSanBayTG.Rows.Count == 0)
+                {
+                    string sql = "select Max(MaTrungGian) as LastID from TRUNGGIAN";
+                    SqlCommand command = new SqlCommand(sql, conn);
+                    SqlDataAdapter adapter = new SqlDataAdapter(command);
+                    DataSet dataSet = new DataSet();
+                    adapter.Fill(dataSet, "MaTrungGian");
+                    DataTable table = dataSet.Tables["MaTrungGian"];
+
+                    foreach (DataRow row in table.Rows)
+                    {
+                        foreach (DataColumn col in table.Columns)
+                        {
+                            MACHUYENBAYTGCUOI = row[col].ToString();
+                            if (MACHUYENBAYTGCUOI == "")
+                                MACHUYENBAYTGCUOI = "TG00";
+                        }
+                    }
+                    string macb_tg = MACHUYENBAYTGCUOI.Substring(2);
+                    int socb_tg = Int32.Parse(macb_tg);
+                    socb_tg = socb_tg + 1;
+                    bool flag = false;
+                    if (socb_tg < 10)
+                        flag = true;
+                    if (flag == true)
+                    {
+                        txtMaSBTG.Text = "TG0" + socb_tg.ToString();
+                    }
+                    else
+                        txtMaSBTG.Text = "TG" + socb_tg.ToString();
+                }
+                else//Da nhap them 1 hoac 2 san bay trung gian
+                {
+                    string matg_data= dataSanBayTG.Rows[sodong-1].Cells[0].EditedFormattedValue.ToString();//lay cai ma trung gian duoc nhap sau cung
+                    string macb_tg2 = matg_data.Substring(2);
+                    int socb_tg2 = Int32.Parse(macb_tg2);
+                    socb_tg2 = socb_tg2 + 1;
+                    bool flag2 = false;
+                    if (socb_tg2 < 10)
+                        flag2 = true;
+                    if (flag2 == true)
+                    {
+                        txtMaSBTG.Text = "TG0" + socb_tg2.ToString();
+                    }
+                    else
+                        txtMaSBTG.Text = "TG" + socb_tg2.ToString();
+                }
+            }
+            catch (InvalidOperationException ex)
+            {
+                //xu ly khi ket noi co van de
+                MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+            }
+            catch (Exception ex)
+            {
+                //xu ly khi ket noi co van de
+                MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+            }
+            finally
+            {
+                //Dong ket noi sau khi thao tac ket thuc
+                conn.Close();
+            }
+        }
     }
 }

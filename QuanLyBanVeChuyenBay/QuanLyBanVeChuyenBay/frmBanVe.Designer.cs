@@ -70,7 +70,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 45);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(285, 240);
+            this.groupBox1.Size = new System.Drawing.Size(357, 283);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vé";
@@ -80,7 +80,7 @@
             this.txtMaCB.Location = new System.Drawing.Point(149, 82);
             this.txtMaCB.Name = "txtMaCB";
             this.txtMaCB.ReadOnly = true;
-            this.txtMaCB.Size = new System.Drawing.Size(100, 20);
+            this.txtMaCB.Size = new System.Drawing.Size(150, 20);
             this.txtMaCB.TabIndex = 9;
             // 
             // cmbHangVe
@@ -92,7 +92,7 @@
             "2"});
             this.cmbHangVe.Location = new System.Drawing.Point(149, 129);
             this.cmbHangVe.Name = "cmbHangVe";
-            this.cmbHangVe.Size = new System.Drawing.Size(100, 21);
+            this.cmbHangVe.Size = new System.Drawing.Size(150, 21);
             this.cmbHangVe.TabIndex = 8;
             this.cmbHangVe.SelectedIndexChanged += new System.EventHandler(this.cmbHangVe_SelectedIndexChanged);
             // 
@@ -101,7 +101,7 @@
             this.txtGiaVe.Location = new System.Drawing.Point(149, 183);
             this.txtGiaVe.Name = "txtGiaVe";
             this.txtGiaVe.ReadOnly = true;
-            this.txtGiaVe.Size = new System.Drawing.Size(100, 20);
+            this.txtGiaVe.Size = new System.Drawing.Size(150, 20);
             this.txtGiaVe.TabIndex = 5;
             // 
             // txtMaVe
@@ -109,7 +109,7 @@
             this.txtMaVe.Location = new System.Drawing.Point(149, 37);
             this.txtMaVe.Name = "txtMaVe";
             this.txtMaVe.ReadOnly = true;
-            this.txtMaVe.Size = new System.Drawing.Size(100, 20);
+            this.txtMaVe.Size = new System.Drawing.Size(150, 20);
             this.txtMaVe.TabIndex = 4;
             // 
             // label4
@@ -158,9 +158,9 @@
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Location = new System.Drawing.Point(303, 45);
+            this.groupBox2.Location = new System.Drawing.Point(375, 45);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(279, 240);
+            this.groupBox2.Size = new System.Drawing.Size(356, 283);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Hành Khách";
@@ -170,29 +170,34 @@
             this.txtMaKH.Location = new System.Drawing.Point(122, 37);
             this.txtMaKH.Name = "txtMaKH";
             this.txtMaKH.ReadOnly = true;
-            this.txtMaKH.Size = new System.Drawing.Size(100, 20);
+            this.txtMaKH.Size = new System.Drawing.Size(164, 20);
             this.txtMaKH.TabIndex = 8;
             // 
             // txtHoTen
             // 
             this.txtHoTen.Location = new System.Drawing.Point(122, 85);
             this.txtHoTen.Name = "txtHoTen";
-            this.txtHoTen.Size = new System.Drawing.Size(100, 20);
+            this.txtHoTen.Size = new System.Drawing.Size(164, 20);
             this.txtHoTen.TabIndex = 7;
             // 
             // txtCMND
             // 
             this.txtCMND.Location = new System.Drawing.Point(122, 130);
             this.txtCMND.Name = "txtCMND";
-            this.txtCMND.Size = new System.Drawing.Size(100, 20);
+            this.txtCMND.Size = new System.Drawing.Size(164, 20);
             this.txtCMND.TabIndex = 6;
+            this.txtCMND.TextChanged += new System.EventHandler(this.txtCMND_TextChanged);
+            this.txtCMND.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCMND_KeyDown);
+            this.txtCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCMND_KeyPress);
             // 
             // txtSDT
             // 
             this.txtSDT.Location = new System.Drawing.Point(122, 176);
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(100, 20);
+            this.txtSDT.Size = new System.Drawing.Size(164, 20);
             this.txtSDT.TabIndex = 5;
+            this.txtSDT.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSDT_KeyDown);
+            this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
             // label8
             // 
@@ -232,7 +237,7 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(139, 291);
+            this.btnDatVe.Location = new System.Drawing.Point(228, 350);
             this.btnDatVe.Name = "btnDatVe";
             this.btnDatVe.Size = new System.Drawing.Size(83, 41);
             this.btnDatVe.TabIndex = 2;
@@ -248,7 +253,7 @@
             this.tSbtnPhieuDatCho});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(594, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(743, 25);
             this.toolStrip1.TabIndex = 29;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -280,7 +285,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(397, 291);
+            this.btnThoat.Location = new System.Drawing.Point(509, 350);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(83, 41);
             this.btnThoat.TabIndex = 30;
@@ -292,7 +297,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(594, 351);
+            this.ClientSize = new System.Drawing.Size(743, 427);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnDatVe);

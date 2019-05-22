@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         private void Connection()
         {
             ///////////////////////////////////////////////////////////////////////////////////
@@ -346,7 +346,7 @@ namespace QuanLyBanVeChuyenBay
             if(click_data==false)
                 if (dataDanhSachCB.CurrentRow != null)
                 {
-                    index = dataDanhSachCB.CurrentRow.Index;
+                    index = 0;
                     macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
                     string dongia = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
                     if (dongia != "")
