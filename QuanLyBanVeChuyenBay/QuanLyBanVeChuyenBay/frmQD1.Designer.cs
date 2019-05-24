@@ -32,14 +32,17 @@
             this.txtSBmax = new System.Windows.Forms.TextBox();
             this.txtSNTGMax = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtThGianMin = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.txtThGianTGmin = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtThGianTGmax = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtThGianMin = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -60,7 +63,7 @@
             // 
             // txtSNTGMax
             // 
-            this.txtSNTGMax.Location = new System.Drawing.Point(235, 140);
+            this.txtSNTGMax.Location = new System.Drawing.Point(235, 82);
             this.txtSNTGMax.Name = "txtSNTGMax";
             this.txtSNTGMax.Size = new System.Drawing.Size(176, 20);
             this.txtSNTGMax.TabIndex = 3;
@@ -68,34 +71,18 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(27, 140);
+            this.label2.Location = new System.Drawing.Point(27, 82);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(143, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Số sân bay trung gian tối đa:\r\n";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // txtThGianMin
-            // 
-            this.txtThGianMin.Location = new System.Drawing.Point(235, 84);
-            this.txtThGianMin.Name = "txtThGianMin";
-            this.txtThGianMin.Size = new System.Drawing.Size(176, 20);
-            this.txtThGianMin.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(27, 87);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(114, 13);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Thời gian bay tối thiểu:";
-            // 
             // txtThGianTGmin
             // 
             this.txtThGianTGmin.Location = new System.Drawing.Point(235, 191);
             this.txtThGianTGmin.Name = "txtThGianTGmin";
-            this.txtThGianTGmin.Size = new System.Drawing.Size(176, 20);
+            this.txtThGianTGmin.Size = new System.Drawing.Size(146, 20);
             this.txtThGianTGmin.TabIndex = 7;
             // 
             // label4
@@ -111,7 +98,7 @@
             // 
             this.txtThGianTGmax.Location = new System.Drawing.Point(235, 238);
             this.txtThGianTGmax.Name = "txtThGianTGmax";
-            this.txtThGianTGmax.Size = new System.Drawing.Size(176, 20);
+            this.txtThGianTGmax.Size = new System.Drawing.Size(146, 20);
             this.txtThGianTGmax.TabIndex = 9;
             // 
             // label5
@@ -131,6 +118,7 @@
             this.btnLuu.TabIndex = 10;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThoat
             // 
@@ -142,19 +130,65 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(387, 198);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(34, 13);
+            this.label6.TabIndex = 12;
+            this.label6.Text = "(phút)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(387, 241);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 13);
+            this.label7.TabIndex = 13;
+            this.label7.Text = "(phút)";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(387, 143);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(34, 13);
+            this.label8.TabIndex = 17;
+            this.label8.Text = "(phút)";
+            // 
+            // txtThGianMin
+            // 
+            this.txtThGianMin.Location = new System.Drawing.Point(235, 140);
+            this.txtThGianMin.Name = "txtThGianMin";
+            this.txtThGianMin.Size = new System.Drawing.Size(146, 20);
+            this.txtThGianMin.TabIndex = 16;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(27, 143);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(114, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Thời gian bay tối thiểu:";
+            // 
             // frmQD1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(477, 351);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.txtThGianMin);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnLuu);
             this.Controls.Add(this.txtThGianTGmax);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtThGianTGmin);
             this.Controls.Add(this.label4);
-            this.Controls.Add(this.txtThGianMin);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtSNTGMax);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtSBmax);
@@ -176,13 +210,16 @@
         private System.Windows.Forms.TextBox txtSBmax;
         private System.Windows.Forms.TextBox txtSNTGMax;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtThGianMin;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtThGianTGmin;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtThGianTGmax;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtThGianMin;
+        private System.Windows.Forms.Label label3;
     }
 }

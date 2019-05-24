@@ -40,7 +40,6 @@ C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\ob
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmBaoCaoThang.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachSB.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD1.resources
-C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD2.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD3.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmSuaDoiQD.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanSachCB.resources
@@ -80,3 +79,4 @@ D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenB
 D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.pdb
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachKH.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachKH.resources
+C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.cmbMaCB.resources

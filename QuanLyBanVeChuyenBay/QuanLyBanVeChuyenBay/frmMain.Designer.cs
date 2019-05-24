@@ -91,10 +91,10 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
             this.label1.Location = new System.Drawing.Point(174, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(199, 22);
+            this.label1.Size = new System.Drawing.Size(199, 35);
             this.label1.TabIndex = 1;
             this.label1.Text = "Bán Vé Máy Bay";
             this.label1.Click += new System.EventHandler(this.label1_Click);
@@ -112,7 +112,6 @@
             this.groupBox2.Size = new System.Drawing.Size(523, 172);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Bán vé";
             // 
             // btnSuaDoiQD
             // 

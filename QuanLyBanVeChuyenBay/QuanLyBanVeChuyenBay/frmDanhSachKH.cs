@@ -20,10 +20,11 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
-       
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+
+      
         public  void Connection()
         {
 
@@ -89,6 +90,11 @@ namespace QuanLyBanVeChuyenBay
             click_data = false;
         }
 
+        void reload()
+        {
+            this.Connection();
+            this.Show();
+        }
         private void btnLoadLai_Click(object sender, EventArgs e)
         {
             Connection();
@@ -104,87 +110,100 @@ namespace QuanLyBanVeChuyenBay
         }
         string hangve;
         int gheh1=0, gheh2=0, sove;
+
+       
         private void btnHuyVe_Click(object sender, EventArgs e)
         {
-            index = 0;
-            mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+            MessageBox.Show("Ngta chưa làm kiểm tra thời gian hủy vé hợp lệ đc nha @@");
+            if (click_data == false)
+            {
+                index = 0;
+
+            }
+            else
+            {
+                index = dataDSKH.CurrentRow.Index;
+            }
             mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
             macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
-            DialogResult result =  MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý",  MessageBoxButtons.YesNo,MessageBoxIcon.Question);
-            if(result==DialogResult.Yes)
-            {
-                SqlConnection conn = new SqlConnection(strconn2);
-                try
-                {
-                    conn.Open();
-                    //Xoa phieu dat cho
-                    string sqlQuery3 = "delete from PHIEUDATCHO where MaHanhKhach=@MaHanhKhach";
-                    SqlCommand command3 = new SqlCommand(sqlQuery3,conn);
-                    command3.Parameters.AddWithValue("@MaHanhKhach",mahk);
-                    command3.ExecuteNonQuery();
 
-                    //Xoa ve
-                    //Trk khi xoa ve phai lay duoc hang ve
-                    string sqlQuery4 = "Select HangVe from VE where MaVe=@MaVe";
-                    SqlCommand command4 = new SqlCommand(sqlQuery4, conn);
-                    command4.Parameters.AddWithValue("@MaVe", mave);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command4);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    foreach (DataRow row in table.Rows)
+            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+                    SqlConnection conn = new SqlConnection(strconn2);
+                    try
                     {
-                        foreach (DataColumn column in table.Columns)
+                        conn.Open();
+                        //Xoa phieu dat cho
+                        string sqlQuery3 = "delete from PHIEUDATCHO where MaHanhKhach=@MaHanhKhach";
+                        SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
+                        command3.Parameters.AddWithValue("@MaHanhKhach", mahk);
+                        command3.ExecuteNonQuery();
+
+                        //Xoa ve
+                        //Trk khi xoa ve phai lay duoc hang ve
+                        string sqlQuery4 = "Select HangVe from VE where MaVe=@MaVe";
+                        SqlCommand command4 = new SqlCommand(sqlQuery4, conn);
+                        command4.Parameters.AddWithValue("@MaVe", mave);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command4);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        foreach (DataRow row in table.Rows)
                         {
-                            hangve = row["HangVe"].ToString();
-                            
+                            foreach (DataColumn column in table.Columns)
+                            {
+                                hangve = row["HangVe"].ToString();
+
+                            }
                         }
+                        sove = Int32.Parse(hangve);
+                        if (sove == 1)
+                            gheh1 = 1;
+                        else
+                            gheh2 = 1;
+                        string sqlQuery5 = "delete from VE where MaVe=@MaVe";
+                        SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
+                        command5.Parameters.AddWithValue("@MaVe", mave);
+                        command5.ExecuteNonQuery();
+
+                        //Xoa Hanh Khach
+                        string sqlQuery6 = "delete from HANHKHACH where MaHanhKhach=@MaHanhKhach";
+                        SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
+                        command6.Parameters.AddWithValue("@MaHanhKhach", mahk);
+                        command6.ExecuteNonQuery();
+
+                        //Cap nhat bang TINHTRANG
+                        string sqlQuery7 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 + " + gheh1 +
+                           ", SLGheTrongH2 = SLGheTrongH2 +" + gheh2 +
+                           ", TongSoGhe = TongSoGhe, TongSoGheTrong = TongSoGheTrong + 1, TongSoGheDat =TongSoGheDat - 1 where MaCB =@MaCB";
+                        SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
+                        command7.Parameters.AddWithValue("@MaCB", macb);
+                        command7.ExecuteNonQuery();
+
+
+                        MessageBox.Show("Xóa hành khách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //table.Clear();
+                        Connection();
+
                     }
-                    sove = Int32.Parse(hangve);
-                    if (sove == 1)
-                        gheh1 = 1;
-                    else
-                        gheh2 = 1;
-                    string sqlQuery5 = "delete from VE where MaVe=@MaVe";
-                    SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
-                    command5.Parameters.AddWithValue("@MaVe", mave);
-                    command5.ExecuteNonQuery();
-
-                    //Xoa Hanh Khach
-                    string sqlQuery6 = "delete from HANHKHACH where MaHanhKhach=@MaHanhKhach";
-                    SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
-                    command6.Parameters.AddWithValue("@MaHanhKhach", mahk);
-                    command6.ExecuteNonQuery();
-
-                    //Cap nhat bang TINHTRANG
-                    string sqlQuery7 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 + " + gheh1 +
-                       ", SLGheTrongH2 = SLGheTrongH2 +" + gheh2 +
-                       ", TongSoGhe = TongSoGhe, TongSoGheTrong = TongSoGheTrong + 1, TongSoGheDat =TongSoGheDat - 1 where MaCB =@MaCB";
-                    SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
-                    command7.Parameters.AddWithValue("@MaCB", macb);
-                    command7.ExecuteNonQuery();
-
-
-                    MessageBox.Show("Xóa hành khách thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Connection();
-
-                }
-                catch (InvalidOperationException ex)
-                {
-                    //xu ly khi ket noi co van de
-                    //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-                    MessageBox.Show(ex.Message);
-                }
-                catch (Exception ex)
-                {
-                    //xu ly khi ket noi co van de
-                  //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                    MessageBox.Show(ex.Message);
-                }
-                finally
-                {
-                    //Dong ket noi sau khi thao tac ket thuc
-                   conn.Close();
-                }
+                    catch (InvalidOperationException ex)
+                    {
+                        //xu ly khi ket noi co van de
+                        //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                        MessageBox.Show(ex.Message);
+                    }
+                    catch (Exception ex)
+                    {
+                        //xu ly khi ket noi co van de
+                        //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                        MessageBox.Show(ex.Message);
+                    }
+                    finally
+                    {
+                        //Dong ket noi sau khi thao tac ket thuc
+                        conn.Close();
+                    }
+                
             }
 
         }
@@ -262,7 +281,7 @@ namespace QuanLyBanVeChuyenBay
                     DataTable table = new DataTable();
                     adapter.Fill(table);
                     if(table.Rows.Count==0)
-                        MessageBox.Show("Không tìm thấy bất cứ thông tin nào.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Không tìm thấy bất cứ thông tin nào", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     dataDSKH.DataSource = table;
                     btnLoadLai.Enabled = true;
                     btnHuyVe.Enabled = true;

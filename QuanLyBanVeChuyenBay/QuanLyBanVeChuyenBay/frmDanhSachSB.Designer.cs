@@ -86,9 +86,10 @@
             // 
             // txtSBmax
             // 
-            this.txtSBmax.Location = new System.Drawing.Point(420, 18);
+            this.txtSBmax.Enabled = false;
+            this.txtSBmax.Location = new System.Drawing.Point(431, 18);
             this.txtSBmax.Name = "txtSBmax";
-            this.txtSBmax.Size = new System.Drawing.Size(60, 20);
+            this.txtSBmax.Size = new System.Drawing.Size(49, 20);
             this.txtSBmax.TabIndex = 2;
             // 
             // label1

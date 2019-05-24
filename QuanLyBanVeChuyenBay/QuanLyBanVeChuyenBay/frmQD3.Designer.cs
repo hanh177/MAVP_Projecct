@@ -54,11 +54,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(50, 73);
+            this.label2.Location = new System.Drawing.Point(47, 73);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(156, 13);
+            this.label2.Size = new System.Drawing.Size(161, 13);
             this.label2.TabIndex = 1;
-            this.label2.Text = "Thời gian cho phép hủy đặt vé:";
+            this.label2.Text = "Thời gian chậm nhất hủy đặt vé:";
             // 
             // txtThgianDatVe
             // 
@@ -100,6 +100,7 @@
             this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnLuu_Click);
             // 
             // btnThoat
             // 

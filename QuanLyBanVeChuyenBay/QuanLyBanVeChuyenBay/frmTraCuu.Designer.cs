@@ -93,6 +93,7 @@
             // 
             // cmbMaCB
             // 
+            this.cmbMaCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaCB.FormattingEnabled = true;
             this.cmbMaCB.Location = new System.Drawing.Point(137, 19);
             this.cmbMaCB.Name = "cmbMaCB";
@@ -117,6 +118,7 @@
             // 
             // cmbSanBayDen
             // 
+            this.cmbSanBayDen.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSanBayDen.FormattingEnabled = true;
             this.cmbSanBayDen.Location = new System.Drawing.Point(550, 55);
             this.cmbSanBayDen.Name = "cmbSanBayDen";
@@ -125,6 +127,7 @@
             // 
             // cmbSanBayDi
             // 
+            this.cmbSanBayDi.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbSanBayDi.FormattingEnabled = true;
             this.cmbSanBayDi.Location = new System.Drawing.Point(550, 19);
             this.cmbSanBayDi.Name = "cmbSanBayDi";

@@ -99,9 +99,9 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(395, 489);
+            this.btnThoat.Location = new System.Drawing.Point(372, 489);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(83, 41);
+            this.btnThoat.Size = new System.Drawing.Size(141, 41);
             this.btnThoat.TabIndex = 33;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -109,9 +109,9 @@
             // 
             // btnInPhieu
             // 
-            this.btnInPhieu.Location = new System.Drawing.Point(395, 363);
+            this.btnInPhieu.Location = new System.Drawing.Point(372, 363);
             this.btnInPhieu.Name = "btnInPhieu";
-            this.btnInPhieu.Size = new System.Drawing.Size(83, 41);
+            this.btnInPhieu.Size = new System.Drawing.Size(141, 41);
             this.btnInPhieu.TabIndex = 32;
             this.btnInPhieu.Text = "In Phiếu";
             this.btnInPhieu.UseVisualStyleBackColor = true;
@@ -365,9 +365,9 @@
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(395, 427);
+            this.btnSua.Location = new System.Drawing.Point(372, 427);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(83, 42);
+            this.btnSua.Size = new System.Drawing.Size(141, 42);
             this.btnSua.TabIndex = 43;
             this.btnSua.Text = "Sửa Thông Tin";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -377,7 +377,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(351, 18);
+            this.label12.Location = new System.Drawing.Point(391, 9);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(162, 22);
             this.label12.TabIndex = 44;

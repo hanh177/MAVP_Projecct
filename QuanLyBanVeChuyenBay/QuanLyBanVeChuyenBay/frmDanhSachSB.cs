@@ -23,10 +23,11 @@ namespace QuanLyBanVeChuyenBay
             this.nhanlich = frmNhanLich;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
+        int SoSBtoida=0;
 
         private void Connection()
         {
@@ -41,6 +42,16 @@ namespace QuanLyBanVeChuyenBay
                 adapter.Fill(table);
                 dataDanhSachSB.DataSource = table;
                 dataDanhSachSB.AutoGenerateColumns = true;
+
+
+                string sql2 = "Select SoSBToiDa from THAMSO";
+                SqlCommand cmd = new SqlCommand(sql2, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while(reader.Read())
+                {
+                    SoSBtoida =Int32.Parse( reader["SoSBToiDa"].ToString());
+                }
+
             }
             catch (InvalidOperationException ex)
             {
@@ -62,6 +73,7 @@ namespace QuanLyBanVeChuyenBay
         private void frmDanhSachSB_Load(object sender, EventArgs e)
         {
             Connection();
+            txtSBmax.Text = SoSBtoida.ToString();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -72,52 +84,56 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnThemSB_Click(object sender, EventArgs e)
         {
-            if (txtMaSB.Text.Length != 0 && txtTenSB.Text.Length!=0)
+            if (dataDanhSachSB.Rows.Count <= SoSBtoida)
             {
-                SqlConnection conn = new SqlConnection(strconn2);
-                string MASB = txtMaSB.Text;
-                string TENSB = txtTenSB.Text;
+                if (txtMaSB.Text.Length != 0 && txtTenSB.Text.Length != 0)
+                {
+                    SqlConnection conn = new SqlConnection(strconn2);
+                    string MASB = txtMaSB.Text;
+                    string TENSB = txtTenSB.Text;
 
-                try
-                {
-                    conn.Open();
-                    String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[SANBAY] values ( " + "@MaSanBay, @TenSanBay)";
-                    SqlCommand commnad = new SqlCommand(sqlQuery, conn);
-                    commnad.Parameters.AddWithValue("MaSanBay", MASB);
-                    commnad.Parameters.AddWithValue("TenSanBay", TENSB);
+                    try
+                    {
+                        conn.Open();
+                        String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[SANBAY] values ( " + "@MaSanBay, @TenSanBay)";
+                        SqlCommand commnad = new SqlCommand(sqlQuery, conn);
+                        commnad.Parameters.AddWithValue("MaSanBay", MASB);
+                        commnad.Parameters.AddWithValue("TenSanBay", TENSB);
 
-                    commnad.ExecuteNonQuery();
-                    MessageBox.Show("Thêm sân bay thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    string sql = "SELECT * FROM SANBAY";
-                    SqlCommand command = new SqlCommand(sql, conn);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataTable table = new DataTable();
-                    adapter.Fill(table);
-                    dataDanhSachSB.DataSource = table;
-                    txtMaSB.Text = "";
-                    txtTenSB.Text = "";
+                        commnad.ExecuteNonQuery();
+                        MessageBox.Show("Thêm sân bay thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        string sql = "SELECT * FROM SANBAY";
+                        SqlCommand command = new SqlCommand(sql, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataTable table = new DataTable();
+                        adapter.Fill(table);
+                        dataDanhSachSB.DataSource = table;
+                        txtMaSB.Text = "";
+                        txtTenSB.Text = "";
+                    }
+                    catch (InvalidOperationException ex)
+                    {
+                        //xu ly khi ket noi co van de
+                        MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                    }
+                    catch (Exception ex)
+                    {
+                        //xu ly khi ket noi co van de
+                        MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                    }
+                    finally
+                    {
+                        //Dong ket noi sau khi thao tac ket thuc
+                        conn.Close();
+                    }
                 }
-                catch (InvalidOperationException ex)
+                else
                 {
-                    //xu ly khi ket noi co van de
-                    MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-                }
-                catch (Exception ex)
-                {
-                    //xu ly khi ket noi co van de
-                    MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                }
-                finally
-                {
-                    //Dong ket noi sau khi thao tac ket thuc
-                    conn.Close();
+                    MessageBox.Show("Mã sân bay hoặc tên sân bay không thể trống.", "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
             }
-            else
-            {
-                MessageBox.Show("Mã sân bay hoặc tên sân bay không thể trống.", "Lỗi!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            else MessageBox.Show("Không thể thêm sân bay vì đã vượt quá qui định về số sân bay tối đa", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void btnXoaSanBay_Click(object sender, EventArgs e)

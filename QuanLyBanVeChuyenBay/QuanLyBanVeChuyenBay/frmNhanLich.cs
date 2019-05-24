@@ -28,10 +28,12 @@ namespace QuanLyBanVeChuyenBay
         }
 
         string MACHUYENBAYCUOI;
+        int TGDungToiDa;
+        int TGDungToiThieu;
+        int SoSBTGToida;
+       // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
-
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -93,8 +95,16 @@ namespace QuanLyBanVeChuyenBay
                     }
                     else
                         txtMaCB.Text = "CB" + socb.ToString();
-                
-               
+
+                string sql3 = "Select * from THAMSO";
+                SqlCommand cmd = new SqlCommand(sql3, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    SoSBTGToida= Int32.Parse(reader["SoSBTGToiDa"].ToString());
+                    TGDungToiThieu = Int32.Parse(reader["TGDungToiThieu"].ToString());
+                   TGDungToiDa = Int32.Parse(reader["TGDungToiDa"].ToString());
+                }
             }
             catch (InvalidOperationException ex)
             {
@@ -119,8 +129,7 @@ namespace QuanLyBanVeChuyenBay
             Connection();
             DateTime dt = DateTime.Now;
             dateTimePicker1.MinDate = dt;
-           
-
+            label12.Text = "*Lưu ý: Số sân bay trung gian không \nđược vượt quá " + SoSBTGToida + " theo qui định."; 
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -133,19 +142,24 @@ namespace QuanLyBanVeChuyenBay
         {
             Form danhsachcb = new frmDanSachCB(this);
             this.Hide();
-            danhsachcb.Show();
+            danhsachcb.ShowDialog();
+            this.Show();
         }
 
         private void tSbtnDanhSachSB_Click(object sender, EventArgs e)
         {
             Form danhsachsb = new frmDanhSachSB(this);
             this.Hide();
-            danhsachsb.Show();
+            danhsachsb.ShowDialog();
+            this.Connection();
+            this.Show();
         }
   
         public virtual string ValueMember { get; set; }
 
         string MASB;
+
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(strconn2);
@@ -161,7 +175,6 @@ namespace QuanLyBanVeChuyenBay
                 int GIAVE = Int32.Parse(txtGiaVe.Text);
                 // DateTime NGAYBAY = DateTime.ParseExact(dateTimePicker1.Text, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 DateTime NGAYBAY = dateTimePicker1.Value;
- 
                
                 conn.Open();
                 String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
@@ -266,31 +279,45 @@ namespace QuanLyBanVeChuyenBay
         public string masb_tg;//dung luu cac ma sb trung gian duoc them vao
         private void btnThemTG_Click(object sender, EventArgs e)
         {
-            if(txtMaSBTG.Text==""||txtTGDung.Text==""||cmbTenSBTG.SelectedIndex==-1 )
+            if (txtMaSBTG.Text == "" || txtTGDung.Text == "" || cmbTenSBTG.SelectedIndex == -1)
             {
                 MessageBox.Show("Sai cú pháp do điền thiếu trường dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            dataSanBayTG.Rows.Add(1);
-            int indexRow = dataSanBayTG.Rows.Count - 1;
-            dataSanBayTG[0, indexRow].Value = txtMaSBTG.Text;
-            dataSanBayTG[1, indexRow].Value = cmbTenSBTG.Text;
-            dataSanBayTG[2, indexRow].Value = txtTGDung.Text;
-            dataSanBayTG[3, indexRow].Value = txtGhiChu.Text;
-            if (masb_tg == null)
-            {
-                masb_tg = cmbTenSBTG.SelectedValue.ToString();
-            }
             else
             {
-                masb_tg=masb_tg + "," + cmbTenSBTG.SelectedValue.ToString();
-            }
+                if (Int32.Parse(txtTGDung.Text) < TGDungToiThieu || Int32.Parse(txtTGDung.Text) > TGDungToiDa)
+                {
+                    MessageBox.Show("Thời gian dừng phải lớn hơn " + TGDungToiThieu + " và nhỏ hơn " + TGDungToiDa, "Thêm SBTG không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    //MessageBox.Show("Now: " + dataSanBayTG.Rows.Count);
+                    if (dataSanBayTG.Rows.Count < SoSBTGToida)
+                    {
+                        dataSanBayTG.Rows.Add(1);
+                        int indexRow = dataSanBayTG.Rows.Count - 1;
+                        dataSanBayTG[0, indexRow].Value = txtMaSBTG.Text;
+                        dataSanBayTG[1, indexRow].Value = cmbTenSBTG.Text;
+                        dataSanBayTG[2, indexRow].Value = txtTGDung.Text;
+                        dataSanBayTG[3, indexRow].Value = txtGhiChu.Text;
+                        if (masb_tg == null)
+                        {
+                            masb_tg = cmbTenSBTG.SelectedValue.ToString();
+                        }
+                        else
+                        {
+                            masb_tg = masb_tg + "," + cmbTenSBTG.SelectedValue.ToString();
+                        }
 
-            them = true;
-            txtMaSBTG.Text = "";
-            cmbTenSBTG.SelectedIndex = -1;
-            txtTGDung.Text = "";
-            txtGhiChu.Text = "";
+                        them = true;
+                        txtMaSBTG.Text = "";
+                        cmbTenSBTG.SelectedIndex = -1;
+                        txtTGDung.Text = "";
+                        txtGhiChu.Text = "";
+                    }else { MessageBox.Show("Không thể thêm Sân bay trung gian vì đã vượt quá qui định", "Thêm sân bay trung gian không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                }
+            }
         }
         private bool nonNumberEntered = false;
         private void txtTGDung_KeyDown(object sender, KeyEventArgs e)
@@ -401,6 +428,16 @@ namespace QuanLyBanVeChuyenBay
                 //Dong ket noi sau khi thao tac ket thuc
                 conn.Close();
             }
+        }
+
+        private void btnXoaSBTG_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                int rowIndex = dataSanBayTG.CurrentCell.RowIndex;
+                dataSanBayTG.Rows.RemoveAt(rowIndex);
+            }
+            catch { };
         }
     }
 }

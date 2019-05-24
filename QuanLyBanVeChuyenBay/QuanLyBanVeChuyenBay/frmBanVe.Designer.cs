@@ -237,7 +237,7 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.Location = new System.Drawing.Point(228, 350);
+            this.btnDatVe.Location = new System.Drawing.Point(203, 350);
             this.btnDatVe.Name = "btnDatVe";
             this.btnDatVe.Size = new System.Drawing.Size(83, 41);
             this.btnDatVe.TabIndex = 2;
@@ -256,6 +256,7 @@
             this.toolStrip1.Size = new System.Drawing.Size(743, 25);
             this.toolStrip1.TabIndex = 29;
             this.toolStrip1.Text = "toolStrip1";
+            this.toolStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.toolStrip1_ItemClicked);
             // 
             // btnDanhSachCB
             // 
@@ -285,7 +286,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(509, 350);
+            this.btnThoat.Location = new System.Drawing.Point(473, 350);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(83, 41);
             this.btnThoat.TabIndex = 30;

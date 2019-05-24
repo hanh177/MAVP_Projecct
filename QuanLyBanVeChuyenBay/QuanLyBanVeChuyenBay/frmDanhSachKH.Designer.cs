@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dataDSKH = new System.Windows.Forms.DataGridView();
+            this.colMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPhieuDat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnTimKiem = new System.Windows.Forms.Button();
@@ -44,12 +50,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLoadLai = new System.Windows.Forms.Button();
-            this.colMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colCMND = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SDT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaVe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataDSKH)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -66,14 +66,59 @@
             this.colMaCB});
             this.dataDSKH.Location = new System.Drawing.Point(26, 194);
             this.dataDSKH.Name = "dataDSKH";
-            this.dataDSKH.Size = new System.Drawing.Size(779, 206);
+            this.dataDSKH.Size = new System.Drawing.Size(762, 206);
             this.dataDSKH.TabIndex = 0;
             this.dataDSKH.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDSKH_CellContentClick);
             this.dataDSKH.Click += new System.EventHandler(this.dataDSKH_Click);
             // 
+            // colMaKH
+            // 
+            this.colMaKH.DataPropertyName = "MaHanhKhach";
+            this.colMaKH.FillWeight = 91.97324F;
+            this.colMaKH.HeaderText = "Mã Khách Hàng";
+            this.colMaKH.Name = "colMaKH";
+            // 
+            // colHoTen
+            // 
+            this.colHoTen.DataPropertyName = "HoTen";
+            this.colHoTen.FillWeight = 68.85513F;
+            this.colHoTen.HeaderText = "Họ Tên";
+            this.colHoTen.Name = "colHoTen";
+            this.colHoTen.Width = 170;
+            // 
+            // colCMND
+            // 
+            this.colCMND.DataPropertyName = "CMMD";
+            this.colCMND.FillWeight = 78.57214F;
+            this.colCMND.HeaderText = "CMND";
+            this.colCMND.Name = "colCMND";
+            this.colCMND.Width = 140;
+            // 
+            // SDT
+            // 
+            this.SDT.DataPropertyName = "SDT";
+            this.SDT.HeaderText = "SDT";
+            this.SDT.Name = "SDT";
+            this.SDT.Width = 120;
+            // 
+            // colMaVe
+            // 
+            this.colMaVe.DataPropertyName = "MaVe";
+            this.colMaVe.FillWeight = 88.4464F;
+            this.colMaVe.HeaderText = "Mã vé";
+            this.colMaVe.Name = "colMaVe";
+            // 
+            // colMaCB
+            // 
+            this.colMaCB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colMaCB.DataPropertyName = "MaCB";
+            this.colMaCB.FillWeight = 172.1531F;
+            this.colMaCB.HeaderText = "Mã Chuyến Bay";
+            this.colMaCB.Name = "colMaCB";
+            // 
             // btnPhieuDat
             // 
-            this.btnPhieuDat.Location = new System.Drawing.Point(391, 433);
+            this.btnPhieuDat.Location = new System.Drawing.Point(451, 423);
             this.btnPhieuDat.Name = "btnPhieuDat";
             this.btnPhieuDat.Size = new System.Drawing.Size(114, 36);
             this.btnPhieuDat.TabIndex = 1;
@@ -83,7 +128,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(565, 433);
+            this.btnThoat.Location = new System.Drawing.Point(625, 423);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(89, 36);
             this.btnThoat.TabIndex = 2;
@@ -103,7 +148,7 @@
             // 
             // btnHuyVe
             // 
-            this.btnHuyVe.Location = new System.Drawing.Point(246, 433);
+            this.btnHuyVe.Location = new System.Drawing.Point(306, 423);
             this.btnHuyVe.Name = "btnHuyVe";
             this.btnHuyVe.Size = new System.Drawing.Size(98, 36);
             this.btnHuyVe.TabIndex = 4;
@@ -124,13 +169,14 @@
             this.groupBox1.Controls.Add(this.btnTimKiem);
             this.groupBox1.Location = new System.Drawing.Point(38, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(767, 130);
+            this.groupBox1.Size = new System.Drawing.Size(739, 130);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Tìm Kiếm Khách Hàng";
             // 
             // cmbMaCB
             // 
+            this.cmbMaCB.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaCB.FormattingEnabled = true;
             this.cmbMaCB.Location = new System.Drawing.Point(551, 58);
             this.cmbMaCB.Name = "cmbMaCB";
@@ -140,6 +186,7 @@
             // 
             // cmbMaKH
             // 
+            this.cmbMaKH.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaKH.FormattingEnabled = true;
             this.cmbMaKH.Location = new System.Drawing.Point(552, 29);
             this.cmbMaKH.Name = "cmbMaKH";
@@ -211,58 +258,13 @@
             // 
             // btnLoadLai
             // 
-            this.btnLoadLai.Location = new System.Drawing.Point(73, 433);
+            this.btnLoadLai.Location = new System.Drawing.Point(133, 423);
             this.btnLoadLai.Name = "btnLoadLai";
             this.btnLoadLai.Size = new System.Drawing.Size(113, 36);
             this.btnLoadLai.TabIndex = 7;
             this.btnLoadLai.Text = "Load lại danh sách";
             this.btnLoadLai.UseVisualStyleBackColor = true;
             this.btnLoadLai.Click += new System.EventHandler(this.btnLoadLai_Click);
-            // 
-            // colMaKH
-            // 
-            this.colMaKH.DataPropertyName = "MaHanhKhach";
-            this.colMaKH.FillWeight = 91.97324F;
-            this.colMaKH.HeaderText = "Mã Khách Hàng";
-            this.colMaKH.Name = "colMaKH";
-            // 
-            // colHoTen
-            // 
-            this.colHoTen.DataPropertyName = "HoTen";
-            this.colHoTen.FillWeight = 68.85513F;
-            this.colHoTen.HeaderText = "Họ Tên";
-            this.colHoTen.Name = "colHoTen";
-            this.colHoTen.Width = 170;
-            // 
-            // colCMND
-            // 
-            this.colCMND.DataPropertyName = "CMMD";
-            this.colCMND.FillWeight = 78.57214F;
-            this.colCMND.HeaderText = "CMND";
-            this.colCMND.Name = "colCMND";
-            this.colCMND.Width = 140;
-            // 
-            // SDT
-            // 
-            this.SDT.DataPropertyName = "SDT";
-            this.SDT.HeaderText = "SDT";
-            this.SDT.Name = "SDT";
-            this.SDT.Width = 120;
-            // 
-            // colMaVe
-            // 
-            this.colMaVe.DataPropertyName = "MaVe";
-            this.colMaVe.FillWeight = 88.4464F;
-            this.colMaVe.HeaderText = "Mã vé";
-            this.colMaVe.Name = "colMaVe";
-            // 
-            // colMaCB
-            // 
-            this.colMaCB.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colMaCB.DataPropertyName = "MaCB";
-            this.colMaCB.FillWeight = 172.1531F;
-            this.colMaCB.HeaderText = "Mã Chuyến Bay";
-            this.colMaCB.Name = "colMaCB";
             // 
             // frmDanhSachKH
             // 

@@ -26,29 +26,31 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Hide();
-            main.Show();
+            this.Close();
         }
 
         private void btnQD1_Click(object sender, EventArgs e)
         {
             Form qd1 = new frmQD1(this);
             this.Hide();
-            qd1.Show();
+            qd1.ShowDialog();
+            this.Show();
         }
 
         private void btnQD2_Click(object sender, EventArgs e)
         {
-            Form qd2 = new frmQD2(this);
+            Form qd2 = new cmbMaCB(this);
             this.Hide();
-            qd2.Show();
+            qd2.ShowDialog();
+            this.Show();
         }
 
         private void btnQD3_Click(object sender, EventArgs e)
         {
             Form qd3=new frmQD3(this);
             this.Hide();
-            qd3.Show();
+            qd3.ShowDialog();
+            this.Show();
         }
     }
 }
