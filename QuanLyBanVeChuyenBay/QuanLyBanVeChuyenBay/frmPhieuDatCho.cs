@@ -21,9 +21,9 @@ namespace QuanLyBanVeChuyenBay
             this.danhsachkh = frmDanhSachKH;
             
         }
-         string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+         //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         public void Connection()
         {
 
@@ -184,7 +184,7 @@ namespace QuanLyBanVeChuyenBay
                 command.ExecuteNonQuery();
                 MessageBox.Show("Sua thong tin thanh cong.", "Thong Bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 rtxtPhieuDatCho.Text = "\t\t\tPHIẾU ĐẶT CHỖ" + "\n\n\n\n  Họ và Tên: " + txtHoTenKH.Text + "\n\n  SDT: " + txtSDT.Text
-                   + "\t\t\tCMND: " + txtCMND.Text + "\n\n  Đã đặt chuyến bay đi từ sân bay " + txtSanBayDi.Text + " đến sân bay " + txtSanBayDen.Text
+                   + "\tCMND: " + txtCMND.Text + "\n\n  Đã đặt chuyến bay đi từ sân bay " + txtSanBayDi.Text + " đến sân bay " + txtSanBayDen.Text
                    + " vào lúc " + txtNgayBay.Text + "." + "\n\n  Mã số vé: " + txtMaVe.Text + "\t\t\tHạng vé: " + txtHangVe.Text + "\n\n  Giá vé: " + txtGiaVe.Text
                    + "\n\n  Tình trạng: Đã thanh toán." + "\n\n  Vui lòng mang phiếu này khi bạn chuẩn bị lên máy bay, chúng tôi sẽ đối chứng. Nếu trường hợp bị mất vui lòng liên hệ tới tổng đài 18001000 để được hỗ trợ."
                    + "\n\n \t\t\t\t\t\t\t\t\t\t\t Quản Lý Bán Vé " + "\n\t\t\t\t\t\t\t\t\t\t\t  " + frmLogin.username.ToString(); ;

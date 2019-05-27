@@ -87,6 +87,12 @@
     <Compile Include="frmQD3.Designer.cs">
       <DependentUpon>frmQD3.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmSanBayTG.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmSanBayTG.Designer.cs">
+      <DependentUpon>frmSanBayTG.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSuaDoiQD.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmQD3.resx">
       <DependentUpon>frmQD3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmSanBayTG.resx">
+      <DependentUpon>frmSanBayTG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSuaDoiQD.resx">
       <DependentUpon>frmSuaDoiQD.cs</DependentUpon>

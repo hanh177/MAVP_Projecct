@@ -12,12 +12,10 @@ C:\Users\Administrator\Desktop\Đồ án\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenB
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.exe.config
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.exe
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\bin\Debug\QuanLyBanVeChuyenBay.pdb
-C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csprojResolveAssemblyReference.cache
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmBaoCaoNam.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmBaoCaoThang.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachSB.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD1.resources
-C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD2.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmQD3.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmSuaDoiQD.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanSachCB.resources
@@ -80,3 +78,6 @@ D:\NMCNPM\DoAn\MAVP_Project\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenB
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachKH.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmDanhSachKH.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.cmbMaCB.resources
+C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.csprojAssemblyReference.cache
+C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.cmbMaCB.resources
+C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmSanBayTG.resources

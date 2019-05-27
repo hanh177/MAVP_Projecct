@@ -48,7 +48,6 @@
             this.ColTGDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label12 = new System.Windows.Forms.Label();
             this.cmbTenSBTG = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@
             this.txtMaCB = new System.Windows.Forms.TextBox();
             this.MaCB = new System.Windows.Forms.Label();
             this.btnXoaSBTG = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
@@ -236,15 +236,6 @@
             this.groupBox1.TabIndex = 49;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sân Bay Trung Gian";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 25);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(210, 26);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "*Lưu ý: Số sân bay trung gian không được \r\nvượt quá qui đinh";
             // 
             // cmbTenSBTG
             // 
@@ -500,6 +491,16 @@
             this.btnXoaSBTG.UseVisualStyleBackColor = true;
             this.btnXoaSBTG.Click += new System.EventHandler(this.btnXoaSBTG_Click);
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(210, 26);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "*Lưu ý: Số sân bay trung gian không được \r\nvượt quá qui đinh";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
             // frmNhanLich
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -564,7 +565,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn ColTGDung;
         private System.Windows.Forms.DataGridViewTextBoxColumn ColGhiChu;
         private System.Windows.Forms.Button btnThemTG;
-        private System.Windows.Forms.Label label12;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DateTimePicker dateTimePicker1;
         private System.Windows.Forms.TextBox txtGiaVe;
@@ -583,5 +583,6 @@
         private System.Windows.Forms.TextBox txtMaCB;
         private System.Windows.Forms.Label MaCB;
         private System.Windows.Forms.Button btnXoaSBTG;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -19,9 +19,9 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-       string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+      //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         int index;
         static public string macb = "";
         int SLGHETRONG;
@@ -29,6 +29,7 @@ namespace QuanLyBanVeChuyenBay
         bool click_data;
 
         DataTable table = new DataTable();
+        DataTable table2=new DataTable();
         public void Connection()
         {
           
@@ -36,11 +37,35 @@ namespace QuanLyBanVeChuyenBay
             try
             {
                 conn.Open();
-                string sql = "select CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, TG.ThoiGianDung, CB.NgayGio, SB_TG.TenSanBay SanBayTG,  TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB";
+                string sql = "select distinct CB.MaCB, SBdi.TenSanBay SanBayDi, SBden.TenSanBay SanBayDen,CB.ThoiGianBay, A.SLSBTG,CB.NgayGio, TT.TongSoGhe,  TT.TongSoGheTrong, CB.GiaVe, TT.SLGheTrongH1, TT.SLGheTrongH2 from(CHUYENBAY CB join SANBAY SBdi on CB.SanBayDi = SBdi.MaSanBay join SANBAY SBden on CB.SanBayden = SBden.MaSanBay) join(CHUYENBAY left join TRUNGGIAN TG on CHUYENBAY.MaCB = TG.MaCB left join SANBAY SB_TG on TG.MaSanBay = SB_TG.MaSanBay) on CB.MaCB = CHUYENBAY.MaCB join TINHTRANG TT on CB.MaCB = TT.MaCB" +
+                    " left join  (select count(MaCB) SLSBTG ,MaCB from TRUNGGIAN group by MaCB) A on A.MaCB=TT.MaCB";
                 SqlCommand command = new SqlCommand(sql, conn);
                 SqlDataAdapter adapter = new SqlDataAdapter(command);              
                 adapter.Fill(table);
                 dataDanhSachCB.DataSource = table;
+
+                /*//Xu ly san bay trung gian
+                string sql2 = "select TG.MaCB,SB.TenSanBay from TRUNGGIAN TG join SANBAY SB on TG.MaSanBay=SB.MaSanBay";
+                SqlCommand command2 = new SqlCommand(sql2,conn);
+                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
+                adapter2.Fill(table2);
+                foreach(DataRow row in table2.Rows)//Chay tung dong trong table2
+                {
+                    foreach(var item in row.ItemArray)//Chay tung cot trong ddong hien tai
+                    {
+                        for(int i=0;i<dataDanhSachCB.Rows.Count;i++)//xet cac dong cua dataDSCB
+                        {
+                            if (String.Compare(dataDanhSachCB.Rows[i].Cells[0].EditedFormattedValue.ToString(),item.ToString(),true)==0)
+                            {
+                               dataDanhSachCB.
+                                break;
+                            }
+                           
+                        }
+                    }
+                }
+
+                */
                 dataDanhSachCB.AutoGenerateColumns = true;
             }
             catch (InvalidOperationException ex)
@@ -71,14 +96,7 @@ namespace QuanLyBanVeChuyenBay
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
-            try {
-                main.Show();
-            }
-            catch
-            {
-                Form frmMain = new frmMain(this);
-                frmMain.Show();             
-            }
+            main.Show();
         }
 
 
@@ -138,11 +156,11 @@ namespace QuanLyBanVeChuyenBay
                 {
 
                     index = dataDanhSachCB.CurrentRow.Index;
-                    macb = dataDanhSachCB.Rows[index].Cells[1].Value.ToString();
-                    string dongia = dataDanhSachCB.Rows[index].Cells[10].Value.ToString();
+                    macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
+                    string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
                     if (dongia != "")
                         DONGIA = Int32.Parse(dongia);
-                    string slghetrong = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                    string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
                     if (slghetrong != "")
                         SLGHETRONG = Int32.Parse(slghetrong);
                     else
@@ -161,11 +179,11 @@ namespace QuanLyBanVeChuyenBay
             if (click_data == false)
                 {
                     index = 0;
-                    macb = dataDanhSachCB.Rows[index].Cells[1].Value.ToString();
-                    string dongia = dataDanhSachCB.Rows[index].Cells[10].Value.ToString();
+                    macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
+                    string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
                     if (dongia != "")
                         DONGIA = Int32.Parse(dongia);
-                    string slghetrong = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                    string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
                     if (slghetrong != "")
                         SLGHETRONG = Int32.Parse(slghetrong);
                     else
@@ -197,7 +215,23 @@ namespace QuanLyBanVeChuyenBay
             }
 
         }
-
-
+        private void dataDanhSachCB_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dataDanhSachCB.CurrentRow != null)
+            {
+                index = dataDanhSachCB.CurrentRow.Index;
+                string slsbtg = dataDanhSachCB.Rows[index].Cells[4].EditedFormattedValue.ToString();
+                if (slsbtg != "")
+                {
+                    frmSanBayTG sbtg = new frmSanBayTG(this);
+                    this.Hide();
+                    sbtg.ShowDialog();
+                }
+                else
+                {
+                    return;
+                }
+            }
+        }
     }
 }

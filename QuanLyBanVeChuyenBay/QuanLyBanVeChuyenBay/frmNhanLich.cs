@@ -13,9 +13,7 @@ using System.Globalization;
 
 
 
-//cái mã khi click thì nó tự ra nha mk...ngta nghĩ v thôi ok ủa mk sao cài mấy cái combobox cho thành readonly đc nhờ..ngta tìm k thấy
-//ngta kiếm trên mạng. quên rồi hihi, để đó mai mốt ngta làm lại ok..hèn j nay tìm lòih :v
-//mk thử tự chạy nếu k hiểu ý tưởng thì ns ngta nha ok chạy luôn giờ hảừa
+
 namespace QuanLyBanVeChuyenBay
 {
     public partial class frmNhanLich : Form
@@ -31,9 +29,9 @@ namespace QuanLyBanVeChuyenBay
         int TGDungToiDa;
         int TGDungToiThieu;
         int SoSBTGToida;
-       // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -129,7 +127,9 @@ namespace QuanLyBanVeChuyenBay
             Connection();
             DateTime dt = DateTime.Now;
             dateTimePicker1.MinDate = dt;
-            label12.Text = "*Lưu ý: Số sân bay trung gian không \nđược vượt quá " + SoSBTGToida + " theo qui định."; 
+            if (quaquydinh == false)
+                label12.Text = "*Lưu ý: Số sân bay trung gian không \nđược vượt quá " + SoSBTGToida + " theo qui định.";
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -275,7 +275,7 @@ namespace QuanLyBanVeChuyenBay
         {
 
         }
-        bool them = false;
+        bool them = false, quaquydinh = false;
         public string masb_tg;//dung luu cac ma sb trung gian duoc them vao
         private void btnThemTG_Click(object sender, EventArgs e)
         {
@@ -315,8 +315,21 @@ namespace QuanLyBanVeChuyenBay
                         cmbTenSBTG.SelectedIndex = -1;
                         txtTGDung.Text = "";
                         txtGhiChu.Text = "";
-                    }else { MessageBox.Show("Không thể thêm Sân bay trung gian vì đã vượt quá qui định", "Thêm sân bay trung gian không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+                    }
                 }
+
+            }
+            if (dataSanBayTG.Rows.Count >= SoSBTGToida)
+            {
+                label12.ForeColor = Color.Red;
+                label12.Text = "Số sân bay trung gian đã đạt số lượng tối đa.";
+
+                //MessageBox.Show("Không thể thêm Sân bay trung gian vì đã vượt quá qui định", "Thêm sân bay trung gian không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtMaSBTG.Enabled = false;
+                cmbTenSBTG.Enabled = false;
+                txtTGDung.Enabled = false;
+                txtGhiChu.Enabled = false;
+                return;
             }
         }
         private bool nonNumberEntered = false;
@@ -363,55 +376,60 @@ namespace QuanLyBanVeChuyenBay
             SqlConnection conn = new SqlConnection(strconn2);
             try
             {
-                int sodong = dataSanBayTG.RowCount;
-                conn.Open();
-                if (dataSanBayTG.Rows.Count == 0)
+                if (quaquydinh == false)
                 {
-                    string sql = "select Max(MaTrungGian) as LastID from TRUNGGIAN";
-                    SqlCommand command = new SqlCommand(sql, conn);
-                    SqlDataAdapter adapter = new SqlDataAdapter(command);
-                    DataSet dataSet = new DataSet();
-                    adapter.Fill(dataSet, "MaTrungGian");
-                    DataTable table = dataSet.Tables["MaTrungGian"];
+                    int sodong = dataSanBayTG.RowCount;
+                    conn.Open();
+                    if (dataSanBayTG.Rows.Count == 0)
+                    {
+                        string sql = "select Max(MaTrungGian) as LastID from TRUNGGIAN";
+                        SqlCommand command = new SqlCommand(sql, conn);
+                        SqlDataAdapter adapter = new SqlDataAdapter(command);
+                        DataSet dataSet = new DataSet();
+                        adapter.Fill(dataSet, "MaTrungGian");
+                        DataTable table = dataSet.Tables["MaTrungGian"];
 
-                    foreach (DataRow row in table.Rows)
-                    {
-                        foreach (DataColumn col in table.Columns)
+                        foreach (DataRow row in table.Rows)
                         {
-                            MACHUYENBAYTGCUOI = row[col].ToString();
-                            if (MACHUYENBAYTGCUOI == "")
-                                MACHUYENBAYTGCUOI = "TG00";
+                            foreach (DataColumn col in table.Columns)
+                            {
+                                MACHUYENBAYTGCUOI = row[col].ToString();
+                                if (MACHUYENBAYTGCUOI == "")
+                                    MACHUYENBAYTGCUOI = "TG00";
+                            }
                         }
+                        string macb_tg = MACHUYENBAYTGCUOI.Substring(2);
+                        int socb_tg = Int32.Parse(macb_tg);
+                        socb_tg = socb_tg + 1;
+                        bool flag = false;
+                        if (socb_tg < 10)
+                            flag = true;
+                        if (flag == true)
+                        {
+                            txtMaSBTG.Text = "TG0" + socb_tg.ToString();
+                        }
+                        else
+                            txtMaSBTG.Text = "TG" + socb_tg.ToString();
                     }
-                    string macb_tg = MACHUYENBAYTGCUOI.Substring(2);
-                    int socb_tg = Int32.Parse(macb_tg);
-                    socb_tg = socb_tg + 1;
-                    bool flag = false;
-                    if (socb_tg < 10)
-                        flag = true;
-                    if (flag == true)
+                    else//Da nhap them 1 hoac 2 san bay trung gian
                     {
-                        txtMaSBTG.Text = "TG0" + socb_tg.ToString();
+                        string matg_data = dataSanBayTG.Rows[sodong - 1].Cells[0].EditedFormattedValue.ToString();//lay cai ma trung gian duoc nhap sau cung
+                        string macb_tg2 = matg_data.Substring(2);
+                        int socb_tg2 = Int32.Parse(macb_tg2);
+                        socb_tg2 = socb_tg2 + 1;
+                        bool flag2 = false;
+                        if (socb_tg2 < 10)
+                            flag2 = true;
+                        if (flag2 == true)
+                        {
+                            txtMaSBTG.Text = "TG0" + socb_tg2.ToString();
+                        }
+                        else
+                            txtMaSBTG.Text = "TG" + socb_tg2.ToString();
                     }
-                    else
-                        txtMaSBTG.Text = "TG" + socb_tg.ToString();
                 }
-                else//Da nhap them 1 hoac 2 san bay trung gian
-                {
-                    string matg_data= dataSanBayTG.Rows[sodong-1].Cells[0].EditedFormattedValue.ToString();//lay cai ma trung gian duoc nhap sau cung
-                    string macb_tg2 = matg_data.Substring(2);
-                    int socb_tg2 = Int32.Parse(macb_tg2);
-                    socb_tg2 = socb_tg2 + 1;
-                    bool flag2 = false;
-                    if (socb_tg2 < 10)
-                        flag2 = true;
-                    if (flag2 == true)
-                    {
-                        txtMaSBTG.Text = "TG0" + socb_tg2.ToString();
-                    }
-                    else
-                        txtMaSBTG.Text = "TG" + socb_tg2.ToString();
-                }
+                   
+
             }
             catch (InvalidOperationException ex)
             {
@@ -438,6 +456,11 @@ namespace QuanLyBanVeChuyenBay
                 dataSanBayTG.Rows.RemoveAt(rowIndex);
             }
             catch { };
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
