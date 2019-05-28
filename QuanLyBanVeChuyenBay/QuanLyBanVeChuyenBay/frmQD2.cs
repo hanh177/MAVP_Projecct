@@ -20,9 +20,9 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.suadoiqd = frmSuaDoiQD;
         }
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+         //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         string macb;
         int SoGheH1suadoi, SoGheH2suadoi;
         int SoGheTrongH1, SoGheTrongH2;

@@ -19,13 +19,16 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-      //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+      string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         int index;
-        static public string macb = "";
+         public static string macb = "";
+         public string ngaybay = "";
+         public string ngaydat = "";
         int SLGHETRONG;
         static public int DONGIA = 0;
+       int thoigianquidinh;
         bool click_data;
 
         DataTable table = new DataTable();
@@ -43,30 +46,9 @@ namespace QuanLyBanVeChuyenBay
                 SqlDataAdapter adapter = new SqlDataAdapter(command);              
                 adapter.Fill(table);
                 dataDanhSachCB.DataSource = table;
-
-                /*//Xu ly san bay trung gian
-                string sql2 = "select TG.MaCB,SB.TenSanBay from TRUNGGIAN TG join SANBAY SB on TG.MaSanBay=SB.MaSanBay";
-                SqlCommand command2 = new SqlCommand(sql2,conn);
-                SqlDataAdapter adapter2 = new SqlDataAdapter(command2);
-                adapter2.Fill(table2);
-                foreach(DataRow row in table2.Rows)//Chay tung dong trong table2
-                {
-                    foreach(var item in row.ItemArray)//Chay tung cot trong ddong hien tai
-                    {
-                        for(int i=0;i<dataDanhSachCB.Rows.Count;i++)//xet cac dong cua dataDSCB
-                        {
-                            if (String.Compare(dataDanhSachCB.Rows[i].Cells[0].EditedFormattedValue.ToString(),item.ToString(),true)==0)
-                            {
-                               dataDanhSachCB.
-                                break;
-                            }
-                           
-                        }
-                    }
-                }
-
-                */
                 dataDanhSachCB.AutoGenerateColumns = true;
+
+
             }
             catch (InvalidOperationException ex)
             {
@@ -85,7 +67,165 @@ namespace QuanLyBanVeChuyenBay
             }
         }
 
-        private void frmDanSachCB_Load(object sender, EventArgs e)
+
+        public bool laNamNhuan(int nYear)
+        {
+            if ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0)
+            {
+                return true;
+            }
+            return false;
+
+            // <=> return ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0);
+        }
+
+        public  int tinhSoNgayTrongThang(int nMonth, int nYear)
+        {
+            int nNumOfDays = 0;
+
+            switch (nMonth)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    nNumOfDays = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    nNumOfDays = 30;
+                    break;
+                case 2:
+                    if (laNamNhuan(nYear))
+                    {
+                        nNumOfDays = 29;
+                    }
+                    else
+                    {
+                        nNumOfDays = 28;
+                    }
+                    break;
+            }
+
+            return nNumOfDays;
+        }
+        public  void Cong1Ngay(ref int nDay, ref int nMonth, ref int nYear)
+        {
+
+            nDay++;
+            if (nDay > tinhSoNgayTrongThang(nMonth, nYear))
+            {
+                nDay = 1;
+                nMonth++;
+                if (nMonth > 12)
+                {
+                    nMonth = 1;
+                    nYear++;
+                }
+            }
+
+        }
+        public  string Cong(string ngaydat, int thamso)
+        {
+            string[] dat = ngaydat.Split(' ');
+
+            string[] Ngaydat = dat[0].Split('/');//mang luu  thang ngay nam
+
+            string[] GioDat = dat[1].Split(':');//mang luu gio phut giay
+
+            string str = "";
+            int ngay = int.Parse(Ngaydat[1]);
+            int thang = int.Parse(Ngaydat[0]);
+            int nam = int.Parse(Ngaydat[2]);
+
+            int gio = int.Parse(GioDat[0]);
+            if (dat[2] == "PM") gio += 12;
+            int phut = int.Parse(GioDat[1]);
+
+            int giomoi = gio + thamso;
+            int ngaycong = 0;
+            if (giomoi > 24)
+            {
+                ngaycong = giomoi / 24;
+                giomoi = giomoi - (24 * ngaycong);
+            }
+            for (int i = 0; i < ngaycong; i++)
+            {
+                Cong1Ngay(ref ngay, ref thang, ref nam);
+            }
+            str = thang + "/" + ngay + "/" + nam + " " + giomoi + ":" + phut + ":" + GioDat[2];
+            return str;
+        }
+        public  bool KiemTra(int thamso, string ngaygiodat, string ngaygiobay)
+        {
+            string[] bay = ngaygiobay.Split(' ');
+
+            string[] Ngaybay = bay[0].Split('/');//mang luu  thang ngay nam
+
+            string[] GioBay = bay[1].Split(':');//mang luu gio phut giay
+
+
+            int ngaybay = int.Parse(Ngaybay[1]);
+            int thangbay = int.Parse(Ngaybay[0]);
+            int nambay = int.Parse(Ngaybay[2]);
+            int giobay = int.Parse(GioBay[0]);
+            if (bay[2] == "PM")
+                giobay += 12;
+            int phutbay = int.Parse(GioBay[1]);
+
+
+
+
+            string NgayGioDatMoi = Cong(ngaygiodat, thamso);
+
+            string[] moi = NgayGioDatMoi.Split(' ');
+
+            string[] Ngaymoi = moi[0].Split('/');//mang luu  thang ngay nam
+
+            string[] Giomoi = moi[1].Split(':');//mang luu gio phut giay
+
+            int ngaymoi = int.Parse(Ngaymoi[1]);
+            int thangmoi = int.Parse(Ngaymoi[0]);
+            int nammoi = int.Parse(Ngaymoi[2]);
+            int giomoi = int.Parse(Giomoi[0]);
+            int phutmoi = int.Parse(Giomoi[1]);
+
+
+            if (nambay > nammoi) return true;
+            else
+            {
+                if (thangbay > thangmoi)
+                    return true;
+                else
+                {
+                    if (ngaybay > ngaymoi)
+                        return true;
+                    else //cung ngay
+                    {
+                        if (ngaybay == ngaymoi)
+                        {
+                            if (giobay > giomoi) return true;
+                            else
+                            {
+                                if (phutbay > phutmoi) return true;
+                                else return false;
+                            }
+                        }
+                        else
+                            return false;
+                    }
+
+
+                }
+            }
+        }
+    
+      private void frmDanSachCB_Load(object sender, EventArgs e)
         {
             click_data = false;
             macb = "";
@@ -174,45 +314,92 @@ namespace QuanLyBanVeChuyenBay
             }
             catch { };
         }
+       
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            if (click_data == false)
+            SqlConnection conn = new SqlConnection(strconn2);
+            try
+            {
+                conn.Open();
+                //Xoa phieu dat cho
+                string sql = "select * from ThamSo where MaThamSo='TS01'";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
                 {
-                    index = 0;
-                    macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
-                    string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
-                    if (dongia != "")
-                        DONGIA = Int32.Parse(dongia);
-                    string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
-                    if (slghetrong != "")
-                        SLGHETRONG = Int32.Parse(slghetrong);
-                    else
-                    {
-                        if (dongia == "") SLGHETRONG = -1;
-
-                    }
-                    click_data = true;
+                    string s = reader["TGChamNhatDatVe"].ToString();
+                    thoigianquidinh = Int32.Parse(s);
                 }
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                //xu ly khi ket noi co van de
+                //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                //xu ly khi ket noi co van de
+                //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Dong ket noi sau khi thao tac ket thuc
+                conn.Close();
+            }
+
+
+            if (click_data == false)
+            {
+                index = 0;
+                macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
+                string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                if (dongia != "")
+                   DONGIA = Int32.Parse(dongia);
+                string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
+                if (slghetrong != "")
+                        SLGHETRONG = Int32.Parse(slghetrong);
+                 else
+                  {
+                     if (dongia == "") SLGHETRONG = -1;
+
+                 }
+                click_data = true;            
+            }
+
+            ngaybay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+            DateTime d = DateTime.Now;
+            ngaydat = d.ToString();
+
+             if (KiemTra(thoigianquidinh, ngaydat, ngaybay)==false)
+                {
+                MessageBox.Show("Không thể đặt vé chuyến bay " + macb + " vì đã quá thời gian chậm nhất đặt vé(" + thoigianquidinh + " giờ)");
+                    return;
+                }
+                
             if (dataDanhSachCB.CurrentRow == null || SLGHETRONG == -1)
-            {
-                MessageBox.Show("Chưa chọn chuyến bay để đặt vé, vui lòng chọn 1 chuyến bay.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            else if (SLGHETRONG > 0)
-            {
-               
-                Form banve = new frmBanVe(this);
-                this.Hide();
-                DialogResult re =  banve.ShowDialog();
-                table.Clear();
-                this.reload();
-               
-            }
-            else if (SLGHETRONG == 0)
-            {
-                MessageBox.Show("Không thể đặt thêm vé vì chuyến bay đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                {
+                    MessageBox.Show("Chưa chọn chuyến bay để đặt vé, vui lòng chọn 1 chuyến bay.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                else if (SLGHETRONG > 0)
+                {
+
+                    Form banve = new frmBanVe(this);
+                    this.Hide();
+                    DialogResult re = banve.ShowDialog();
+                    table.Clear();
+                    this.reload();
+
+                }
+                else if (SLGHETRONG == 0)
+                {
+                    MessageBox.Show("Không thể đặt thêm vé vì chuyến bay đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+          
 
         }
         private void dataDanhSachCB_CellDoubleClick(object sender, DataGridViewCellEventArgs e)

@@ -20,11 +20,12 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-      
+        int thoigianquidinh;
+        string ngaybay, ngayhuy;
         public  void Connection()
         {
 
@@ -89,7 +90,162 @@ namespace QuanLyBanVeChuyenBay
             btnLoadLai.Enabled = true;
             click_data = false;
         }
+        public bool laNamNhuan(int nYear)
+        {
+            if ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0)
+            {
+                return true;
+            }
+            return false;
 
+            // <=> return ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0);
+        }
+
+        public int tinhSoNgayTrongThang(int nMonth, int nYear)
+        {
+            int nNumOfDays = 0;
+
+            switch (nMonth)
+            {
+                case 1:
+                case 3:
+                case 5:
+                case 7:
+                case 8:
+                case 10:
+                case 12:
+                    nNumOfDays = 31;
+                    break;
+                case 4:
+                case 6:
+                case 9:
+                case 11:
+                    nNumOfDays = 30;
+                    break;
+                case 2:
+                    if (laNamNhuan(nYear))
+                    {
+                        nNumOfDays = 29;
+                    }
+                    else
+                    {
+                        nNumOfDays = 28;
+                    }
+                    break;
+            }
+
+            return nNumOfDays;
+        }
+        public void Cong1Ngay(ref int nDay, ref int nMonth, ref int nYear)
+        {
+
+            nDay++;
+            if (nDay > tinhSoNgayTrongThang(nMonth, nYear))
+            {
+                nDay = 1;
+                nMonth++;
+                if (nMonth > 12)
+                {
+                    nMonth = 1;
+                    nYear++;
+                }
+            }
+
+        }
+        public string Cong(string ngaydat, int thamso)
+        {
+            string[] dat = ngaydat.Split(' ');
+
+            string[] Ngaydat = dat[0].Split('/');//mang luu  thang ngay nam
+
+            string[] GioDat = dat[1].Split(':');//mang luu gio phut giay
+
+            string str = "";
+            int ngay = int.Parse(Ngaydat[1]);
+            int thang = int.Parse(Ngaydat[0]);
+            int nam = int.Parse(Ngaydat[2]);
+
+            int gio = int.Parse(GioDat[0]);
+            if (dat[2] == "PM") gio += 12;
+            int phut = int.Parse(GioDat[1]);
+
+            int giomoi = gio + thamso;
+            int ngaycong = 0;
+            if (giomoi > 24)
+            {
+                ngaycong = giomoi / 24;
+                giomoi = giomoi - (24 * ngaycong);
+            }
+            for (int i = 0; i < ngaycong; i++)
+            {
+                Cong1Ngay(ref ngay, ref thang, ref nam);
+            }
+            str = thang + "/" + ngay + "/" + nam + " " + giomoi + ":" + phut + ":" + GioDat[2];
+            return str;
+        }
+        public bool KiemTra(int thamso, string ngaygiodat, string ngaygiobay)
+        {
+            string[] bay = ngaygiobay.Split(' ');
+
+            string[] Ngaybay = bay[0].Split('/');//mang luu  thang ngay nam
+
+            string[] GioBay = bay[1].Split(':');//mang luu gio phut giay
+
+
+            int ngaybay = int.Parse(Ngaybay[1]);
+            int thangbay = int.Parse(Ngaybay[0]);
+            int nambay = int.Parse(Ngaybay[2]);
+            int giobay = int.Parse(GioBay[0]);
+            if (bay[2] == "PM")
+                giobay += 12;
+            int phutbay = int.Parse(GioBay[1]);
+
+
+
+
+            string NgayGioDatMoi = Cong(ngaygiodat, thamso);
+
+            string[] moi = NgayGioDatMoi.Split(' ');
+
+            string[] Ngaymoi = moi[0].Split('/');//mang luu  thang ngay nam
+
+            string[] Giomoi = moi[1].Split(':');//mang luu gio phut giay
+
+            int ngaymoi = int.Parse(Ngaymoi[1]);
+            int thangmoi = int.Parse(Ngaymoi[0]);
+            int nammoi = int.Parse(Ngaymoi[2]);
+            int giomoi = int.Parse(Giomoi[0]);
+            int phutmoi = int.Parse(Giomoi[1]);
+
+
+            if (nambay > nammoi) return true;
+            else
+            {
+                if (thangbay > thangmoi)
+                    return true;
+                else
+                {
+                    if (ngaybay > ngaymoi)
+                        return true;
+                    else //cung ngay
+                    {
+                        if (ngaybay == ngaymoi)
+                        {
+                            if (giobay > giomoi) return true;
+                            else
+                            {
+                                if (phutbay > phutmoi) return true;
+                                else return false;
+                            }
+                        }
+                        else
+                            return false;
+                    }
+
+
+                }
+            }
+        }
         void reload()
         {
             this.Connection();
@@ -110,11 +266,55 @@ namespace QuanLyBanVeChuyenBay
         }
         string hangve;
         int gheh1=0, gheh2=0, sove;
-
+        
        
         private void btnHuyVe_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Ngta chưa làm kiểm tra thời gian hủy vé hợp lệ đc nha @@");
+            mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
+            macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
+
+            SqlConnection conn = new SqlConnection(strconn2);
+            try
+            {
+                conn.Open();
+                //Xoa phieu dat cho
+                string sql = "select * from ThamSo where MaThamSo='TS01'";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    string s = reader["TGChamNhatHuyVe"].ToString();
+                    thoigianquidinh = Int32.Parse(s);
+                }
+                conn.Close();
+                conn.Open();
+                string sql2 = "select* from ChuyenBay where macb='" + macb + "'";
+                SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                SqlDataReader r = cmd2.ExecuteReader();
+                while(r.Read())
+                {
+                    ngaybay = r["NGAYGIO"].ToString();
+                }
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                //xu ly khi ket noi co van de
+                //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                MessageBox.Show(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                //xu ly khi ket noi co van de
+                //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                //Dong ket noi sau khi thao tac ket thuc
+                conn.Close();
+            }
+            conn.Close();
             if (click_data == false)
             {
                 index = 0;
@@ -124,14 +324,20 @@ namespace QuanLyBanVeChuyenBay
             {
                 index = dataDSKH.CurrentRow.Index;
             }
-            mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
-            macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
+           
 
             DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                    SqlConnection conn = new SqlConnection(strconn2);
-                    try
+                DateTime d = DateTime.Now;
+                ngayhuy = d.ToString();
+
+                if (KiemTra(thoigianquidinh, ngayhuy, ngaybay) == false)
+                {
+                    MessageBox.Show("Không thể hủy vé của hành khách " + mahk + " vì đã quá thời gian chậm nhất hủy vé(" + thoigianquidinh + " giờ)");
+                    return;
+                }
+                try
                     {
                         conn.Open();
                         //Xoa phieu dat cho
