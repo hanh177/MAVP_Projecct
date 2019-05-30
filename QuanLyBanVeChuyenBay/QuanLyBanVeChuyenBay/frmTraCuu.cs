@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-       // string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         int index;
         static public string macb = "";
@@ -509,16 +509,20 @@ namespace QuanLyBanVeChuyenBay
                     click_data = true;
                 }
 
-
-            ngaybay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
-            DateTime d = DateTime.Now;
-            ngaydat = d.ToString();
-
-            if (KiemTra(thoigianquidinh, ngaydat, ngaybay) == false)
+            try
             {
-                MessageBox.Show("Không thể đặt vé chuyến bay " + macb + " vì đã quá thời gian chậm nhất đặt vé(" + thoigianquidinh + " giờ)");
-                return;
+                ngaybay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                DateTime d = DateTime.Now;
+                ngaydat = d.ToString();
+
+                if (KiemTra(thoigianquidinh, ngaydat, ngaybay) == false)
+                {
+                    MessageBox.Show("Không thể đặt vé chuyến bay " + macb + " vì đã quá thời gian chậm nhất đặt vé(" + thoigianquidinh + " giờ)");
+                    return;
+                }
+
             }
+            catch { }
 
 
             if (dataDanhSachCB.CurrentRow==null || SLGHETRONG ==-1)

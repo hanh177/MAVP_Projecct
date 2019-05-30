@@ -20,12 +20,13 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+       string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
         int thoigianquidinh;
         string ngaybay, ngayhuy;
+        int tongsoghe, thang, nam;
         public  void Connection()
         {
 
@@ -266,85 +267,217 @@ namespace QuanLyBanVeChuyenBay
         }
         string hangve;
         int gheh1=0, gheh2=0, sove;
-        
+        int giave;
        
         private void btnHuyVe_Click(object sender, EventArgs e)
         {
-            mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
-            macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
-
-            SqlConnection conn = new SqlConnection(strconn2);
             try
             {
-                conn.Open();
-                //Xoa phieu dat cho
-                string sql = "select * from ThamSo where MaThamSo='TS01'";
-                SqlCommand cmd = new SqlCommand(sql, conn);
-                SqlDataReader reader = cmd.ExecuteReader();
-                while (reader.Read())
+                mahk= dataDSKH.Rows[index].Cells[0].Value.ToString();
+                mave = dataDSKH.Rows[index].Cells[5].Value.ToString();
+                macb = dataDSKH.Rows[index].Cells[4].Value.ToString();
+            }
+            catch { mave = "none"; }
+            if (mave != "none")
+            {
+                SqlConnection conn = new SqlConnection(strconn2);
+                try
                 {
-                    string s = reader["TGChamNhatHuyVe"].ToString();
-                    thoigianquidinh = Int32.Parse(s);
+                    conn.Open();
+                    //
+                    string sql = "select * from ThamSo where MaThamSo='TS01'";
+                    SqlCommand cmd = new SqlCommand(sql, conn);
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        string s = reader["TGChamNhatHuyVe"].ToString();
+                        thoigianquidinh = Int32.Parse(s);
+                    }
+                    conn.Close();
+                    conn.Open();
+                    string sql2 = "select* from ChuyenBay where macb='" + macb + "'";
+                    SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                    SqlDataReader r = cmd2.ExecuteReader();
+                    while (r.Read())
+                    {
+                        ngaybay = r["NGAYGIO"].ToString();
+                    }
+
+                }
+                catch (InvalidOperationException ex)
+                {
+                    //xu ly khi ket noi co van de
+                    //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                    MessageBox.Show(ex.Message);
+                }
+                catch (Exception ex)
+                {
+                    //xu ly khi ket noi co van de
+                    //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    //Dong ket noi sau khi thao tac ket thuc
+                    conn.Close();
                 }
                 conn.Close();
-                conn.Open();
-                string sql2 = "select* from ChuyenBay where macb='" + macb + "'";
-                SqlCommand cmd2 = new SqlCommand(sql2, conn);
-                SqlDataReader r = cmd2.ExecuteReader();
-                while(r.Read())
+                if (click_data == false)
                 {
-                    ngaybay = r["NGAYGIO"].ToString();
+                    index = 0;
+
+                }
+                else
+                {
+                    index = dataDSKH.CurrentRow.Index;
                 }
 
-            }
-            catch (InvalidOperationException ex)
-            {
-                //xu ly khi ket noi co van de
-                //MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-                MessageBox.Show(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                //xu ly khi ket noi co van de
-                //  MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                //Dong ket noi sau khi thao tac ket thuc
-                conn.Close();
-            }
-            conn.Close();
-            if (click_data == false)
-            {
-                index = 0;
 
-            }
-            else
-            {
-                index = dataDSKH.CurrentRow.Index;
-            }
-           
-
-            DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Bạn có chắc chắn muốn hủy vé có mã khách hàng " + mahk + " chứ?", "Chú ý", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
                 {
-                DateTime d = DateTime.Now;
-                ngayhuy = d.ToString();
+                    DateTime d = DateTime.Now;
+                    ngayhuy = d.ToString();
 
-                if (KiemTra(thoigianquidinh, ngayhuy, ngaybay) == false)
-                {
-                    MessageBox.Show("Không thể hủy vé của hành khách " + mahk + " vì đã quá thời gian chậm nhất hủy vé(" + thoigianquidinh + " giờ)");
-                    return;
-                }
-                try
+                    if (KiemTra(thoigianquidinh, ngayhuy, ngaybay) == false)
+                    {
+                        MessageBox.Show("Không thể hủy vé của hành khách " + mahk + " vì đã quá thời gian chậm nhất hủy vé(" + thoigianquidinh + " giờ)");
+                        return;
+                    }
+                    try
                     {
                         conn.Open();
+
+
+                        //lay gia ve
+                        string s="";
+                        string sql1 = "select * from ve where mahanhkhach='" + mahk + "'";
+                        SqlCommand cmd1 = new SqlCommand(sql1, conn);
+                        SqlDataReader reader = cmd1.ExecuteReader();
+                        while (reader.Read())
+                        {
+                            s = reader["GiaVe"].ToString();
+                            giave = int.Parse(s);
+
+                        }
+
+                        conn.Close();
+
+                        //lay tongsoghe, thang, nam
+                        conn.Open();
+
+                        string sql2 = "select SLGheHang1+SLGheHang2 as tongsoghe, YEAR(Ngaygio) as Nam, MONTH(ngaygio) as Thang from CHUYENBAY where macb= '" + macb + "'";
+                        SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                        SqlDataReader reader2 = cmd2.ExecuteReader();
+                        while (reader2.Read())
+                        {
+                            tongsoghe = int.Parse(reader2["tongsoghe"].ToString());
+                            thang = int.Parse(reader2["thang"].ToString());
+                            nam = int.Parse(reader2["nam"].ToString());
+                        }
+                        //MessageBox.Show(s+" "+ tongsoghe.ToString() + " " + thang.ToString() + " " + nam.ToString());
+                        conn.Close();
+
+                        //update  DOANHTHUTHANGCB
+                        conn.Open();
+                        string sql3 = "update DOANHTHUTHANGCB set sove= sove - 1, DoanhThu = DoanhThu - " + giave + ", TiLe = cast(round(100.0*(SoVe-1)/" + tongsoghe + ",2) as numeric(36,2))  where MaCB = '" + macb + "'";
+                        SqlCommand cmd3 = new SqlCommand(sql3, conn);
+                        cmd3.ExecuteNonQuery();
+
+                        // //update TONGDOANHTHUTHANG
+
+                        //Lay ra doanh thu cua chuyen bay thang nay
+                        string MaDoanhThuThang = "";
+                        string sql = "select DoanhThu, MaDoanhThuThang  from DOANHTHUTHANGCB where MaCB= '" + macb + "'";
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(cmd);
+                        DataTable table2 = new DataTable();
+                        adapter2.Fill(table2);
+                        foreach (DataRow row in table2.Rows)
+                        {
+                            foreach (DataColumn col in table2.Columns)
+                            {
+                                string doanhthuthangcb = row["DoanhThu"].ToString();
+                                string[] arr_doanhthu = doanhthuthangcb.Split('.');
+                                //tongdoanhthuthangcb = Int32.Parse(arr_doanhthu[0]);
+                                MaDoanhThuThang = row["MaDoanhThuThang"].ToString();
+                            }
+                        }
+
+                        string SQL = "select cast(round( sum(tile),2 ) as numeric(36,2)) tongTiLe, count(madoanhthuCB) tongsoCB  from DOANHTHUTHANGCB where  MaDoanhThuThang  = '" + MaDoanhThuThang+"'";
+                        SqlCommand CMD = new SqlCommand(SQL, conn);
+                        SqlDataReader read = CMD.ExecuteReader();
+                        float TongTiLe = 0.0f;
+                        int socb = 0;
+                        while (read.Read())
+                        {
+                            string t = read["tongTiLe"].ToString();
+                            TongTiLe = float.Parse(t);
+                            socb = int.Parse(read["tongsoCB"].ToString());
+                        }
+
+                        float tilethang = TongTiLe / socb;
+                        //MessageBox.Show(tilethang.ToString());
+                        conn.Close();
+
+                        conn.Open();
+
+                        string sql4 = "Update TONGDOANHTHUTHANG set TongDoanhThu = TongDoanhThu - " + giave + ", TiLe = cast(round(" + tilethang + ",2) as numeric(36,2))   where thang= "+thang;
+                        SqlCommand cmd4 = new SqlCommand(sql4, conn);
+                        cmd4.ExecuteNonQuery();
+
+
+                        // update TONGDOANHTHUNAM
+
+
+                        //Lay ra ma doanh thu cua thang va doanh thu cua thang trong nam
+
+                        string sqlQuery9 = "select TongDoanhThu,MaDoanhThuNam  from TONGDOANHTHUTHANG where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+                        SqlCommand command9 = new SqlCommand(sqlQuery9, conn);
+                        SqlDataAdapter adapter3 = new SqlDataAdapter(command9);
+                        DataTable table3 = new DataTable();
+                        adapter3.Fill(table3);
+                        string MaDoanhThuNam = "";
+                        foreach (DataRow row in table3.Rows)
+                        {
+                            foreach (DataColumn col in table3.Columns)
+                            {
+                                string TongDoanhThuThang = row["TongDoanhThu"].ToString();
+                                string[] arr_doanhthuthang = TongDoanhThuThang.Split('.');
+                               // TongDoanhThu = Int32.Parse(arr_doanhthuthang[0]);
+                                MaDoanhThuNam = row["MaDoanhThuNam"].ToString();
+                            }
+                        }
+
+                        string SQL2 = "select cast(round( sum(tile),2 ) as numeric(36,2)) tongTiLe, count(MaDoanhThuThang) tongsoThang  from TONGDOANHTHUTHANG where MaDoanhThuNam= '" + MaDoanhThuNam + "'";
+                        SqlCommand CMD2 = new SqlCommand(SQL2, conn);
+                        SqlDataReader read3 = CMD2.ExecuteReader();
+                        float TongTiLe2 = 0.0f;
+                        int sothang = 0;
+                        while (read3.Read())
+                        {
+                            string t = read3["tongTiLe"].ToString();
+                            TongTiLe2 = float.Parse(t);
+                            sothang = int.Parse(read3["tongsoThang"].ToString());
+                        }
+
+                        float tilenam = TongTiLe2 / sothang;
+                        MessageBox.Show("ti le nam: " + tilenam.ToString());
+                        conn.Close();
+
+                        conn.Open();
+
+                        string sql5 = "Update TONGDOANHTHUNAM set TongDoanhThu = TongDoanhThu - " + giave + ", TiLe = cast(round(" + tilenam + ",2) as numeric(36,2)) where MaDoanhThuNam = '" + MaDoanhThuNam + "'";
+                        SqlCommand cmd5 = new SqlCommand(sql5, conn);
+                        cmd5.ExecuteNonQuery();
+
                         //Xoa phieu dat cho
                         string sqlQuery3 = "delete from PHIEUDATCHO where MaHanhKhach=@MaHanhKhach";
                         SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
                         command3.Parameters.AddWithValue("@MaHanhKhach", mahk);
                         command3.ExecuteNonQuery();
+
+
 
                         //Xoa ve
                         //Trk khi xoa ve phai lay duoc hang ve
@@ -409,9 +542,11 @@ namespace QuanLyBanVeChuyenBay
                         //Dong ket noi sau khi thao tac ket thuc
                         conn.Close();
                     }
-                
+                }
             }
-
+            else { MessageBox.Show("Không có hành khách nào được chọn");
+                return;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -534,15 +669,23 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnPhieuDat_Click(object sender, EventArgs e)
         {
-            if (click_data == false)
+            try
             {
-                index = dataDSKH.CurrentRow.Index;
-                mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+                if (click_data == false)
+                {
+                    index = dataDSKH.CurrentRow.Index;
+                    mahk = dataDSKH.Rows[index].Cells[0].Value.ToString();
+                }
+                frmPhieuDatCho phieu = new frmPhieuDatCho(this);
+                phieu.Button_Clicked += new EventHandler(frm_Button_Clicked);
+                this.Hide();
+                phieu.Show();
+            }catch
+            {
+
+                MessageBox.Show("Không có hành khách nào được chọn.");
+                return;
             }
-            frmPhieuDatCho phieu = new frmPhieuDatCho(this);
-            phieu.Button_Clicked += new EventHandler(frm_Button_Clicked);
-            this.Hide();
-            phieu.Show();
         }
         void frm_Button_Clicked(object sender, EventArgs e)
         {

@@ -23,9 +23,9 @@ namespace QuanLyBanVeChuyenBay
         }
 
         
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
         double DonGia;
         int GheTrongH1, GheTrongH2, tongsoghe;
@@ -369,19 +369,27 @@ namespace QuanLyBanVeChuyenBay
 
 
                         //Update bảng DOANHTHUTHANGCB 
-                        if(frmTraCuu.tongsoghe!=null)
+
+                        if(frmTraCuu.tongsoghe!=0)
                         {
                             tongsoghe = frmTraCuu.tongsoghe;
                             thang = frmTraCuu.thang;
                             nam = frmTraCuu.nam;
                         }
-                        string sqlQuery6 = "Update DOANHTHUTHANGCB set SoVe= SoVe + 1, DoanhThu= DoanhThu + '" + GiaVe + "'" + ", TiLe= SoVe/'" + tongsoghe + "' where MaCB= '" + MaCB + "'";
+                        if (frmDanSachCB.tongsoghe != 0)
+                        {
+                            tongsoghe = frmDanSachCB.tongsoghe;
+                            thang = frmDanSachCB.thang;
+                            nam = frmDanSachCB.nam;
+                        }
+                       // MessageBox.Show(tongsoghe.ToString());
+                        string sqlQuery6 = "Update DOANHTHUTHANGCB set SoVe = SoVe + 1, DoanhThu = DoanhThu + " + GiaVe + ", TiLe = cast(round(100.0*(SoVe+1)/"+tongsoghe +",2) as numeric(36,2))  where MaCB = '" + MaCB + "'";
                         SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
                         command6.ExecuteNonQuery();
 
                         //Lay ra doanh thu cua chuyen bay thang nay
                         
-                        string sqlQuery7 = "select DoanhThu,MaDoanhThuThang  from DOANHTHUTHANGCB where MaCB= '" + MaCB + "'";
+                        string sqlQuery7 = "select DoanhThu, MaDoanhThuThang  from DOANHTHUTHANGCB where MaCB= '" + MaCB + "'";
                         SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
                         SqlDataAdapter adapter2 = new SqlDataAdapter(command7);
                         DataTable table2 = new DataTable();
@@ -397,20 +405,38 @@ namespace QuanLyBanVeChuyenBay
                             }
                         }
 
-                        //Mình xem lại cái phần update cho bảng doanh thu tháng giùm ngta với nha..nó bị sai chõ TongDoanhThu ấy
-                        //Kiểu như ngta đang để cộng sai, phải cộng thêm cơ..mk đọc code ngta r sẽ hiểu cái ngta đang ns.
-                        //phần bảng DoanhThuNam cũng v
-                        //Đây ms đc từ form tra cứu sang, từ form danh sách mk cài thêm tương tự phần tra cứu sang nha,
-                        //ngta ms lm đc update khi bán vé thôi, khi hủy vé ngta chưa có cập nhật mk bỏ thêm giùm ngta
-                        //à mà dữ liệu dùng đc có CB28 thôi..mấy cái CB khác nó k có mấy bảng doanh thu cho nên mk xóa hết đi cũng đc
-                        //cả khách hàng nữa, dữ liệu mấy cái doanh thu ngta reset về 0 hết r nha...mk chạy code r xem giùm ngta
+                        //update Doanhthuthang, doanhthunam: OK
+
+                        //update từ form DanhsachCB: OK
+
+                        //update Hủy vé : OK
+                       
 
                         //Update bang DoanhThuThang 
-                        string sqlQuery8 = "Update TONGDOANHTHUTHANG set TongDoanhThu= '" +tongdoanhthuthangcb + "' where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+
+                        string sql = "select cast(round( sum(tile),2 ) as numeric(36,2)) tongTiLe, count(madoanhthuCB) tongsoCB  from DOANHTHUTHANGCB where  MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+                        SqlCommand cmd = new SqlCommand(sql, conn);
+                        SqlDataReader read = cmd.ExecuteReader();
+                        float TongTiLe = 0.0f;
+                        int socb = 0;
+                        while (read.Read())
+                        {
+                            string t = read["tongTiLe"].ToString();
+                            TongTiLe = float.Parse(t);
+                            socb = int.Parse(read["tongsoCB"].ToString());
+                        }
+
+                        float tilethang = TongTiLe / socb;
+                        //  MessageBox.Show("ti le thang: " + tilethang.ToString());
+                        conn.Close();
+                        conn.Open();
+
+
+                        string sqlQuery8 = "Update TONGDOANHTHUTHANG set TongDoanhThu = TongDoanhThu + " + GiaVe + ", TiLe = cast(round("+tilethang+",2) as numeric(36,2))   where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
                         SqlCommand command8 = new SqlCommand(sqlQuery8, conn);
                         command8.ExecuteNonQuery();
 
-                        //Lay ra ma doanh thu cua thang va doanh thu cau thang trong nam
+                        //Lay ra ma doanh thu cua thang va doanh thu cua thang trong nam
 
                         string sqlQuery9 = "select TongDoanhThu,MaDoanhThuNam  from TONGDOANHTHUTHANG where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
                         SqlCommand command9 = new SqlCommand(sqlQuery9, conn);
@@ -428,17 +454,33 @@ namespace QuanLyBanVeChuyenBay
                             }
                         }
 
-
-
-
                         //Update bang TONGDOANHTHUNAM
-                        string sqlQuery10 = "Update TONGDOANHTHUNAM set TongDoanhThu= TongDoanhThu + '" + TongDoanhThu + "' where MaDoanhThuNam= '" + MaDoanhThuNam + "'";
+
+                        string sql2 = "select cast(round( sum(tile),2 ) as numeric(36,2)) tongTiLe, count(MaDoanhThuThang) tongsoThang  from TONGDOANHTHUTHANG where MaDoanhThuNam= '" + MaDoanhThuNam + "'";
+                        SqlCommand cmd2 = new SqlCommand(sql2, conn);
+                        SqlDataReader read2 = cmd2.ExecuteReader();
+                        float TongTiLe2 = 0.0f;
+                        int sothang = 0;
+                        while (read2.Read())
+                        {
+                            string t = read2["tongTiLe"].ToString();
+                            TongTiLe2 = float.Parse(t);
+                            sothang = int.Parse(read2["tongsoThang"].ToString());
+                        }
+
+                        float tilenam = TongTiLe2 / sothang;
+                        //MessageBox.Show("ti le nam: " + tilenam.ToString());
+                        conn.Close();
+
+                        conn.Open();
+
+                        string sqlQuery10 = "Update TONGDOANHTHUNAM set TongDoanhThu = TongDoanhThu + " + GiaVe + ", TiLe = cast(round(" + tilenam + ",2) as numeric(36,2))    where MaDoanhThuNam = '" + MaDoanhThuNam + "'";
                         SqlCommand command10 = new SqlCommand(sqlQuery10, conn);
                         command10.ExecuteNonQuery();
 
 
                         this.Hide();
-                        tracuu.Show();
+                        //tracuu.Show();
                     }
                     else MessageBox.Show("Không còn ghế trống hạng " + HangVe + " để đặt");
                 }

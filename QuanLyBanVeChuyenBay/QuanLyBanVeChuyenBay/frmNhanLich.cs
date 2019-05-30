@@ -29,10 +29,11 @@ namespace QuanLyBanVeChuyenBay
         int TGDungToiDa;
         int TGDungToiThieu;
         int SoSBTGToida, thoigianquydinh, thoigianbay_min;
-        string MaDoanhThuThang;
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string MaDoanhThuThang;
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -88,12 +89,15 @@ namespace QuanLyBanVeChuyenBay
                     bool flag = false;
                     if (socb < 10)
                         flag = true;
-                    if (flag == true)
-                    {
-                        txtMaCB.Text = "CB0" + socb.ToString();
-                    }
-                    else
-                        txtMaCB.Text = "CB" + socb.ToString();
+                if (flag == true)
+                {
+                    txtMaCB.Text = "CB0" + socb.ToString();
+
+                }
+                else
+                {
+                    txtMaCB.Text = "CB" + socb.ToString();
+                }
 
                 string sql3 = "Select * from THAMSO";
                 SqlCommand cmd = new SqlCommand(sql3, conn);
@@ -135,8 +139,7 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            this.Close();
-           
+            this.Close();           
         }
 
         private void tSbtnDanhSachCB_Click(object sender, EventArgs e)
@@ -201,12 +204,15 @@ namespace QuanLyBanVeChuyenBay
                 if (THOIGIANBAY < thoigianbay_min)
                 {
                     MessageBox.Show("Thời gian bay phải >= " + thoigianbay_min + " phút.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
                 else
                 {
                     if (frmTraCuu.KiemTra(thoigianquydinh, ngayhomnay, ngaybay) == false)
                     {
-                        MessageBox.Show("Không thể thêm chuyến bay có mã " + MACB + " vì ngày bay đã quá trễ ( < " + thoigianquydinh + " giờ) so với quy định.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Không thể thêm chuyến bay có mã " + MACB + " vì thời gian nhận lịch phải trước " + thoigianquydinh + " (giờ) so với quy định.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+
                     }
                     else
                     {
@@ -249,7 +255,8 @@ namespace QuanLyBanVeChuyenBay
                         }
 
 
-                        MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                      
+                        
 
                         //Insert vao bang tinh trang
                         string MATT = "TT" + txtMaCB.Text.Substring(2);
@@ -270,21 +277,23 @@ namespace QuanLyBanVeChuyenBay
 
                         //Trước hết phải insert vào bảng TONGDOANHTHUNAM nếu chưa có
                         //Kiem tra xem da co muc doanh thu cua nam hien tai hay chua
-                        string sqlQuery5 = "select MaDoanhThuNam from TONGDOANHTHUNAM where Nam= '"+arr_tg2[2] +"'";
+
+                        string sqlQuery5 = "select MaDoanhThuNam from TONGDOANHTHUNAM where Nam = " + arr_tg2[2];
                         SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
                         SqlDataAdapter adapter5 = new SqlDataAdapter(command5);
                         DataSet dataSet5 = new DataSet();
                         adapter5.Fill(dataSet5, "MaDoanhThuNam");
                         DataTable table5 = dataSet5.Tables["MaDoanhThuNam"];
-                        if(table5.Rows.Count==0)
+
+                        if (table5.Rows.Count == 0)  //Chưa có thì tạo mới
                         {
-                            //Chưa có thì tạo mới
                             MaDoanhThuNam = "DTN" + arr_tg2[2];
-                            string sqlQuery6 = "insert into TONGDOANHTHUNAM values ( " + "@MaDoanhThuNam, @TongDoanhThu, @Nam) ";
+                            string sqlQuery6 = "insert into TONGDOANHTHUNAM values ( " + "@MaDoanhThuNam, @TongDoanhThu, @Nam, @TiLe) ";
                             SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
                             command6.Parameters.AddWithValue("@MaDoanhThuNam", MaDoanhThuNam);
-                            command6.Parameters.AddWithValue("@TongDoanhThu",0);
+                            command6.Parameters.AddWithValue("@TongDoanhThu", 0);
                             command6.Parameters.AddWithValue("@Nam", arr_tg2[2]);
+                            command6.Parameters.AddWithValue("@TiLe", 0.0);
                             command6.ExecuteNonQuery();
                         }
                         else//Đã có rồi thì lấy cái mã ra
@@ -302,7 +311,8 @@ namespace QuanLyBanVeChuyenBay
                         //Insert vao bang DOANHTHUTHANG
                         //Nếu bảng DOANHTHUTHANG của tháng hiện tại mà chưa có thì phải insert vào mới không thì k cần
                         //LẤY MÃ DOANHTHUTHANG 
-                        string sqlQuery7 = "select MaDoanhThuThang from TONGDOANHTHUTHANG where MaDoanhThuNam= '"+MaDoanhThuNam +"'" + " and Thang= '"+arr_tg2[0] +"'";
+
+                        string sqlQuery7 = "select MaDoanhThuThang from TONGDOANHTHUTHANG where MaDoanhThuNam= '" + MaDoanhThuNam + "'" + " and Thang= " + arr_tg2[0];
                         SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
                         SqlDataAdapter adapter7 = new SqlDataAdapter(command7);
                         DataSet dataSet7 = new DataSet();
@@ -344,10 +354,10 @@ namespace QuanLyBanVeChuyenBay
                             string sqlQuery9 = "insert into TONGDOANHTHUTHANG values ( " + "@MaDoanhThuThang, @MaDoanhThuNam, @SoChuyenBay, @TongDoanhThu, @TiLe, @Thang) ";
                             SqlCommand command9 = new SqlCommand(sqlQuery9, conn);
                             command9.Parameters.AddWithValue("@MaDoanhThuThang", MaDoanhThuThang);
-                            command9.Parameters.AddWithValue("@MaDoanhThuNam",MaDoanhThuNam );
-                            command9.Parameters.AddWithValue("@SoChuyenBay",0);
-                            command9.Parameters.AddWithValue("@TongDoanhThu",0);
-                            command9.Parameters.AddWithValue("@TiLe", 0);
+                            command9.Parameters.AddWithValue("@MaDoanhThuNam", MaDoanhThuNam);
+                            command9.Parameters.AddWithValue("@SoChuyenBay", 0);
+                            command9.Parameters.AddWithValue("@TongDoanhThu", 0);
+                            command9.Parameters.AddWithValue("@TiLe", 0.00);
                             command9.Parameters.AddWithValue("@Thang", arr_tg2[0]);
                             command9.ExecuteNonQuery();
                         }
@@ -371,9 +381,9 @@ namespace QuanLyBanVeChuyenBay
                         command10.Parameters.AddWithValue("@MaDoanhThuCB", MaDoanhThuThangCB);
                         command10.Parameters.AddWithValue("@MaDoanhThuThang", MaDoanhThuThang);
                         command10.Parameters.AddWithValue("@MaCB", MACB);
-                        command10.Parameters.AddWithValue("@SoVe",0);
-                        command10.Parameters.AddWithValue("@DoanhThu",0);
-                        command10.Parameters.AddWithValue("@TiLe",0);
+                        command10.Parameters.AddWithValue("@SoVe", 0);
+                        command10.Parameters.AddWithValue("@DoanhThu", 0);
+                        command10.Parameters.AddWithValue("@TiLe", 0.00);
                         command10.ExecuteNonQuery();
 
                         //Update so chuyen bay trong bang TONGDOANHTHUTHANG thêm 1
@@ -384,8 +394,22 @@ namespace QuanLyBanVeChuyenBay
 
                     }
                 }
+                MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                string macb = MACB.Substring(2);
+                int socb = Int32.Parse(macb);
+                socb = socb + 1;
+                 bool flag1 = false;
+                if (socb < 10)
+                    flag1 = true;
+                if (flag1 == true)
+                {
+                    txtMaCB.Text = "CB0" + socb.ToString();
 
-                txtMaCB.Text = "";
+                }
+                else
+                {
+                    txtMaCB.Text = "CB" + socb.ToString();
+                }
                 cmbSanBayDi.Text= "";
                 cmbSanBayDen.Text = "";
                 dateTimePicker1.Text = "";

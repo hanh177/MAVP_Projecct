@@ -119,6 +119,19 @@
             // cmbThang
             // 
             this.cmbThang.FormattingEnabled = true;
+            this.cmbThang.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
             this.cmbThang.Location = new System.Drawing.Point(140, 29);
             this.cmbThang.Name = "cmbThang";
             this.cmbThang.Size = new System.Drawing.Size(80, 21);

@@ -19,18 +19,19 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         int index;
          public static string macb = "";
          public string ngaybay = "";
          public string ngaydat = "";
         int SLGHETRONG;
         static public int DONGIA = 0;
-       int thoigianquidinh;
+        int thoigianquidinh;
         bool click_data;
-
+        public static string thang, nam;
+        public static int tongsoghe;
         DataTable table = new DataTable();
         DataTable table2=new DataTable();
         public void Connection()
@@ -393,9 +394,13 @@ namespace QuanLyBanVeChuyenBay
                 click_data = true;            
             }
 
-            ngaybay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
-            DateTime d = DateTime.Now;
-            ngaydat = d.ToString();
+            try
+            {
+                ngaybay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                DateTime d = DateTime.Now;
+                ngaydat = d.ToString();
+            }
+            catch { }
 
              if (KiemTra(thoigianquidinh, ngaydat, ngaybay)==false)
                 {
@@ -410,15 +415,21 @@ namespace QuanLyBanVeChuyenBay
                 }
                 else if (SLGHETRONG > 0)
                 {
+                string tongSoGhe = dataDanhSachCB.Rows[index].Cells[6].Value.ToString();
+                string NgayGioBay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                string[] arr_tg = NgayGioBay.Split(' ');
+                string[] arr_tg2 = arr_tg[0].Split('/');
+                thang = arr_tg2[0];
+                nam = arr_tg2[2];
+                tongsoghe = Int32.Parse(tongSoGhe);
+                Form banve = new frmBanVe(this);
+                this.Hide();
+                DialogResult re = banve.ShowDialog();
+                table.Clear();
+                this.reload();
 
-                    Form banve = new frmBanVe(this);
-                    this.Hide();
-                    DialogResult re = banve.ShowDialog();
-                    table.Clear();
-                    this.reload();
-
-                }
-                else if (SLGHETRONG == 0)
+            }
+            else if (SLGHETRONG == 0)
                 {
                     MessageBox.Show("Không thể đặt thêm vé vì chuyến bay đã hết ghế trống.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
