@@ -23,14 +23,16 @@ namespace QuanLyBanVeChuyenBay
         }
 
         
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
         double DonGia;
-        int GheTrongH1, GheTrongH2 ;
+        int GheTrongH1, GheTrongH2, tongsoghe;
+        int tongdoanhthuthangcb = 0;
         bool ConGheH1 , ConGheH2,  DatVe = true;
-        string MAVE, MAKH, MAPHIEU;//MAVE luu gia tri ma ve cuoi cung.
+        string MAVE, MAKH, MAPHIEU, thang, nam, MaDoanhThuThang, MaDoanhThuNam;
+        double TongDoanhThu;//MAVE luu gia tri ma ve cuoi cung.
         private void Connection()
         {
             
@@ -237,12 +239,10 @@ namespace QuanLyBanVeChuyenBay
             danhsachcb.Show();
         }
 
-
-
+        
+       
         private void btnDatVe_Click(object sender, EventArgs e)
         {
-            ////////////////////////////////////////////////////////////////////////
-            MessageBox.Show("Ngta chưa làm kiểm tra thời gian đặt vé hợp lệ đc nha @@");
             if (txtCMND.Text == "" || txtHoTen.Text == "" || txtSDT.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin hành khách", "Đặt vé không thành công", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -315,6 +315,7 @@ namespace QuanLyBanVeChuyenBay
                         MessageBox.Show("Đặt vé thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
+
                         // Cap nhat bang TINHTRANG
 
                         string sqlQuery3 = "Update TINHTRANG set SLGheTrongH1 = SLGheTrongH1 - " + GheDatH1 +
@@ -323,6 +324,8 @@ namespace QuanLyBanVeChuyenBay
                             + txtMaCB.Text + "' ";
                         SqlCommand command3 = new SqlCommand(sqlQuery3, conn);
                         command3.ExecuteNonQuery();
+
+
 
                         // insert vao bang PHIEUDATCHO
                         //Lay MaPhieu
@@ -363,6 +366,77 @@ namespace QuanLyBanVeChuyenBay
                         command5.Parameters.AddWithValue("@MaVe", MaVe);
                         command5.Parameters.AddWithValue("@NgayDat", NgayDat);
                         command5.ExecuteNonQuery();
+
+
+                        //Update bảng DOANHTHUTHANGCB 
+                        if(frmTraCuu.tongsoghe!=null)
+                        {
+                            tongsoghe = frmTraCuu.tongsoghe;
+                            thang = frmTraCuu.thang;
+                            nam = frmTraCuu.nam;
+                        }
+                        string sqlQuery6 = "Update DOANHTHUTHANGCB set SoVe= SoVe + 1, DoanhThu= DoanhThu + '" + GiaVe + "'" + ", TiLe= SoVe/'" + tongsoghe + "' where MaCB= '" + MaCB + "'";
+                        SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
+                        command6.ExecuteNonQuery();
+
+                        //Lay ra doanh thu cua chuyen bay thang nay
+                        
+                        string sqlQuery7 = "select DoanhThu,MaDoanhThuThang  from DOANHTHUTHANGCB where MaCB= '" + MaCB + "'";
+                        SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
+                        SqlDataAdapter adapter2 = new SqlDataAdapter(command7);
+                        DataTable table2 = new DataTable();
+                        adapter2.Fill(table2);
+                        foreach (DataRow row in table2.Rows)
+                        {
+                            foreach (DataColumn col in table2.Columns)
+                            {
+                                string doanhthuthangcb = row["DoanhThu"].ToString();
+                                string[] arr_doanhthu = doanhthuthangcb.Split('.');
+                                tongdoanhthuthangcb = Int32.Parse(arr_doanhthu[0]);
+                                MaDoanhThuThang = row["MaDoanhThuThang"].ToString();
+                            }
+                        }
+
+                        //Mình xem lại cái phần update cho bảng doanh thu tháng giùm ngta với nha..nó bị sai chõ TongDoanhThu ấy
+                        //Kiểu như ngta đang để cộng sai, phải cộng thêm cơ..mk đọc code ngta r sẽ hiểu cái ngta đang ns.
+                        //phần bảng DoanhThuNam cũng v
+                        //Đây ms đc từ form tra cứu sang, từ form danh sách mk cài thêm tương tự phần tra cứu sang nha,
+                        //ngta ms lm đc update khi bán vé thôi, khi hủy vé ngta chưa có cập nhật mk bỏ thêm giùm ngta
+                        //à mà dữ liệu dùng đc có CB28 thôi..mấy cái CB khác nó k có mấy bảng doanh thu cho nên mk xóa hết đi cũng đc
+                        //cả khách hàng nữa, dữ liệu mấy cái doanh thu ngta reset về 0 hết r nha...mk chạy code r xem giùm ngta
+
+                        //Update bang DoanhThuThang 
+                        string sqlQuery8 = "Update TONGDOANHTHUTHANG set TongDoanhThu= '" +tongdoanhthuthangcb + "' where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+                        SqlCommand command8 = new SqlCommand(sqlQuery8, conn);
+                        command8.ExecuteNonQuery();
+
+                        //Lay ra ma doanh thu cua thang va doanh thu cau thang trong nam
+
+                        string sqlQuery9 = "select TongDoanhThu,MaDoanhThuNam  from TONGDOANHTHUTHANG where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+                        SqlCommand command9 = new SqlCommand(sqlQuery9, conn);
+                        SqlDataAdapter adapter3 = new SqlDataAdapter(command9);
+                        DataTable table3 = new DataTable();
+                        adapter3.Fill(table3);
+                        foreach (DataRow row in table3.Rows)
+                        {
+                            foreach (DataColumn col in table3.Columns)
+                            {
+                                string TongDoanhThuThang= row["TongDoanhThu"].ToString();
+                                string[] arr_doanhthuthang = TongDoanhThuThang.Split('.');
+                                TongDoanhThu = Int32.Parse(arr_doanhthuthang[0]);
+                                MaDoanhThuNam = row["MaDoanhThuNam"].ToString();
+                            }
+                        }
+
+
+
+
+                        //Update bang TONGDOANHTHUNAM
+                        string sqlQuery10 = "Update TONGDOANHTHUNAM set TongDoanhThu= TongDoanhThu + '" + TongDoanhThu + "' where MaDoanhThuNam= '" + MaDoanhThuNam + "'";
+                        SqlCommand command10 = new SqlCommand(sqlQuery10, conn);
+                        command10.ExecuteNonQuery();
+
+
                         this.Hide();
                         tracuu.Show();
                     }

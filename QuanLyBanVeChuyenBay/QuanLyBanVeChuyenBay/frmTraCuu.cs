@@ -22,17 +22,18 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+       // string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         int index;
         static public string macb = "";
         int SLGHETRONG;
         static public int DONGIA = 0;
         bool click_data;
-        int thoigianquidinh ;
+        public static string thang, nam; 
         string ngaydat, ngaybay;
+        public static int tongsoghe, thoigianquidinh;
         private void Connection()
         {
             ///////////////////////////////////////////////////////////////////////////////////
@@ -97,7 +98,6 @@ namespace QuanLyBanVeChuyenBay
             macb = "";
             DONGIA = 0;
             Connection();
-            //dataDanhSachCB.ClearSelection();
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
@@ -247,7 +247,7 @@ namespace QuanLyBanVeChuyenBay
 
         }
 
-        public bool laNamNhuan(int nYear)
+        public static bool laNamNhuan(int nYear)
         {
             if ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0)
             {
@@ -258,7 +258,7 @@ namespace QuanLyBanVeChuyenBay
             // <=> return ((nYear % 4 == 0 && nYear % 100 != 0) || nYear % 400 == 0);
         }
 
-        public int tinhSoNgayTrongThang(int nMonth, int nYear)
+        public static int tinhSoNgayTrongThang(int nMonth, int nYear)
         {
             int nNumOfDays = 0;
 
@@ -293,7 +293,7 @@ namespace QuanLyBanVeChuyenBay
 
             return nNumOfDays;
         }
-        public void Cong1Ngay(ref int nDay, ref int nMonth, ref int nYear)
+        public static void Cong1Ngay(ref int nDay, ref int nMonth, ref int nYear)
         {
 
             nDay++;
@@ -309,7 +309,7 @@ namespace QuanLyBanVeChuyenBay
             }
 
         }
-        public string Cong(string ngaydat, int thamso)
+        public static string Cong(string ngaydat, int thamso)
         {
             string[] dat = ngaydat.Split(' ');
 
@@ -340,7 +340,7 @@ namespace QuanLyBanVeChuyenBay
             str = thang + "/" + ngay + "/" + nam + " " + giomoi + ":" + phut + ":" + GioDat[2];
             return str;
         }
-        public bool KiemTra(int thamso, string ngaygiodat, string ngaygiobay)
+        public static bool KiemTra(int thamso, string ngaygiodat, string ngaygiobay)
         {
             string[] bay = ngaygiobay.Split(' ');
 
@@ -422,10 +422,17 @@ namespace QuanLyBanVeChuyenBay
                 {
                     index = dataDanhSachCB.CurrentRow.Index;
                     macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
-                    string dongia = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                    string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                    string tongSoGhe = dataDanhSachCB.Rows[index].Cells[6].Value.ToString();
+                    string NgayGioBay=dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                    string[] arr_tg = NgayGioBay.Split(' ');
+                    string[] arr_tg2 = arr_tg[0].Split('/');
+                    thang = arr_tg2[0];
+                    nam = arr_tg2[2];
+                    tongsoghe = Int32.Parse(tongSoGhe);
                     if (dongia != "")
                         DONGIA = Int32.Parse(dongia);
-                    string slghetrong = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                    string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
                     if (slghetrong != "")
                         SLGHETRONG = Int32.Parse(slghetrong);
                     else
@@ -479,11 +486,19 @@ namespace QuanLyBanVeChuyenBay
                 if (dataDanhSachCB.CurrentRow != null)
                 {
                     index = 0;
+                    index = dataDanhSachCB.CurrentRow.Index;
                     macb = dataDanhSachCB.Rows[index].Cells[0].Value.ToString();
-                    string dongia = dataDanhSachCB.Rows[index].Cells[9].Value.ToString();
+                    string dongia = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                    string tongSoGhe = dataDanhSachCB.Rows[index].Cells[6].Value.ToString();
+                    string NgayGioBay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                    string[] arr_tg = NgayGioBay.Split(' ');
+                    string[] arr_tg2 = arr_tg[0].Split('/');
+                    thang = arr_tg2[0];
+                    nam = arr_tg2[2];
+                    tongsoghe = Int32.Parse(tongSoGhe);
                     if (dongia != "")
                         DONGIA = Int32.Parse(dongia);
-                    string slghetrong = dataDanhSachCB.Rows[index].Cells[8].Value.ToString();
+                    string slghetrong = dataDanhSachCB.Rows[index].Cells[7].Value.ToString();
                     if (slghetrong != "")
                         SLGHETRONG = Int32.Parse(slghetrong);
                     else

@@ -19,9 +19,9 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-      string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         int index;
          public static string macb = "";
          public string ngaybay = "";
@@ -224,7 +224,31 @@ namespace QuanLyBanVeChuyenBay
                 }
             }
         }
-    
+        void KiemTraDanhSach()
+        {
+            SqlConnection conn = new SqlConnection(strconn2);
+            try
+            {
+                conn.Open();
+                string sqlQuery = "select * from CHUYENBAY";
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                //xu ly khi ket noi co van de
+                MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+            }
+            catch (Exception ex)
+            {
+                //xu ly khi ket noi co van de
+                MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+            }
+            finally
+            {
+                //Dong ket noi sau khi thao tac ket thuc
+                conn.Close();
+            }
+        }
       private void frmDanSachCB_Load(object sender, EventArgs e)
         {
             click_data = false;

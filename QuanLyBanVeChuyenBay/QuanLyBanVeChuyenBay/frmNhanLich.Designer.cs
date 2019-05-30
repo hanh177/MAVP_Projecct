@@ -48,6 +48,7 @@
             this.ColTGDung = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGhiChu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cmbTenSBTG = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -75,7 +76,7 @@
             this.txtMaCB = new System.Windows.Forms.TextBox();
             this.MaCB = new System.Windows.Forms.Label();
             this.btnXoaSBTG = new System.Windows.Forms.Button();
-            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
@@ -237,6 +238,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sân Bay Trung Gian";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(20, 25);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(210, 26);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "*Lưu ý: Số sân bay trung gian không được \r\nvượt quá qui đinh";
+            this.label12.Click += new System.EventHandler(this.label12_Click);
+            // 
             // cmbTenSBTG
             // 
             this.cmbTenSBTG.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -322,6 +333,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.dateTimePicker1);
             this.groupBox2.Controls.Add(this.txtGiaVe);
             this.groupBox2.Controls.Add(this.label2);
@@ -360,6 +372,8 @@
             this.txtGiaVe.Name = "txtGiaVe";
             this.txtGiaVe.Size = new System.Drawing.Size(156, 20);
             this.txtGiaVe.TabIndex = 63;
+            this.txtGiaVe.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtGiaVe_KeyDown);
+            this.txtGiaVe.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaVe_KeyPress);
             // 
             // label2
             // 
@@ -376,6 +390,8 @@
             this.txtSoGheH2.Name = "txtSoGheH2";
             this.txtSoGheH2.Size = new System.Drawing.Size(156, 20);
             this.txtSoGheH2.TabIndex = 61;
+            this.txtSoGheH2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoGheH2_KeyDown);
+            this.txtSoGheH2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoGheH2_KeyPress);
             // 
             // label9
             // 
@@ -401,6 +417,8 @@
             this.txtSoGheH1.Name = "txtSoGheH1";
             this.txtSoGheH1.Size = new System.Drawing.Size(156, 20);
             this.txtSoGheH1.TabIndex = 58;
+            this.txtSoGheH1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSoGheH1_KeyDown);
+            this.txtSoGheH1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoGheH1_KeyPress);
             // 
             // label7
             // 
@@ -445,6 +463,8 @@
             this.txtThGianBay.Name = "txtThGianBay";
             this.txtThGianBay.Size = new System.Drawing.Size(191, 20);
             this.txtThGianBay.TabIndex = 53;
+            this.txtThGianBay.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtThGianBay_KeyDown);
+            this.txtThGianBay.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtThGianBay_KeyPress);
             // 
             // btnSanBayDen
             // 
@@ -491,15 +511,14 @@
             this.btnXoaSBTG.UseVisualStyleBackColor = true;
             this.btnXoaSBTG.Click += new System.EventHandler(this.btnXoaSBTG_Click);
             // 
-            // label12
+            // label13
             // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(20, 25);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(210, 26);
-            this.label12.TabIndex = 8;
-            this.label12.Text = "*Lưu ý: Số sân bay trung gian không được \r\nvượt quá qui đinh";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(317, 205);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(34, 13);
+            this.label13.TabIndex = 65;
+            this.label13.Text = "(phút)";
             // 
             // frmNhanLich
             // 
@@ -584,5 +603,6 @@
         private System.Windows.Forms.Label MaCB;
         private System.Windows.Forms.Button btnXoaSBTG;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label13;
     }
 }

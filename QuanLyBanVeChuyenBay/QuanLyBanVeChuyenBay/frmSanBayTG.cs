@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.danhsachcb = frmDanhSachCB;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
         string MaCB;
         private void Connection()
         {
@@ -65,7 +65,6 @@ namespace QuanLyBanVeChuyenBay
 
         private void frmSanBayTG_Load(object sender, EventArgs e)
         {
-            //MaCB = frmDanSachCB.macb = frmTraCuu.macb;
             if (frmDanSachCB.macb != "")
                 MaCB = frmDanSachCB.macb;
             if (frmTraCuu.macb != "")

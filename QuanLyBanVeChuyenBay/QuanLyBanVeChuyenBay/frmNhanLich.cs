@@ -28,10 +28,11 @@ namespace QuanLyBanVeChuyenBay
         string MACHUYENBAYCUOI;
         int TGDungToiDa;
         int TGDungToiThieu;
-        int SoSBTGToida;
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        int SoSBTGToida, thoigianquydinh, thoigianbay_min;
+        string MaDoanhThuThang;
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -154,18 +155,14 @@ namespace QuanLyBanVeChuyenBay
             this.Connection();
             this.Show();
         }
-  
-        public virtual string ValueMember { get; set; }
-
-        string MASB;
-
-
+        string str_MaDTCuoi, MaDoanhThuNam;
         private void btnThem_Click(object sender, EventArgs e)
         {
             SqlConnection conn = new SqlConnection(strconn2);
            
             try
             {
+                conn.Open();
                 string MACB = txtMaCB.Text;
                 string SANBAYDI = cmbSanBayDi.SelectedValue.ToString();
                 string SANBAYDEN = cmbSanBayDen.SelectedValue.ToString();
@@ -173,63 +170,220 @@ namespace QuanLyBanVeChuyenBay
                 int SOGHEH1 = Int32.Parse(txtSoGheH1.Text);
                 int SOGHEH2 = Int32.Parse(txtSoGheH2.Text);
                 int GIAVE = Int32.Parse(txtGiaVe.Text);
-                // DateTime NGAYBAY = DateTime.ParseExact(dateTimePicker1.Text, "dd/MM/yyyy hh:mm:ss", CultureInfo.InvariantCulture);
                 DateTime NGAYBAY = dateTimePicker1.Value;
-               
-                conn.Open();
-                String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
-                SqlCommand command = new SqlCommand(sqlQuery, conn);
-                command.Parameters.AddWithValue("@MaCB", MACB);
-                command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
-                command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
-                command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
-                command.Parameters.AddWithValue("@ThoiGianBay", THOIGIANBAY);
-                command.Parameters.AddWithValue("@SLGheHang1", SOGHEH1);
-                command.Parameters.AddWithValue("@SLGheHang2", SOGHEH2);
-                command.Parameters.AddWithValue("@GiaVe", GIAVE);
-                command.ExecuteNonQuery();
+
+                //Lay nam cua chuyen bay
+                string[] arr_tg = (NGAYBAY.ToString()).Split(' ');
+                string[] arr_tg2 = arr_tg[0].Split('/');
 
 
-                //Insert vao bang TRUNGGIAN
-                
-                if (them==true)
+                //Kiem tra tinh hop le cua ngay gio bay
+                string ngaybay = NGAYBAY.ToString();
+                DateTime d = DateTime.Now;
+                string ngayhomnay = d.ToString();
+
+                //Lay thoi gian quy dinh
+                string sqlts = "select TGChamNhatDatVe,TGBayToiThieu from ThamSo where MaThamSo='TS01'";
+                SqlCommand cmd = new SqlCommand(sqlts, conn);
+                SqlDataAdapter adapter_tg = new SqlDataAdapter(cmd);
+                DataTable table_tg = new DataTable();
+                adapter_tg.Fill(table_tg);
+                foreach (DataRow row in table_tg.Rows)
                 {
-                    int sodong = dataSanBayTG.RowCount;
-                    string[] arrListStr = masb_tg.Split(',');
-                    for (int i = 0; i < sodong; i++)
+                    foreach (DataColumn col in table_tg.Columns)
                     {
-                        string MASB = arrListStr[i];
-                        string MATG = dataSanBayTG.Rows[i].Cells[0].EditedFormattedValue.ToString();
-                        string TGDUNG = dataSanBayTG.Rows[i].Cells[2].EditedFormattedValue.ToString();
-                        string GHICHU = dataSanBayTG.Rows[i].Cells[3].EditedFormattedValue.ToString();
-                        string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
-                        SqlCommand command3 = new SqlCommand(sqlQuery2, conn);
-                        command3.Parameters.AddWithValue("@MaTrungGian", MATG);
-                        command3.Parameters.AddWithValue("@MaCB", MACB);
-                        command3.Parameters.AddWithValue("@MaSanBay", MASB);
-                        command3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
-                        command3.Parameters.AddWithValue("@GhiChu", GHICHU);
-
-                        command3.ExecuteNonQuery();
+                        string s = row["TGChamNhatDatVe"].ToString();
+                        string strtgbay_min = row["TGBayToiThieu"].ToString();
+                        thoigianquydinh = Int32.Parse(s);
+                        thoigianbay_min = Int32.Parse(strtgbay_min);
                     }
-
                 }
-                
+                if (THOIGIANBAY < thoigianbay_min)
+                {
+                    MessageBox.Show("Thời gian bay phải >= " + thoigianbay_min + " phút.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (frmTraCuu.KiemTra(thoigianquydinh, ngayhomnay, ngaybay) == false)
+                    {
+                        MessageBox.Show("Không thể thêm chuyến bay có mã " + MACB + " vì ngày bay đã quá trễ ( < " + thoigianquydinh + " giờ) so với quy định.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        String sqlQuery = "insert into [QLBanVeChuyenBay].[dbo].[CHUYENBAY] values ( " + "@MaCB, @SanBayDi, @SanBayDen,@NgayGio,@ThoiGianBay,@SLGheHang1,@SLGheHang2,@GiaVe)";
+                        SqlCommand command = new SqlCommand(sqlQuery, conn);
+                        command.Parameters.AddWithValue("@MaCB", MACB);
+                        command.Parameters.AddWithValue("@SanBayDi", SANBAYDI);
+                        command.Parameters.AddWithValue("@SanBayDen", SANBAYDEN);
+                        command.Parameters.AddWithValue("@NgayGio", NGAYBAY);
+                        command.Parameters.AddWithValue("@ThoiGianBay", THOIGIANBAY);
+                        command.Parameters.AddWithValue("@SLGheHang1", SOGHEH1);
+                        command.Parameters.AddWithValue("@SLGheHang2", SOGHEH2);
+                        command.Parameters.AddWithValue("@GiaVe", GIAVE);
+                        command.ExecuteNonQuery();
 
-                MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Insert vao bang TRUNGGIAN
+
+                        if (them == true)
+                        {
+                            int sodong = dataSanBayTG.RowCount;
+                            string[] arrListStr = masb_tg.Split(',');
+                            for (int i = 0; i < sodong; i++)
+                            {
+                                string MASB = arrListStr[i];
+                                string MATG = dataSanBayTG.Rows[i].Cells[0].EditedFormattedValue.ToString();
+                                string TGDUNG = dataSanBayTG.Rows[i].Cells[2].EditedFormattedValue.ToString();
+                                string GHICHU = dataSanBayTG.Rows[i].Cells[3].EditedFormattedValue.ToString();
+                                string sqlQuery2 = "insert into [QLBanVeChuyenBay].[dbo].[TRUNGGIAN] values ( " + "@MaTrungGian,@MaCB,@MaSanBay,@ThoiGianDung,@GhiChu)";
+                                SqlCommand command3 = new SqlCommand(sqlQuery2, conn);
+                                command3.Parameters.AddWithValue("@MaTrungGian", MATG);
+                                command3.Parameters.AddWithValue("@MaCB", MACB);
+                                command3.Parameters.AddWithValue("@MaSanBay", MASB);
+                                command3.Parameters.AddWithValue("@ThoiGianDung", TGDUNG);
+                                command3.Parameters.AddWithValue("@GhiChu", GHICHU);
+
+                                command3.ExecuteNonQuery();
+                            }
+
+                        }
 
 
-                string MATT = "TT" + txtMaCB.Text.Substring(2);
-                string sqlQuery3 = "insert into[QLBanVeChuyenBay].[dbo].[TINHTRANG] values(" + "@MaTinhTrang, @MaCB, @SLGheTrongH1, @SLGheTrongH2,@TongSoGhe, @TongSoGheTrong,@TongSoGheDat)";
-                SqlCommand command4= new SqlCommand(sqlQuery3, conn);
-                command4.Parameters.AddWithValue("@MaTinhTrang", MATT);
-                command4.Parameters.AddWithValue("@MaCB", MACB);
-                command4.Parameters.AddWithValue("@SLGheTrongH1", SOGHEH1);
-                command4.Parameters.AddWithValue("@SLGheTrongH2", SOGHEH2);
-                command4.Parameters.AddWithValue("@TongSoGhe", SOGHEH1 + SOGHEH2);
-                command4.Parameters.AddWithValue("@TongSoGheTrong", SOGHEH1+ SOGHEH2);
-                command4.Parameters.AddWithValue("@TongSoGheDat", 0);
-                command4.ExecuteNonQuery();
+                        MessageBox.Show("Thêm chuyến bay thành công.", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        //Insert vao bang tinh trang
+                        string MATT = "TT" + txtMaCB.Text.Substring(2);
+                        string sqlQuery3 = "insert into[QLBanVeChuyenBay].[dbo].[TINHTRANG] values(" + "@MaTinhTrang, @MaCB, @SLGheTrongH1, @SLGheTrongH2,@TongSoGhe, @TongSoGheTrong,@TongSoGheDat)";
+                        SqlCommand command4 = new SqlCommand(sqlQuery3, conn);
+                        command4.Parameters.AddWithValue("@MaTinhTrang", MATT);
+                        command4.Parameters.AddWithValue("@MaCB", MACB);
+                        command4.Parameters.AddWithValue("@SLGheTrongH1", SOGHEH1);
+                        command4.Parameters.AddWithValue("@SLGheTrongH2", SOGHEH2);
+                        command4.Parameters.AddWithValue("@TongSoGhe", SOGHEH1 + SOGHEH2);
+                        command4.Parameters.AddWithValue("@TongSoGheTrong", SOGHEH1 + SOGHEH2);
+                        command4.Parameters.AddWithValue("@TongSoGheDat", 0);
+                        command4.ExecuteNonQuery();
+
+
+                        //Insert vao bang DOANHTHUTHANGCB
+
+
+                        //Trước hết phải insert vào bảng TONGDOANHTHUNAM nếu chưa có
+                        //Kiem tra xem da co muc doanh thu cua nam hien tai hay chua
+                        string sqlQuery5 = "select MaDoanhThuNam from TONGDOANHTHUNAM where Nam= '"+arr_tg2[2] +"'";
+                        SqlCommand command5 = new SqlCommand(sqlQuery5, conn);
+                        SqlDataAdapter adapter5 = new SqlDataAdapter(command5);
+                        DataSet dataSet5 = new DataSet();
+                        adapter5.Fill(dataSet5, "MaDoanhThuNam");
+                        DataTable table5 = dataSet5.Tables["MaDoanhThuNam"];
+                        if(table5.Rows.Count==0)
+                        {
+                            //Chưa có thì tạo mới
+                            MaDoanhThuNam = "DTN" + arr_tg2[2];
+                            string sqlQuery6 = "insert into TONGDOANHTHUNAM values ( " + "@MaDoanhThuNam, @TongDoanhThu, @Nam) ";
+                            SqlCommand command6 = new SqlCommand(sqlQuery6, conn);
+                            command6.Parameters.AddWithValue("@MaDoanhThuNam", MaDoanhThuNam);
+                            command6.Parameters.AddWithValue("@TongDoanhThu",0);
+                            command6.Parameters.AddWithValue("@Nam", arr_tg2[2]);
+                            command6.ExecuteNonQuery();
+                        }
+                        else//Đã có rồi thì lấy cái mã ra
+                        {
+                            foreach (DataRow row in table5.Rows)
+                            {
+                                foreach (DataColumn col in table5.Columns)
+                                    MaDoanhThuNam = row["MaDoanhThuNam"].ToString();
+                            }
+                        }
+
+
+
+
+                        //Insert vao bang DOANHTHUTHANG
+                        //Nếu bảng DOANHTHUTHANG của tháng hiện tại mà chưa có thì phải insert vào mới không thì k cần
+                        //LẤY MÃ DOANHTHUTHANG 
+                        string sqlQuery7 = "select MaDoanhThuThang from TONGDOANHTHUTHANG where MaDoanhThuNam= '"+MaDoanhThuNam +"'" + " and Thang= '"+arr_tg2[0] +"'";
+                        SqlCommand command7 = new SqlCommand(sqlQuery7, conn);
+                        SqlDataAdapter adapter7 = new SqlDataAdapter(command7);
+                        DataSet dataSet7 = new DataSet();
+                        adapter7.Fill(dataSet7, "MaDoanhThuThang");
+                        DataTable table7 = dataSet7.Tables["MaDoanhThuThang"];
+                        if (table7.Rows.Count == 0)
+                        {
+                            //Chưa có thì tạo mới
+                            //Trước khi tạo mới phải lấy được cái mã cuối cùng của nó
+                            string sqlQuery8 = "select Max(MaDoanhThuThang) as LastID from TONGDOANHTHUTHANG";
+                            SqlCommand command8 = new SqlCommand(sqlQuery8, conn);
+                            SqlDataAdapter adapter8 = new SqlDataAdapter(command8);
+                            DataSet dataSet8 = new DataSet();
+                            adapter8.Fill(dataSet8, "MaDoanhThuThang");
+                            DataTable table8 = dataSet8.Tables["MaDoanhThuThang"];
+                            foreach (DataRow row in table8.Rows)
+                            {
+                                foreach (DataColumn col in table8.Columns)
+                                {
+                                    str_MaDTCuoi = row[col].ToString();
+                                    if (str_MaDTCuoi == "")
+                                        str_MaDTCuoi = "DTT00";
+                                }
+                            }
+                            string madt = str_MaDTCuoi.Substring(3);
+                            int sodt = Int32.Parse(madt);
+                            sodt = sodt + 1;
+                            bool flag = false;
+                            if (sodt < 10)
+                                flag = true;
+                            if (flag == true)
+                            {
+                                MaDoanhThuThang = "DTT0" + sodt.ToString();
+                            }
+                            else
+                                MaDoanhThuThang = "DTT" + sodt.ToString();
+
+                            //Tạo mới 
+                            string sqlQuery9 = "insert into TONGDOANHTHUTHANG values ( " + "@MaDoanhThuThang, @MaDoanhThuNam, @SoChuyenBay, @TongDoanhThu, @TiLe, @Thang) ";
+                            SqlCommand command9 = new SqlCommand(sqlQuery9, conn);
+                            command9.Parameters.AddWithValue("@MaDoanhThuThang", MaDoanhThuThang);
+                            command9.Parameters.AddWithValue("@MaDoanhThuNam",MaDoanhThuNam );
+                            command9.Parameters.AddWithValue("@SoChuyenBay",0);
+                            command9.Parameters.AddWithValue("@TongDoanhThu",0);
+                            command9.Parameters.AddWithValue("@TiLe", 0);
+                            command9.Parameters.AddWithValue("@Thang", arr_tg2[0]);
+                            command9.ExecuteNonQuery();
+                        }
+                        else//Đã có rồi thì lấy cái mã ra
+                        {
+                            foreach (DataRow row in table7.Rows)
+                            {
+                                foreach (DataColumn col in table5.Columns)
+                                    MaDoanhThuThang = row["MaDoanhThuThang"].ToString();
+                            }
+                        }
+
+
+
+                        //Insert vao bang DOANHTHUTHANGCB
+                        //Lay ma doanh thu thang cua chuyen bay
+                        string MaDoanhThuThangCB = "DTTCB" + txtMaCB.Text.Substring(2);
+
+                        string sqlQuery10 = "insert into DOANHTHUTHANGCB values ( " + "@MaDoanhThuCB, @MaDoanhThuThang, @MaCB, @SoVe, @DoanhThu, @TiLe) ";
+                        SqlCommand command10 = new SqlCommand(sqlQuery10, conn);
+                        command10.Parameters.AddWithValue("@MaDoanhThuCB", MaDoanhThuThangCB);
+                        command10.Parameters.AddWithValue("@MaDoanhThuThang", MaDoanhThuThang);
+                        command10.Parameters.AddWithValue("@MaCB", MACB);
+                        command10.Parameters.AddWithValue("@SoVe",0);
+                        command10.Parameters.AddWithValue("@DoanhThu",0);
+                        command10.Parameters.AddWithValue("@TiLe",0);
+                        command10.ExecuteNonQuery();
+
+                        //Update so chuyen bay trong bang TONGDOANHTHUTHANG thêm 1
+
+                        string sqlQuery11 = "Update TONGDOANHTHUTHANG set SoChuyenBay= SoChuyenBay + 1 where MaDoanhThuThang= '" + MaDoanhThuThang + "'";
+                        SqlCommand command11 = new SqlCommand(sqlQuery11, conn);
+                        command11.ExecuteNonQuery();
+
+                    }
+                }
 
                 txtMaCB.Text = "";
                 cmbSanBayDi.Text= "";
@@ -246,7 +400,8 @@ namespace QuanLyBanVeChuyenBay
             catch (InvalidOperationException ex)
             {
                 //xu ly khi ket noi co van de
-                MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+              //  MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                MessageBox.Show(ex.Message);
             }
             catch (Exception ex)
             {
@@ -369,6 +524,137 @@ namespace QuanLyBanVeChuyenBay
         private void txtMaSBTG_KeyPress(object sender, KeyPressEventArgs e)
         {
             
+        }
+
+        private void txtThGianBay_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void txtThGianBay_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("Thời gian không thể là chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtThGianBay.Text = "";
+                return;
+            }
+        }
+
+        private void txtSoGheH1_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+
+        }
+
+        private void txtSoGheH1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("Số ghế không thể là chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSoGheH1.Text = "";
+                return;
+            }
+        }
+
+        private void txtSoGheH2_KeyDown(object sender, KeyEventArgs e)
+        {
+            nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void txtSoGheH2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("Số ghế không thể là chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtSoGheH2.Text = "";
+                return;
+            }
+
+        }
+
+        private void txtGiaVe_KeyDown(object sender, KeyEventArgs e)
+        {
+  
+          nonNumberEntered = false;
+
+            if (e.KeyCode < Keys.D0 || e.KeyCode > Keys.D9)
+            {
+                if (e.KeyCode < Keys.NumPad0 || e.KeyCode > Keys.NumPad9)
+                {
+                    if (e.KeyCode != Keys.Back)
+                    {
+                        nonNumberEntered = true;
+                    }
+                }
+            }
+            //If shift key was pressed, it's not a number.
+            if (Control.ModifierKeys == Keys.Shift)
+            {
+                nonNumberEntered = true;
+            }
+        }
+
+        private void txtGiaVe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (nonNumberEntered == true)
+            {
+                e.Handled = true;
+                MessageBox.Show("Giá vé không thể là chữ, vui lòng nhập lại. ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtGiaVe.Text = "";
+                return;
+            }
         }
 
         private void txtMaSBTG_Click(object sender, EventArgs e)
