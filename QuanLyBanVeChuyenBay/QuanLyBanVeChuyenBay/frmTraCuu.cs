@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        // string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         int index;
         static public string macb = "";
@@ -382,21 +382,26 @@ namespace QuanLyBanVeChuyenBay
                     return true;
                 else
                 {
-                    if (ngaybay > ngaymoi)
-                        return true;
-                    else //cung ngay
+                    if (thangbay < thangmoi)
+                        return false;
+                    else
                     {
-                        if (ngaybay == ngaymoi)
+                        if (ngaybay > ngaymoi)
+                            return true;
+                        else //cung ngay
                         {
-                            if (giobay > giomoi) return true;
-                            else
+                            if (ngaybay == ngaymoi)
                             {
-                                if (phutbay > phutmoi) return true;
-                                else return false;
+                                if (giobay > giomoi) return true;
+                                else
+                                {
+                                    if (phutbay > phutmoi) return true;
+                                    else return false;
+                                }
                             }
+                            else
+                                return false;
                         }
-                        else
-                            return false;
                     }
 
 

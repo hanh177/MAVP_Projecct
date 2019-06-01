@@ -42,6 +42,13 @@
             this.cmbNam = new System.Windows.Forms.ComboBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.btnBaoCaoNam = new System.Windows.Forms.ToolStripButton();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTongCB = new System.Windows.Forms.TextBox();
+            this.txtDoanhThu = new System.Windows.Forms.TextBox();
+            this.txtTiLe = new System.Windows.Forms.TextBox();
+            this.lblTieuDe = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuThang)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -54,28 +61,36 @@
             this.ColSoVe,
             this.ColDoanhThu,
             this.ColTiLe});
-            this.dataDoanhThuThang.Location = new System.Drawing.Point(12, 84);
+            this.dataDoanhThuThang.Location = new System.Drawing.Point(12, 118);
             this.dataDoanhThuThang.Name = "dataDoanhThuThang";
-            this.dataDoanhThuThang.Size = new System.Drawing.Size(603, 287);
+            this.dataDoanhThuThang.ReadOnly = true;
+            this.dataDoanhThuThang.Size = new System.Drawing.Size(631, 287);
             this.dataDoanhThuThang.TabIndex = 0;
             // 
             // ColMaCB
             // 
+            this.ColMaCB.DataPropertyName = "MaCB";
             this.ColMaCB.HeaderText = "Mã CB";
             this.ColMaCB.Name = "ColMaCB";
             // 
             // ColSoVe
             // 
+            this.ColSoVe.DataPropertyName = "SoVe";
             this.ColSoVe.HeaderText = "Số vé";
             this.ColSoVe.Name = "ColSoVe";
+            this.ColSoVe.Width = 130;
             // 
             // ColDoanhThu
             // 
+            this.ColDoanhThu.DataPropertyName = "DoanhThu";
             this.ColDoanhThu.HeaderText = "Doanh thu";
             this.ColDoanhThu.Name = "ColDoanhThu";
+            this.ColDoanhThu.Width = 200;
             // 
             // ColTiLe
             // 
+            this.ColTiLe.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.ColTiLe.DataPropertyName = "TiLe";
             this.ColTiLe.HeaderText = "Tỉ lệ";
             this.ColTiLe.Name = "ColTiLe";
             // 
@@ -105,12 +120,13 @@
             this.btnXem.TabIndex = 5;
             this.btnXem.Text = "Xem";
             this.btnXem.UseVisualStyleBackColor = true;
+            this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(513, 384);
+            this.btnThoat.Location = new System.Drawing.Point(568, 439);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Size = new System.Drawing.Size(75, 34);
             this.btnThoat.TabIndex = 6;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -118,6 +134,7 @@
             // 
             // cmbThang
             // 
+            this.cmbThang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbThang.FormattingEnabled = true;
             this.cmbThang.Items.AddRange(new object[] {
             "1",
@@ -139,6 +156,7 @@
             // 
             // cmbNam
             // 
+            this.cmbNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNam.FormattingEnabled = true;
             this.cmbNam.Location = new System.Drawing.Point(302, 30);
             this.cmbNam.Name = "cmbNam";
@@ -151,7 +169,7 @@
             this.btnBaoCaoNam});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(632, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(655, 25);
             this.toolStrip1.TabIndex = 9;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -164,11 +182,79 @@
             this.btnBaoCaoNam.Text = "&Báo Cáo Năm";
             this.btnBaoCaoNam.Click += new System.EventHandler(this.btnBaoCaoNam_Click);
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 450);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 10;
+            this.label3.Text = "Tổng CB:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(159, 450);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(61, 13);
+            this.label4.TabIndex = 11;
+            this.label4.Text = "DoanhThu:";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(401, 450);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Tỉ lệ:";
+            // 
+            // txtTongCB
+            // 
+            this.txtTongCB.Location = new System.Drawing.Point(66, 447);
+            this.txtTongCB.Name = "txtTongCB";
+            this.txtTongCB.ReadOnly = true;
+            this.txtTongCB.Size = new System.Drawing.Size(67, 20);
+            this.txtTongCB.TabIndex = 13;
+            // 
+            // txtDoanhThu
+            // 
+            this.txtDoanhThu.Location = new System.Drawing.Point(226, 447);
+            this.txtDoanhThu.Name = "txtDoanhThu";
+            this.txtDoanhThu.ReadOnly = true;
+            this.txtDoanhThu.Size = new System.Drawing.Size(131, 20);
+            this.txtDoanhThu.TabIndex = 14;
+            // 
+            // txtTiLe
+            // 
+            this.txtTiLe.Location = new System.Drawing.Point(437, 447);
+            this.txtTiLe.Name = "txtTiLe";
+            this.txtTiLe.ReadOnly = true;
+            this.txtTiLe.Size = new System.Drawing.Size(81, 20);
+            this.txtTiLe.TabIndex = 15;
+            // 
+            // lblTieuDe
+            // 
+            this.lblTieuDe.AutoSize = true;
+            this.lblTieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTieuDe.Location = new System.Drawing.Point(204, 82);
+            this.lblTieuDe.Name = "lblTieuDe";
+            this.lblTieuDe.Size = new System.Drawing.Size(227, 16);
+            this.lblTieuDe.TabIndex = 16;
+            this.lblTieuDe.Text = "DOANH THU THÁNG CỦA NĂM";
+            // 
             // frmBaoCaoThang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 419);
+            this.ClientSize = new System.Drawing.Size(655, 501);
+            this.Controls.Add(this.lblTieuDe);
+            this.Controls.Add(this.txtTiLe);
+            this.Controls.Add(this.txtDoanhThu);
+            this.Controls.Add(this.txtTongCB);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.cmbNam);
             this.Controls.Add(this.cmbThang);
@@ -194,10 +280,6 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataDoanhThuThang;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColMaCB;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColSoVe;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColDoanhThu;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ColTiLe;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnXem;
@@ -206,5 +288,16 @@
         private System.Windows.Forms.ComboBox cmbNam;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton btnBaoCaoNam;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox txtTongCB;
+        private System.Windows.Forms.TextBox txtDoanhThu;
+        private System.Windows.Forms.TextBox txtTiLe;
+        private System.Windows.Forms.Label lblTieuDe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColMaCB;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColSoVe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColDoanhThu;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTiLe;
     }
 }
