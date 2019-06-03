@@ -23,9 +23,9 @@ namespace QuanLyBanVeChuyenBay
         }
 
         
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
         double DonGia;
         int GheTrongH1, GheTrongH2, tongsoghe;
@@ -292,12 +292,13 @@ namespace QuanLyBanVeChuyenBay
                     {
                         //insert hanh khach
 
-                        String sqlQuery1 = "insert into [QLBanVeChuyenBay].[dbo].[HANHKHACH] values ( " + "@MaHanhKhach, @HoTen, @CMND, @SDT)";
+                        String sqlQuery1 = "insert into [QLBanVeChuyenBay].[dbo].[HANHKHACH] values ( " + "@MaHanhKhach, @HoTen, @CMND, @SDT, @MaCB)";
                         SqlCommand command1 = new SqlCommand(sqlQuery1, conn);
                         command1.Parameters.AddWithValue("@MaHanhKhach", MaHanhKhach);
                         command1.Parameters.AddWithValue("@HoTen", HoTen);
                         command1.Parameters.AddWithValue("@CMND", CMND);
                         command1.Parameters.AddWithValue("@SDT", SDT);
+                        command1.Parameters.AddWithValue("@MaCB", MaCB);
                         command1.ExecuteNonQuery();
 
 
@@ -310,6 +311,7 @@ namespace QuanLyBanVeChuyenBay
                         command2.Parameters.AddWithValue("@MaCB", txtMaCB.Text);
                         command2.Parameters.AddWithValue("@GiaVe", GiaVe);
                         command2.Parameters.AddWithValue("@HangVe", HangVe);
+                        
                         command2.ExecuteNonQuery();
 
                         MessageBox.Show("Đặt vé thành công", "Thông báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);

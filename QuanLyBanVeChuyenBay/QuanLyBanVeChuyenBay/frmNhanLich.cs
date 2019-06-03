@@ -30,9 +30,10 @@ namespace QuanLyBanVeChuyenBay
         int TGDungToiThieu;
         int SoSBTGToida, thoigianquydinh, thoigianbay_min;
         string MaDoanhThuThang;
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        string MACHUYENBAYTGCUOI;
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -543,7 +544,7 @@ namespace QuanLyBanVeChuyenBay
             }
         }
 
-        string MACHUYENBAYTGCUOI;
+      
         private void txtMaSBTG_KeyPress(object sender, KeyPressEventArgs e)
         {
             
@@ -763,6 +764,14 @@ namespace QuanLyBanVeChuyenBay
             {
                 int rowIndex = dataSanBayTG.CurrentCell.RowIndex;
                 dataSanBayTG.Rows.RemoveAt(rowIndex);
+                quaquydinh = false;
+                them = true;
+                label12.ForeColor = Color.Black;
+                label12.Text = "*Lưu ý: Số sân bay trung gian không \nđược vượt quá " + SoSBTGToida + " theo qui định.";
+                txtMaSBTG.Enabled = true;
+                cmbTenSBTG.Enabled = true;
+                txtTGDung.Enabled = true;
+                txtGhiChu.Enabled = true;
             }
             catch { };
         }

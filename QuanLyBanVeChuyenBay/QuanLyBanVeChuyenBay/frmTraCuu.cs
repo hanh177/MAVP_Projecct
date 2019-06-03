@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         int index;
         static public string macb = "";
@@ -156,7 +156,7 @@ namespace QuanLyBanVeChuyenBay
                     }
                     catch
                     {
-                        MessageBox.Show("Tim kiem ngu qua", "Loi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Cú pháp tra cứu sai, vui lòng thực hiện lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtNgayBay.Text = "";
                         return;
                     }

@@ -19,9 +19,9 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.main = frmMain;
         }
-        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+       string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-         string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         int index;
          public static string macb = "";
          public string ngaybay = "";
@@ -346,7 +346,7 @@ namespace QuanLyBanVeChuyenBay
             try
             {
                 conn.Open();
-                //Xoa phieu dat cho
+                //
                 string sql = "select * from ThamSo where MaThamSo='TS01'";
                 SqlCommand cmd = new SqlCommand(sql, conn);
                 SqlDataReader reader = cmd.ExecuteReader();
@@ -402,31 +402,41 @@ namespace QuanLyBanVeChuyenBay
             }
             catch { }
 
-             if (KiemTra(thoigianquidinh, ngaydat, ngaybay)==false)
-                {
-                MessageBox.Show("Không thể đặt vé chuyến bay " + macb + " vì đã quá thời gian chậm nhất đặt vé(" + thoigianquidinh + " giờ)");
-                    return;
-                }
-                
-            if (dataDanhSachCB.CurrentRow == null || SLGHETRONG == -1)
-                {
+            if(ngaybay=="")
+            {
                     MessageBox.Show("Chưa chọn chuyến bay để đặt vé, vui lòng chọn 1 chuyến bay.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
+            }
+            else if (KiemTra(thoigianquidinh, ngaydat, ngaybay)==false)
+            {
+                MessageBox.Show("Không thể đặt vé chuyến bay " + macb + " vì đã quá thời gian chậm nhất đặt vé(" + thoigianquidinh + " giờ)");
+                    return;
+            }
+                
+            if (dataDanhSachCB.CurrentRow == null || SLGHETRONG == -1)
+            {
+                    MessageBox.Show("Chưa chọn chuyến bay để đặt vé, vui lòng chọn 1 chuyến bay.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+            }
+            else if (SLGHETRONG > 0)
+            {
+                try {
+                    string tongSoGhe = dataDanhSachCB.Rows[index].Cells[6].Value.ToString();
+                  
+                    string NgayGioBay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
+                    string[] arr_tg = NgayGioBay.Split(' ');
+                    string[] arr_tg2 = arr_tg[0].Split('/');
+                    thang = arr_tg2[0];
+                    nam = arr_tg2[2];
+                    tongsoghe = Int32.Parse(tongSoGhe);
+                    Form banve = new frmBanVe(this);
+                    this.Hide();
+                    DialogResult re = banve.ShowDialog();
+                    table.Clear();
+                    this.reload();
                 }
-                else if (SLGHETRONG > 0)
-                {
-                string tongSoGhe = dataDanhSachCB.Rows[index].Cells[6].Value.ToString();
-                string NgayGioBay = dataDanhSachCB.Rows[index].Cells[5].Value.ToString();
-                string[] arr_tg = NgayGioBay.Split(' ');
-                string[] arr_tg2 = arr_tg[0].Split('/');
-                thang = arr_tg2[0];
-                nam = arr_tg2[2];
-                tongsoghe = Int32.Parse(tongSoGhe);
-                Form banve = new frmBanVe(this);
-                this.Hide();
-                DialogResult re = banve.ShowDialog();
-                table.Clear();
-                this.reload();
+                catch { }
+                
 
             }
             else if (SLGHETRONG == 0)
