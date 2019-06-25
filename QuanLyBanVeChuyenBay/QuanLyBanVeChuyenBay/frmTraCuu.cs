@@ -22,9 +22,9 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         int index;
         static public string macb = "";
@@ -118,6 +118,16 @@ namespace QuanLyBanVeChuyenBay
         {
 
         }
+        public bool IsNumber(string pValue)
+        {
+            int n = 0;
+            if (int.TryParse(pValue, out n))
+            {
+                return true;
+            }
+            else return false;
+        }
+        bool flag_loitkngaybay = false;
         DataTable table = new DataTable();
         string str1, str2, str3, str4, str5, str6, str7, str8, str_sql;
         private void btnTraCuu_Click(object sender, EventArgs e)
@@ -148,18 +158,32 @@ namespace QuanLyBanVeChuyenBay
                 //Chi tim kiem bang NgayBay
                 else if (txtNgayBay.Text != "" && cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex == -1 && cmbSanBayDen.SelectedIndex == -1)
                 {
-                    try
+                    string NGAYBAY = txtNgayBay.Text;
+                    string[] arrListStr = NGAYBAY.Split('/');
+                    for (int i=0;i<arrListStr.Length;i++)
                     {
-                        string NGAYBAY = txtNgayBay.Text;
-                        string[] arrListStr = NGAYBAY.Split('/');
-                        str3 = "Day(CB.NgayGio)= '" + arrListStr[0] + "' and Month(CB.NgayGio)= '" + arrListStr[1] + "' and Year(CB.NgayGio)= '" + arrListStr[2] + "'";
+                        if (IsNumber(arrListStr[i]) == false)
+                        {
+                            flag_loitkngaybay = true;
+                            break;
+                        }
+
                     }
-                    catch
+                    if (arrListStr.Length == 2)
+                            str3 = "Month(CB.NgayGio)= '" + arrListStr[0] + "'" + " and  Year(CB.NgayGio)= '" + arrListStr[1] + "'";
+                    if (arrListStr.Length == 3)
+                            str3 = "Day(CB.NgayGio)= '" + arrListStr[0] + "' and Month(CB.NgayGio)= '" + arrListStr[1] + "' and Year(CB.NgayGio)= '" + arrListStr[2] + "'";
+                    if (arrListStr.Length == 1)
+                        flag_loitkngaybay = true;
+                    if (flag_loitkngaybay == true)
                     {
                         MessageBox.Show("Cú pháp tra cứu sai, vui lòng thực hiện lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         txtNgayBay.Text = "";
+                        flag_loitkngaybay = false;
                         return;
                     }
+
+
                 }
                 //chi tim kiem bang san bay di
                 else if (cmbMaCB.SelectedIndex == -1 && cmbSanBayDi.SelectedIndex != -1 && cmbSanBayDen.SelectedIndex == -1 && txtNgayBay.Text == "")

@@ -31,9 +31,10 @@ namespace QuanLyBanVeChuyenBay
         int SoSBTGToida, thoigianquydinh, thoigianbay_min;
         string MaDoanhThuThang;
         string MACHUYENBAYTGCUOI;
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
 
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+
+        //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
         private void Connection()
         {
@@ -424,14 +425,15 @@ namespace QuanLyBanVeChuyenBay
             catch (InvalidOperationException ex)
             {
                 //xu ly khi ket noi co van de
-              //  MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-                MessageBox.Show(ex.Message);
+               MessageBox.Show("Lỗi, vui lòng thực hiện lại.","Lỗi",MessageBoxButtons.OK,MessageBoxIcon.Error);
+                return;
+                
             }
             catch (Exception ex)
             {
                 //xu ly khi ket noi co van de
-                // MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("Lỗi, vui lòng thực hiện lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             finally
             {
@@ -668,6 +670,22 @@ namespace QuanLyBanVeChuyenBay
             {
                 nonNumberEntered = true;
             }
+        }
+
+        private void txtSoGheH1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tSbtnHelp_Click(object sender, EventArgs e)
+        {
+            
+
+        }
+
+        private void txtMaCB_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void txtGiaVe_KeyPress(object sender, KeyPressEventArgs e)
