@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhanLich));
             this.label1 = new System.Windows.Forms.Label();
             this.btnThem = new System.Windows.Forms.Button();
+            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.btnThoat = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tSbtnDanhSachCB = new System.Windows.Forms.ToolStripDropDownButton();
@@ -77,7 +78,6 @@
             this.txtMaCB = new System.Windows.Forms.TextBox();
             this.MaCB = new System.Windows.Forms.Label();
             this.btnXoaSBTG = new System.Windows.Forms.Button();
-            this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSet)).BeginInit();
@@ -91,42 +91,52 @@
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label1.Location = new System.Drawing.Point(294, 25);
+            this.label1.Font = new System.Drawing.Font("Arial Rounded MT Bold", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(309, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(310, 24);
+            this.label1.Size = new System.Drawing.Size(291, 32);
             this.label1.TabIndex = 24;
-            this.label1.Text = "NHẬN LỊCH CHUYẾN BAY";
+            this.label1.Text = "Nhận lịch chuyến bay";
             // 
             // btnThem
             // 
             this.btnThem.BackColor = System.Drawing.Color.Transparent;
             this.btnThem.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThem.BackgroundImage")));
             this.btnThem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnThem.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThem.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.ImageIndex = 2;
-            this.btnThem.ImageList = this.imageList2;
-            this.btnThem.Location = new System.Drawing.Point(60, 369);
+            this.btnThem.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.document_add_flat__1_2;
+            this.btnThem.Location = new System.Drawing.Point(76, 385);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(137, 65);
+            this.btnThem.Size = new System.Drawing.Size(161, 35);
             this.btnThem.TabIndex = 25;
             this.btnThem.Text = "Thêm Chuyến Bay";
+            this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
+            // imageList2
+            // 
+            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
+            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList2.Images.SetKeyName(0, "Them2.ico");
+            this.imageList2.Images.SetKeyName(1, "Thoat.ico");
+            this.imageList2.Images.SetKeyName(2, "Them.ico");
             // 
             // btnThoat
             // 
             this.btnThoat.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThoat.BackgroundImage")));
             this.btnThoat.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThoat.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.ImageIndex = 1;
-            this.btnThoat.ImageList = this.imageList2;
-            this.btnThoat.Location = new System.Drawing.Point(60, 460);
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_2;
+            this.btnThoat.Location = new System.Drawing.Point(76, 445);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(137, 65);
+            this.btnThoat.Size = new System.Drawing.Size(161, 35);
             this.btnThoat.TabIndex = 26;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -138,7 +148,7 @@
             this.tSbtnDanhSachSB});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(992, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1032, 25);
             this.toolStrip1.TabIndex = 28;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -175,7 +185,7 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(267, 323);
+            this.label3.Location = new System.Drawing.Point(283, 328);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(193, 15);
             this.label3.TabIndex = 47;
@@ -196,7 +206,7 @@
             this.colTenSBTrungGian,
             this.ColTGDung,
             this.ColGhiChu});
-            this.dataSanBayTG.Location = new System.Drawing.Point(270, 349);
+            this.dataSanBayTG.Location = new System.Drawing.Point(286, 354);
             this.dataSanBayTG.Name = "dataSanBayTG";
             this.dataSanBayTG.ReadOnly = true;
             this.dataSanBayTG.Size = new System.Drawing.Size(709, 164);
@@ -243,7 +253,7 @@
             this.groupBox1.Controls.Add(this.txtTGDung);
             this.groupBox1.Controls.Add(this.txtMaSBTG);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(663, 52);
+            this.groupBox1.Location = new System.Drawing.Point(678, 64);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(317, 240);
             this.groupBox1.TabIndex = 49;
@@ -275,6 +285,7 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label11.Location = new System.Drawing.Point(4, 121);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(113, 15);
@@ -285,6 +296,7 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label10.Location = new System.Drawing.Point(9, 168);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(111, 15);
@@ -295,6 +307,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label5.Location = new System.Drawing.Point(55, 219);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(62, 15);
@@ -305,6 +318,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label4.Location = new System.Drawing.Point(9, 69);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(109, 15);
@@ -347,15 +361,16 @@
             this.btnThemTG.BackColor = System.Drawing.Color.Transparent;
             this.btnThemTG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnThemTG.BackgroundImage")));
             this.btnThemTG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnThemTG.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnThemTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemTG.ForeColor = System.Drawing.Color.Black;
-            this.btnThemTG.ImageIndex = 0;
-            this.btnThemTG.ImageList = this.imageList1;
-            this.btnThemTG.Location = new System.Drawing.Point(735, 305);
+            this.btnThemTG.Image = ((System.Drawing.Image)(resources.GetObject("btnThemTG.Image")));
+            this.btnThemTG.Location = new System.Drawing.Point(751, 310);
             this.btnThemTG.Name = "btnThemTG";
-            this.btnThemTG.Size = new System.Drawing.Size(75, 38);
+            this.btnThemTG.Size = new System.Drawing.Size(93, 38);
             this.btnThemTG.TabIndex = 50;
             this.btnThemTG.Text = "Thêm SBTG";
+            this.btnThemTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThemTG.UseVisualStyleBackColor = false;
             this.btnThemTG.Click += new System.EventHandler(this.btnThemTG_Click);
             // 
@@ -388,7 +403,7 @@
             this.groupBox2.Controls.Add(this.txtMaCB);
             this.groupBox2.Controls.Add(this.MaCB);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(24, 52);
+            this.groupBox2.Location = new System.Drawing.Point(39, 64);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(633, 240);
             this.groupBox2.TabIndex = 51;
@@ -400,7 +415,8 @@
             this.label13.AutoSize = true;
             this.label13.BackColor = System.Drawing.Color.Transparent;
             this.label13.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(295, 205);
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label13.Location = new System.Drawing.Point(289, 205);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(39, 15);
             this.label13.TabIndex = 65;
@@ -431,6 +447,7 @@
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label2.Location = new System.Drawing.Point(394, 156);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 15);
@@ -452,6 +469,7 @@
             this.label9.AutoSize = true;
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label9.Location = new System.Drawing.Point(339, 106);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(108, 15);
@@ -463,6 +481,7 @@
             this.label8.AutoSize = true;
             this.label8.BackColor = System.Drawing.Color.Transparent;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label8.Location = new System.Drawing.Point(339, 52);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(108, 15);
@@ -484,6 +503,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label7.Location = new System.Drawing.Point(-3, 205);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(124, 13);
@@ -495,6 +515,7 @@
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.Transparent;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.label6.Location = new System.Drawing.Point(331, 205);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(118, 15);
@@ -534,6 +555,7 @@
             // 
             this.btnSanBayDen.AutoSize = true;
             this.btnSanBayDen.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSanBayDen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.btnSanBayDen.Location = new System.Drawing.Point(18, 152);
             this.btnSanBayDen.Name = "btnSanBayDen";
             this.btnSanBayDen.Size = new System.Drawing.Size(93, 15);
@@ -544,6 +566,7 @@
             // 
             this.SanBayDi.AutoSize = true;
             this.SanBayDi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SanBayDi.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.SanBayDi.Location = new System.Drawing.Point(30, 106);
             this.SanBayDi.Name = "SanBayDi";
             this.SanBayDi.Size = new System.Drawing.Size(81, 15);
@@ -565,6 +588,7 @@
             // 
             this.MaCB.AutoSize = true;
             this.MaCB.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.MaCB.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
             this.MaCB.Location = new System.Drawing.Point(6, 52);
             this.MaCB.Name = "MaCB";
             this.MaCB.Size = new System.Drawing.Size(109, 15);
@@ -576,24 +600,17 @@
             this.btnXoaSBTG.BackColor = System.Drawing.Color.Transparent;
             this.btnXoaSBTG.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnXoaSBTG.BackgroundImage")));
             this.btnXoaSBTG.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnXoaSBTG.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnXoaSBTG.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaSBTG.ImageIndex = 1;
-            this.btnXoaSBTG.ImageList = this.imageList1;
-            this.btnXoaSBTG.Location = new System.Drawing.Point(904, 305);
+            this.btnXoaSBTG.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Xoa__1_1;
+            this.btnXoaSBTG.Location = new System.Drawing.Point(866, 310);
             this.btnXoaSBTG.Name = "btnXoaSBTG";
-            this.btnXoaSBTG.Size = new System.Drawing.Size(75, 38);
+            this.btnXoaSBTG.Size = new System.Drawing.Size(95, 38);
             this.btnXoaSBTG.TabIndex = 52;
             this.btnXoaSBTG.Text = "Xóa SBTG";
+            this.btnXoaSBTG.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXoaSBTG.UseVisualStyleBackColor = false;
             this.btnXoaSBTG.Click += new System.EventHandler(this.btnXoaSBTG_Click);
-            // 
-            // imageList2
-            // 
-            this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
-            this.imageList2.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList2.Images.SetKeyName(0, "Them2.ico");
-            this.imageList2.Images.SetKeyName(1, "Thoat.ico");
-            this.imageList2.Images.SetKeyName(2, "Them.ico");
             // 
             // frmNhanLich
             // 
@@ -601,7 +618,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(992, 528);
+            this.ClientSize = new System.Drawing.Size(1032, 528);
             this.Controls.Add(this.btnXoaSBTG);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnThemTG);
@@ -612,7 +629,9 @@
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.label1);
+            this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmNhanLich";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

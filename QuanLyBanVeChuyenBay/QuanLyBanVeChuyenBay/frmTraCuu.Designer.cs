@@ -45,7 +45,6 @@
             this.btnDanhSach = new System.Windows.Forms.ToolStripDropDownButton();
             this.Help = new System.Windows.Forms.ToolStripButton();
             this.dataDanhSachCB = new System.Windows.Forms.DataGridView();
-            this.btnDatVe = new System.Windows.Forms.Button();
             this.ColMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDi = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSanBayDen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,6 +56,7 @@
             this.ColDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongh1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColGheTrongH2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnDatVe = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
@@ -64,16 +64,19 @@
             // 
             // btnTraCuu
             // 
+            // this.btnTraCuu.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.unnamed;
             this.btnTraCuu.Location = new System.Drawing.Point(666, 86);
             this.btnTraCuu.Name = "btnTraCuu";
             this.btnTraCuu.Size = new System.Drawing.Size(75, 23);
             this.btnTraCuu.TabIndex = 50;
             this.btnTraCuu.Text = "Tra cứu";
+            this.btnTraCuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTraCuu.UseVisualStyleBackColor = true;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.cmbMaCB);
             this.groupBox1.Controls.Add(this.txtNgayBay);
             this.groupBox1.Controls.Add(this.label6);
@@ -83,7 +86,7 @@
             this.groupBox1.Controls.Add(this.btnSanBayDen);
             this.groupBox1.Controls.Add(this.SanBayDi);
             this.groupBox1.Controls.Add(this.MaCB);
-            this.groupBox1.Location = new System.Drawing.Point(12, 24);
+            this.groupBox1.Location = new System.Drawing.Point(13, 33);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(763, 118);
             this.groupBox1.TabIndex = 52;
@@ -163,8 +166,9 @@
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(293, 145);
+            this.label1.Location = new System.Drawing.Point(293, 154);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 16);
             this.label1.TabIndex = 53;
@@ -173,11 +177,13 @@
             // 
             // btnThoat
             // 
+            //  this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_;
             this.btnThoat.Location = new System.Drawing.Point(486, 506);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 41);
             this.btnThoat.TabIndex = 57;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -233,16 +239,6 @@
             this.dataDanhSachCB.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDanhSachCB_CellContentClick);
             this.dataDanhSachCB.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDanhSachCB_CellDoubleClick);
             this.dataDanhSachCB.Click += new System.EventHandler(this.dataDanhSachCB_Click);
-            // 
-            // btnDatVe
-            // 
-            this.btnDatVe.Location = new System.Drawing.Point(276, 506);
-            this.btnDatVe.Name = "btnDatVe";
-            this.btnDatVe.Size = new System.Drawing.Size(75, 41);
-            this.btnDatVe.TabIndex = 61;
-            this.btnDatVe.Text = "Đặt Vé";
-            this.btnDatVe.UseVisualStyleBackColor = true;
-            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
             // 
             // ColMaCB
             // 
@@ -331,10 +327,24 @@
             this.ColGheTrongH2.Name = "ColGheTrongH2";
             this.ColGheTrongH2.ReadOnly = true;
             // 
+            // btnDatVe
+            // 
+            //  this.btnDatVe.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.DatVe__1_1;
+            this.btnDatVe.Location = new System.Drawing.Point(276, 506);
+            this.btnDatVe.Name = "btnDatVe";
+            this.btnDatVe.Size = new System.Drawing.Size(75, 41);
+            this.btnDatVe.TabIndex = 61;
+            this.btnDatVe.Text = "Đặt Vé";
+            this.btnDatVe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnDatVe.UseVisualStyleBackColor = true;
+            this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
+            // 
             // frmTraCuu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            // this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F0000;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(787, 559);
             this.Controls.Add(this.btnDatVe);
             this.Controls.Add(this.dataDanhSachCB);
@@ -343,6 +353,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmTraCuu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

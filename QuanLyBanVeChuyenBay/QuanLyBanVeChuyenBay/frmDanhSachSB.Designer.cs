@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanhSachSB));
             this.dataDanhSachSB = new System.Windows.Forms.DataGridView();
             this.ColMaSB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTenSb = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -76,6 +77,8 @@
             // 
             // btnThemSB
             // 
+            this.btnThemSB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThemSB.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnThemSB.Location = new System.Drawing.Point(365, 14);
             this.btnThemSB.Name = "btnThemSB";
             this.btnThemSB.Size = new System.Drawing.Size(92, 23);
@@ -95,20 +98,24 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(321, 21);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(318, 21);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(93, 13);
+            this.label1.Size = new System.Drawing.Size(106, 15);
             this.label1.TabIndex = 3;
             this.label1.Text = "Số sân bay tối đa:";
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.btnXoaSanBay);
             this.groupBox1.Controls.Add(this.txtTenSB);
             this.groupBox1.Controls.Add(this.txtMaSB);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.btnThemSB);
             this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 45);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(468, 89);
@@ -118,6 +125,8 @@
             // 
             // btnXoaSanBay
             // 
+            this.btnXoaSanBay.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXoaSanBay.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnXoaSanBay.Location = new System.Drawing.Point(365, 52);
             this.btnXoaSanBay.Name = "btnXoaSanBay";
             this.btnXoaSanBay.Size = new System.Drawing.Size(92, 23);
@@ -130,41 +139,46 @@
             // 
             this.txtTenSB.Location = new System.Drawing.Point(104, 49);
             this.txtTenSB.Name = "txtTenSB";
-            this.txtTenSB.Size = new System.Drawing.Size(206, 20);
+            this.txtTenSB.Size = new System.Drawing.Size(206, 22);
             this.txtTenSB.TabIndex = 3;
             // 
             // txtMaSB
             // 
             this.txtMaSB.Location = new System.Drawing.Point(104, 17);
             this.txtMaSB.Name = "txtMaSB";
-            this.txtMaSB.Size = new System.Drawing.Size(206, 20);
+            this.txtMaSB.Size = new System.Drawing.Size(206, 22);
             this.txtMaSB.TabIndex = 2;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(10, 52);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 13);
+            this.label3.Size = new System.Drawing.Size(70, 16);
             this.label3.TabIndex = 1;
             this.label3.Text = "Tên Sân bay";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(14, 24);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(64, 13);
+            this.label2.Size = new System.Drawing.Size(66, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mã Sân bay";
             // 
             // btnThoat
             // 
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.Location = new System.Drawing.Point(387, 383);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(82, 32);
             this.btnThoat.TabIndex = 5;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -172,6 +186,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(492, 418);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox1);
@@ -179,6 +195,7 @@
             this.Controls.Add(this.txtSBmax);
             this.Controls.Add(this.dataDanhSachSB);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimizeBox = false;
             this.Name = "frmDanhSachSB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

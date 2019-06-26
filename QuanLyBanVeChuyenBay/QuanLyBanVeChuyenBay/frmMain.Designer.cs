@@ -36,6 +36,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnSuaDoiQD = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.btnDoanhThu = new System.Windows.Forms.Button();
             this.btnDSKH = new System.Windows.Forms.Button();
             this.btnTraCuu = new System.Windows.Forms.Button();
@@ -43,7 +44,6 @@
             this.btnDanhSach = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tSbtnDangXuat = new System.Windows.Forms.ToolStripButton();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -68,6 +68,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(92, 138);
             this.label3.Name = "label3";
@@ -78,6 +79,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Location = new System.Drawing.Point(28, 143);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
@@ -87,8 +89,9 @@
             // 
             // label1
             // 
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 15.75F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Highlight;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(174, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(199, 35);
@@ -115,89 +118,119 @@
             // btnSuaDoiQD
             // 
             this.btnSuaDoiQD.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnSuaDoiQD.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSuaDoiQD.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSuaDoiQD.ForeColor = System.Drawing.Color.Maroon;
+            this.btnSuaDoiQD.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnSuaDoiQD.ImageIndex = 5;
             this.btnSuaDoiQD.ImageList = this.imageList1;
-            this.btnSuaDoiQD.Location = new System.Drawing.Point(224, 102);
+            this.btnSuaDoiQD.Location = new System.Drawing.Point(180, 94);
             this.btnSuaDoiQD.Name = "btnSuaDoiQD";
-            this.btnSuaDoiQD.Size = new System.Drawing.Size(91, 47);
+            this.btnSuaDoiQD.Size = new System.Drawing.Size(158, 47);
             this.btnSuaDoiQD.TabIndex = 2;
             this.btnSuaDoiQD.Text = "Sửa Đổi QĐ";
+            this.btnSuaDoiQD.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSuaDoiQD.UseVisualStyleBackColor = false;
             this.btnSuaDoiQD.Click += new System.EventHandler(this.btnSuaDoiQD_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "NhanLich.ico");
+            this.imageList1.Images.SetKeyName(1, "TimKiem.ico");
+            this.imageList1.Images.SetKeyName(2, "DSCB.ico");
+            this.imageList1.Images.SetKeyName(3, "DSKH.ico");
+            this.imageList1.Images.SetKeyName(4, "BaoCaoDT.ico");
+            this.imageList1.Images.SetKeyName(5, "SuaDoi.ico");
             // 
             // btnDoanhThu
             // 
             this.btnDoanhThu.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnDoanhThu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDoanhThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDoanhThu.ForeColor = System.Drawing.Color.Maroon;
+            this.btnDoanhThu.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnDoanhThu.ImageIndex = 4;
             this.btnDoanhThu.ImageList = this.imageList1;
-            this.btnDoanhThu.Location = new System.Drawing.Point(366, 102);
+            this.btnDoanhThu.Location = new System.Drawing.Point(344, 94);
             this.btnDoanhThu.Name = "btnDoanhThu";
-            this.btnDoanhThu.Size = new System.Drawing.Size(91, 47);
+            this.btnDoanhThu.Size = new System.Drawing.Size(158, 47);
             this.btnDoanhThu.TabIndex = 1;
             this.btnDoanhThu.Text = "Báo cáo doanh thu";
+            this.btnDoanhThu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDoanhThu.UseVisualStyleBackColor = false;
             this.btnDoanhThu.Click += new System.EventHandler(this.btnDoanhThu_Click);
             // 
             // btnDSKH
             // 
             this.btnDSKH.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnDSKH.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDSKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDSKH.ForeColor = System.Drawing.Color.Maroon;
+            this.btnDSKH.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnDSKH.ImageIndex = 3;
             this.btnDSKH.ImageList = this.imageList1;
-            this.btnDSKH.Location = new System.Drawing.Point(366, 33);
+            this.btnDSKH.Location = new System.Drawing.Point(344, 30);
             this.btnDSKH.Name = "btnDSKH";
-            this.btnDSKH.Size = new System.Drawing.Size(91, 47);
+            this.btnDSKH.Size = new System.Drawing.Size(158, 47);
             this.btnDSKH.TabIndex = 1;
             this.btnDSKH.Text = "Danh Sách Khách Hàng";
+            this.btnDSKH.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDSKH.UseVisualStyleBackColor = false;
             this.btnDSKH.Click += new System.EventHandler(this.btnDSKH_Click_1);
             // 
             // btnTraCuu
             // 
             this.btnTraCuu.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnTraCuu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnTraCuu.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTraCuu.ForeColor = System.Drawing.Color.Maroon;
+            this.btnTraCuu.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnTraCuu.ImageIndex = 1;
             this.btnTraCuu.ImageList = this.imageList1;
-            this.btnTraCuu.Location = new System.Drawing.Point(75, 102);
+            this.btnTraCuu.Location = new System.Drawing.Point(24, 94);
             this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(91, 47);
+            this.btnTraCuu.Size = new System.Drawing.Size(150, 47);
             this.btnTraCuu.TabIndex = 1;
             this.btnTraCuu.Text = "Tra Cứu";
+            this.btnTraCuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTraCuu.UseVisualStyleBackColor = false;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // btnNhanLich
             // 
             this.btnNhanLich.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnNhanLich.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnNhanLich.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnNhanLich.ForeColor = System.Drawing.Color.Maroon;
+            this.btnNhanLich.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnNhanLich.ImageIndex = 0;
             this.btnNhanLich.ImageList = this.imageList1;
-            this.btnNhanLich.Location = new System.Drawing.Point(75, 33);
+            this.btnNhanLich.Location = new System.Drawing.Point(24, 30);
             this.btnNhanLich.Name = "btnNhanLich";
-            this.btnNhanLich.Size = new System.Drawing.Size(91, 47);
+            this.btnNhanLich.Size = new System.Drawing.Size(150, 47);
             this.btnNhanLich.TabIndex = 1;
             this.btnNhanLich.Text = "Nhận lịch chuyến bay";
+            this.btnNhanLich.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnNhanLich.UseVisualStyleBackColor = false;
             this.btnNhanLich.Click += new System.EventHandler(this.btnNhanLich_Click);
             // 
             // btnDanhSach
             // 
             this.btnDanhSach.BackColor = System.Drawing.Color.SkyBlue;
+            this.btnDanhSach.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDanhSach.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDanhSach.ForeColor = System.Drawing.Color.Maroon;
+            this.btnDanhSach.ImageAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnDanhSach.ImageIndex = 2;
             this.btnDanhSach.ImageList = this.imageList1;
-            this.btnDanhSach.Location = new System.Drawing.Point(224, 33);
+            this.btnDanhSach.Location = new System.Drawing.Point(180, 30);
             this.btnDanhSach.Name = "btnDanhSach";
-            this.btnDanhSach.Size = new System.Drawing.Size(91, 47);
+            this.btnDanhSach.Size = new System.Drawing.Size(158, 47);
             this.btnDanhSach.TabIndex = 1;
             this.btnDanhSach.Text = "Danh Sách Chuyến Bay";
+            this.btnDanhSach.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDanhSach.UseVisualStyleBackColor = false;
             this.btnDanhSach.Click += new System.EventHandler(this.btnDanhSach_Click);
             // 
@@ -221,17 +254,6 @@
             this.tSbtnDangXuat.Text = "&Đăng xuất";
             this.tSbtnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
             // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "NhanLich.ico");
-            this.imageList1.Images.SetKeyName(1, "TimKiem.ico");
-            this.imageList1.Images.SetKeyName(2, "DSCB.ico");
-            this.imageList1.Images.SetKeyName(3, "DSKH.ico");
-            this.imageList1.Images.SetKeyName(4, "BaoCaoDT.ico");
-            this.imageList1.Images.SetKeyName(5, "SuaDoi.ico");
-            // 
             // imageList2
             // 
             this.imageList2.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList2.ImageStream")));
@@ -248,6 +270,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

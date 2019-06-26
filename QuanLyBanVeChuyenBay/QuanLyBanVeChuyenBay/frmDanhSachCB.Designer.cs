@@ -36,6 +36,7 @@
             this.tSbtnTraCuuCB = new System.Windows.Forms.ToolStripButton();
             this.tSbtnHelp = new System.Windows.Forms.ToolStripButton();
             this.btnThoat = new System.Windows.Forms.Button();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.btnTraCuu = new System.Windows.Forms.Button();
             this.dataDanhSachCB = new System.Windows.Forms.DataGridView();
@@ -54,7 +55,6 @@
             this.qLBanVeChuyenBayDataSet = new QuanLyBanVeChuyenBay.QLBanVeChuyenBayDataSet();
             this.btnDatVe = new System.Windows.Forms.Button();
             this.btnThemCB = new System.Windows.Forms.Button();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataDanhSachCB)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.qLBanVeChuyenBayDataSetBindingSource)).BeginInit();
@@ -111,23 +111,34 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.ImageIndex = 3;
-            this.btnThoat.ImageList = this.imageList1;
-            this.btnThoat.Location = new System.Drawing.Point(771, 481);
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_2;
+            this.btnThoat.Location = new System.Drawing.Point(689, 491);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(100, 59);
+            this.btnThoat.Size = new System.Drawing.Size(109, 35);
             this.btnThoat.TabIndex = 65;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "TraCuu.ico");
+            this.imageList1.Images.SetKeyName(1, "Them.ico");
+            this.imageList1.Images.SetKeyName(2, "DatVe.ico");
+            this.imageList1.Images.SetKeyName(3, "Thoat.ico");
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 15.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(387, 45);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(342, 45);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(219, 26);
@@ -137,21 +148,22 @@
             // btnTraCuu
             // 
             this.btnTraCuu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.btnTraCuu.ImageIndex = 0;
-            this.btnTraCuu.ImageList = this.imageList1;
-            this.btnTraCuu.Location = new System.Drawing.Point(175, 481);
+            this.btnTraCuu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTraCuu.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.unnamed1;
+            this.btnTraCuu.Location = new System.Drawing.Point(93, 491);
             this.btnTraCuu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnTraCuu.Name = "btnTraCuu";
-            this.btnTraCuu.Size = new System.Drawing.Size(100, 59);
+            this.btnTraCuu.Size = new System.Drawing.Size(106, 35);
             this.btnTraCuu.TabIndex = 61;
             this.btnTraCuu.Text = "Tra cứu";
+            this.btnTraCuu.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTraCuu.UseVisualStyleBackColor = true;
             this.btnTraCuu.Click += new System.EventHandler(this.btnTraCuu_Click);
             // 
             // dataDanhSachCB
             // 
             this.dataDanhSachCB.AutoGenerateColumns = false;
-            this.dataDanhSachCB.BackgroundColor = System.Drawing.Color.CornflowerBlue;
+            this.dataDanhSachCB.BackgroundColor = System.Drawing.Color.LightBlue;
             this.dataDanhSachCB.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataDanhSachCB.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColMaCB,
@@ -166,7 +178,7 @@
             this.ColGheTrongh1,
             this.ColGheTrongH2});
             this.dataDanhSachCB.DataSource = this.qLBanVeChuyenBayDataSetBindingSource;
-            this.dataDanhSachCB.Location = new System.Drawing.Point(32, 76);
+            this.dataDanhSachCB.Location = new System.Drawing.Point(28, 74);
             this.dataDanhSachCB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dataDanhSachCB.Name = "dataDanhSachCB";
             this.dataDanhSachCB.Size = new System.Drawing.Size(862, 373);
@@ -275,46 +287,40 @@
             // 
             // btnDatVe
             // 
-            this.btnDatVe.ImageIndex = 2;
-            this.btnDatVe.ImageList = this.imageList1;
-            this.btnDatVe.Location = new System.Drawing.Point(585, 481);
+            this.btnDatVe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDatVe.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.DatVe__1_2;
+            this.btnDatVe.Location = new System.Drawing.Point(503, 491);
             this.btnDatVe.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnDatVe.Name = "btnDatVe";
-            this.btnDatVe.Size = new System.Drawing.Size(100, 59);
+            this.btnDatVe.Size = new System.Drawing.Size(158, 35);
             this.btnDatVe.TabIndex = 64;
             this.btnDatVe.Text = "Đặt vé chuyến bay";
+            this.btnDatVe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnDatVe.UseVisualStyleBackColor = true;
             this.btnDatVe.Click += new System.EventHandler(this.btnDatVe_Click);
             // 
             // btnThemCB
             // 
-            this.btnThemCB.ImageIndex = 1;
-            this.btnThemCB.ImageList = this.imageList1;
-            this.btnThemCB.Location = new System.Drawing.Point(392, 481);
+            this.btnThemCB.BackColor = System.Drawing.SystemColors.Control;
+            this.btnThemCB.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThemCB.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.document_add_flat__1_2;
+            this.btnThemCB.Location = new System.Drawing.Point(243, 491);
             this.btnThemCB.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnThemCB.Name = "btnThemCB";
-            this.btnThemCB.Size = new System.Drawing.Size(100, 59);
+            this.btnThemCB.Size = new System.Drawing.Size(157, 35);
             this.btnThemCB.TabIndex = 62;
             this.btnThemCB.Text = "Thêm chuyến bay";
-            this.btnThemCB.UseVisualStyleBackColor = true;
+            this.btnThemCB.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnThemCB.UseVisualStyleBackColor = false;
             this.btnThemCB.Click += new System.EventHandler(this.btnThemCB_Click);
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "TraCuu.ico");
-            this.imageList1.Images.SetKeyName(1, "Them.ico");
-            this.imageList1.Images.SetKeyName(2, "DatVe.ico");
-            this.imageList1.Images.SetKeyName(3, "Thoat.ico");
             // 
             // frmDanSachCB
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(921, 548);
+            this.ClientSize = new System.Drawing.Size(921, 535);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnDatVe);
             this.Controls.Add(this.btnThemCB);
@@ -324,6 +330,7 @@
             this.Controls.Add(this.dataDanhSachCB);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "frmDanSachCB";

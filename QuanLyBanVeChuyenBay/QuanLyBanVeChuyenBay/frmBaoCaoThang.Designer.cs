@@ -72,12 +72,14 @@
             this.ColMaCB.DataPropertyName = "MaCB";
             this.ColMaCB.HeaderText = "Mã CB";
             this.ColMaCB.Name = "ColMaCB";
+            this.ColMaCB.ReadOnly = true;
             // 
             // ColSoVe
             // 
             this.ColSoVe.DataPropertyName = "SoVe";
             this.ColSoVe.HeaderText = "Số vé";
             this.ColSoVe.Name = "ColSoVe";
+            this.ColSoVe.ReadOnly = true;
             this.ColSoVe.Width = 130;
             // 
             // ColDoanhThu
@@ -85,6 +87,7 @@
             this.ColDoanhThu.DataPropertyName = "DoanhThu";
             this.ColDoanhThu.HeaderText = "Doanh thu";
             this.ColDoanhThu.Name = "ColDoanhThu";
+            this.ColDoanhThu.ReadOnly = true;
             this.ColDoanhThu.Width = 200;
             // 
             // ColTiLe
@@ -93,11 +96,13 @@
             this.ColTiLe.DataPropertyName = "TiLe";
             this.ColTiLe.HeaderText = "Tỉ lệ";
             this.ColTiLe.Name = "ColTiLe";
+            this.ColTiLe.ReadOnly = true;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(68, 33);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(102, 42);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
             this.label1.TabIndex = 1;
@@ -106,7 +111,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(237, 33);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(271, 42);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 13);
             this.label2.TabIndex = 2;
@@ -114,21 +120,27 @@
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(409, 30);
+            this.btnXem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXem.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.see_document_512__1_1;
+            this.btnXem.Location = new System.Drawing.Point(443, 39);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.Size = new System.Drawing.Size(75, 33);
             this.btnXem.TabIndex = 5;
-            this.btnXem.Text = "Xem";
+            this.btnXem.Text = "    Xem";
+            this.btnXem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // btnThoat
             // 
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = ((System.Drawing.Image)(resources.GetObject("btnThoat.Image")));
             this.btnThoat.Location = new System.Drawing.Point(568, 439);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 34);
             this.btnThoat.TabIndex = 6;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -149,7 +161,7 @@
             "10",
             "11",
             "12"});
-            this.cmbThang.Location = new System.Drawing.Point(140, 29);
+            this.cmbThang.Location = new System.Drawing.Point(174, 38);
             this.cmbThang.Name = "cmbThang";
             this.cmbThang.Size = new System.Drawing.Size(80, 21);
             this.cmbThang.TabIndex = 7;
@@ -158,7 +170,7 @@
             // 
             this.cmbNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(302, 30);
+            this.cmbNam.Location = new System.Drawing.Point(336, 39);
             this.cmbNam.Name = "cmbNam";
             this.cmbNam.Size = new System.Drawing.Size(72, 21);
             this.cmbNam.TabIndex = 8;
@@ -185,6 +197,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Location = new System.Drawing.Point(12, 450);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
@@ -194,6 +207,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Location = new System.Drawing.Point(159, 450);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(61, 13);
@@ -203,6 +217,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.BackColor = System.Drawing.Color.Transparent;
             this.label5.Location = new System.Drawing.Point(401, 450);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(30, 13);
@@ -236,6 +251,7 @@
             // lblTieuDe
             // 
             this.lblTieuDe.AutoSize = true;
+            this.lblTieuDe.BackColor = System.Drawing.Color.Transparent;
             this.lblTieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTieuDe.Location = new System.Drawing.Point(204, 82);
             this.lblTieuDe.Name = "lblTieuDe";
@@ -247,6 +263,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(655, 501);
             this.Controls.Add(this.lblTieuDe);
             this.Controls.Add(this.txtTiLe);
@@ -264,6 +282,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dataDoanhThuThang);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmBaoCaoThang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

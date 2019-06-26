@@ -21,9 +21,9 @@ namespace QuanLyBanVeChuyenBay
             this.danhsachkh = frmDanhSachKH;
             
         }
-       //string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
+       string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
+        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
         public void Connection()
         {
 
@@ -170,42 +170,49 @@ namespace QuanLyBanVeChuyenBay
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            
-            SqlConnection conn = new SqlConnection(strconn2);
-            try
+            if (txtCMND.Text == "" || txtHoTenKH.Text == "" || txtSDT.Text == "")
+                MessageBox.Show("Không thể để trống thông tin hành khách, vui lòng sửa đầy đủ", "Lưu thông tin không thành công");
+            else
             {
-                conn.Open();
-                string sqlQuery = "Update HANHKHACH set HoTen=@HoTen,SDT=@SDT, CMMD=@CMMD where MaHanhKhach=@MaHanhKhach";
-                SqlCommand command = new SqlCommand(sqlQuery, conn);
-                command.Parameters.AddWithValue("@MaHanhKhach", txtMaKH.Text);
-                command.Parameters.AddWithValue("@SDT",txtSDT.Text);
-                command.Parameters.AddWithValue("@CMMD",txtCMND.Text);
-                command.Parameters.AddWithValue("@HoTen",txtHoTenKH.Text);
-                command.ExecuteNonQuery();
-                MessageBox.Show("Sua thong tin thanh cong.", "Thong Bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                rtxtPhieuDatCho.Text = "\t\t\tPHIẾU ĐẶT CHỖ" + "\n\n\n\n  Họ và Tên: " + txtHoTenKH.Text + "\n\n  SDT: " + txtSDT.Text
-                   + "\tCMND: " + txtCMND.Text + "\n\n  Đã đặt chuyến bay đi từ sân bay " + txtSanBayDi.Text + " đến sân bay " + txtSanBayDen.Text
-                   + " vào lúc " + txtNgayBay.Text + "." + "\n\n  Mã số vé: " + txtMaVe.Text + "\t\t\tHạng vé: " + txtHangVe.Text + "\n\n  Giá vé: " + txtGiaVe.Text
-                   + "\n\n  Tình trạng: Đã thanh toán." + "\n\n  Vui lòng mang phiếu này khi bạn chuẩn bị lên máy bay, chúng tôi sẽ đối chứng. Nếu trường hợp bị mất vui lòng liên hệ tới tổng đài 18001000 để được hỗ trợ."
-                   + "\n\n \t\t\t\t\t\t\t\t\t\t\t Quản Lý Bán Vé " + "\n\t\t\t\t\t\t\t\t\t\t\t  " + frmLogin.username.ToString(); ;
-            }
-            catch (InvalidOperationException ex)
-            {
-                //xu ly khi ket noi co van de
-                MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
-            }
-            catch (Exception ex)
-            {
-                //xu ly khi ket noi co van de
-                //MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
-                MessageBox.Show(ex.Message);
-            }
-            finally
-            {
-                //Dong ket noi sau khi thao tac ket thuc
-                conn.Close();
+                SqlConnection conn = new SqlConnection(strconn2);
+                try
+                {
+
+                    conn.Open();
+                    string sqlQuery = "Update HANHKHACH set HoTen=@HoTen,SDT=@SDT, CMMD=@CMMD where MaHanhKhach=@MaHanhKhach";
+                    SqlCommand command = new SqlCommand(sqlQuery, conn);
+                    command.Parameters.AddWithValue("@MaHanhKhach", txtMaKH.Text);
+                    command.Parameters.AddWithValue("@SDT", txtSDT.Text);
+                    command.Parameters.AddWithValue("@CMMD", txtCMND.Text);
+                    command.Parameters.AddWithValue("@HoTen", txtHoTenKH.Text);
+                    command.ExecuteNonQuery();
+                    MessageBox.Show("Sua thong tin thanh cong.", "Thong Bao", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    rtxtPhieuDatCho.Text = "\t\t\tPHIẾU ĐẶT CHỖ" + "\n\n\n\n  Họ và Tên: " + txtHoTenKH.Text + "\n\n  SDT: " + txtSDT.Text
+                       + "\tCMND: " + txtCMND.Text + "\n\n  Đã đặt chuyến bay đi từ sân bay " + txtSanBayDi.Text + " đến sân bay " + txtSanBayDen.Text
+                       + " vào lúc " + txtNgayBay.Text + "." + "\n\n  Mã số vé: " + txtMaVe.Text + "\t\t\tHạng vé: " + txtHangVe.Text + "\n\n  Giá vé: " + txtGiaVe.Text
+                       + "\n\n  Tình trạng: Đã thanh toán." + "\n\n  Vui lòng mang phiếu này khi bạn chuẩn bị lên máy bay, chúng tôi sẽ đối chứng. Nếu trường hợp bị mất vui lòng liên hệ tới tổng đài 18001000 để được hỗ trợ."
+                       + "\n\n \t\t\t\t\t\t\t\t\t\t\t Quản Lý Bán Vé " + "\n\t\t\t\t\t\t\t\t\t\t\t  " + frmLogin.username.ToString(); ;
+                }
+                catch (InvalidOperationException ex)
+                {
+                    //xu ly khi ket noi co van de
+                    MessageBox.Show("Khong the mo ket noi hoac ket noi da mo truoc do");
+                }
+                catch (Exception ex)
+                {
+                    //xu ly khi ket noi co van de
+                    //MessageBox.Show("Ket noi xay ra loi hoac doc du lieu bi loi");
+                    MessageBox.Show(ex.Message);
+                }
+                finally
+                {
+                    //Dong ket noi sau khi thao tac ket thuc
+                    conn.Close();
+                }
+
             }
         }
+        
 
         private void btnInPhieu_Click(object sender, EventArgs e)
         {

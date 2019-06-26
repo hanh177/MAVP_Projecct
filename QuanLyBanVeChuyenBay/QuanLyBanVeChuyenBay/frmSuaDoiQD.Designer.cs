@@ -42,6 +42,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 3);
             this.groupBox1.Name = "groupBox1";
@@ -61,6 +62,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackColor = System.Drawing.Color.Transparent;
             this.groupBox2.Controls.Add(this.btnQD3);
             this.groupBox2.Controls.Add(this.btnQD1);
             this.groupBox2.Controls.Add(this.btnQD2);
@@ -72,41 +74,53 @@
             // 
             // btnQD3
             // 
-            this.btnQD3.Location = new System.Drawing.Point(301, 48);
+            this.btnQD3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQD3.Image = ((System.Drawing.Image)(resources.GetObject("btnQD3.Image")));
+            this.btnQD3.Location = new System.Drawing.Point(294, 43);
             this.btnQD3.Name = "btnQD3";
-            this.btnQD3.Size = new System.Drawing.Size(75, 23);
+            this.btnQD3.Size = new System.Drawing.Size(85, 31);
             this.btnQD3.TabIndex = 3;
             this.btnQD3.Text = "Qui định 3";
+            this.btnQD3.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQD3.UseVisualStyleBackColor = true;
             this.btnQD3.Click += new System.EventHandler(this.btnQD3_Click);
             // 
             // btnQD1
             // 
-            this.btnQD1.Location = new System.Drawing.Point(72, 48);
+            this.btnQD1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQD1.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.SuaDoiQuiDinh__1_;
+            this.btnQD1.Location = new System.Drawing.Point(65, 43);
             this.btnQD1.Name = "btnQD1";
-            this.btnQD1.Size = new System.Drawing.Size(75, 23);
+            this.btnQD1.Size = new System.Drawing.Size(85, 31);
             this.btnQD1.TabIndex = 0;
             this.btnQD1.Text = "Qui định 1";
+            this.btnQD1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQD1.UseVisualStyleBackColor = true;
             this.btnQD1.Click += new System.EventHandler(this.btnQD1_Click);
             // 
             // btnQD2
             // 
-            this.btnQD2.Location = new System.Drawing.Point(185, 48);
+            this.btnQD2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnQD2.Image = ((System.Drawing.Image)(resources.GetObject("btnQD2.Image")));
+            this.btnQD2.Location = new System.Drawing.Point(178, 43);
             this.btnQD2.Name = "btnQD2";
-            this.btnQD2.Size = new System.Drawing.Size(75, 23);
+            this.btnQD2.Size = new System.Drawing.Size(85, 31);
             this.btnQD2.TabIndex = 1;
             this.btnQD2.Text = "Qui định 2";
+            this.btnQD2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnQD2.UseVisualStyleBackColor = true;
             this.btnQD2.Click += new System.EventHandler(this.btnQD2_Click);
             // 
             // btnThoat
             // 
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_2;
             this.btnThoat.Location = new System.Drawing.Point(364, 271);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 2;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -114,11 +128,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(473, 300);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmSuaDoiQD";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

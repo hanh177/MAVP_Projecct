@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmDanhSachKH));
             this.dataDSKH = new System.Windows.Forms.DataGridView();
             this.colMaKH = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colHoTen = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -37,7 +38,6 @@
             this.colMaCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnPhieuDat = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnHuyVe = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cmbMaCB = new System.Windows.Forms.ComboBox();
@@ -48,6 +48,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnTimKiem = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.btnLoadLai = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataDSKH)).BeginInit();
@@ -118,46 +119,46 @@
             // 
             // btnPhieuDat
             // 
+            this.btnPhieuDat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPhieuDat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.see_document_512__1_1;
             this.btnPhieuDat.Location = new System.Drawing.Point(451, 423);
             this.btnPhieuDat.Name = "btnPhieuDat";
-            this.btnPhieuDat.Size = new System.Drawing.Size(114, 36);
+            this.btnPhieuDat.Size = new System.Drawing.Size(132, 36);
             this.btnPhieuDat.TabIndex = 1;
             this.btnPhieuDat.Text = "Xem phiếu đặt chỗ";
+            this.btnPhieuDat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPhieuDat.UseVisualStyleBackColor = true;
             this.btnPhieuDat.Click += new System.EventHandler(this.btnPhieuDat_Click);
             // 
             // btnThoat
             // 
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_2;
             this.btnThoat.Location = new System.Drawing.Point(625, 423);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(89, 36);
             this.btnThoat.TabIndex = 2;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // btnTimKiem
-            // 
-            this.btnTimKiem.Location = new System.Drawing.Point(563, 92);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(75, 32);
-            this.btnTimKiem.TabIndex = 3;
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.UseVisualStyleBackColor = true;
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
-            // 
             // btnHuyVe
             // 
+            this.btnHuyVe.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnHuyVe.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.HuyDatVe__1_1;
             this.btnHuyVe.Location = new System.Drawing.Point(306, 423);
             this.btnHuyVe.Name = "btnHuyVe";
             this.btnHuyVe.Size = new System.Drawing.Size(98, 36);
             this.btnHuyVe.TabIndex = 4;
             this.btnHuyVe.Text = "Hủy Đặt Vé";
+            this.btnHuyVe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnHuyVe.UseVisualStyleBackColor = true;
             this.btnHuyVe.Click += new System.EventHandler(this.btnHuyVe_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.cmbMaCB);
             this.groupBox1.Controls.Add(this.cmbMaKH);
             this.groupBox1.Controls.Add(this.txtCMND);
@@ -244,9 +245,25 @@
             this.label2.Text = "Họ tên:";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
+            // btnTimKiem
+            // 
+            this.btnTimKiem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnTimKiem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnTimKiem.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.unnamed1;
+            this.btnTimKiem.Location = new System.Drawing.Point(563, 92);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(113, 32);
+            this.btnTimKiem.TabIndex = 3;
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnTimKiem.UseCompatibleTextRendering = true;
+            this.btnTimKiem.UseVisualStyleBackColor = false;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Harlow Solid Italic", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.label1.Location = new System.Drawing.Point(320, 157);
@@ -258,11 +275,14 @@
             // 
             // btnLoadLai
             // 
+            this.btnLoadLai.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLoadLai.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.refresh1;
             this.btnLoadLai.Location = new System.Drawing.Point(133, 423);
             this.btnLoadLai.Name = "btnLoadLai";
-            this.btnLoadLai.Size = new System.Drawing.Size(113, 36);
+            this.btnLoadLai.Size = new System.Drawing.Size(127, 36);
             this.btnLoadLai.TabIndex = 7;
             this.btnLoadLai.Text = "Load lại danh sách";
+            this.btnLoadLai.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnLoadLai.UseVisualStyleBackColor = true;
             this.btnLoadLai.Click += new System.EventHandler(this.btnLoadLai_Click);
             // 
@@ -270,6 +290,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(817, 481);
             this.Controls.Add(this.btnLoadLai);
             this.Controls.Add(this.label1);
@@ -279,6 +302,7 @@
             this.Controls.Add(this.btnPhieuDat);
             this.Controls.Add(this.dataDSKH);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmDanhSachKH";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

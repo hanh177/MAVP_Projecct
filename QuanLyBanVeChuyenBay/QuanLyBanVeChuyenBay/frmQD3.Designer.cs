@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmQD3));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtThgianDatVe = new System.Windows.Forms.TextBox();
@@ -124,7 +123,7 @@
             // 
             // tSbtnDanhSachSB
             // 
-            this.tSbtnDanhSachSB.Image = ((System.Drawing.Image)(resources.GetObject("tSbtnDanhSachSB.Image")));
+            this.tSbtnDanhSachSB.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.DanhSachCB1;
             this.tSbtnDanhSachSB.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tSbtnDanhSachSB.Name = "tSbtnDanhSachSB";
             this.tSbtnDanhSachSB.Size = new System.Drawing.Size(114, 22);

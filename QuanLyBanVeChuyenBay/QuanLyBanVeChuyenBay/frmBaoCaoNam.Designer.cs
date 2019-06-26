@@ -28,50 +28,59 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmBaoCaoNam));
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnXem = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.dataDoanhThuNam = new System.Windows.Forms.DataGridView();
-            this.cmbNam = new System.Windows.Forms.ComboBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.txtTongDoanhThu = new System.Windows.Forms.TextBox();
-            this.txtTiLe = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             this.ColThang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColSoCB = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColDoanhThu = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColTiLe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cmbNam = new System.Windows.Forms.ComboBox();
+            this.txtTongDoanhThu = new System.Windows.Forms.TextBox();
+            this.txtTiLe = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.lblTieuDe = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataDoanhThuNam)).BeginInit();
             this.SuspendLayout();
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(558, 408);
+            this.btnThoat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_2;
+            this.btnThoat.Location = new System.Drawing.Point(558, 411);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 38);
+            this.btnThoat.Size = new System.Drawing.Size(75, 23);
             this.btnThoat.TabIndex = 13;
             this.btnThoat.Text = "Thoát";
+            this.btnThoat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnXem
             // 
-            this.btnXem.Location = new System.Drawing.Point(351, 25);
+            this.btnXem.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnXem.Image = ((System.Drawing.Image)(resources.GetObject("btnXem.Image")));
+            this.btnXem.Location = new System.Drawing.Point(394, 12);
             this.btnXem.Name = "btnXem";
-            this.btnXem.Size = new System.Drawing.Size(75, 23);
+            this.btnXem.Size = new System.Drawing.Size(75, 28);
             this.btnXem.TabIndex = 12;
             this.btnXem.Text = "Xem";
+            this.btnXem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnXem.UseVisualStyleBackColor = true;
             this.btnXem.Click += new System.EventHandler(this.btnXem_Click);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(148, 29);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label2.Location = new System.Drawing.Point(191, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(58, 13);
+            this.label2.Size = new System.Drawing.Size(67, 13);
             this.label2.TabIndex = 9;
             this.label2.Text = "Chọn năm:";
             // 
@@ -88,58 +97,6 @@
             this.dataDoanhThuNam.ReadOnly = true;
             this.dataDoanhThuNam.Size = new System.Drawing.Size(603, 287);
             this.dataDoanhThuNam.TabIndex = 7;
-            // 
-            // cmbNam
-            // 
-            this.cmbNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbNam.FormattingEnabled = true;
-            this.cmbNam.Location = new System.Drawing.Point(213, 25);
-            this.cmbNam.Name = "cmbNam";
-            this.cmbNam.Size = new System.Drawing.Size(121, 21);
-            this.cmbNam.TabIndex = 14;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(663, 25);
-            this.toolStrip1.TabIndex = 15;
-            this.toolStrip1.Text = "toolStrip1";
-            // 
-            // txtTongDoanhThu
-            // 
-            this.txtTongDoanhThu.Location = new System.Drawing.Point(106, 418);
-            this.txtTongDoanhThu.Name = "txtTongDoanhThu";
-            this.txtTongDoanhThu.ReadOnly = true;
-            this.txtTongDoanhThu.Size = new System.Drawing.Size(201, 20);
-            this.txtTongDoanhThu.TabIndex = 16;
-            // 
-            // txtTiLe
-            // 
-            this.txtTiLe.Location = new System.Drawing.Point(437, 418);
-            this.txtTiLe.Name = "txtTiLe";
-            this.txtTiLe.ReadOnly = true;
-            this.txtTiLe.Size = new System.Drawing.Size(94, 20);
-            this.txtTiLe.TabIndex = 17;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 421);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 13);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Tổng doanh thu:";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(391, 421);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(30, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Tỉ lệ:";
             // 
             // ColThang
             // 
@@ -173,9 +130,60 @@
             this.ColTiLe.Name = "ColTiLe";
             this.ColTiLe.ReadOnly = true;
             // 
+            // cmbNam
+            // 
+            this.cmbNam.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbNam.FormattingEnabled = true;
+            this.cmbNam.Location = new System.Drawing.Point(256, 12);
+            this.cmbNam.Name = "cmbNam";
+            this.cmbNam.Size = new System.Drawing.Size(121, 21);
+            this.cmbNam.TabIndex = 14;
+            // 
+            // txtTongDoanhThu
+            // 
+            this.txtTongDoanhThu.Location = new System.Drawing.Point(138, 411);
+            this.txtTongDoanhThu.Name = "txtTongDoanhThu";
+            this.txtTongDoanhThu.ReadOnly = true;
+            this.txtTongDoanhThu.Size = new System.Drawing.Size(201, 20);
+            this.txtTongDoanhThu.TabIndex = 16;
+            // 
+            // txtTiLe
+            // 
+            this.txtTiLe.Location = new System.Drawing.Point(422, 411);
+            this.txtTiLe.Name = "txtTiLe";
+            this.txtTiLe.ReadOnly = true;
+            this.txtTiLe.Size = new System.Drawing.Size(94, 20);
+            this.txtTiLe.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label1.Location = new System.Drawing.Point(21, 411);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(101, 13);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Tổng doanh thu:";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
+            this.label3.Location = new System.Drawing.Point(376, 414);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Tỉ lệ:";
+            // 
             // lblTieuDe
             // 
             this.lblTieuDe.AutoSize = true;
+            this.lblTieuDe.BackColor = System.Drawing.Color.Transparent;
             this.lblTieuDe.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTieuDe.Location = new System.Drawing.Point(210, 68);
             this.lblTieuDe.Name = "lblTieuDe";
@@ -187,6 +195,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F00001;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(663, 458);
             this.Controls.Add(this.lblTieuDe);
             this.Controls.Add(this.dataDoanhThuNam);
@@ -194,12 +204,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtTiLe);
             this.Controls.Add(this.txtTongDoanhThu);
-            this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.cmbNam);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXem);
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmBaoCaoNam";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -218,7 +228,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridView dataDoanhThuNam;
         private System.Windows.Forms.ComboBox cmbNam;
-        private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.TextBox txtTongDoanhThu;
         private System.Windows.Forms.TextBox txtTiLe;
         private System.Windows.Forms.Label label1;
