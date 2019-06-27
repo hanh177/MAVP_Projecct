@@ -20,13 +20,10 @@ namespace QuanLyBanVeChuyenBay
             this.login = frmLogin;
         }
 
-
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
-
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
+        public static string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; 
         SqlCommand cmd;
         string query;
-        private void Connection() //xóa sổ các chuyến bay đã khởi hành
+        private void Connection() 
         {
 
             SqlConnection conn = new SqlConnection(strconn2);

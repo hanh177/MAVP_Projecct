@@ -22,11 +22,8 @@ namespace QuanLyBanVeChuyenBay
             this.tracuu = frmTraCuu;
         }
 
-        
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
 
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
-
+        string strconn2 = frmMain.strconn2;
         double DonGia;
         int GheTrongH1, GheTrongH2, tongsoghe;
         int tongdoanhthuthangcb = 0;

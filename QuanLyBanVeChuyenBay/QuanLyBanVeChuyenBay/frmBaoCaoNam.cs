@@ -20,11 +20,7 @@ namespace QuanLyBanVeChuyenBay
             InitializeComponent();
             this.baocaothang = frmBaoCaoThang;
         }
-
-        string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
-
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua Vuong
-
+        string strconn2 = frmMain.strconn2;
         string MaDoanhThuNam;
         private void Connection()
         {

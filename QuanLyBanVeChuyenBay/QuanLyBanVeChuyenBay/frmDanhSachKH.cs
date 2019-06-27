@@ -20,10 +20,7 @@ namespace QuanLyBanVeChuyenBay
             this.main = frmMain;
         }
 
-          string strconn2 = @"Data Source=DESKTOP-TA2HS1O\SQLEXPRESS;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True"; //cua ha anh
-
-        //string strconn2 = @"Data Source=DESKTOP-JLJ2TBG;Initial Catalog=QLBanVeChuyenBay;Integrated Security=True";
-
+        string strconn2 = frmMain.strconn2;
         int thoigianquidinh;
         string ngaybay, ngayhuy;
         int tongsoghe, thang, nam;

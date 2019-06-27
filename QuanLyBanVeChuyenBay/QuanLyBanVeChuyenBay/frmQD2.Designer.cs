@@ -41,49 +41,60 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(75, 35);
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Location = new System.Drawing.Point(100, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 13);
+            this.label1.Size = new System.Drawing.Size(106, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Mã chuyến bay:";
             // 
             // txtSoGheH1
             // 
-            this.txtSoGheH1.Location = new System.Drawing.Point(198, 70);
+            this.txtSoGheH1.Location = new System.Drawing.Point(264, 81);
+            this.txtSoGheH1.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoGheH1.Name = "txtSoGheH1";
-            this.txtSoGheH1.Size = new System.Drawing.Size(100, 20);
+            this.txtSoGheH1.Size = new System.Drawing.Size(132, 21);
             this.txtSoGheH1.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(28, 77);
+            this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Location = new System.Drawing.Point(37, 89);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(130, 13);
+            this.label2.Size = new System.Drawing.Size(170, 15);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nhập số lượng vé hạng 1:";
             // 
             // txtSoGheh2
             // 
-            this.txtSoGheh2.Location = new System.Drawing.Point(198, 110);
+            this.txtSoGheh2.Location = new System.Drawing.Point(264, 127);
+            this.txtSoGheh2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtSoGheh2.Name = "txtSoGheh2";
-            this.txtSoGheh2.Size = new System.Drawing.Size(100, 20);
+            this.txtSoGheh2.Size = new System.Drawing.Size(132, 21);
             this.txtSoGheh2.TabIndex = 5;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(28, 117);
+            this.label3.BackColor = System.Drawing.Color.Transparent;
+            this.label3.Location = new System.Drawing.Point(37, 135);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(130, 13);
+            this.label3.Size = new System.Drawing.Size(170, 15);
             this.label3.TabIndex = 4;
             this.label3.Text = "Nhập số lượng vé hạng 2:";
             // 
             // btnLuu
             // 
-            this.btnLuu.Location = new System.Drawing.Point(74, 158);
+            this.btnLuu.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.save__1_;
+            this.btnLuu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnLuu.Location = new System.Drawing.Point(164, 211);
+            this.btnLuu.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(75, 23);
+            this.btnLuu.Size = new System.Drawing.Size(100, 33);
             this.btnLuu.TabIndex = 6;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -91,29 +102,35 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(214, 158);
+            this.btnThoat.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.btnThoat.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.Thoat__1_1;
+            this.btnThoat.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnThoat.Location = new System.Drawing.Point(325, 206);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 23);
+            this.btnThoat.Size = new System.Drawing.Size(100, 38);
             this.btnThoat.TabIndex = 7;
             this.btnThoat.Text = "Thoát";
-            this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.UseVisualStyleBackColor = false;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // cmbMaChuyenBay
             // 
             this.cmbMaChuyenBay.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbMaChuyenBay.FormattingEnabled = true;
-            this.cmbMaChuyenBay.Location = new System.Drawing.Point(198, 32);
+            this.cmbMaChuyenBay.Location = new System.Drawing.Point(264, 37);
+            this.cmbMaChuyenBay.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cmbMaChuyenBay.Name = "cmbMaChuyenBay";
-            this.cmbMaChuyenBay.Size = new System.Drawing.Size(100, 21);
+            this.cmbMaChuyenBay.Size = new System.Drawing.Size(132, 23);
             this.cmbMaChuyenBay.TabIndex = 8;
             this.cmbMaChuyenBay.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // cmbMaCB
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(361, 212);
+            this.BackgroundImage = global::QuanLyBanVeChuyenBay.Properties.Resources.blue_turquoise_gradient_polygon_shaped_background_zoomed_in_and_zoomed_out_in_one_motion_nj5dnqsrl__F0000;
+            this.ClientSize = new System.Drawing.Size(481, 288);
             this.Controls.Add(this.cmbMaChuyenBay);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnLuu);
@@ -122,7 +139,9 @@
             this.Controls.Add(this.txtSoGheH1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.MaximizeBox = false;
             this.Name = "cmbMaCB";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
