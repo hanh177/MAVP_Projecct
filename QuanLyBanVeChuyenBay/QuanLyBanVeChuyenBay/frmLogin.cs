@@ -46,7 +46,7 @@ namespace QuanLyBanVeChuyenBay
         private void frmLogin_Load(object sender, EventArgs e)
         {
         }
-       static public string username;
+        static public string username, password;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             Form main = new frmMain(this);
@@ -73,7 +73,16 @@ namespace QuanLyBanVeChuyenBay
                             MessageBox.Show("Tên tài khoản hoặc mắt khẩu không chính xác, vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             txtPassWord.Text = "";
                             return;
-
+                        }
+                        else
+                        {
+                            foreach (DataRow row in table.Rows)
+                            {
+                                foreach (DataColumn col in table.Columns)
+                                {
+                                    password = row["MatKhau"].ToString();
+                                }
+                            }
                         }
                     }
                     catch (InvalidOperationException ex)

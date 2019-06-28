@@ -44,6 +44,7 @@
             this.btnDanhSach = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.tSbtnDangXuat = new System.Windows.Forms.ToolStripButton();
+            this.tSbtnCaiDatTK = new System.Windows.Forms.ToolStripButton();
             this.imageList2 = new System.Windows.Forms.ImageList(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -239,7 +240,8 @@
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tSbtnDangXuat});
+            this.tSbtnDangXuat,
+            this.tSbtnCaiDatTK});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(683, 25);
@@ -255,6 +257,15 @@
             this.tSbtnDangXuat.Size = new System.Drawing.Size(80, 22);
             this.tSbtnDangXuat.Text = "&Đăng xuất";
             this.tSbtnDangXuat.Click += new System.EventHandler(this.btnDangXuat_Click);
+            // 
+            // tSbtnCaiDatTK
+            // 
+            this.tSbtnCaiDatTK.Image = global::QuanLyBanVeChuyenBay.Properties.Resources.caidat;
+            this.tSbtnCaiDatTK.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tSbtnCaiDatTK.Name = "tSbtnCaiDatTK";
+            this.tSbtnCaiDatTK.Size = new System.Drawing.Size(81, 22);
+            this.tSbtnCaiDatTK.Text = "Cài đặt TK";
+            this.tSbtnCaiDatTK.Click += new System.EventHandler(this.tSbtnCaiDatTK_Click);
             // 
             // imageList2
             // 
@@ -305,5 +316,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ImageList imageList2;
+        private System.Windows.Forms.ToolStripButton tSbtnCaiDatTK;
     }
 }

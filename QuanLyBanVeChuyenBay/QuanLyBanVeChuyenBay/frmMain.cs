@@ -235,5 +235,12 @@ namespace QuanLyBanVeChuyenBay
             this.Hide();
             dskh.Show();
         }
+
+        private void tSbtnCaiDatTK_Click(object sender, EventArgs e)
+        {
+            Form caidattk = new CaiDatTK(this);
+            this.Hide();
+            caidattk.ShowDialog();
+        }
     }
 }

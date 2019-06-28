@@ -82,3 +82,4 @@ C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChu
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.cmbMaCB.resources
 C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmSanBayTG.resources
 C:\Users\HaAnh\Desktop\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.frmSanBayTG.resources
+C:\Users\ADMIN\Documents\GitHub\MAVP_Project\QuanLyBanVeChuyenBay\QuanLyBanVeChuyenBay\obj\Debug\QuanLyBanVeChuyenBay.CaiDatTK.resources

@@ -45,6 +45,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CaiDatTK.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaiDatTK.Designer.cs">
+      <DependentUpon>CaiDatTK.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmBaoCaoThang.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>QLBanVeChuyenBayDataSet1.xsd</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="CaiDatTK.resx">
+      <DependentUpon>CaiDatTK.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmBaoCaoNam.resx">
       <DependentUpon>frmBaoCaoNam.cs</DependentUpon>
     </EmbeddedResource>
@@ -371,6 +380,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\find %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\caidat.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

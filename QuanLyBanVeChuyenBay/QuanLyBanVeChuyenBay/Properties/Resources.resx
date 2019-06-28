@@ -121,32 +121,29 @@
   <data name="Thoat (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thoat (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Xem1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Xem1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="SuaDoiQuiDinh (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SuaDoiQuiDinh (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document-add-flat (1)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document-add-flat (1)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Xoa (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Xoa (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="find (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\find (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="refresh2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\refresh2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="unnamed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\unnamed1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="wallpaper-awan-biru" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\wallpaper-awan-biru.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="find" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\find.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="user2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\user2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DanhSachCB" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DanhSachCB.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,14 +163,17 @@
   <data name="DatVe (1)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DatVe (1)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="save (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="Back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Xoa (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Xoa (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="document-add-flat (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\document-add-flat (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="login" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="refresh1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\refresh1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -196,11 +196,11 @@
   <data name="add" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\add.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Back1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="blue-turquoise-gradient-polygon-shaped-background-zoomed-in-and-zoomed-out-in-one-motion_nj5dnqsrl__F0000" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\blue-turquoise-gradient-polygon-shaped-background-zoomed-in-and-zoomed-out-in-one-motion_nj5dnqsrl__F0000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="save (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\save (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="user2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\user2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="HuyDatVe (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\HuyDatVe (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -210,6 +210,9 @@
   </data>
   <data name="Thoat (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Thoat (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="document-add-flat (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-add-flat (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="unnamed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\unnamed.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -226,8 +229,8 @@
   <data name="forward (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\forward (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="blue-turquoise-gradient-polygon-shaped-background-zoomed-in-and-zoomed-out-in-one-motion_nj5dnqsrl__F0000" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\blue-turquoise-gradient-polygon-shaped-background-zoomed-in-and-zoomed-out-in-one-motion_nj5dnqsrl__F0000.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\save.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Xoa" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Xoa.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -241,17 +244,17 @@
   <data name="document-add-flat (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\document-add-flat (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="refresh2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\refresh2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Back1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Back1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="DatVe (1)1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\DatVe (1)1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Xem1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xem1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="document-add-flat (1)2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\document-add-flat (1)2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Xoa (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Xoa (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="unnamed1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\unnamed1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LoadLaiDanhSach" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LoadLaiDanhSach.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -259,7 +262,7 @@
   <data name="SuaDoiQuiDinh" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SuaDoiQuiDinh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="find (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\find (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="caidat" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\caidat.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
